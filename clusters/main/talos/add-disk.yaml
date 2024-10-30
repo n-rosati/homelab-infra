@@ -1,9 +1,0 @@
-apiVersion: v1alpha1
-kind: VolumeConfig
-name: Data
-# The provisioning describes how the volume is provisioned.
-provisioning:
-    # The disk selector expression.
-    diskSelector:
-        match: disk.transport == "sata"
-    grow: true
