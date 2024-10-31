@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
     name: jdownloader2
     annotations:
-      volsync.backube/privileged-movers: "true"
+        volsync.backube/privileged-movers: "true"
