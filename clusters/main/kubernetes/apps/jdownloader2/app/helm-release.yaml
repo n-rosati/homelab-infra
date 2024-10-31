@@ -93,8 +93,7 @@ spec:
                 enabled: true
                 mountPath: /config
                 readOnly: false
-                storag
-                eClass: ""
+                storageClass: ""
                 volsync:
                     - credentials: minio-creds
                       dest:
