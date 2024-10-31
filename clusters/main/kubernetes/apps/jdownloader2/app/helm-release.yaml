@@ -97,7 +97,7 @@ spec:
                 volsync:
                     - credentials: minio-creds
                       dest:
-                        enabled: true
+                        enabled: false
                       name: config
                       src:
                         enabled: true
@@ -140,7 +140,7 @@ spec:
                         enabled: true
                         port: 3129
                         targetPort: 3129
-                type: LoadBalancer
+                type: ClusterIP
             vnc:
                 enabled: true
                 loadBalancerIP: ""
