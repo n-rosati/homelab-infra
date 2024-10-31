@@ -140,7 +140,7 @@ spec:
                         enabled: true
                         port: 3129
                         targetPort: 3129
-                type: ClusterIP
+                type: LoadBalancer
             vnc:
                 enabled: true
                 loadBalancerIP: ""
