@@ -2,4 +2,13 @@ machine:
   disks:
     - device: /dev/sda
       partitions:
-        - mountpoint: /mnt/data
+        - mountpoint: /var/mnt/data
+  kubelet:
+    extraMounts:
+      - destination: /var/mnt/data
+        type: bind
+        source: /var/mnt/data
+        options:
+          - bind
+          - rshared
+          - rw
