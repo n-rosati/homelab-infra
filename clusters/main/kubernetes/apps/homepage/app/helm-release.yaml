@@ -18,29 +18,29 @@ spec:
         TZ: America/Toronto
         addons:
             codeserver:
-                enabled: true
-                ingress:
-                    enabled: true
-                    hosts:
-                        - host: edit-homepage.nicholasrosati.xyz
-                          paths:
-                            - path: /
-                              pathType: Prefix
-                    ingressClassName: ""
-                    integrations:
-                        certManager:
-                            certificateIssuer: maincert
-                            enabled: true
-                        traefik:
-                            allowCors: false
-                            enabled: true
-                            entrypoints:
-                                - websecure
-                            middlewares:
-                                - name: auth
-                                  namespace: ""
-                                - name: ca-us
-                                  namespace: ""
+                enabled: false
+#                ingress:
+#                    enabled: true
+#                    hosts:
+#                        - host: edit-homepage.nicholasrosati.xyz
+#                          paths:
+#                            - path: /
+#                              pathType: Prefix
+#                    ingressClassName: ""
+#                    integrations:
+#                        certManager:
+#                            certificateIssuer: maincert
+#                            enabled: true
+#                        traefik:
+#                            allowCors: false
+#                            enabled: true
+#                            entrypoints:
+#                                - websecure
+#                            middlewares:
+#                                - name: auth
+#                                  namespace: ""
+#                                - name: ca-us
+#                                  namespace: ""
                 service:
                     loadBalancerIP: ""
                     ports:
@@ -133,31 +133,31 @@ spec:
                 type: s3
                 url: truecharts-backup.minio.nicholasrosati.xyz
         forceConfigFromValues: false
-        ingress:
-            main:
-                enabled: true
-                hosts:
-                    - host: homepage.nicholasrosati.xyz
-                      paths:
-                        - path: /
-                          pathType: Prefix
-                ingressClassName: ""
-                integrations:
-                    certManager:
-                        certificateIssuer: maincert
-                        enabled: true
-                    homepage:
-                        enabled: false
-                    traefik:
-                        allowCors: false
-                        enabled: true
-                        entrypoints:
-                            - websecure
-                        middlewares:
-                            - name: auth
-                              namespace: ""
-                            - name: ca-us
-                              namespace: ""
+#        ingress:
+#            main:
+#                enabled: true
+#                hosts:
+#                    - host: homepage.nicholasrosati.xyz
+#                      paths:
+#                        - path: /
+#                          pathType: Prefix
+#                ingressClassName: ""
+#                integrations:
+#                    certManager:
+#                        certificateIssuer: maincert
+#                        enabled: true
+#                    homepage:
+#                        enabled: false
+#                    traefik:
+#                        allowCors: false
+#                        enabled: true
+#                        entrypoints:
+#                            - websecure
+#                        middlewares:
+#                            - name: auth
+#                              namespace: ""
+#                            - name: ca-us
+#                              namespace: ""
         persistence:
             bookmarks-config:
                 enabled: '{{ not .Values.forceConfigFromValues }}'
