@@ -124,14 +124,14 @@ spec:
                 enabled: true
         credentials:
             minio_creds:
-                accessKey: 4oeR8vwUK0GIvsS8Hpzt
-                bucket: truecharts-backup
-                encrKey: 7Ly*EfR=
-                name: minio_creds
+                accessKey: "${MINIOACCESSKEY}"
+                bucket: "${MINIOBUCKETPREFIX}"
+                encrKey: "${MINIOENCRKEY}"
+                name: minio-creds
                 path: ""
-                secretKey: wuUKWm8BLsRrTCJ3ihvCcHJFBB8UAQB2CU2KvLaB
+                secretKey: "${MINIOSECRETKEY}"
                 type: s3
-                url: truecharts-backup.minio.nicholasrosati.xyz
+                url: "${MINIOBUCKETURL}"
         forceConfigFromValues: false
 #        ingress:
 #            main:
