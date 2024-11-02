@@ -42,7 +42,7 @@ spec:
 #                                  value: https://traefik.nicholasrosati.xyz/dashboard/#/
 #                            enabled: true
                     traefik:
-                        enabled: false
+                        enabled: true
 #                        allowCors: true
                         middlewares:
                             - name: ca-us
