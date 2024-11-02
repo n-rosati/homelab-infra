@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+    name: clusterissuer
+    namespace: clusterissuer
+spec:
+    interval: 15m
+    chart:
+        spec:
+            chart: clusterissuer
+            version: 8.0.12
+            sourceRef:
+                kind: HelmRepository
+                name: truecharts
+                namespace: flux-system
+    releaseName: clusterissuer
+    values:
+        clusterIssuer:
+            ACME:
+                - cfapitoken: "${CF_API_TOKEN}"
+                  email: "${EMAIL}"
+                  name: maincert
+                  server: https://acme-v02.api.letsencrypt.org/directory
+                  type: cloudflare

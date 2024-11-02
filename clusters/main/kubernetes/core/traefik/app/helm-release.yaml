@@ -1,0 +1,107 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+    name: traefik
+    namespace: traefik
+spec:
+    interval: 15m
+    chart:
+        spec:
+            chart: traefik
+            version: 28.5.0
+            sourceRef:
+                kind: HelmRepository
+                name: truecharts
+                namespace: flux-system
+    values:
+        TZ: America/Toronto
+        ingress:
+            main:
+                enabled: true
+                hosts:
+                    - host: traefik."${DOMAIN_BASE}"
+                      paths:
+                        - path: /
+                          pathType: Prefix
+                integrations:
+                    certManager:
+                        certificateIssuer: maincert
+                        enabled: true
+#                    homepage:
+#                        description: ""
+#                        enabled: true
+#                        group: Infrastructure
+#                        href: https://{{  ( index .Values.ingress.main.hosts 0 ).host  }}/dashboard/
+#                        icon: ""
+#                        name: ""
+#                        widget:
+#                            custom:
+#                                key: ""
+#                            customkv:
+#                                - key: href
+#                                  value: https://traefik.nicholasrosati.xyz/dashboard/#/
+#                            enabled: true
+                    traefik:
+                        enabled: true
+#                        allowCors: true
+                        middlewares:
+                            - name: ca-us
+                              namespace: ""
+#                            - name: auth
+#                              namespace: ""
+        logs:
+            access:
+                enabled: true
+                enabledFilters: false
+                fields:
+                    general:
+                        defaultmode: keep
+                    headers:
+                        defaultmode: drop
+                filters:
+                    minduration: 10ms
+                    retryattempts: true
+                    statuscodes: 200,300-302
+                format: common
+            general:
+                format: common
+                level: ERROR
+        middlewares:
+#            forwardAuth:
+#                - address: http://authelia.ix-authelia.svc.cluster.local:9091/api/verify?rd=https://auth.nicholasrosati.xyz
+#                  authRequestHeaders: []
+#                  authResponseHeaders:
+#                    - Remote-User
+#                    - Remote-Group
+#                    - Remote-Name
+#                    - Remote-Email
+#                  name: auth
+#                  tls:
+#                    insecureSkipVerify: true
+#                  trustForwardHeader: true
+            geoBlock:
+                - allowLocalRequests: true
+                  allowUnknownCountries: false
+                  api: https://get.geojs.io/v1/ip/country/{ip}
+                  apiTimeoutMs: 500
+                  blackListMode: false
+                  cacheSize: 25
+                  countries:
+                    - CA
+                    - US
+                    - JP
+                    - FR
+                  forceMonthlyUpdate: true
+                  logAllowedRequests: false
+                  logApiRequests: false
+                  logLocalRequests: false
+                  name: ca-us
+                  unknownCountryApiResponse: nil
+            rateLimit:
+                - average: 100
+                  burst: 50
+                  name: ratelimit
+        service:
+            tcp:
+                externalTrafficPolicy: Local
+                loadBalancerIP: "${TRAEFIK_IP}"
