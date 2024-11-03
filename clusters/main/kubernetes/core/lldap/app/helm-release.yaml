@@ -41,7 +41,7 @@ spec:
                 readOnly: false
                 volsync:
                   - credentials: r2
-                    name: data
+                    name: data-cf
                     type: restic
                     dest:
                         enabled: true
