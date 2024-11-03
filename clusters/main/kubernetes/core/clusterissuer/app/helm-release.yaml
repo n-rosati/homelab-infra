@@ -16,6 +16,9 @@ spec:
     releaseName: clusterissuer
     values:
         clusterIssuer:
+            selfSigned:
+                enabled: true
+                name: selfsigned
             ACME:
                 - cfapitoken: ${CF_CLUSTERISSUER_TOKEN}
                   email: ${EMAIL}
