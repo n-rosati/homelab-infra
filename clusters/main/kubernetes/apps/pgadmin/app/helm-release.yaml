@@ -1,0 +1,61 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: pgadmin
+  namespace: pgadmin
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: pgadmin
+      version: 17.7.1
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: pgadmin
+  values:
+    TZ: America/Toronto
+    credentials:
+      minio:
+        name: minio
+        type: s3
+        bucket: ${MINIO_BUCKET_NAME}
+        url: ${MINIO_BUCKET_URL}
+        accessKey: ${MINIO_ACCESS_KEY}
+        secretKey: ${MINIO_SECRET_KEY}
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+    ingress:
+      main:
+        enabled: false
+    persistence:
+      config:
+        enabled: true
+        mountPath: /var/lib/pgadmin
+        readOnly: false
+        volsync:
+        - credentials: minio
+          name: minio
+          type: restic
+          dest:
+            enabled: true
+          src:
+            enabled: true
+    release_name: pgadmin
+    resources: {}
+    service:
+      main:
+        enabled: true
+        type: LoadBalancer
+        ports:
+          main:
+            port: 10024
+            targetPort: 80
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                PGADMIN_DEFAULT_EMAIL: ${EMAIL}
+                PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}

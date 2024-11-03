@@ -49,20 +49,13 @@ spec:
                         enabled: false
         cnpg:
             main:
-                mode: recovery
+                mode: standalone
                 backups:
                     enabled: false
                     revision: "1"
                     credentials: r2
-                recovery:
-                    enabled: true
-                    method: object_store
-                    credentials: r2
-                    pitrTarget:
-                        time: "2024-11-03T22:10:21"
                 cluster:
                     singleNode: true
-                    logLevel: debug
                 monitoring:
                     enablePodMonitor: true
                 password: ${CNPG_PASSWORD}
