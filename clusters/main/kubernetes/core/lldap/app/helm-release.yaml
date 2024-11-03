@@ -38,12 +38,12 @@ spec:
                       name: data
                       type: restic
                       dest:
-                        enabled: false
+                        enabled: true
                       src:
                         enabled: true
         cnpg:
             main:
-                mode: standalone
+                mode: recovery
                 backups:
                     credentials: minio
                     enabled: true
