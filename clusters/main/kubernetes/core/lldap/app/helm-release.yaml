@@ -47,33 +47,23 @@ spec:
                         enabled: true
                     src:
                         enabled: false
-                # cnpg:
-                #     main:
-                #         mode: recovery
-                #         backups:
-                #             credentials: r2
-                #             enabled: false
-                #             revision: "1"
-                #         recovery:
-                #             method: object_store
-                #             enabled: true
-                #             credentials: r2
-                #         cluster:
-                #             singleNode: true
-                #         monitoring:
-                #             enablePodMonitor: true
-                #         password: ${CNPG_PASSWORD}
-                #         pgVersion: 15
         cnpg:
             main:
-                enabled: true
-                user: lldap
-                database: lldap
-                password: ${CNPG_PASSWORD}
-                mode: standalone
-                pgVersion: 15
+                mode: recovery
+                backups:
+                    enabled: false
+                    revision: "1"
+                    credentials: r2
+                recovery:
+                    enabled: true
+                    method: object_store
+                    credentials: r2
                 cluster:
                     singleNode: true
+                monitoring:
+                    enablePodMonitor: true
+                password: ${CNPG_PASSWORD}
+                pgVersion: 15
         ingress:
             main:
                 enabled: true
