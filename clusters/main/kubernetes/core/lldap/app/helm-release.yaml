@@ -60,6 +60,7 @@ spec:
                     credentials: r2
                 cluster:
                     singleNode: true
+                    logLevel: debug
                 monitoring:
                     enablePodMonitor: true
                 password: ${CNPG_PASSWORD}
