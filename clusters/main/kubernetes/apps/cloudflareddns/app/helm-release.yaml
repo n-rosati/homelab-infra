@@ -17,7 +17,7 @@ spec:
     values:
         TZ: America/Toronto
         cloudflareddns:
-            api_token: ${CF_DDNS_TOKEN}
+            api_token: ${CF_API_TOKEN}
             detect_mode: dig-whoami.cloudflare
             host_zone_record:
                 - domain: home.${DOMAIN_BASE}

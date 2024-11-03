@@ -20,12 +20,12 @@ spec:
                 enabled: true
                 name: selfsigned
             ACME:
-                - cfapitoken: ${CF_CLUSTERISSUER_TOKEN}
+                - cfapitoken: ${CF_API_TOKEN}
                   email: ${EMAIL}
                   name: le-prod
                   server: 'https://acme-v02.api.letsencrypt.org/directory'
                   type: cloudflare
-                - cfapitoken: ${CF_CLUSTERISSUER_TOKEN}
+                - cfapitoken: ${CF_API_TOKEN}
                   email: ${EMAIL}
                   name: le-staging
                   server: 'https://acme-staging-v02.api.letsencrypt.org/directory'
