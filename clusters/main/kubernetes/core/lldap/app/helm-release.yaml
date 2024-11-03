@@ -43,7 +43,7 @@ spec:
                         enabled: true
         cnpg:
             main:
-                mode: recovery
+                mode: standalone
                 backups:
                     credentials: minio
                     enabled: true
