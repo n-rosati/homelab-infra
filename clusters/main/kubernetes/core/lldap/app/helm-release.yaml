@@ -82,13 +82,13 @@ spec:
 #                            custom:
 #                                key: ""
 #                            enabled: false
-                    traefik:
-                        enabled: true
-                        entrypoints:
-                            - websecure
-                        middlewares:
-                            - name: ca-us
-                              namespace: ""
+#                    traefik:
+#                        enabled: true
+#                        entrypoints:
+#                            - websecure
+#                        middlewares:
+#                            - name: ca-us
+#                              namespace: ""
 #                            - name: auth
 #                              namespace: ""
         service:
