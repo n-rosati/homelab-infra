@@ -39,66 +39,73 @@ spec:
                 enabled: true
                 mountPath: /data
                 readOnly: false
-                volsync:
-                    - credentials: r2
-                      name: data
-                      type: restic
-                      dest:
-                        enabled: true
-                      src:
-                        enabled: false
+                # volsync:
+                #     - credentials: r2
+                #       name: data
+                #       type: restic
+                #       dest:
+                #         enabled: true
+                #       src:
+                #         enabled: false
+                # cnpg:
+                #     main:
+                #         mode: recovery
+                #         backups:
+                #             credentials: r2
+                #             enabled: false
+                #             revision: "1"
+                #         recovery:
+                #             method: object_store
+                #             enabled: true
+                #             credentials: r2
+                #         cluster:
+                #             singleNode: true
+                #         database: lldap
+                #         user: lldap
+                #         enabled: true
+                #         hibernate: false
+                #         monitoring:
+                #             enablePodMonitor: true
+                #         password: ${CNPG_PASSWORD}
+                #         pgVersion: 15
         cnpg:
             main:
-                mode: recovery
-                backups:
-                    credentials: r2
-                    enabled: false
-                    revision: "1"
-                recovery:
-                    method: object_store
-                    enabled: true
-                    credentials: r2
-                cluster:
-                    singleNode: true
-                database: lldap
-                user: lldap
                 enabled: true
-                hibernate: false
-                monitoring:
-                    enablePodMonitor: true
+                user: lldap
+                database: lldap
                 password: ${CNPG_PASSWORD}
                 pgVersion: 15
         ingress:
             main:
                 enabled: true
                 hosts:
-                    - host: lldap.${DOMAIN_BASE}
-                      paths:
-                        - path: /
-                          pathType: Prefix
+                  - host: lldap.${DOMAIN_BASE}
+                    paths:
+                      - path: /
+                        pathType: Prefix
                 integrations:
                     certManager:
                         certificateIssuer: le-staging
                         enabled: true
-#                    homepage:
-#                        description: ""
-#                        enabled: true
-#                        group: Infrastructure
-#                        icon: ""
-#                        name: ""
-#                        widget:
-#                            custom:
-#                                key: ""
-#                            enabled: false
+                    #                    homepage:
+                    #                        description: ""
+                    #                        enabled: true
+                    #                        group: Infrastructure
+                    #                        icon: ""
+                    #                        name: ""
+                    #                        widget:
+                    #                            custom:
+                    #                                key: ""
+                    #                            enabled: false
                     traefik:
                         enabled: true
                         entrypoints:
-                            - websecure
+                          - websecure
                         middlewares:
-                            - name: ca-us
-                              namespace: ""
-#                            - name: auth
-#                              namespace: ""
+                          - name: ca-us
+                            namespace: ""
+        #                            - name: auth
+        #                              namespace: ""
         service:
             ldap:
                 enabled: true
@@ -123,7 +130,7 @@ spec:
                                 LLDAP_HTTP_PORT: '{{ .Values.service.main.ports.main.port }}'
                                 LLDAP_HTTP_URL: https://ldap.${DOMAIN_BASE}
                                 LLDAP_JWT_SECRET:
-                                    - secretRef:
+                                  - secretRef:
                                         key: LLDAP_JWT_SECRET
                                         name: secrets
                                 LLDAP_LDAP_BASE_DN: ${LDAP_BASE_DN}
