@@ -104,4 +104,4 @@ spec:
         service:
             tcp:
                 externalTrafficPolicy: Local
-                loadBalancerIP: "${TRAEFIK_IP}"
+                loadBalancerIP: ${TRAEFIK_IP}
