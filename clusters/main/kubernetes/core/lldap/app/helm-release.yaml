@@ -38,20 +38,20 @@ spec:
                       name: data
                       type: restic
                       dest:
-                        enabled: true
+                        enabled: false
                       src:
-                        enabled: true
+                        enabled: false
         cnpg:
             main:
-                mode: recovery
-                backups:
-                    credentials: minio
-                    enabled: true
-                    revision: "1"
-                recovery:
-                    method: object_store
-                    enabled: true
-                    credentials: minio
+                mode: standalone
+#                backups:
+#                    credentials: minio
+#                    enabled: true
+#                    revision: "1"
+#                recovery:
+#                    method: object_store
+#                    enabled: true
+#                    credentials: minio
                 cluster:
                     singleNode: true
                 database: lldap
@@ -62,18 +62,18 @@ spec:
                     enablePodMonitor: true
                 password: ${CNPG_PASSWORD}
                 pgVersion: 15
-        ingress:
-            main:
-                enabled: true
-                hosts:
-                    - host: lldap.${DOMAIN_BASE}
-                      paths:
-                        - path: /
-                          pathType: Prefix
-                integrations:
-                    certManager:
-                        certificateIssuer: maincert
-                        enabled: true
+#        ingress:
+#            main:
+#                enabled: true
+#                hosts:
+#                    - host: lldap.${DOMAIN_BASE}
+#                      paths:
+#                        - path: /
+#                          pathType: Prefix
+#                integrations:
+#                    certManager:
+#                        certificateIssuer: maincert
+#                        enabled: true
 #                    homepage:
 #                        description: ""
 #                        enabled: true
