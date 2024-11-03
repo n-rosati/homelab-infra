@@ -18,8 +18,10 @@ spec:
         clusterIssuer:
             ACME:
                 - cfapitoken: ${CF_CLUSTERISSUER_TOKEN}
-                  email: ${EMAIL}
-                  name: maincert
+                  name: le-prod
+                  server: https://acme-v02.api.letsencrypt.org/directory
+                  type: cloudflare
+                - cfapitoken: ${CF_CLUSTERISSUER_TOKEN}
+                  name: le-staging
                   server: https://acme-staging-v02.api.letsencrypt.org/directory
-                  #server: https://acme-v02.api.letsencrypt.org/directory
                   type: cloudflare

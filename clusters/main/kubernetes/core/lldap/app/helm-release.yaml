@@ -78,7 +78,7 @@ spec:
                           pathType: Prefix
                 integrations:
                     certManager:
-                        certificateIssuer: maincert
+                        certificateIssuer: le-staging
                         enabled: true
 #                    homepage:
 #                        description: ""
