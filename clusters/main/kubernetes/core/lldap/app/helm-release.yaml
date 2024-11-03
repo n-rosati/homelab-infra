@@ -39,14 +39,14 @@ spec:
                 enabled: true
                 mountPath: /data
                 readOnly: false
-                # volsync:
-                #     - credentials: r2
-                #       name: data
-                #       type: restic
-                #       dest:
-                #         enabled: true
-                #       src:
-                #         enabled: false
+                volsync:
+                  - credentials: r2
+                    name: data
+                    type: restic
+                    dest:
+                        enabled: true
+                    src:
+                        enabled: false
                 # cnpg:
                 #     main:
                 #         mode: recovery
@@ -60,10 +60,6 @@ spec:
                 #             credentials: r2
                 #         cluster:
                 #             singleNode: true
-                #         database: lldap
-                #         user: lldap
-                #         enabled: true
-                #         hibernate: false
                 #         monitoring:
                 #             enablePodMonitor: true
                 #         password: ${CNPG_PASSWORD}
