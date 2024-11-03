@@ -31,47 +31,47 @@ spec:
                 enabled: true
                 mountPath: /data
                 readOnly: false
-#                volsync:
-#                    - credentials: minio
-#                      name: data
-#                      type: restic
-#                      dest:
-#                        enabled: false
-#                      src:
-#                        enabled: false
-#        cnpg:
-#            main:
-#                mode: standalone
-#                backups:
-#                    credentials: minio
-#                    enabled: false
-#                    revision: "1"
-#                recovery:
-#                    method: object_store
-#                    enabled: false
-#                    credentials: minio
-#                cluster:
-#                    singleNode: true
-#                database: lldap
-#                user: lldap
-#                enabled: true
-#                hibernate: false
-#                monitoring:
-#                    enablePodMonitor: true
-#                password: ${CNPG_PASSWORD}
-#                pgVersion: 15
-#        ingress:
-#            main:
-#                enabled: true
-#                hosts:
-#                    - host: lldap.${DOMAIN_BASE}
-#                      paths:
-#                        - path: /
-#                          pathType: Prefix
-#                integrations:
-#                    certManager:
-#                        certificateIssuer: maincert
-#                        enabled: true
+                volsync:
+                    - credentials: minio
+                      name: data
+                      type: restic
+                      dest:
+                        enabled: true
+                      src:
+                        enabled: true
+        cnpg:
+            main:
+                mode: recovery
+                backups:
+                    credentials: minio
+                    enabled: true
+                    revision: "1"
+                recovery:
+                    method: object_store
+                    enabled: true
+                    credentials: minio
+                cluster:
+                    singleNode: true
+                database: lldap
+                user: lldap
+                enabled: true
+                hibernate: false
+                monitoring:
+                    enablePodMonitor: true
+                password: ${CNPG_PASSWORD}
+                pgVersion: 15
+        ingress:
+            main:
+                enabled: true
+                hosts:
+                    - host: lldap.${DOMAIN_BASE}
+                      paths:
+                        - path: /
+                          pathType: Prefix
+                integrations:
+                    certManager:
+                        certificateIssuer: maincert
+                        enabled: true
 #                    homepage:
 #                        description: ""
 #                        enabled: true
@@ -82,13 +82,13 @@ spec:
 #                            custom:
 #                                key: ""
 #                            enabled: false
-#                    traefik:
-#                        enabled: true
-#                        entrypoints:
-#                            - websecure
-#                        middlewares:
-#                            - name: ca-us
-#                              namespace: ""
+                    traefik:
+                        enabled: true
+                        entrypoints:
+                            - websecure
+                        middlewares:
+                            - name: ca-us
+                              namespace: ""
 #                            - name: auth
 #                              namespace: ""
         service:
