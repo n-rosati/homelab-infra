@@ -74,7 +74,10 @@ spec:
                 user: lldap
                 database: lldap
                 password: ${CNPG_PASSWORD}
+                mode: standalone
                 pgVersion: 15
+                cluster:
+                    singleNode: true
         ingress:
             main:
                 enabled: true
