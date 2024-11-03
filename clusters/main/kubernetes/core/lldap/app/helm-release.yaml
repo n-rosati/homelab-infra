@@ -44,14 +44,14 @@ spec:
         cnpg:
             main:
                 mode: standalone
-#                backups:
-#                    credentials: minio
-#                    enabled: true
-#                    revision: "1"
-#                recovery:
-#                    method: object_store
-#                    enabled: true
-#                    credentials: minio
+                backups:
+                    credentials: minio
+                    enabled: false
+                    revision: "1"
+                recovery:
+                    method: object_store
+                    enabled: false
+                    credentials: minio
                 cluster:
                     singleNode: true
                 database: lldap
