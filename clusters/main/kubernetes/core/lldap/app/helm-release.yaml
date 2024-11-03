@@ -1,0 +1,144 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+    name: lldap
+    namespace: lldap
+spec:
+    interval: 15m
+    chart:
+        spec:
+            chart: lldap
+            version: 6.0.9
+            sourceRef:
+                kind: HelmRepository
+                name: truecharts
+                namespace: flux-system
+    releaseName: lldap
+    values:
+        release_name: lldap
+        TZ: America/Toronto
+        credentials:
+            minio:
+                accessKey: ${MINIO_ACCESS_KEY}
+                bucket: ${MINIO_BUCKET_PREFIX}
+                encrKey: ${MINIO_ENCRYPTION_KEY}
+                name: minio_creds
+                path: ""
+                secretKey: ${MINIO_SECRET_KEY}
+                type: s3
+                url: ${MINIO_BUCKET_URL}
+        persistence:
+            data:
+                enabled: true
+                mountPath: /data
+                readOnly: false
+                storageClass: ""
+                volsync:
+                    - credentials: minio
+                      name: data
+                      type: restic
+                      dest:
+                        enabled: true
+                      src:
+                        enabled: true
+        cnpg:
+            main:
+                mode: recovery
+                backups:
+                    credentials: minio_creds
+                    enabled: true
+                    revision: 1
+                recovery:
+                    method: object_store
+                    enabled: true
+                    credentials: minio
+                cluster:
+                    singleNode: true
+                database: lldap
+                user: lldap
+                enabled: true
+                hibernate: false
+                monitoring:
+                    enablePodMonitor: true
+                password: ${CNPG_PASSWORD}
+                pgVersion: 15
+        ingress:
+            main:
+                enabled: true
+                hosts:
+                    - host: ldap.${DOMAIN_BASE}
+                      paths:
+                        - path: /
+                          pathType: Prefix
+                integrations:
+                    certManager:
+                        certificateIssuer: maincert
+                        enabled: true
+#                    homepage:
+#                        description: ""
+#                        enabled: true
+#                        group: Infrastructure
+#                        icon: ""
+#                        name: ""
+#                        widget:
+#                            custom:
+#                                key: ""
+#                            enabled: false
+                    traefik:
+                        enabled: true
+                        entrypoints:
+                            - websecure
+                        middlewares:
+                            - name: ca-us
+                              namespace: ""
+#                            - name: auth
+#                              namespace: ""
+        service:
+            ldap:
+                enabled: true
+                ports:
+                    ldap:
+                        enabled: true
+                        port: 3890
+                type: LoadBalancer
+            main:
+                enabled: true
+                ports:
+                    main:
+                        port: 17170
+                type: ClusterIP
+        workload:
+            main:
+                podSpec:
+                    containers:
+                        main:
+                            env:
+                                smtp: false
+                                LLDAP_HTTP_PORT: '{{ .Values.service.main.ports.main.port }}'
+                                LLDAP_HTTP_URL: https://ldap.nicholasrosati.xyz/
+                                LLDAP_JWT_SECRET:
+                                    - secretRef:
+                                        key: LLDAP_JWT_SECRET
+                                        name: secrets
+                                LLDAP_LDAP_BASE_DN: ${LDAP_BASE_DN}
+                                LLDAP_LDAP_PORT: '{{ .Values.service.ldap.ports.ldap.port }}'
+                                LLDAP_database_url:
+                                    secretKeyRef:
+                                        key: std
+                                        name: cnpg-main-urls
+                                LLDAP_key_file: /data/private_key
+                                # Admin user
+                                LLDAP_LDAP_USER_DN: ${LDAP_USER_DN}
+                                LLDAP_LDAP_USER_EMAIL: ${EMAIL}
+                                LLDAP_LDAP_USER_PASS: ${LDAP_USER_PASS}
+                                # Email
+                                LLDAP_SMTP_OPTIONS__ENABLE_PASSWORD_RESET: false
+                                LLDAP_SMTP_OPTIONS__FROM: LLDAP Admin <${EMAIL}>
+                                LLDAP_SMTP_OPTIONS__PASSWORD: ""
+                                LLDAP_SMTP_OPTIONS__PORT: 587
+                                LLDAP_SMTP_OPTIONS__REPLY_TO: Do not reply <noreply@localhost>
+                                LLDAP_SMTP_OPTIONS__SERVER: ""
+                                LLDAP_SMTP_OPTIONS__SMTP_ENCRYPTION: STARTTLS
+                                LLDAP_SMTP_OPTIONS__USER: ""
+                                # Logging
+                                LLDAP_VERBOSE: false

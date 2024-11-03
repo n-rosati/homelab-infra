@@ -13,13 +13,14 @@ spec:
                 kind: HelmRepository
                 name: truecharts
                 namespace: flux-system
+    releaseName: traefik
     values:
         TZ: America/Toronto
         ingress:
             main:
                 enabled: true
                 hosts:
-                    - host: traefik."${DOMAIN_BASE}"
+                    - host: traefik.${DOMAIN_BASE}
                       paths:
                         - path: /
                           pathType: Prefix
@@ -43,7 +44,6 @@ spec:
 #                            enabled: true
                     traefik:
                         enabled: true
-#                        allowCors: true
                         middlewares:
                             - name: ca-us
                               namespace: ""
