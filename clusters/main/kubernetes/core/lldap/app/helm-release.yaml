@@ -43,25 +43,25 @@ spec:
                         enabled: false
         cnpg:
             main:
-                mode: standalone
-                backups:
-                    credentials: minio
-                    enabled: false
-                    revision: "1"
-                recovery:
-                    method: object_store
-                    enabled: false
-                    credentials: minio
-                cluster:
-                    singleNode: true
+#                mode: standalone
+#                backups:
+#                    credentials: minio
+#                    enabled: false
+#                    revision: "1"
+#                recovery:
+#                    method: object_store
+#                    enabled: false
+#                    credentials: minio
+#                cluster:
+#                    singleNode: true
                 database: lldap
                 user: lldap
                 enabled: true
-                hibernate: false
-                monitoring:
-                    enablePodMonitor: true
+#                hibernate: false
+#                monitoring:
+#                    enablePodMonitor: true
                 password: ${CNPG_PASSWORD}
-                pgVersion: 15
+#                pgVersion: 15
 #        ingress:
 #            main:
 #                enabled: true
