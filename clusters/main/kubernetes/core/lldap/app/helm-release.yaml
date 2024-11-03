@@ -19,37 +19,45 @@ spec:
         TZ: America/Toronto
         credentials:
             minio:
+                name: minio
+                type: s3
                 accessKey: ${MINIO_ACCESS_KEY}
                 bucket: ${MINIO_BUCKET_PREFIX}
                 encrKey: ${MINIO_ENCRYPTION_KEY}
-                name: minio
                 secretKey: ${MINIO_SECRET_KEY}
+                url: ${BACKUP_ENCRYPTION_KEY}
+            r2:
+                name: r2
                 type: s3
-                url: ${MINIO_BUCKET_URL}
+                accessKey: ${R2_ACCESS_KEY}
+                bucket: ${R2_BUCKET_NAME}
+                encrKey: ${BACKUP_ENCRYPTION_KEY}
+                secretKey: ${R2_SECRET_KEY}
+                url: ${R2_BUCKET_URL}
         persistence:
             data:
                 enabled: true
                 mountPath: /data
                 readOnly: false
                 volsync:
-                    - credentials: minio
+                    - credentials: r2
                       name: data
                       type: restic
                       dest:
                         enabled: true
                       src:
-                        enabled: true
+                        enabled: false
         cnpg:
             main:
                 mode: recovery
                 backups:
-                    credentials: minio
-                    enabled: true
+                    credentials: r2
+                    enabled: false
                     revision: "1"
                 recovery:
                     method: object_store
                     enabled: true
-                    credentials: minio
+                    credentials: r2
                 cluster:
                     singleNode: true
                 database: lldap
@@ -113,7 +121,7 @@ spec:
                             env:
                                 smtp: false
                                 LLDAP_HTTP_PORT: '{{ .Values.service.main.ports.main.port }}'
-                                LLDAP_HTTP_URL: https://ldap.nicholasrosati.xyz/
+                                LLDAP_HTTP_URL: https://ldap.${DOMAIN_BASE}
                                 LLDAP_JWT_SECRET:
                                     - secretRef:
                                         key: LLDAP_JWT_SECRET
