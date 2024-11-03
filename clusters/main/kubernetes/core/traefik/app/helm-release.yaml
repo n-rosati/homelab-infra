@@ -19,7 +19,7 @@ spec:
             main:
                 enabled: true
                 hosts:
-                    - host: traefik."${DOMAIN_BASE}"
+                    - host: traefik.${DOMAIN_BASE}
                       paths:
                         - path: /
                           pathType: Prefix
