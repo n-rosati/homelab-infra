@@ -33,8 +33,7 @@ spec:
                 bucket: ${R2_BUCKET_NAME}
                 encrKey: ${BACKUP_ENCRYPTION_KEY}
                 secretKey: ${R2_SECRET_KEY}
-#                url: ${R2_BUCKET_URL}
-                url: https://b4f72004171d27633b7354ea4ed2850c.r2.cloudflarestorage.com/truecharts-backup
+                url: ${R2_BUCKET_URL}
         persistence:
             data:
                 enabled: true
