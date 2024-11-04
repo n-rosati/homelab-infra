@@ -49,10 +49,14 @@ spec:
                         enabled: false
         cnpg:
             main:
-                mode: standalone
+                mode: recovery
                 backups:
                     enabled: false
                     revision: "1"
+                    credentials: r2
+                restore:
+                    enabled: true
+                    method: object_store
                     credentials: r2
                 cluster:
                     singleNode: true
