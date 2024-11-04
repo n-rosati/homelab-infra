@@ -29,6 +29,12 @@ spec:
       main:
         enabled: false
     persistence:
+      nfs-vol:
+        enabled: true
+        type: nfs
+        server: ${TN_NFS_SERVER}
+        path: /mnt/DSU/Backups/pgAdmin
+        mountPath: /var/lib/pgadmin/storage/nicholas_rosati.xyz
       config:
         enabled: true
         mountPath: /var/lib/pgadmin
