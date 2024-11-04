@@ -54,7 +54,7 @@ spec:
                     enabled: false
                     revision: "1"
                     credentials: r2
-                restore:
+                recovery:
                     enabled: true
                     method: object_store
                     credentials: r2
