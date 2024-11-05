@@ -34,7 +34,8 @@ spec:
                 encrKey: ${BACKUP_ENCRYPTION_KEY}
                 secretKey: ${R2_SECRET_KEY}
                 url: ${R2_BUCKET_URL}
-                destinationPath: "s3://${R2_BUCKET_URL}/${R2_BUCKET_NAME}"
+                destinationPath: "s3://${R2_BUCKET_URL}/${R2_BUCKET_NAME}/lldap/cnpg/lldap-cnpg\
+                    -main/"
         persistence:
             data:
                 enabled: true
