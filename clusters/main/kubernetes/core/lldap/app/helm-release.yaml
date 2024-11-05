@@ -54,6 +54,9 @@ spec:
                     enabled: false
                     revision: "1"
                     credentials: r2
+                    retentionPolicy: 10d
+                    encryption:
+                        enabled: true
                 recovery:
                     enabled: true
                     method: object_store
@@ -117,7 +120,7 @@ spec:
                             env:
                                 smtp: false
                                 LLDAP_HTTP_PORT: '{{ .Values.service.main.ports.main.port }}'
-                                LLDAP_HTTP_URL: https://ldap.${DOMAIN_BASE}
+                                LLDAP_HTTP_URL: https://lldap.${DOMAIN_BASE}
                                 LLDAP_JWT_SECRET:
                                   - secretRef:
                                         key: LLDAP_JWT_SECRET
