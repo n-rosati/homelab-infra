@@ -51,7 +51,7 @@ spec:
             main:
                 mode: recovery
                 backups:
-                    enabled: true
+                    enabled: false
                     revision: "1"
                     credentials: r2
                     retentionPolicy: 10d
@@ -61,6 +61,7 @@ spec:
                     enabled: true
                     method: object_store
                     credentials: r2
+                    revision: "1"
                 cluster:
                     singleNode: true
                 monitoring:
