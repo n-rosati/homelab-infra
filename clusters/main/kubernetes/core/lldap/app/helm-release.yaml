@@ -61,7 +61,6 @@ spec:
                     enabled: true
                     method: object_store
                     credentials: r2
-                    revision: "1"
                 cluster:
                     singleNode: true
                 monitoring:
