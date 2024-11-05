@@ -51,7 +51,7 @@ spec:
             main:
                 mode: recovery
                 backups:
-                    enabled: false
+                    enabled: true
                     revision: "1"
                     credentials: r2
                     retentionPolicy: 10d
