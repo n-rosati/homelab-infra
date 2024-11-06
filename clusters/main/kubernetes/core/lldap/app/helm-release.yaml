@@ -61,13 +61,13 @@ spec:
                 mode: recovery
                 backups:
                     enabled: false
-                    revision: "1"
+                    revision: "3"
                     credentials: r2
                     retentionPolicy: 10d
                     encryption:
                         enabled: true
                 recovery:
-                    enabled: true
+                    enabled: false
                     method: object_store
                     credentials: aws
                     revision: "2"
@@ -147,13 +147,13 @@ spec:
                                 LLDAP_LDAP_USER_EMAIL: ${EMAIL}
                                 LLDAP_LDAP_USER_PASS: ${LDAP_USER_PASS}
                                 # Email
-                                LLDAP_SMTP_OPTIONS__ENABLE_PASSWORD_RESET: false
-                                LLDAP_SMTP_OPTIONS__FROM: LLDAP Admin <${EMAIL}>
-                                LLDAP_SMTP_OPTIONS__PASSWORD: ""
-                                LLDAP_SMTP_OPTIONS__PORT: 587
+                                LLDAP_SMTP_OPTIONS__ENABLE_PASSWORD_RESET: true
+                                LLDAP_SMTP_OPTIONS__FROM: LLDAP Admin <${SMTP_FROM}>
+                                LLDAP_SMTP_OPTIONS__PASSWORD: "${SMTP_PASSWORD}"
+                                LLDAP_SMTP_OPTIONS__PORT: ${SMTP_PORT}
                                 LLDAP_SMTP_OPTIONS__REPLY_TO: Do not reply <noreply@localhost>
-                                LLDAP_SMTP_OPTIONS__SERVER: ""
+                                LLDAP_SMTP_OPTIONS__SERVER: "${SMTP_SERVER}"
                                 LLDAP_SMTP_OPTIONS__SMTP_ENCRYPTION: STARTTLS
-                                LLDAP_SMTP_OPTIONS__USER: ""
+                                LLDAP_SMTP_OPTIONS__USER: "${SMTP_FROM}"
                                 # Logging
-                                LLDAP_VERBOSE: false
+                                LLDAP_VERBOSE: true
