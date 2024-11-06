@@ -34,7 +34,7 @@ spec:
                 encrKey: ${BACKUP_ENCRYPTION_KEY}
                 secretKey: ${R2_SECRET_KEY}
                 url: ${R2_BUCKET_URL}
-                destinationPath: "s3://${R2_BUCKET_NAME}"
+                destinationPath: "s3://${R2_BUCKET_NAME}/"
             aws:
                 name: aws
                 type: s3
@@ -70,7 +70,7 @@ spec:
                     enabled: true
                     method: object_store
                     credentials: aws
-                    revision: ""
+                    revision: "2"
                 cluster:
                     singleNode: true
                 monitoring:
