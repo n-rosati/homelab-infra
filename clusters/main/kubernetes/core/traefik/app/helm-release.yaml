@@ -20,35 +20,35 @@ spec:
             main:
                 enabled: true
                 hosts:
-                    - host: traefik.${DOMAIN_BASE}
-                      paths:
-                        - path: /
-                          pathType: Prefix
+                  - host: traefik.${DOMAIN_BASE}
+                    paths:
+                      - path: /
+                        pathType: Prefix
                 integrations:
                     certManager:
                         certificateIssuer: maincert
                         enabled: true
-#                    homepage:
-#                        description: ""
-#                        enabled: true
-#                        group: Infrastructure
-#                        href: https://{{  ( index .Values.ingress.main.hosts 0 ).host  }}/dashboard/
-#                        icon: ""
-#                        name: ""
-#                        widget:
-#                            custom:
-#                                key: ""
-#                            customkv:
-#                                - key: href
-#                                  value: https://traefik.nicholasrosati.xyz/dashboard/#/
-#                            enabled: true
+                    #                    homepage:
+                    #                        description: ""
+                    #                        enabled: true
+                    #                        group: Infrastructure
+                    #                        href: https://{{  ( index .Values.ingress.main.hosts 0 ).host  }}/dashboard/
+                    #                        icon: ""
+                    #                        name: ""
+                    #                        widget:
+                    #                            custom:
+                    #                                key: ""
+                    #                            customkv:
+                    #                                - key: href
+                    #                                  value: https://traefik.nicholasrosati.xyz/dashboard/#/
+                    #                            enabled: true
                     traefik:
                         enabled: true
                         middlewares:
-                            - name: ca-us
-                              namespace: ""
-#                            - name: auth
-#                              namespace: ""
+                          - name: ca-us
+                            namespace: "traefik"
+        #                            - name: auth
+        #                              namespace: ""
         logs:
             access:
                 enabled: true
@@ -67,40 +67,40 @@ spec:
                 format: common
                 level: ERROR
         middlewares:
-#            forwardAuth:
-#                - address: http://authelia.ix-authelia.svc.cluster.local:9091/api/verify?rd=https://auth.nicholasrosati.xyz
-#                  authRequestHeaders: []
-#                  authResponseHeaders:
-#                    - Remote-User
-#                    - Remote-Group
-#                    - Remote-Name
-#                    - Remote-Email
-#                  name: auth
-#                  tls:
-#                    insecureSkipVerify: true
-#                  trustForwardHeader: true
+            forwardAuth:
+              - address: http://${AUTHELIA_DNS_NAME}/api/verify?rd=https://auth.${DOMAIN_BASE}
+                authRequestHeaders: []
+                authResponseHeaders:
+                  - Remote-User
+                  - Remote-Group
+                  - Remote-Name
+                  - Remote-Email
+                name: auth
+                tls:
+                insecureSkipVerify: true
+                trustForwardHeader: true
             geoBlock:
-                - allowLocalRequests: true
-                  allowUnknownCountries: false
-                  api: https://get.geojs.io/v1/ip/country/{ip}
-                  apiTimeoutMs: 500
-                  blackListMode: false
-                  cacheSize: 25
-                  countries:
-                    - CA
-                    - US
-                    - JP
-                    - FR
-                  forceMonthlyUpdate: true
-                  logAllowedRequests: false
-                  logApiRequests: false
-                  logLocalRequests: false
-                  name: ca-us
-                  unknownCountryApiResponse: nil
+              - allowLocalRequests: true
+                allowUnknownCountries: false
+                api: https://get.geojs.io/v1/ip/country/{ip}
+                apiTimeoutMs: 500
+                blackListMode: false
+                cacheSize: 25
+                countries:
+                  - CA
+                  - US
+                  - JP
+                  - FR
+                forceMonthlyUpdate: true
+                logAllowedRequests: false
+                logApiRequests: false
+                logLocalRequests: false
+                name: ca-us
+                unknownCountryApiResponse: nil
             rateLimit:
-                - average: 100
-                  burst: 50
-                  name: ratelimit
+              - average: 100
+                burst: 50
+                name: ratelimit
         service:
             tcp:
                 externalTrafficPolicy: Local
