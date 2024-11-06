@@ -103,6 +103,9 @@ spec:
     session:
       remember_me_duration: 1M
     theme: auto
+    service:
+      main:
+        type: LoadBalancer
     ingress:
       main:
         enabled: true
