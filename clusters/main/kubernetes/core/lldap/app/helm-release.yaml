@@ -153,7 +153,7 @@ spec:
                                 LLDAP_SMTP_OPTIONS__SMTP_ENCRYPTION: TLS
                                 LLDAP_SMTP_OPTIONS__USER: ${SMTP_FROM}
                                 LLDAP_SMTP_OPTIONS__PASSWORD: ${SMTP_PASSWORD}
-                                LLDAP_SMTP_OPTIONS__FROM: "Authelia <${SMTP_FROM}>"
+                                LLDAP_SMTP_OPTIONS__FROM: "LLDAP <${SMTP_FROM}>"
                                 LLDAP_SMTP_OPTIONS__REPLY_TO: ${SMTP_FROM}
                                 # Logging
                                 LLDAP_VERBOSE: true
