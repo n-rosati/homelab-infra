@@ -53,7 +53,7 @@ spec:
                     name: data
                     type: restic
                     dest:
-                        enabled: true
+                        enabled: false
                     src:
                         enabled: false
         cnpg:
