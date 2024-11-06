@@ -58,7 +58,7 @@ spec:
                         enabled: false
         cnpg:
             main:
-                mode: recovery
+                mode: standalone
                 backups:
                     enabled: false
                     revision: "3"
