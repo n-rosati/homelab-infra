@@ -140,26 +140,9 @@ spec:
         mountPath: '/config'
     cnpg:
       main:
-        backups:
-          enabled: true
-          credentials: minio-creds
-          revision: ""
-          retentionPolicy: ""
-        cluster:
-          instances: 2
-          singleNode: true
-        database: authelia
-        enabled: true
-        hibernate: false
         mode: standalone
+        cluster:
+          singleNode: true
         monitoring:
-          disableDefaultQueries: false
           enablePodMonitor: true
-        password: PLACEHOLDERPASSWORD
-        pgVersion: 15
-        pooler:
-          enabled: false
-        recovery:
-          enabled: false
-          revision: ""
-        user: authelia
+        password: ${CNPG_PASSWORD}
