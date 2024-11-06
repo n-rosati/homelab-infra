@@ -49,8 +49,8 @@ spec:
                 mountPath: /data
                 readOnly: false
                 volsync:
-                  - credentials: r2
-                    name: data-cf
+                  - credentials: minio
+                    name: data
                     type: restic
                     dest:
                         enabled: true
