@@ -16,7 +16,7 @@ spec:
     releaseName: lldap
     values:
         release_name: lldap
-        TZ: America/Toronto
+        TZ: ${TIMEZONE}
         credentials:
             minio:
                 name: minio
