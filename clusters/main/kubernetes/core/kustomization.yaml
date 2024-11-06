@@ -8,3 +8,4 @@ resources:
   - traefik/ks.yaml
   - lldap/ks.yaml
   - authelia/ks.yaml
+  - blocky/ks.yaml
