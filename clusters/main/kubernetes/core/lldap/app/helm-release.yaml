@@ -148,12 +148,12 @@ spec:
                                 LLDAP_LDAP_USER_PASS: ${LDAP_USER_PASS}
                                 # Email
                                 LLDAP_SMTP_OPTIONS__ENABLE_PASSWORD_RESET: true
-                                LLDAP_SMTP_OPTIONS__FROM: "${SMTP_FROM}"
-                                LLDAP_SMTP_OPTIONS__PASSWORD: "${SMTP_PASSWORD}"
+                                LLDAP_SMTP_OPTIONS__SERVER: ${SMTP_SERVER}
                                 LLDAP_SMTP_OPTIONS__PORT: ${SMTP_PORT}
-                                LLDAP_SMTP_OPTIONS__REPLY_TO: "${SMTP_FROM}"
-                                LLDAP_SMTP_OPTIONS__SERVER: "${SMTP_SERVER}"
-                                LLDAP_SMTP_OPTIONS__SMTP_ENCRYPTION: STARTTLS
-                                LLDAP_SMTP_OPTIONS__USER: "${SMTP_FROM}"
+                                LLDAP_SMTP_OPTIONS__SMTP_ENCRYPTION: TLS
+                                LLDAP_SMTP_OPTIONS__USER: ${SMTP_FROM}
+                                LLDAP_SMTP_OPTIONS__PASSWORD: ${SMTP_PASSWORD}
+                                LLDAP_SMTP_OPTIONS__FROM: "Authelia <${SMTP_FROM}>"
+                                LLDAP_SMTP_OPTIONS__REPLY_TO: ${SMTP_FROM}
                                 # Logging
                                 LLDAP_VERBOSE: true
