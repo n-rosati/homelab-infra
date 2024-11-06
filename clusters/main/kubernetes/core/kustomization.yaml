@@ -7,3 +7,4 @@ resources:
   - clusterissuer/ks.yaml
   - traefik/ks.yaml
   - lldap/ks.yaml
+  - authelia/ks.yaml

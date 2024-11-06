@@ -1,0 +1,165 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: authelia
+  namespace: authelia
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: authelia
+      version: 24.2.4
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: authelia
+  values:
+    release_name: authelia
+    credentials:
+      minio-creds:
+        name: minio-creds
+        type: s3
+        url: "${MINIOBUCKETURL}"
+        accessKey: "${MINIOACCESSKEY}"
+        bucket: "${MINIOBUCKET}"
+        encrKey: "${MINIOENCRKEY}"
+        secretKey: "${MINIOSECRETKEY}"
+    TZ: ${TIMEZONE}
+    access_control:
+      default_policy: deny
+      rules:
+      - domain: '*.${DOMAIN_BASE}'
+        domain_regex: []
+        networks: []
+        policy: one_factor
+        resources: []
+        subject:
+        - group:users
+    authentication_backend:
+      disable_reset_password: false
+      file:
+        enabled: false
+      ldap:
+        enabled: true
+        additional_groups_dn: ou=groups
+        additional_users_dn: ou=people
+        base_dn: ${LDAP_BASE_DN}
+        display_name_attribute: displayName
+        group_name_attribute: cn
+        groups_filter: (member={dn})
+        implementation: custom
+        mail_attribute: mail
+        plain_password: ${LDAP_USER_PASS}
+        start_tls: false
+        timeout: 5s
+        tls:
+          minimum_version: TLS1.2
+          server_name: ""
+          skip_verify: false
+        url: ldap://${LLDAP_DNS_NAME}:3890
+        user: uid=admin,ou=people,${LDAP_BASE_DN}
+        username_attribute: uid
+        users_filter: (&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))
+    totp:
+      issuer: Authelia
+      period: 30
+      skew: 1
+    default_redirection_url: https://auth.${DOMAIN_BASE}
+    domain: ${DOMAIN_BASE}
+    log:
+      level: info
+      format: text
+    notifier:
+      disable_startup_check: false
+      filesystem:
+        enabled: false
+      smtp:
+        enabled: true
+        disable_html_emails: false
+        disable_require_tls: false
+        enabledSecret: false
+        host: ${SMTP_SERVER}
+        identifier: ${SMTP_FROM}
+        plain_password: ${SMTP_PASSWORD}
+        port: ${SMTP_PORT}
+        sender: ${SMTP_FROM}
+        startup_check_address: test@authelia.com
+        subject: '[Authelia] {title}'
+        timeout: 5s
+        tls:
+          minimum_version: TLS1.2
+          server_name: ""
+          skip_verify: false
+        username: ${SMTP_FROM}
+    password_policy:
+      zxcvbn:
+        enabled: true
+        min_score: 3
+    regulation:
+      ban_time: 5m
+      find_time: 2m
+      max_retries: 3
+    session:
+      remember_me_duration: 1M
+    theme: auto
+    ingress:
+      main:
+        enabled: true
+        required: true
+        hosts:
+        - host: auth.${DOMAIN_BASE}
+          paths:
+          - path: /
+            pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: le-staging
+            enabled: true
+          # homepage:
+          #   description: ""
+          #   enabled: true
+          #   group: Infrastructure
+          #   icon: ""
+          #   name: ""
+          #   widget:
+          #     custom:
+          #       key: ""
+          #     enabled: false
+          traefik:
+            allowCors: true
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: ratelimit
+              namespace: "traefik"
+    persistence:
+      config:
+        enabled: true
+        mountPath: '/config'
+    cnpg:
+      main:
+        backups:
+          enabled: true
+          credentials: minio-creds
+          revision: ""
+          retentionPolicy: ""
+        cluster:
+          instances: 2
+          singleNode: true
+        database: authelia
+        enabled: true
+        hibernate: false
+        mode: standalone
+        monitoring:
+          disableDefaultQueries: false
+          enablePodMonitor: true
+        password: PLACEHOLDERPASSWORD
+        pgVersion: 15
+        pooler:
+          enabled: false
+        recovery:
+          enabled: false
+          revision: ""
+        user: authelia
