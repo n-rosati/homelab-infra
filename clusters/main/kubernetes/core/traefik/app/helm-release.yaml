@@ -16,6 +16,7 @@ spec:
     releaseName: traefik
     values:
         TZ: America/Toronto
+        defaultCertificate: cluster-wildcard
         ingress:
             main:
                 enabled: true
@@ -26,7 +27,7 @@ spec:
                         pathType: Prefix
                 integrations:
                     certManager:
-                        certificateIssuer: maincert
+                        certificateIssuer: le-staging
                         enabled: true
                     #                    homepage:
                     #                        description: ""
