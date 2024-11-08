@@ -15,7 +15,9 @@ spec:
         namespace: flux-system
   releaseName: pgadmin
   values:
-    TZ: America/Toronto
+    global:
+      stopAll: true
+    TZ: ${TIMEZONE}
     credentials:
       minio:
         name: minio
