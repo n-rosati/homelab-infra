@@ -5,4 +5,4 @@ resources:
 - cloudflareddns/ks.yaml
 - pgadmin/ks.yaml
 - homepage/ks.yaml
-  - nextcloud/ks.yaml
+- nextcloud/ks.yaml
