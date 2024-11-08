@@ -15,7 +15,8 @@ spec:
                 namespace: flux-system
     releaseName: traefik
     values:
-        TZ: America/Toronto
+        TZ: ${TIMEZONE}
+        defaultCertificate: cluster-wildcard
         ingress:
             main:
                 enabled: true
@@ -26,7 +27,7 @@ spec:
                         pathType: Prefix
                 integrations:
                     certManager:
-                        certificateIssuer: maincert
+                        certificateIssuer: le-staging
                         enabled: true
                     #                    homepage:
                     #                        description: ""

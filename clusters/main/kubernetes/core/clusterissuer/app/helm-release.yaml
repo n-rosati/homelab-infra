@@ -30,3 +30,14 @@ spec:
                 email: '${EMAIL}'
                 type: cloudflare
                 cfapitoken: '${CF_API_TOKEN}'
+        clusterCertificates:
+              # Namespaces in which the certificates must be available
+              # Accepts comma-separated regex expressions
+              replicationNamespaces: '.*'
+              certificates:
+                - name: cluster-wildcard
+                  enabled: true
+                  certificateIssuer: le-prod
+                  hosts:
+                    - ${DOMAIN_BASE}
+                    - '*.${DOMAIN_BASE}'
