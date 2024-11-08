@@ -64,7 +64,7 @@ spec:
         database: nextcloud
         user: nextcloud
         password: ${CNPG_PASSWORD}
-        mode: recovery
+        mode: standalone
         backups:
           enabled: false
           credentials: minio
