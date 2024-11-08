@@ -48,8 +48,8 @@ spec:
             middlewares:
             - name: ca-us
               namespace: "traefik"
-    #                            - name: auth
-    #                              namespace: ""
+            - name: auth
+              namespace: ""
     logs:
       access:
         enabled: true

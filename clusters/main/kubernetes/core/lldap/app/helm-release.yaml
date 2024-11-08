@@ -106,8 +106,8 @@ spec:
             middlewares:
             - name: ca-us
               namespace: ""
-    #                            - name: auth
-    #                              namespace: ""
+            - name: auth
+              namespace: ""
     service:
       ldap:
         enabled: true
