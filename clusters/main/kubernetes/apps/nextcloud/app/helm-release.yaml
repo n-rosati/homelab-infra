@@ -52,7 +52,7 @@ spec:
         type: s3
         path: ""
         url: ${R2_BUCKET_URL}
-        accessKey: ${4aeebf13097298c50c71e5e2f9c2fdc0}
+        accessKey: ${R2_ACCESS_KEY}
         bucket: ${R2_BUCKET_NAME}
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         secretKey: ${R2_SECRET_KEY}
