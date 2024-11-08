@@ -1,0 +1,234 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nextcloud
+  namespace: nextcloud
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: nextcloud
+      version: 30.4.1
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: nextcloud
+  values:
+    release_name: nextcloud
+    TZ: ${TIMEZONE}
+    # clamavImage:
+    #   pullPolicy: IfNotPresent
+    #   repository: docker.io/clamav/clamav
+    #   tag: 1.4.1@sha256:7651ec29436f8e68e29e1960e7af3a2a3ef2946fd36fcfecdd605a8d49867064
+    # collaboraImage:
+    #   pullPolicy: IfNotPresent
+    #   repository: docker.io/collabora/code
+    #   tag: 24.04.8.2.1@sha256:4531077d522153efad2e956fa2b9fc4a5fd468aec530acc7a2cac59a46d0463e
+    # hpbImage:
+    #   pullPolicy: IfNotPresent
+    #   repository: tccr.io/tccr/nextcloud-push-notify
+    #   tag: v0.7.0@sha256:7727bec0a41d304d0f1bfdee3a5b36336bc8a187ef9d8fd13e584b563b490817
+    # imaginaryImage:
+    #   pullPolicy: IfNotPresent
+    #   repository: tccr.io/tccr/nextcloud-imaginary
+    #   tag: v20230401@sha256:3d677658f63c471af10a9889ecfcf07728f83df7f79b83ec841f5fb5320ebfd4
+    # nginxImage:
+    #   pullPolicy: IfNotPresent
+    #   repository: docker.io/nginxinc/nginx-unprivileged
+    #   tag: 1.27.2@sha256:d7f8c13955c20633fc9b7c34a88b973d0727a272f620e9f53d20eb39c3868080
+    credentials:
+      minio:
+        name: minio
+        type: s3
+        path: ""
+        url: ${MINIO_BUCKET_URL}
+        accessKey: ${MINIO_ACCESS_KEY}
+        bucket: ${MINIO_BUCKET_NAME}
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        secretKey: ${MINIO_SECRET_KEY}
+      r2:
+        name: r2
+        type: s3
+        path: ""
+        url: ${R2_BUCKET_URL}
+        accessKey: ${4aeebf13097298c50c71e5e2f9c2fdc0}
+        bucket: ${R2_BUCKET_NAME}
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        secretKey: ${R2_SECRET_KEY}
+    cnpg:
+      main:
+        enabled: true
+        hibernate: false
+        pgVersion: 15
+        database: nextcloud
+        user: nextcloud
+        password: ${CNPG_PASSWORD}
+        mode: recovery
+        backups:
+          enabled: false
+          credentials: minio
+          retentionPolicy: ""
+          revision: "2"
+        recovery:
+          enabled: true
+          credentials: r2
+          method: object_store
+          revision: "1"
+        cluster:
+          instances: 2
+          singleNode: true
+        monitoring:
+          enablePodMonitor: true
+    persistence:
+      config:
+        enabled: true
+        readOnly: false
+        targetSelector:
+          main:
+            main:
+              mountPath: /var/www/html/config
+          nextcloud-cron:
+            nextcloud-cron:
+              mountPath: /var/www/html/config
+          nginx:
+            nginx:
+              mountPath: /var/www/html/config
+              readOnly: true
+          notify:
+            notify:
+              mountPath: /var/www/html/config
+              readOnly: true
+          preview-cron:
+            preview-cron:
+              mountPath: /var/www/html/config
+        volsync:
+        - credentials: minio
+          name: app-config
+          type: restic
+          dest:
+            enabled: true
+          src:
+            enabled: false
+      data:
+        enabled: true
+        type: nfs
+        server: ${TN_NFS_SERVER}
+        path: /mnt/Speed/nextcloud-data
+        autoPermissions:
+          enabled: false
+        readOnly: false
+        targetSelector:
+          main:
+            init-perms:
+              mountPath: /var/www/html/data
+            main:
+              mountPath: /var/www/html/data
+          nextcloud-cron:
+            nextcloud-cron:
+              mountPath: /var/www/html/data
+          nginx:
+            nginx:
+              mountPath: /var/www/html/data
+              readOnly: true
+          preview-cron:
+            preview-cron:
+              mountPath: /var/www/html/data
+      html:
+        enabled: true
+        readOnly: false
+        targetSelector:
+          main:
+            main:
+              mountPath: /var/www/html
+          nextcloud-cron:
+            nextcloud-cron:
+              mountPath: /var/www/html
+          nginx:
+            nginx:
+              mountPath: /var/www/html
+              readOnly: true
+          preview-cron:
+            preview-cron:
+              mountPath: /var/www/html
+        volsync:
+        - credentials: minio
+          name: app-html
+          type: restic
+          dest:
+            enabled: true
+          src:
+            enabled: false
+    ingress:
+      main:
+        enabled: true
+        hosts:
+        - host: nextcloud.${DOMAIN_BASE}
+          paths:
+          - path: /
+            pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: le-staging
+            enabled: true
+          # homepage:
+          #   description: ""
+          #   enabled: true
+          #   group: Public
+          #   icon: ""
+          #   name: ""
+          #   widget:
+          #     custom:
+          #       key: ${HOMEPAGE_NEXTCLOUD_KEY}
+          #     enabled: true
+          traefik:
+            allowCors: false
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: ca-us
+              namespace: "traefik"
+            - name: auth
+              namespace: "traefik"
+    nextcloud:
+      collabora:
+        enabled: true
+        interface_mode: default
+        username: ${COLLABORA_USERNAME}
+        password: ${COLLABORA_PASSWORD}
+        dictionaries:
+        - de_DE
+        - en_GB
+        - en_US
+        - el_GR
+        - es_ES
+        - fr_FR
+        - pt_BR
+        - pt_PT
+        - it
+        - nl
+        - ru
+      credentials:
+        initialAdminUser: ${INITIAL_ADMIN_USER}
+        initialAdminPassword: ${INITIAL_ADMIN_PASSWORD}
+      general:
+        accessIP: ${NEXTCLOUD_IP}
+        default_phone_region: CA
+      logging:
+        log_date_format: Y-m-d H:i:s
+      php:
+        memory_limit: 2G
+        upload_limit: 1000G
+      previews:
+        providers:
+        - BMP
+        - GIF
+        - JPEG
+        - Krita
+        - MarkDown
+        - MP3
+        - OpenDocument
+        - PNG
+        - TXT
+        - XBitmap
