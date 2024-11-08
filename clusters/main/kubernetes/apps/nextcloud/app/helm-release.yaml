@@ -17,26 +17,6 @@ spec:
   values:
     release_name: nextcloud
     TZ: ${TIMEZONE}
-    # clamavImage:
-    #   pullPolicy: IfNotPresent
-    #   repository: docker.io/clamav/clamav
-    #   tag: 1.4.1@sha256:7651ec29436f8e68e29e1960e7af3a2a3ef2946fd36fcfecdd605a8d49867064
-    # collaboraImage:
-    #   pullPolicy: IfNotPresent
-    #   repository: docker.io/collabora/code
-    #   tag: 24.04.8.2.1@sha256:4531077d522153efad2e956fa2b9fc4a5fd468aec530acc7a2cac59a46d0463e
-    # hpbImage:
-    #   pullPolicy: IfNotPresent
-    #   repository: tccr.io/tccr/nextcloud-push-notify
-    #   tag: v0.7.0@sha256:7727bec0a41d304d0f1bfdee3a5b36336bc8a187ef9d8fd13e584b563b490817
-    # imaginaryImage:
-    #   pullPolicy: IfNotPresent
-    #   repository: tccr.io/tccr/nextcloud-imaginary
-    #   tag: v20230401@sha256:3d677658f63c471af10a9889ecfcf07728f83df7f79b83ec841f5fb5320ebfd4
-    # nginxImage:
-    #   pullPolicy: IfNotPresent
-    #   repository: docker.io/nginxinc/nginx-unprivileged
-    #   tag: 1.27.2@sha256:d7f8c13955c20633fc9b7c34a88b973d0727a272f620e9f53d20eb39c3868080
     credentials:
       minio:
         name: minio
