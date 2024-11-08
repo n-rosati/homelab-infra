@@ -159,6 +159,9 @@ spec:
             enabled: true
           src:
             enabled: false
+    service:
+      main:
+        type: LoadBalancer
     ingress:
       main:
         enabled: true
