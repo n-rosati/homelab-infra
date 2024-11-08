@@ -15,7 +15,18 @@ spec:
         namespace: flux-system
   releaseName: homepage
   values:
+    release_name: homepage
     TZ: ${TIMEZONE}
+    credentials:
+      minio:
+        name: minio
+        type: s3
+        accessKey: ${MINIO_ACCESS_KEY}
+        bucket: ${MINIO_BUCKET_PREFIX}
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        path: ""
+        secretKey: ${MINIO_SECRET_KEY}
+        url: ${MINIO_URL}
     addons:
       codeserver:
         enabled: true
@@ -46,118 +57,6 @@ spec:
             codeserver:
               port: 10353
           type: LoadBalancer
-    configmap:
-      config:
-        data:
-          bookmarks.yaml: |
-            ---
-            # For configuration options and examples, please see:
-            # https://gethomepage.dev/latest/configs/bookmarks
-
-            - Developer:
-                - Github:
-                    - abbr: GH
-                      href: https://github.com/
-
-            - Social:
-                - Reddit:
-                    - abbr: RE
-                      href: https://reddit.com/
-
-            - Entertainment:
-                - YouTube:
-                    - abbr: YT
-                      href: https://youtube.com/
-
-            - TrueCharts:
-                - TrueCharts:
-                  - abbr: TC
-                    icon: https://truecharts.org/svg/favicon.svg
-                    href: https://truecharts.org
-                    description: "TrueCharts Website"
-                - Github:
-                  - abbr: GH
-                    icon: https://github.com/fluidicon.png
-                    href: https://github.com/truecharts
-                    description: "TrueCharts GitHub"
-                - Open Collective:
-                  - abbr: TC
-                    icon: https://opencollective.com/favicon.ico
-                    href: https://opencollective.com/truecharts
-                    description: "TrueCharts Open Collective"
-                - Discord:
-                  - abbr: DC
-                    icon: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://discord.com&size=32
-                    href: https://truecharts.org/s/discord
-                    description: "TrueCharts Discord"
-          custom.css: ""
-          custom.js: ""
-          kubernetes.yaml: |
-            mode: cluster
-          services.yaml: "---
-
-            # For configuration options and examples, please see:
-
-            # https://gethomepage.dev/latest/configs/services
-
-
-            - Arr:
-
-            \    - My First Service:
-
-            \        href: http://localhost/
-
-            \        description: Homepage is awesome
-
-
-            - Media:
-
-            \    - My Second Service:
-
-            \        href: http://localhost/
-
-            \        description: Homepage is the best
-
-
-            - Infra:
-
-            \    - My Third Service:
-
-            \        href: http://localhost/
-
-            \        description: Homepage is 😎\n"
-          settings.yaml: |
-            ---
-            # For configuration options and examples, please see:
-            # https://gethomepage.dev/latest/configs/settings
-
-            providers:
-              openweathermap: openweathermapapikey
-              weatherapi: weatherapiapikey
-          widgets.yaml: |
-            ---
-            # For configuration options and examples, please see:
-            # https://gethomepage.dev/latest/configs/widgets
-
-            - resources:
-                cpu: true
-                memory: true
-                disk: /
-
-            - search:
-                provider: duckduckgo
-                target: _blank
-        enabled: true
-    credentials:
-      minio:
-        name: minio
-        type: s3
-        accessKey: ${MINIO_ACCESS_KEY}
-        bucket: ${MINIO_BUCKET_PREFIX}
-        encrKey: ${BACKUP_ENCRYPTION_KEY}
-        path: ""
-        secretKey: ${MINIO_SECRET_KEY}
-        url: ${MINIO_URL}
     ingress:
       main:
         enabled: true
@@ -183,15 +82,6 @@ spec:
             - name: ca-us
               namespace: ""
     persistence:
-      bookmarks-config:
-        enabled: '{{ not .Values.forceConfigFromValues }}'
-        mountPath: /dummy-config/bookmarks.yaml
-        objectName: config
-        readOnly: true
-        subPath: bookmarks.yaml
-        targetSelector:
-          main: {}
-        type: configmap
       config:
         enabled: true
         mountPath: /app/config
@@ -207,101 +97,6 @@ spec:
             enabled: true
           src:
             enabled: false
-      custom-css-config:
-        enabled: '{{ not .Values.forceConfigFromValues }}'
-        mountPath: /dummy-config/custom.css
-        objectName: config
-        readOnly: true
-        subPath: custom.css
-        targetSelector:
-          main: {}
-        type: configmap
-      custom-js-config:
-        enabled: '{{ not .Values.forceConfigFromValues }}'
-        mountPath: /dummy-config/custom.js
-        objectName: config
-        readOnly: true
-        subPath: custom.js
-        targetSelector:
-          main: {}
-        type: configmap
-      force-bookmarks-config:
-        enabled: '{{ .Values.forceConfigFromValues }}'
-        mountPath: /app/config/bookmarks.yaml
-        objectName: config
-        readOnly: true
-        subPath: bookmarks.yaml
-        type: configmap
-      force-custom-css-config:
-        enabled: '{{ .Values.forceConfigFromValues }}'
-        mountPath: /app/config/custom.css
-        objectName: config
-        readOnly: true
-        subPath: custom.css
-        type: configmap
-      force-custom-js-config:
-        enabled: '{{ .Values.forceConfigFromValues }}'
-        mountPath: /app/config/custom.js
-        objectName: config
-        readOnly: true
-        subPath: custom.js
-        type: configmap
-      force-services-config:
-        enabled: '{{ .Values.forceConfigFromValues }}'
-        mountPath: /app/config/services.yaml
-        objectName: config
-        readOnly: true
-        subPath: services.yaml
-        type: configmap
-      force-settings-config:
-        enabled: '{{ .Values.forceConfigFromValues }}'
-        mountPath: /app/config/settings.yaml
-        objectName: config
-        readOnly: true
-        subPath: settings.yaml
-        type: configmap
-      force-widgets-config:
-        enabled: '{{ .Values.forceConfigFromValues }}'
-        mountPath: /app/config/widgets.yaml
-        objectName: config
-        readOnly: true
-        subPath: widgets.yaml
-        type: configmap
-      kubernetes-config:
-        enabled: true
-        mountPath: /app/config/kubernetes.yaml
-        objectName: config
-        readOnly: true
-        subPath: kubernetes.yaml
-        type: configmap
-      services-config:
-        enabled: '{{ not .Values.forceConfigFromValues }}'
-        mountPath: /dummy-config/services.yaml
-        objectName: config
-        readOnly: true
-        subPath: services.yaml
-        targetSelector:
-          main: {}
-        type: configmap
-      settings-config:
-        enabled: '{{ not .Values.forceConfigFromValues }}'
-        mountPath: /dummy-config/settings.yaml
-        objectName: config
-        readOnly: true
-        subPath: settings.yaml
-        targetSelector:
-          main: {}
-        type: configmap
-      widgets-config:
-        enabled: '{{ not .Values.forceConfigFromValues }}'
-        mountPath: /dummy-config/widgets.yaml
-        objectName: config
-        readOnly: true
-        subPath: widgets.yaml
-        targetSelector:
-          main: {}
-        type: configmap
-    release_name: homepage
     resources: {}
     service:
       main:
