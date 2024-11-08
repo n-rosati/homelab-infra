@@ -4,4 +4,4 @@ resources:
 - kubernetes-dashboard/ks.yaml
 - cloudflareddns/ks.yaml
 - pgadmin/ks.yaml
-# - homepage/ks.yaml
+- homepage/ks.yaml
