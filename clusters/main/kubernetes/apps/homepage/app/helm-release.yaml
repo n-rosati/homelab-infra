@@ -301,56 +301,6 @@ spec:
         targetSelector:
           main: {}
         type: configmap
-    podOptions:
-      dnsConfig:
-        options:
-        - name: ndots
-          value: "3"
-    rbac:
-      main:
-        clusterWide: true
-        enabled: true
-        primary: true
-        rules:
-        - apiGroups:
-          - ""
-          resources:
-          - namespaces
-          - pods
-          - nodes
-          verbs:
-          - get
-          - list
-        - apiGroups:
-          - extensions
-          - networking.k8s.io
-          resources:
-          - ingresses
-          verbs:
-          - get
-          - list
-        - apiGroups:
-          - traefik.containo.us
-          - traefik.io
-          resources:
-          - ingressroutes
-          verbs:
-          - get
-          - list
-        - apiGroups:
-          - metrics.k8s.io
-          resources:
-          - nodes
-          - pods
-          verbs:
-          - get
-          - list
-        - apiGroups:
-          - apiextensions.k8s.io
-          resources:
-          - customresourcedefinitions/status
-          verbs:
-          - get
     release_name: homepage
     resources: {}
     service:
@@ -366,51 +316,3 @@ spec:
       main:
         enabled: true
         primary: true
-    workload:
-      main:
-        podSpec:
-          automountServiceAccountToken: true
-          containers:
-            main: {}
-          initContainers:
-            init-config:
-              command:
-              - /bin/sh
-              - -c
-              - |
-                mkdir -p /app/config
-                if [ ! -f /app/config/bookmarks.yaml ]; then
-                  echo "Bookmarks file not found, copying dummy..."
-                  cp /dummy-config/bookmarks.yaml /app/config/bookmarks.yaml
-                  echo "Config file copied, you can now edit it at /app/config/bookmarks.yaml"
-                fi
-                if [ ! -f /app/config/services.yaml ]; then
-                  echo "services file not found, copying dummy..."
-                  cp /dummy-config/services.yaml /app/config/services.yaml
-                  echo "Config file copied, you can now edit it at /app/config/services.yaml"
-                fi
-                if [ ! -f /app/config/settings.yaml ]; then
-                  echo "settings file not found, copying dummy..."
-                  cp /dummy-config/settings.yaml /app/config/settings.yaml
-                  echo "Config file copied, you can now edit it at /app/config/settings.yaml"
-                fi
-                if [ ! -f /app/config/widgets.yaml ]; then
-                  echo "widgets file not found, copying dummy..."
-                  cp /dummy-config/widgets.yaml /app/config/widgets.yaml
-                  echo "Config file copied, you can now edit it at /app/config/widgets.yaml"
-                fi
-                if [ ! -f /app/config/custom.css ]; then
-                  echo "custom.css file not found, copying dummy..."
-                  cp /dummy-config/custom.css /app/config/custom.css
-                  echo "Config file copied, you can now edit it at /app/config/custom.css"
-                fi
-                if [ ! -f /app/config/custom.js ]; then
-                  echo "custom.js file not found, copying dummy..."
-                  cp /dummy-config/custom.js /app/config/custom.js
-                  echo "Config file copied, you can now edit it at /app/config/custom.js"
-                fi
-              enabled: true
-              imageSelector: alpineImage
-              type: init
-        replicas: 1
-        type: Deployment
