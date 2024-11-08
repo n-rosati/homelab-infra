@@ -1,0 +1,113 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: homepage
+  namespace: homepage
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: homepage
+      version: 9.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: homepage
+  values:
+    release_name: homepage
+    TZ: ${TIMEZONE}
+    credentials:
+      minio:
+        name: minio
+        type: s3
+        accessKey: ${MINIO_ACCESS_KEY}
+        bucket: ${MINIO_BUCKET_PREFIX}
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        path: ""
+        secretKey: ${MINIO_SECRET_KEY}
+        url: ${MINIO_URL}
+    addons:
+      codeserver:
+        enabled: true
+        ingress:
+          enabled: true
+          hosts:
+          - host: edit-homepage.nicholasrosati.xyz
+            paths:
+            - path: /
+              pathType: Prefix
+          ingressClassName: ""
+          integrations:
+            certManager:
+              certificateIssuer: maincert
+              enabled: true
+            traefik:
+              allowCors: false
+              enabled: true
+              entrypoints:
+              - websecure
+              middlewares:
+              - name: auth
+                namespace: "traefik"
+              - name: ca-us
+                namespace: "traefik"
+        service:
+          ports:
+            codeserver:
+              port: 10353
+          type: LoadBalancer
+    ingress:
+      main:
+        enabled: true
+        hosts:
+        - host: homepage.nicholasrosati.xyz
+          paths:
+          - path: /
+            pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: le-prod
+            enabled: true
+          homepage:
+            enabled: false
+          traefik:
+            allowCors: false
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: auth
+              namespace: ""
+            - name: ca-us
+              namespace: ""
+    persistence:
+      config:
+        enabled: true
+        mountPath: /app/config
+        readOnly: false
+        storageClass: ""
+        targetSelector:
+          main: {}
+        volsync:
+        - credentials: minio
+          name: config
+          type: restic
+          dest:
+            enabled: true
+          src:
+            enabled: false
+    resources: {}
+    service:
+      main:
+        enabled: true
+        ports:
+          main:
+            port: 10352
+            protocol: http
+            targetPort: 3000
+        type: LoadBalancer
+    serviceAccount:
+      main:
+        enabled: true
+        primary: true
