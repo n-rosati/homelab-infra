@@ -26,7 +26,7 @@ spec:
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         path: ""
         secretKey: ${MINIO_SECRET_KEY}
-        url: ${MINIO_URL}
+        url: ${MINIO_BUCKET_URL}
     addons:
       codeserver:
         enabled: true
