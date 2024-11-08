@@ -105,9 +105,9 @@ spec:
             - websecure
             middlewares:
             - name: ca-us
-              namespace: ""
+              namespace: "traefik"
             - name: auth
-              namespace: ""
+              namespace: "traefik"
     service:
       ldap:
         enabled: true
