@@ -40,7 +40,7 @@ spec:
           ingressClassName: ""
           integrations:
             certManager:
-              certificateIssuer: maincert
+              certificateIssuer: le-prod
               enabled: true
             traefik:
               allowCors: false
