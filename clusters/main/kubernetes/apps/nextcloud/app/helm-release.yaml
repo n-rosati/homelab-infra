@@ -192,8 +192,8 @@ spec:
             middlewares:
             - name: ca-us
               namespace: "traefik"
-            - name: auth
-              namespace: "traefik"
+            # - name: auth
+            #   namespace: "traefik"
     nextcloud:
       collabora:
         enabled: true
