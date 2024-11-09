@@ -90,7 +90,7 @@ spec:
     service:
       main:
         enabled: true
-        type: ClusterIP
+        type: LoadBalancer
         ports:
           main:
             port: 10054
