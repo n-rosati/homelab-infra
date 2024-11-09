@@ -38,7 +38,7 @@ spec:
             pathType: Prefix
         integrations:
           certManager:
-            certificateIssuer: le-staging
+            certificateIssuer: le-prod
             enabled: true
           homepage:
             description: ""
