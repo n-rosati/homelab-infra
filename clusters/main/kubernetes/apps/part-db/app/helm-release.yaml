@@ -116,114 +116,6 @@ spec:
         podSpec:
           containers:
             main:
-              env:
-                ALLOW_ATTACHMENT_DOWNLOADS:
-                  name: ALLOW_ATTACHMENT_DOWNLOADS
-                  value: "1"
-                ALLOW_EMAIL_PW_RESET:
-                  name: ALLOW_EMAIL_PW_RESET
-                  value: "true"
-                APP_ENV:
-                  name: APP_ENV
-                  value: docker
-                ATTACHMENT_DOWNLOAD_BY_DEFAULT:
-                  name: ATTACHMENT_DOWNLOAD_BY_DEFAULT
-                  value: "1"
-                BANNER:
-                  name: BANNER
-                  value: 'Welcome to Part-DB.  <blockquote class=''pb-0''> <p style=''font-size:
-                    12px''> And God said <br> $\nabla \cdot \vec{D} = \rho$,
-                    $\nabla \cdot \vec{B} = 0$, $\nabla \times \vec{E} =
-                    -\frac{\partial \vec{B}}{\partial t}$, $\nabla \times
-                    \vec{H} = \vec{j} + \frac{\partial \vec{D}}{\partial
-                    t}$,  <br> and then there was light. </p> </blockquote>'
-                BASE_CURRENCY:
-                  name: BASE_CURRENCY
-                  value: CAD
-                DATABASE_URL:
-                  name: DATABASE_URL
-                  value: postgresql://partdb:${PARTDB_DB_PASSWORD}@part-db-cnpg-main-rw.part-db.svc.cluster.local:5432/part-db?serverVersion=16
-                DEFAULT_LANG:
-                  name: DEFAULT_LANG
-                  value: en
-                DEFAULT_TIMEZONE:
-                  name: DEFAULT_TIMEZONE
-                  value: ${TIMEZONE}
-                DEFAULT_URI:
-                  name: DEFAULT_URI
-                  value: https://partdb.${DOMAIN_BASE}
-                EMAIL_SENDER_EMAIL:
-                  name: EMAIL_SENDER_EMAIL
-                  value: ${SMTP_FROM}
-                EMAIL_SENDER_NAME:
-                  name: EMAIL_SENDER_NAME
-                  value: PartDB Service
-                FIXER_API_KEY:
-                  name: FIXER_API_KEY
-                  value: ${PARTDB_FIXER_API_KEY}
-                HISTORY_SAVE_CHANGED_DATA:
-                  name: HISTORY_SAVE_CHANGED_DATA
-                  value: "true"
-                HISTORY_SAVE_CHANGED_FIELDS:
-                  name: HISTORY_SAVE_CHANGED_FIELDS
-                  value: "true"
-                HISTORY_SAVE_NEW_DATA:
-                  name: HISTORY_SAVE_NEW_DATA
-                  value: "true"
-                HISTORY_SAVE_REMOVED_DATA:
-                  name: HISTORY_SAVE_REMOVED_DATA
-                  value: "true"
-                INSTANCE_NAME:
-                  name: INSTANCE_NAME
-                  value: Part-DB
-                MAILER_DSN:
-                  name: MAILER_DSN
-                  value: ${SMTP_MAILER_DSN}
-                PROVIDER_DIGIKEY_CLIENT_ID:
-                  name: PROVIDER_DIGIKEY_CLIENT_ID
-                  value: ${PARTDB_DIGIKEY_CLIENT_ID}
-                PROVIDER_DIGIKEY_COUNTRY:
-                  name: PROVIDER_DIGIKEY_COUNTRY
-                  value: ca
-                PROVIDER_DIGIKEY_CURRENCY:
-                  name: PROVIDER_DIGIKEY_CURRENCY
-                  value: CAD
-                PROVIDER_DIGIKEY_LANGUAGE:
-                  name: PROVIDER_DIGIKEY_LANGUAGE
-                  value: en
-                PROVIDER_DIGIKEY_SECRET:
-                  name: PROVIDER_DIGIKEY_SECRET
-                  value: ${PARTDB_DIGIKEY_SECRET}
-                PROVIDER_ELEMENT14_KEY:
-                  name: PROVIDER_ELEMENT14_KEY
-                  value: ${PARTDB_ELEMENT14_KEY}
-                PROVIDER_ELEMENT14_STORE_ID:
-                  name: PROVIDER_ELEMENT14_STORE_ID
-                  value: canada.newark.com
-                PROVIDER_LCSC_CURRENCY:
-                  name: PROVIDER_LCSC_CURRENCY
-                  value: CAD
-                PROVIDER_LCSC_ENABLED:
-                  name: PROVIDER_LCSC_ENABLED
-                  value: "1"
-                PROVIDER_OCOTPART_COUNTRY:
-                  name: PROVIDER_OCOTPART_COUNTRY
-                  value: CA
-                PROVIDER_OCTOPART_CLIENT_ID:
-                  name: PROVIDER_OCTOPART_CLIENT_ID
-                  value: ${PARTDB_OCTOPART_CLIENT_ID}
-                PROVIDER_OCTOPART_CURRENCY:
-                  name: PROVIDER_OCTOPART_CURRENCY
-                  value: CAD
-                PROVIDER_OCTOPART_SECRET:
-                  name: PROVIDER_OCTOPART_SECRET
-                  value: ${PARTDB_OCTOPART_SECRET}
-                TRUSTED_PROXIES:
-                  name: TRUSTED_PROXIES
-                  value: traefik.traefik.svc.cluster.local
-                USE_GRAVATAR:
-                  name: USE_GRAVATAR
-                  value: "0"
               probes:
                 liveness:
                   enabled: true
@@ -237,3 +129,43 @@ spec:
                   enabled: true
                   path: /
                   type: http
+              env:
+                ALLOW_ATTACHMENT_DOWNLOADS: "1"
+                ALLOW_EMAIL_PW_RESET: "true"
+                APP_ENV: docker
+                ATTACHMENT_DOWNLOAD_BY_DEFAULT: "1"
+                BANNER: 'Welcome to Part-DB.  <blockquote class=''pb-0''> <p style=''font-size:
+                  12px''> And God said <br> $\nabla \cdot \vec{D} = \rho$,
+                  $\nabla \cdot \vec{B} = 0$, $\nabla \times \vec{E} =
+                  -\frac{\partial \vec{B}}{\partial t}$, $\nabla \times \vec{H}
+                  = \vec{j} + \frac{\partial \vec{D}}{\partial t}$,  <br> and
+                  then there was light. </p> </blockquote>'
+                BASE_CURRENCY: CAD
+                DATABASE_URL: postgresql://partdb:${PARTDB_DB_PASSWORD}@part-db-cnpg-main-rw.part-db.svc.cluster.local:5432/part-db?serverVersion=16
+                DEFAULT_LANG: en
+                DEFAULT_TIMEZONE: ${TIMEZONE}
+                DEFAULT_URI: https://partdb.${DOMAIN_BASE}
+                EMAIL_SENDER_EMAIL: ${SMTP_FROM}
+                EMAIL_SENDER_NAME: PartDB Service
+                FIXER_API_KEY: ${PARTDB_FIXER_API_KEY}
+                HISTORY_SAVE_CHANGED_DATA: "true"
+                HISTORY_SAVE_CHANGED_FIELDS: "true"
+                HISTORY_SAVE_NEW_DATA: "true"
+                HISTORY_SAVE_REMOVED_DATA: "true"
+                INSTANCE_NAME: Part-DB
+                MAILER_DSN: ${SMTP_MAILER_DSN}
+                PROVIDER_DIGIKEY_CLIENT_ID: ${PARTDB_DIGIKEY_CLIENT_ID}
+                PROVIDER_DIGIKEY_COUNTRY: ca
+                PROVIDER_DIGIKEY_CURRENCY: CAD
+                PROVIDER_DIGIKEY_LANGUAGE: en
+                PROVIDER_DIGIKEY_SECRET: ${PARTDB_DIGIKEY_SECRET}
+                PROVIDER_ELEMENT14_KEY: ${PARTDB_ELEMENT14_KEY}
+                PROVIDER_ELEMENT14_STORE_ID: canada.newark.com
+                PROVIDER_LCSC_CURRENCY: CAD
+                PROVIDER_LCSC_ENABLED: "1"
+                PROVIDER_OCOTPART_COUNTRY: CA
+                PROVIDER_OCTOPART_CLIENT_ID: ${PARTDB_OCTOPART_CLIENT_ID}
+                PROVIDER_OCTOPART_CURRENCY: CAD
+                PROVIDER_OCTOPART_SECRET: ${PARTDB_OCTOPART_SECRET}
+                TRUSTED_PROXIES: traefik.traefik.svc.cluster.local
+                USE_GRAVATAR: "0"
