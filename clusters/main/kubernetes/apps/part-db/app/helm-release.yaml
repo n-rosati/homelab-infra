@@ -27,7 +27,6 @@ spec:
       minio:
         name: minio
         type: s3
-        path: ""
         url: ${MINIO_BUCKET_URL}
         accessKey: ${MINIO_ACCESS_KEY}
         bucket: ${MINIO_BUCKET_NAME}
@@ -68,21 +67,6 @@ spec:
             port: 3000
             protocol: http
             targetPort: 80
-          secure:
-            enabled: true
-            port: 3001
-            protocol: https
-            targetPort: 443
-          secure-udp:
-            enabled: true
-            port: 3002
-            protocol: udp
-            targetPort: 443
-          api:
-            enabled: true
-            port: 3003
-            protocol: tcp
-            targetPort: 2019
     persistence:
       media:
         enabled: true
@@ -94,7 +78,7 @@ spec:
           type: restic
           credentials: minio
           dest:
-            enabled: false
+            enabled: true
           src:
             enabled: false
       uploads:
@@ -107,27 +91,41 @@ spec:
           type: restic
           credentials: minio
           dest:
-            enabled: false
+            enabled: true
           src:
             enabled: false
-    cnpg:
-      main:
+      db:
         enabled: true
-        database: part-db
-        user: partdb
-        password: ${PARTDB_DB_PASSWORD}
-        pgVersion: 16
-        mode: standalone
-        cluster:
-          singleNode: true
-        recovery:
-          enabled: false
-          method: object_store
+        type: pvc
+        mountPath: /var/www/html/var/db
+        targetSelectAll: true
+        volsync:
+        - name: db
+          type: restic
           credentials: minio
-        backups:
-          enabled: false
-          revision: "1"
-          credentials: minio
+          dest:
+            enabled: true
+          src:
+            enabled: false
+    # I want to use CNPG but PartDB's postgres is too broken
+    # cnpg:
+    #   main:
+    #     enabled: true
+    #     database: part-db
+    #     user: partdb
+    #     password: ${PARTDB_DB_PASSWORD}
+    #     pgVersion: 16
+    #     mode: standalone
+    #     cluster:
+    #       singleNode: true
+    #     recovery:
+    #       enabled: false
+    #       method: object_store
+    #       credentials: minio
+    #     backups:
+    #       enabled: false
+    #       revision: "1"
+    #       credentials: minio
     workload:
       main:
         podSpec:
@@ -158,7 +156,8 @@ spec:
                   = \vec{j} + \frac{\partial \vec{D}}{\partial t}$,  <br> and
                   then there was light. </p> </blockquote>'
                 BASE_CURRENCY: CAD
-                DATABASE_URL: postgresql://partdb:${PARTDB_DB_PASSWORD}@part-db-app-template-cnpg-main-rw.part-db.svc.cluster.local:5432/part-db?serverVersion=16.4&charset=utf8
+                # DATABASE_URL: postgresql://partdb:${PARTDB_DB_PASSWORD}@part-db-app-template-cnpg-main-rw.part-db.svc.cluster.local:5432/part-db?serverVersion=16.4&charset=utf8
+                DATABASE_URL: sqlite:///%kernel.project_dir%/var/db/app.db
                 DEFAULT_LANG: en
                 DEFAULT_TIMEZONE: ${TIMEZONE}
                 DEFAULT_URI: https://partdb.${DOMAIN_BASE}
