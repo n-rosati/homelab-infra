@@ -111,7 +111,7 @@ spec:
     cnpg:
       main:
         enabled: true
-        database: partdb
+        database: part-db
         user: partdb
         password: ${PARTDB_DB_PASSWORD}
         pgVersion: 16
