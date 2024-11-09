@@ -79,7 +79,7 @@ spec:
           dest:
             enabled: false
           src:
-            enables: false
+            enabled: false
       uploads:
         enabled: true
         type: pvc
