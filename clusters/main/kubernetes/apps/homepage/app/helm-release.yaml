@@ -78,9 +78,9 @@ spec:
             - websecure
             middlewares:
             - name: auth
-              namespace: ""
+              namespace: "traefik"
             - name: ca-us
-              namespace: ""
+              namespace: "traefik"
     persistence:
       config:
         enabled: true
