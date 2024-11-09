@@ -16,7 +16,7 @@ spec:
   releaseName: wireguard
   values:
     global:
-      stopAll: true
+      stopAll: false
     release_name: wireguard
     TZ: ${TIMEZONE}
     credentials:
