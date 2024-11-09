@@ -61,7 +61,6 @@ spec:
         enabled: true
         mountPath: /config
         readOnly: false
-        storageClass: ""
         volsync:
         - credentials: minio
           name: config
