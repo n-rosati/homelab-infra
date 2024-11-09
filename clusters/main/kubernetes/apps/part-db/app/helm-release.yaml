@@ -65,7 +65,22 @@ spec:
             enabled: true
             port: 3000
             protocol: http
-            targetPort: 8080
+            targetPort: 80
+          secure:
+            enabled: true
+            port: 3001
+            protocol: https
+            targetPort: 443
+          secure-udp:
+            enabled: true
+            port: 3002
+            protocol: udp
+            targetPort: 443
+          api:
+            enabled: true
+            port: 3003
+            protocol: tcp
+            targetPort: 2019
     persistence:
       media:
         enabled: true
