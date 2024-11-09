@@ -1,0 +1,87 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: rcon-webadmin
+  namespace: rcon-webadmin
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: rcon-webadmin
+      version: 10.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: rcon-webadmin
+  values:
+    global:
+      stopAll: false
+    release_name: rcon-webadmin
+    TZ: ${TIMEZONE}
+    credentials:
+      minio:
+        name: minio
+        type: s3
+        accessKey: ${MINIO_ACCESS_KEY}
+        bucket: ${MINIO_BUCKET_NAME}
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        secretKey: ${MINIO_SECRET_KEY}
+        url: ${MINIO_BUCKET_URL}
+    ingress:
+      main:
+        enabled: false
+      websocketaccess:
+        autoLink: true
+    persistence:
+      db:
+        enabled: true
+        mountPath: /opt/rcon-web-admin/db
+        readOnly: false
+        volsync:
+        - credentials: minio
+          name: minio
+          type: restic
+          dest:
+            enabled: true
+          src:
+            enabled: false
+    rcon:
+      rwa_admin: true
+      rwa_env: false
+      rwa_game: ""
+      rwa_rcon_host: ""
+      rwa_rcon_port: 25575
+      rwa_read_only_widget_options: false
+      rwa_server_name: ""
+      rwa_web_rcon: false
+      rwa_websocket_url: ${RWA_IP}
+      rwa_websocket_url_ssl: ""
+    service:
+      main:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP: ${RWA_IP}
+        ports:
+          main:
+            port: 4326
+            protocol: http
+            targetPort: 4326
+      websocketaccess:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP: ${RWA_IP}
+        ports:
+          websocketaccess:
+            enabled: true
+            port: 4327
+            protocol: tcp
+            targetPort: 4327
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                RWA_USERNAME: ${RWA_USERNAME}
+                RWA_PASSWORD: ${RWA_PASSWORD}
