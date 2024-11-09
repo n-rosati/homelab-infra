@@ -92,7 +92,7 @@ spec:
           dest:
             enabled: false
           src:
-            enables: false
+            enabled: false
     cnpg:
       main:
         enabled: true
