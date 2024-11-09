@@ -169,3 +169,9 @@ spec:
                 PROVIDER_OCTOPART_SECRET: ${PARTDB_OCTOPART_SECRET}
                 TRUSTED_PROXIES: traefik.traefik.svc.cluster.local
                 USE_GRAVATAR: "0"
+    securityContext:
+      container:
+        readOnlyRootFilesystem: false
+        runAsNonRoot: false
+        runAsUser: 0
+        runAsGroup: 0
