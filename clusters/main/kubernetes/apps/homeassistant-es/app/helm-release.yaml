@@ -40,11 +40,10 @@ spec:
               namespace: "traefik"
     service:
       main:
-        enabled: true
         type: ExternalIP
         externalIP: ${HOMEASSISTANT_IP}
+        useSlice: false
         ports:
           main:
-            enabled: true
-            port: 8123
             protocol: http
+            port: 8123

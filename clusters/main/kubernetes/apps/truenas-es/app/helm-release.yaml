@@ -42,11 +42,10 @@ spec:
               namespace: "traefik"
     service:
       main:
-        enabled: true
         type: ExternalIP
         externalIP: ${TN_NFS_SERVER}
+        useSlice: false
         ports:
           main:
-            enabled: true
-            port: 444
             protocol: https
+            port: 444

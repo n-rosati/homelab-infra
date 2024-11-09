@@ -42,11 +42,10 @@ spec:
               namespace: "traefik"
     service:
       main:
-        enabled: true
         type: ExternalIP
         externalIP: ${PRINTER_IP}
+        useSlice: false
         ports:
           main:
-            enabled: true
-            port: 80
             protocol: http
+            port: 80
