@@ -1,11 +1,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: homeassistant-es
+  name: printer-es
   namespace: flux-system
 spec:
   interval: 10m
-  path: clusters/main/kubernetes/apps/homeassistant-es/app
+  path: clusters/main/kubernetes/apps/printer-es/app
   prune: true
   sourceRef:
     kind: GitRepository
