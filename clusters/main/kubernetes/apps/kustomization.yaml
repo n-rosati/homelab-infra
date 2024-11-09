@@ -6,3 +6,4 @@ resources:
 - pgadmin/ks.yaml
 - homepage/ks.yaml
 - nextcloud/ks.yaml
+  - plex/ks.yaml
