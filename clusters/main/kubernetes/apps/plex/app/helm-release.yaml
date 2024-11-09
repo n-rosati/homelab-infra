@@ -71,6 +71,12 @@ spec:
             enabled: true
           src:
             enabled: false
+      media:
+        enabled: true
+        type: nfs
+        path: /mnt/DSU/Media/Shows
+        mountPath: /media
+        server: ${TN_NFS_SERVER}
     plex:
       serverIP: ${PLEX_IP}
       additionalAdvertiseURL: ""
