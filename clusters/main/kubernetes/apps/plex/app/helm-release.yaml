@@ -16,7 +16,7 @@ spec:
   releaseName: plex
   values:
     global:
-      stopAll: true
+      stopAll: false
     release_name: plex
     TZ: ${TIMEZONE}
     credentials:
