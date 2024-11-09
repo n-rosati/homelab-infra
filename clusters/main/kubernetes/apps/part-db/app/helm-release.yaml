@@ -109,7 +109,7 @@ spec:
           credentials: minio
         backups:
           enabled: false
-          revision: 1
+          revision: "1"
           credentials: minio
     workload:
       main:
