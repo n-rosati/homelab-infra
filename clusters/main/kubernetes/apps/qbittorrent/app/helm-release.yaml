@@ -1,0 +1,115 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: qbittorrent
+  namespace: qbittorrent
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: qbittorrent
+      version: 20.2.2
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: qbittorrent
+  values:
+    release_name: qbittorrent
+    TZ: ${TIMEZONE}
+    credentials:
+      minio:
+        name: minio
+        type: s3
+        url: ${MINIO_BUCKET_URL}
+        bucket: ${MINIO_BUCKET_NAME}
+        accessKey: ${MINIO_ACCESS_KEY}
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        secretKey: ${MINIO_SECRET_KEY}
+    ingress:
+      main:
+        enabled: true
+        hosts:
+        - host: qbittorrent.${DOMAIN_BASE}
+          paths:
+          - path: /
+            pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: le-staging
+            enabled: true
+          # homepage:
+          #   description: ""
+          #   enabled: true
+          #   group: Downloaders
+          #   icon: ""
+          #   name: ""
+          #   widget:
+          #     custom:
+          #       key: ""
+          #     customkv:
+          #     - key: username
+          #       value: ${QBITTORRENT_USER}
+          #     - key: password
+          #       value: ${QBITTORRENT_PASSWORD}
+          #     enabled: true
+          traefik:
+            allowCors: false
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: ca-us
+              namespace: "traefik"
+            - name: auth
+              namespace: "traefik"
+    persistence:
+      config:
+        enabled: true
+        mountPath: /config
+        readOnly: false
+        volsync:
+        - credentials: minio
+          name: minio
+          type: restic
+          dest:
+            enabled: true
+          src:
+            enabled: false
+      data:
+        enabled: true
+        type: nfs
+        path: /mnt/DSU/Software/Torrents
+        mountPath: /mnt/Torrents
+        server: ${TN_NFS_SERVER}
+    qbitportforward:
+      enabled: false
+      QBT_USERNAME: ${QBITTORRENT_USER}
+      QBT_PASSWORD: ${QBITTORRENT_PASSWORD}
+    service:
+      main:
+        type: LoadBalancer
+        ports:
+          main:
+            port: 10095
+      torrent:
+        type: LoadBalancer
+        loadBalancerIP: ""
+        ports:
+          torrent:
+            enabled: true
+            port: 6881
+            protocol: tcp
+          torrentudp:
+            enabled: true
+            port: '{{ .Values.service.torrent.ports.torrent.port }}'
+            protocol: udp
+      gluetun:
+        type: ClusterIP
+        enabled: true
+        ports:
+          gluetun:
+            enabled: true
+            port: 8000
+            protocol: http
+            targetPort: 8000
