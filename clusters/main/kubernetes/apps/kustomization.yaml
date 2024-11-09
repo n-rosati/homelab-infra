@@ -10,3 +10,4 @@ resources:
 - qbittorrent/ks.yaml
 - jdownloader2/ks.yaml
 - truenas-es/ks.yaml
+- homeassistant-es/ks.yaml
