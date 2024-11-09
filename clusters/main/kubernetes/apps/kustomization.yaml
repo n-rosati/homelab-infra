@@ -9,3 +9,4 @@ resources:
 - plex/ks.yaml
 - qbittorrent/ks.yaml
 - jdownloader2/ks.yaml
+- truenas-es/ks.yaml
