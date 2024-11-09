@@ -16,7 +16,7 @@ spec:
   releaseName: pgadmin
   values:
     global:
-      stopAll: true
+      stopAll: false
     TZ: ${TIMEZONE}
     credentials:
       minio:
@@ -55,6 +55,7 @@ spec:
       main:
         enabled: true
         type: LoadBalancer
+        loadBalancerIP: ""
         ports:
           main:
             port: 10024
