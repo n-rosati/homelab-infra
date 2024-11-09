@@ -11,3 +11,4 @@ resources:
 - jdownloader2/ks.yaml
 - truenas-es/ks.yaml
 - homeassistant-es/ks.yaml
+- printer-es/ks.yaml
