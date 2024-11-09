@@ -38,7 +38,7 @@ spec:
             pathType: Prefix
         integrations:
           certManager:
-            certificateIssuer: le-staging
+            certificateIssuer: le-prod
             enabled: true
           # homepage:
           #   description: ""
@@ -69,7 +69,7 @@ spec:
           name: minio
           type: restic
           dest:
-            enabled: true
+            enabled: false
           src:
             enabled: false
     service:
