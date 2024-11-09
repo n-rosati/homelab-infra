@@ -1,0 +1,239 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: part-db
+  namespace: part-db
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 14.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: part-db
+  values:
+    image:
+      repository: docker.io/jbtronics/part-db1
+      pullPolicy: IfNotPresent
+      tag: v1.14.4@sha256:019587c7821d12414aeb26b8d3058e5093db66bfc0190ef4b9356f92d664a38d
+    release_name: part-db
+    TZ: ${TIMEZONE}
+    credentials:
+      minio:
+        name: minio
+        type: s3
+        path: ""
+        url: ${MINIO_BUCKET_URL}
+        accessKey: ${MINIO_ACCESS_KEY}
+        bucket: ${MINIO_BUCKET_NAME}
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        secretKey: ${MINIO_SECRET_KEY}
+    ingress:
+      main:
+        enabled: true
+        hosts:
+        - host: partdb.${DOMAIN_BASE}
+          paths:
+          - path: /
+            pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: le-staging
+            enabled: true
+          homepage:
+            enabled: false
+          traefik:
+            allowCors: false
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: ca-us
+              namespace: "traefik"
+            - name: auth
+              namespace: "traefik"
+    service:
+      main:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP: ""
+        ports:
+          main:
+            enabled: true
+            port: 3000
+            protocol: http
+            targetPort: 80
+    persistence:
+      media:
+        enabled: true
+        type: pvc
+        mountPath: /var/www/html/public/media
+        targetSelectAll: true
+        volsync:
+        - name: uploads
+          type: restic
+          credentials: minio
+          dest:
+            enabled: false
+          src:
+            enables: false
+      uploads:
+        enabled: true
+        type: pvc
+        mountPath: /var/www/html/uploads
+        targetSelectAll: true
+        volsync:
+        - name: uploads
+          type: restic
+          credentials: minio
+          dest:
+            enabled: false
+          src:
+            enables: false
+    cnpg:
+      main:
+        enabled: true
+        database: partdb
+        user: partdb
+        password: ${PARTDB_DB_PASSWORD}
+        pgVersion: 16
+        mode: standalone
+        cluster:
+          singleNode: true
+        recovery:
+          enabled: false
+          method: object_store
+          credentials: minio
+        backups:
+          enabled: false
+          revision: 1
+          credentials: minio
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                ALLOW_ATTACHMENT_DOWNLOADS:
+                  name: ALLOW_ATTACHMENT_DOWNLOADS
+                  value: "1"
+                ALLOW_EMAIL_PW_RESET:
+                  name: ALLOW_EMAIL_PW_RESET
+                  value: "true"
+                APP_ENV:
+                  name: APP_ENV
+                  value: docker
+                ATTACHMENT_DOWNLOAD_BY_DEFAULT:
+                  name: ATTACHMENT_DOWNLOAD_BY_DEFAULT
+                  value: "1"
+                BANNER:
+                  name: BANNER
+                  value: 'Welcome to Part-DB.  <blockquote class=''pb-0''> <p style=''font-size:
+                    12px''> And God said <br> $\nabla \cdot \vec{D} = \rho$,
+                    $\nabla \cdot \vec{B} = 0$, $\nabla \times \vec{E} =
+                    -\frac{\partial \vec{B}}{\partial t}$, $\nabla \times
+                    \vec{H} = \vec{j} + \frac{\partial \vec{D}}{\partial
+                    t}$,  <br> and then there was light. </p> </blockquote>'
+                BASE_CURRENCY:
+                  name: BASE_CURRENCY
+                  value: CAD
+                DATABASE_URL:
+                  name: DATABASE_URL
+                  value: postgresql://partdb:${PARTDB_DB_PASSWORD}@part-db-cnpg-main-rw.part-db.svc.cluster.local:5432/part-db?serverVersion=16
+                DEFAULT_LANG:
+                  name: DEFAULT_LANG
+                  value: en
+                DEFAULT_TIMEZONE:
+                  name: DEFAULT_TIMEZONE
+                  value: ${TIMEZONE}
+                DEFAULT_URI:
+                  name: DEFAULT_URI
+                  value: https://partdb.${DOMAIN_BASE}
+                EMAIL_SENDER_EMAIL:
+                  name: EMAIL_SENDER_EMAIL
+                  value: ${SMTP_FROM}
+                EMAIL_SENDER_NAME:
+                  name: EMAIL_SENDER_NAME
+                  value: PartDB Service
+                FIXER_API_KEY:
+                  name: FIXER_API_KEY
+                  value: ${PARTDB_FIXER_API_KEY}
+                HISTORY_SAVE_CHANGED_DATA:
+                  name: HISTORY_SAVE_CHANGED_DATA
+                  value: "true"
+                HISTORY_SAVE_CHANGED_FIELDS:
+                  name: HISTORY_SAVE_CHANGED_FIELDS
+                  value: "true"
+                HISTORY_SAVE_NEW_DATA:
+                  name: HISTORY_SAVE_NEW_DATA
+                  value: "true"
+                HISTORY_SAVE_REMOVED_DATA:
+                  name: HISTORY_SAVE_REMOVED_DATA
+                  value: "true"
+                INSTANCE_NAME:
+                  name: INSTANCE_NAME
+                  value: Part-DB
+                MAILER_DSN:
+                  name: MAILER_DSN
+                  value: ${SMTP_MAILER_DSN}
+                PROVIDER_DIGIKEY_CLIENT_ID:
+                  name: PROVIDER_DIGIKEY_CLIENT_ID
+                  value: ${PARTDB_DIGIKEY_CLIENT_ID}
+                PROVIDER_DIGIKEY_COUNTRY:
+                  name: PROVIDER_DIGIKEY_COUNTRY
+                  value: ca
+                PROVIDER_DIGIKEY_CURRENCY:
+                  name: PROVIDER_DIGIKEY_CURRENCY
+                  value: CAD
+                PROVIDER_DIGIKEY_LANGUAGE:
+                  name: PROVIDER_DIGIKEY_LANGUAGE
+                  value: en
+                PROVIDER_DIGIKEY_SECRET:
+                  name: PROVIDER_DIGIKEY_SECRET
+                  value: ${PARTDB_DIGIKEY_SECRET}
+                PROVIDER_ELEMENT14_KEY:
+                  name: PROVIDER_ELEMENT14_KEY
+                  value: ${PARTDB_ELEMENT14_KEY}
+                PROVIDER_ELEMENT14_STORE_ID:
+                  name: PROVIDER_ELEMENT14_STORE_ID
+                  value: canada.newark.com
+                PROVIDER_LCSC_CURRENCY:
+                  name: PROVIDER_LCSC_CURRENCY
+                  value: CAD
+                PROVIDER_LCSC_ENABLED:
+                  name: PROVIDER_LCSC_ENABLED
+                  value: "1"
+                PROVIDER_OCOTPART_COUNTRY:
+                  name: PROVIDER_OCOTPART_COUNTRY
+                  value: CA
+                PROVIDER_OCTOPART_CLIENT_ID:
+                  name: PROVIDER_OCTOPART_CLIENT_ID
+                  value: ${PARTDB_OCTOPART_CLIENT_ID}
+                PROVIDER_OCTOPART_CURRENCY:
+                  name: PROVIDER_OCTOPART_CURRENCY
+                  value: CAD
+                PROVIDER_OCTOPART_SECRET:
+                  name: PROVIDER_OCTOPART_SECRET
+                  value: ${PARTDB_OCTOPART_SECRET}
+                TRUSTED_PROXIES:
+                  name: TRUSTED_PROXIES
+                  value: traefik.traefik.svc.cluster.local
+                USE_GRAVATAR:
+                  name: USE_GRAVATAR
+                  value: "0"
+              probes:
+                liveness:
+                  enabled: true
+                  path: /
+                  type: http
+                readiness:
+                  enabled: true
+                  path: /
+                  type: http
+                startup:
+                  enabled: true
+                  path: /
+                  type: http

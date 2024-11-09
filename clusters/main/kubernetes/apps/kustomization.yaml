@@ -12,4 +12,5 @@ resources:
 - truenas-es/ks.yaml
 - homeassistant-es/ks.yaml
 - printer-es/ks.yaml
-  - rcon-webadmin/ks.yaml
+- rcon-webadmin/ks.yaml
+- part-db/ks.yaml
