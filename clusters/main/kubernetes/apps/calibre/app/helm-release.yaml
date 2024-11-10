@@ -71,6 +71,13 @@ spec:
             enabled: true
           src:
             enabled: false
+        library:
+          type: nfs
+          enabled: true
+          readOnly: false
+          server: ${TRUENAS_IP}
+          path: /mnt/DSU/Software/Calibre Library
+          mountPath: /mnt/Library
     service:
       main:
         enabled: true
