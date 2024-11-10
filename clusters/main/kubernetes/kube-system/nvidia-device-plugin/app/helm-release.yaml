@@ -23,25 +23,37 @@ spec:
       retries: 3
   values:
     image:
-      repository: nvcr.io/nvidia/k8s-device-plugin
-      tag: v0.16.2
-    runtimeClassName: nvidia
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: feature.node.kubernetes.io/pci-0300_10de.present
-              operator: In
-              values:
-              - "true"
-    config:
-      map:
-        default: |-
-          version: v1
-          sharing:
-            timeSlicing:
-              renameByDefault: false
-              resources:
+      repository: tccr.io/tccr/scratch
+      pullPolicy: IfNotPresent
+      tag: latest@sha256:fa8db430d07a3b98f84cce7c7d56bb4ea6cdd64fb178d64227177caae47c343b
+
+    # need to override naming
+    configmap:
+      nvidia-device-plugin-configs:
+        enabled: true
+        expandObjectName: false
+        data:
+          # set "replicas" key to number of shares per original resource
+          # example: 2 physical GPU * 5 replica = 10vGPU
+          config: |
+            version: v1
+            sharing:
+              timeSlicing:
+                resources:
                 - name: nvidia.com/gpu
                   replicas: 5
+
+    nvdp:
+      runtimeClassName: nvidia
+      gfd:
+        enabled: true
+    # don't edit below here
+    service:
+      main:
+        enabled: false
+        ports:
+          main:
+            enabled: false
+    workload:
+      main:
+        enabled: false
