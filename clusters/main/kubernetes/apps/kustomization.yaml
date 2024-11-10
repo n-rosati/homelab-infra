@@ -14,3 +14,4 @@ resources:
 - printer-es/ks.yaml
 - rcon-webadmin/ks.yaml
 - part-db/ks.yaml
+- calibre/ks.yaml
