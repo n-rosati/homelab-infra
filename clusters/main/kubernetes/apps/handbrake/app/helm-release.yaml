@@ -81,13 +81,6 @@ spec:
             enabled: true
           src:
             enabled: false
-      output:
-        type: nfs
-        enabled: true
-        readOnly: false
-        server: ${TRUENAS_IP}
-        path: /mnt/DSU/Media/Handbrake/Output
-        mountPath: /output
       storage:
         type: nfs
         enabled: true
@@ -95,6 +88,13 @@ spec:
         server: ${TRUENAS_IP}
         path: /mnt/DSU/Media/Handbrake/Input
         mountPath: /storage
+      output:
+        type: nfs
+        enabled: true
+        readOnly: false
+        server: ${TRUENAS_IP}
+        path: /mnt/DSU/Media/Handbrake/Output
+        mountPath: /output
     service:
       main:
         enabled: true
