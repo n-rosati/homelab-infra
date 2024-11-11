@@ -16,8 +16,8 @@ spec:
   releaseName: jan
   values:
     image:
-      repository: docker.io/itzg/minecraft-server:java17
-      tag: 2024.10.2@sha256:8bd119f65ef6e65bdb12f756bfb44a305b36b1adf868ade8027014fabc29c755
+      repository: docker.io/itzg/minecraft-server
+      tag: 2024.10.2-java17@sha256:db3ccc7db5371a7a4e7edf8696ccfa177f4b71a29ffbecc76e21a663d1bcf98d
       pullPolicy: Always
     global:
       stopAll: false
