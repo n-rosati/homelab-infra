@@ -127,7 +127,7 @@ spec:
                 PVP: true
                 MEMORY: 4G
                 RCON_PASSWORD: ${MC_RCON_PASSWORD}
-                CF_SERVER_MOD: https://mediafilez.forgecdn.net/files/4708/101/StaTech+1.1.11+Server+Files.zip
+                # CF_SERVER_MOD: https://mediafilez.forgecdn.net/files/4708/101/StaTech+1.1.11+Server+Files.zip
                 FTB_LEGACYJAVAFIXER: false
                 USE_MODPACK_START_SCRIPT: true
                 WHITELIST: Hydranoid620,b227
