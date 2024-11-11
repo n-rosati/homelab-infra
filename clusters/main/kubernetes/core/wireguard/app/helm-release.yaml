@@ -7,6 +7,18 @@ spec:
   interval: 15m
   chart:
     spec:
+      postRenderers:
+      - kustomize:
+          patches:
+          - target:
+              version: v1
+              kind: Deployment
+              name: wireguard
+            patch: |
+              - op: add
+                path: /spec/template/spec/containers/1/resources/limits/truecharts.org~1tun
+                value: 1
+      interval: 5m
       chart: wg-easy
       version: 16.1.1
       sourceRef:
