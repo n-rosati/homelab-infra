@@ -16,3 +16,4 @@ resources:
 - part-db/ks.yaml
 - calibre/ks.yaml
 - handbrake/ks.yaml
+- minecraft

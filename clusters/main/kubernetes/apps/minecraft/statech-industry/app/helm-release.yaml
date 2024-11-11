@@ -1,0 +1,161 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: statech-industry
+  namespace: mc-statech-industry
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: minecraft-java
+      version: 11.2.3
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: statech-industry
+  values:
+    global:
+      stopAll: false
+    TZ: ${TIMEZONE}
+    release_name: statech-industry
+    addons:
+      codeserver:
+        enabled: true
+        ingress:
+          enabled: false
+        service:
+          ports:
+            codeserver:
+              port: 10353
+          type: LoadBalancer
+    credentials:
+      minio:
+        name: minio
+        type: s3
+        accessKey: ${MINIO_ACCESS_KEY}
+        bucket: ${MINIO_BUCKET_PREFIX}
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        path: ""
+        secretKey: ${MINIO_SECRET_KEY}
+        url: ${MINIO_BUCKET_URL}
+    mcbackup:
+      enabled: true
+      initial_delay: 5m
+      backup_interval: 1h
+      excludes:
+      - '*.jar'
+      - cache
+      - logs
+      - '*.tmp'
+      link_latest: false
+      pause_if_no_players: true
+      player_online_check_interval: 5m
+      prune_backups_days: 4
+      tar_compress_method: gzip
+      zstd_params:
+      - --long=25
+      - --single-thread
+    persistence:
+      data:
+        readOnly: false
+        targetSelector:
+          main:
+            main:
+              mountPath: /data
+          mcbackup:
+            mcbackup:
+              mountPath: /data
+              readOnly: true
+        volsync:
+        - credentials: minio
+          name: minio
+          type: restic
+          dest:
+            enabled: true
+          src:
+            enabled: false
+      backups:
+        enabled: true
+        type: nfs
+        path: /mnt/DSU/Backups/Minecraft/statech-industry
+        readOnly: false
+        server: ${TRUENAS_IP}
+        targetSelector:
+          mcbackup:
+            mcbackup:
+              mountPath: /backups
+    service:
+      main:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP: ""
+        ports:
+          main:
+            enabled: true
+            port: ${STATECH_INDUSTRY_GAME_PORT}
+            protocol: tcp
+          query:
+            enabled: true
+            port: ${STATECH_INDUSTRY_GAME_PORT}
+            protocol: udp
+      rcon:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP: ""
+        ports:
+          rcon:
+            enabled: true
+            port: ${STATECH_INDUSTRY_RCON_PORT}
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                VERSION: 1.19.2
+                TYPE: CURSEFORGE
+                MAX_PLAYERS: 2
+                ENABLE_COMMAND_BLOCK: true
+                MOTD: Welcome to StaTech Industry!
+                PVP: true
+                MEMORY: 4G
+                RCON_PASSWORD: ${MC_RCON_PASSWORD}
+                CF_SERVER_MOD: https://mediafilez.forgecdn.net/files/4708/101/StaTech+1.1.11+Server+Files.zip
+                FTB_LEGACYJAVAFIXER: false
+                USE_MODPACK_START_SCRIPT: true
+                WHITELIST: Hydranoid620,b227
+                OPS: Hydranoid620,b227
+                SEED: "-5088804881017501598"
+                FORCE_REDOWNLOAD: false
+                USE_FLARE_FLAGS: false
+                USE_AIKAR_FLAGS: true
+                USE_SIMD_FLAGS: true
+      mcbackup:
+        enabled: true
+        podSpec:
+          containers:
+            mcbackup:
+              enabled: true
+              env:
+                DEST_DIR: '{{.Values.persistence.backups.mountPath }}'
+                SRC_DIR: '{{.Values.persistence.data.mountPath }}'
+                SERVER_PORT: '{{ .Values.service.main.ports.main.port }}'
+                RCON_HOST: '{{ printf "%s-rcon" (include "tc.v1.common.lib.chart.names.fullname"
+                  $) }}'
+                RCON_PORT: '{{ .Values.service.rcon.ports.rcon.port }}'
+                RCON_PASSWORD: '{{
+                  .Values.workload.main.podSpec.containers.main.env.RCON_PASSWORD
+                  }}'
+                ZSTD_PARAMETERS: '{{ join " " .Values.mcbackup.zstd_params }}'
+                EXCLUDES: '{{ join "," .Values.mcbackup.excludes }}'
+                INITIAL_DELAY: '{{ .Values.mcbackup.initial_delay }}'
+                BACKUP_INTERVAL: '{{ .Values.mcbackup.backup_interval }}'
+                PRUNE_BACKUPS_DAYS: '{{ .Values.mcbackup.prune_backups_days }}'
+                PAUSE_IF_NO_PLAYERS: '{{ .Values.mcbackup.pause_if_no_players }}'
+                LINK_LATEST: '{{ .Values.mcbackup.link_latest }}'
+                PLAYERS_ONLINE_CHECK_INTERVAL: '{{ .Values.mcbackup.player_online_check_interval }}'
+                TAR_COMPRESS_METHOD: '{{ .Values.mcbackup.tar_compress_method }}'
+    resources:
+      limits:
+        memory: 5G

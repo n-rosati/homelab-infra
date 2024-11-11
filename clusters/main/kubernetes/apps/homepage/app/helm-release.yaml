@@ -37,7 +37,6 @@ spec:
             paths:
             - path: /
               pathType: Prefix
-          ingressClassName: ""
           integrations:
             certManager:
               certificateIssuer: le-prod
