@@ -16,7 +16,7 @@ spec:
   releaseName: jan
   values:
     global:
-      stopAll: true
+      stopAll: false
     TZ: ${TIMEZONE}
     credentials:
       minio:
