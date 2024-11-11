@@ -112,6 +112,7 @@ spec:
         runAsGroup: 0
         readOnlyRootFilesystem: false
         allowPrivilegeEscalation: true
+        privileged: true
         runAsNonRoot: false
         capabilities:
           add:
