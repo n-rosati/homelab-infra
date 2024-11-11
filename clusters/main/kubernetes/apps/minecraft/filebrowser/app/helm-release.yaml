@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: filebrowser
-  namespace: mc-statech-industry
+  namespace: mc-jan-2
 spec:
   interval: 15m
   chart:
@@ -26,4 +26,4 @@ spec:
     #     type: pvc
     #     mountPath: /data/mc
     #     targetSelectAll: true
-    #     existingClaim: "statech-industry-minecraft-java-data"
+    #     existingClaim: "jan-2-minecraft-java-data"
