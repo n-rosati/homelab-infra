@@ -9,5 +9,6 @@ resources:
 - lldap/ks.yaml
 - authelia/ks.yaml
 - blocky/ks.yaml
-- wireguard/ks.yaml
 - generic-device-plugin/ks.yaml
+
+# - wireguard/ks.yaml
