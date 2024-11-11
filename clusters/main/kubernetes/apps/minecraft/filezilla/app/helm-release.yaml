@@ -18,6 +18,11 @@ spec:
     service:
       main:
         type: LoadBalancer
+        ports:
+          main:
+            port: 10035
+            protocol: http
+            targetPort: 3000
     persistence:
       config:
         enabled: true
