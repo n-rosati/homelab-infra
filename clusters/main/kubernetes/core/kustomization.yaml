@@ -1,13 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - kyverno-policies/ks.yaml
-  - metallb-config/ks.yaml
-  - system-upgrade-controller-plans/ks.yaml
-  - clusterissuer/ks.yaml
-  - traefik/ks.yaml
-  - lldap/ks.yaml
-  - authelia/ks.yaml
-  - blocky/ks.yaml
-  - wireguard/ks.yaml
-  - generic-device-plugin/ks.yaml
+- kyverno-policies/ks.yaml
+- metallb-config/ks.yaml
+- system-upgrade-controller-plans/ks.yaml
+- clusterissuer/ks.yaml
+- traefik/ks.yaml
+- lldap/ks.yaml
+- authelia/ks.yaml
+- blocky/ks.yaml
+# - wireguard/ks.yaml
+- generic-device-plugin/ks.yaml

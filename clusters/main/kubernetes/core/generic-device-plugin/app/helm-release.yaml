@@ -14,3 +14,46 @@ spec:
         name: truecharts
         namespace: flux-system
   releaseName: generic-device-plugin
+  values:
+    portal:
+      open:
+        enabled: false
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              args:
+              - --domain
+              - truecharts.org
+              - --device
+              - |
+                name: tun
+                groups:
+                  - count: 1000
+                    paths:
+                      - path: /dev/net/tun
+    securityContext:
+      container:
+        readOnlyRootFilesystem: true
+        privileged: true
+        runAsNonRoot: false
+        runAsGroup: 0
+        runAsUser: 0
+    persistence:
+      dev:
+        enabled: true
+        type: hostPath
+        hostPath: /dev
+        mountPath: /dev
+      device-plugin:
+        enabled: true
+        type: hostPath
+        hostPath: /var/lib/kubelet/device-plugins
+        mountPath: /var/lib/kubelet/device-plugins
+    service:
+      main:
+        ports:
+          main:
+            port: 8080
+            protocol: tcp
