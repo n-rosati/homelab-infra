@@ -15,7 +15,7 @@ spec:
           - op: add
             path: /spec/template/spec/containers/1/resources/limits/truecharts.org~1tun
             value: 1
-  interval: 15m
+  interval: 5m
   chart:
     spec:
       chart: wg-easy
