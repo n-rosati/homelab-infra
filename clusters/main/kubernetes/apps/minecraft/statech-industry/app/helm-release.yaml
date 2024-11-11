@@ -138,7 +138,6 @@ spec:
         enabled: true
         type: Deployment
         replicas: 1
-        primary: true
         podSpec:
           containers:
             mcbackup:
