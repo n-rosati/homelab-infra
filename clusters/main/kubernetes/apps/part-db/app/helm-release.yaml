@@ -42,7 +42,7 @@ spec:
             pathType: Prefix
         integrations:
           certManager:
-            certificateIssuer: le-staging
+            certificateIssuer: le-prod
             enabled: true
           homepage:
             enabled: false
@@ -68,17 +68,17 @@ spec:
             protocol: http
             targetPort: 80
           secure:
-            enabled: true
+            enabled: false
             port: 3001
             protocol: https
             targetPort: 443
           secure-udp:
-            enabled: true
+            enabled: false
             port: 3002
             protocol: udp
             targetPort: 443
           api:
-            enabled: true
+            enabled: false
             port: 3003
             protocol: tcp
             targetPort: 2019

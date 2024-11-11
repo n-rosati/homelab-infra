@@ -21,12 +21,12 @@ spec:
       main:
         type: LoadBalancer
     persistence:
-      a:
-        enabled: true
-        type: pvc
-        mountPath: /data/part-db-1
-        targetSelectAll: true
-        existingClaim: "part-db-app-template-db"
+      # a:
+      #   enabled: true
+      #   type: pvc
+      #   mountPath: /data/part-db-1
+      #   targetSelectAll: true
+      #   existingClaim: "part-db-app-template-db"
       b:
         enabled: true
         type: pvc
