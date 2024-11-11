@@ -20,7 +20,7 @@ spec:
       tag: 2024.10.2-java17@sha256:db3ccc7db5371a7a4e7edf8696ccfa177f4b71a29ffbecc76e21a663d1bcf98d
       pullPolicy: Always
     global:
-      stopAll: false
+      stopAll: true
     TZ: ${TIMEZONE}
     credentials:
       minio:
@@ -186,6 +186,7 @@ spec:
         type: Deployment
       mcbackup:
         enabled: true
+        type: Deployment
         podSpec:
           containers:
             mcbackup:
@@ -219,4 +220,3 @@ spec:
                   enabled: false
                 startup:
                   enabled: false
-        type: Deployment
