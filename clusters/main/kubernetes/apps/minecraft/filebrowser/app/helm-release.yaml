@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: filebrowser
-  namespace: mc-jan
+  namespace: mc-statech-industry
 spec:
   interval: 15m
   chart:
@@ -20,10 +20,10 @@ spec:
     service:
       main:
         type: LoadBalancer
-    persistence:
-      mc:
-        enabled: true
-        type: pvc
-        mountPath: /data/mc
-        targetSelectAll: true
-        existingClaim: "jan-minecraft-java-data"
+    # persistence:
+    #   mc:
+    #     enabled: true
+    #     type: pvc
+    #     mountPath: /data/mc
+    #     targetSelectAll: true
+    #     existingClaim: "jan-minecraft-java-data"

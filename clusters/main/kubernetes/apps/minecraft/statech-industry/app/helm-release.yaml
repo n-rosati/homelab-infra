@@ -17,6 +17,10 @@ spec:
   values:
     global:
       stopAll: false
+    image:
+      repository: docker.io/itzg/minecraft-server
+      tag: 2024.10.2-java17@sha256:db3ccc7db5371a7a4e7edf8696ccfa177f4b71a29ffbecc76e21a663d1bcf98d
+      pullPolicy: Always
     TZ: ${TIMEZONE}
     release_name: statech-industry
     addons:
@@ -72,7 +76,7 @@ spec:
           name: minio
           type: restic
           dest:
-            enabled: true
+            enabled: false
           src:
             enabled: false
       backups:
