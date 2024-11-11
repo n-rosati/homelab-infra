@@ -31,9 +31,6 @@ spec:
         enabled: false
       mc:
         enabled: true
-        type: pvc
+        type: hostPath
+        hostPath: /dev/sdz
         mountPath: /mc
-        targetSelectAll: true
-        dataSource:
-          kind: "PersistentVolumeClaim"
-          name: "jan-minecraft-java-data"
