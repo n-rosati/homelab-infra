@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: statech-industry
-  namespace: statech-industry
+  namespace: mc-statech-industry
 spec:
   interval: 15m
   chart:
@@ -109,6 +109,8 @@ spec:
             port: ${STATECH_INDUSTRY_RCON_PORT}
     workload:
       main:
+        type: Deployment
+        replicas: 1
         podSpec:
           containers:
             main:
@@ -133,6 +135,8 @@ spec:
                 USE_SIMD_FLAGS: true
       mcbackup:
         enabled: true
+        type: Deployment
+        replicas: 1
         podSpec:
           containers:
             mcbackup:
