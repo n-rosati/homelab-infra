@@ -28,38 +28,37 @@ spec:
         bucket: ${MINIO_BUCKET_NAME}
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         secretKey: ${MINIO_SECRET_KEY}
-    # ingress:
-    #   main:
-    #     enabled: true
-    #     hosts:
-    #     - host: vpn.${DOMAIN_BASE}
-    #       paths:
-    #       - path: /
-    #         pathType: Prefix
-    #     integrations:
-    #       certManager:
-    #         certificateIssuer: le-staging
-    #         enabled: true
-    #       # homepage:
-    #       #   description: ""
-    #       #   enabled: true
-    #       #   group: Services
-    #       #   icon: ""
-    #       #   name: Wireguard
-    #       #   widget:
-    #       #     custom:
-    #       #       key: ""
-    #       #     enabled: false
-    #       traefik:
-    #         allowCors: false
-    #         enabled: true
-    #         entrypoints:
-    #         - websecure
-    #         middlewares:
-    #         - name: auth
-    #           namespace: "traefik"
-    #         - name: ca-us
-    #           namespace: "traefik"
+    ingress:
+      main:
+        enabled: true
+        hosts:
+        - host: vpn.${DOMAIN_BASE}
+          paths:
+          - path: /
+            pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: le-staging
+            enabled: true
+          # homepage:
+          #   description: ""
+          #   enabled: true
+          #   group: Services
+          #   icon: ""
+          #   name: Wireguard
+          #   widget:
+          #     custom:
+          #       key: ""
+          #     enabled: false
+          traefik:
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: auth
+              namespace: "traefik"
+            - name: ca-us
+              namespace: "traefik"
     persistence:
       config:
         enabled: true
@@ -103,3 +102,6 @@ spec:
       container:
         allowPrivilegeEscalation: true
         privileged: true
+    resources:
+      limits:
+        kernel.org/tun: 1
