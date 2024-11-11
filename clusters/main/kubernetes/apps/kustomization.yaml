@@ -17,3 +17,4 @@ resources:
 - calibre/ks.yaml
 - handbrake/ks.yaml
 - minecraft
+- filebrowser/ks.yaml
