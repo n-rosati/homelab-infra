@@ -136,6 +136,8 @@ spec:
                 USE_SIMD_FLAGS: true
       mcbackup:
         enabled: true
+        type: Deployment
+        replicas: 1
         podSpec:
           containers:
             mcbackup:
