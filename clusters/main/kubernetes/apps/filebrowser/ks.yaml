@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: clusters/main/kubernetes/apps/minecraft/filebrowser/app
+  path: clusters/main/kubernetes/apps/filebrowser/app
   prune: true
   sourceRef:
     kind: GitRepository
