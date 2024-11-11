@@ -112,6 +112,8 @@ spec:
             port: ${JAN_RCON_PORT}
     workload:
       main:
+        replicas: 1
+        type: Deployment
         podSpec:
           containers:
             main:
@@ -182,8 +184,6 @@ spec:
                   - mc-health
                   enabled: true
                   type: exec
-        replicas: 1
-        type: Deployment
       mcbackup:
         enabled: true
         type: Deployment
