@@ -16,14 +16,14 @@ spec:
   releaseName: filebrowser
   values:
     global:
-      stopAll: false
+      stopAll: true
     service:
       main:
         type: LoadBalancer
-    persistence:
-      mc:
-        enabled: true
-        type: pvc
-        mountPath: /data/mc
-        targetSelectAll: true
-        existingClaim: "jan-2-minecraft-java-data"
+    # persistence:
+    #   mc:
+    #     enabled: true
+    #     type: pvc
+    #     mountPath: /data/mc
+    #     targetSelectAll: true
+    #     existingClaim: "jan-2-minecraft-java-data"
