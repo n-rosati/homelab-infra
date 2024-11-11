@@ -113,6 +113,6 @@ spec:
       container:
         allowPrivilegeEscalation: true
         privileged: true
-    resources:
-      limits:
-        kernel.org/tun: 1
+    # resources:
+    #   limits:
+    #     kernel.org/tun: 1
