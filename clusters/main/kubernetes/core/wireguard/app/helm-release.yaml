@@ -111,9 +111,9 @@ spec:
         runAsUser: 0
         runAsGroup: 0
         readOnlyRootFilesystem: false
+        runAsNonRoot: false
         allowPrivilegeEscalation: true
         privileged: true
-        runAsNonRoot: false
         capabilities:
           add:
           - NET_ADMIN
