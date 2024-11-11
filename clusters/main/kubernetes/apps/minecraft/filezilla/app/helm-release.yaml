@@ -34,4 +34,6 @@ spec:
         type: pvc
         mountPath: /mc
         targetSelectAll: true
-        volumeName: "pvc-0e3afef4-7c78-49da-9239-aa819af8e243"
+        dataSource:
+          kind: "PersistentVolumeClaim"
+          name: "jan-minecraft-java-data"
