@@ -22,6 +22,6 @@ spec:
       mc:
         enabled: true
         type: pvc
-        mountPath: /mc
+        mountPath: /data/mc
         targetSelectAll: true
         existingClaim: "jan-minecraft-java-data"
