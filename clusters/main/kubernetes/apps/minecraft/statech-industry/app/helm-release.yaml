@@ -113,8 +113,8 @@ spec:
             port: ${STATECH_INDUSTRY_RCON_PORT}
     workload:
       main:
-        type: Deployment
         replicas: 1
+        type: Deployment
         podSpec:
           containers:
             main:
@@ -137,6 +137,7 @@ spec:
                 USE_FLARE_FLAGS: false
                 USE_AIKAR_FLAGS: true
                 USE_SIMD_FLAGS: true
+                advanced: true
       mcbackup:
         enabled: true
         type: Deployment
@@ -163,6 +164,12 @@ spec:
                 LINK_LATEST: '{{ .Values.mcbackup.link_latest }}'
                 PLAYERS_ONLINE_CHECK_INTERVAL: '{{ .Values.mcbackup.player_online_check_interval }}'
                 TAR_COMPRESS_METHOD: '{{ .Values.mcbackup.tar_compress_method }}'
-    resources:
-      limits:
-        memory: 5G
+              imageSelector: mcBackupImage
+              primary: true
+              probes:
+                liveness:
+                  enabled: false
+                readiness:
+                  enabled: false
+                startup:
+                  enabled: false
