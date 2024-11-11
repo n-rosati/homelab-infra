@@ -20,7 +20,7 @@ spec:
     image:
       repository: docker.io/jbtronics/part-db1
       pullPolicy: IfNotPresent
-      tag: v1.14.4@sha256:019587c7821d12414aeb26b8d3058e5093db66bfc0190ef4b9356f92d664a38d
+      tag: v1.12.0@sha256:0f3977ca3653eab301d88b264db613724b9c04eeccadcb22582f2bb160b9ac64
     release_name: part-db
     TZ: ${TIMEZONE}
     credentials:
