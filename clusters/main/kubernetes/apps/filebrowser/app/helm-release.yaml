@@ -1,0 +1,41 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: filebrowser
+  namespace: part-db
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: filebrowser
+      version: 11.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: filebrowser
+  values:
+    global:
+      stopAll: false
+    service:
+      main:
+        type: LoadBalancer
+    persistence:
+      a:
+        enabled: true
+        type: pvc
+        mountPath: /data/part-db-1
+        targetSelectAll: true
+        existingClaim: "part-db-app-template-db"
+      b:
+        enabled: true
+        type: pvc
+        mountPath: /data/part-db-2
+        targetSelectAll: true
+        existingClaim: "part-db-app-template-media"
+      c:
+        enabled: true
+        type: pvc
+        mountPath: /data/part-db-3
+        targetSelectAll: true
+        existingClaim: "part-db-app-template-uploads"
