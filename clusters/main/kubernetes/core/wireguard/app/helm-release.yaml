@@ -39,37 +39,37 @@ spec:
         bucket: ${MINIO_BUCKET_NAME}
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         secretKey: ${MINIO_SECRET_KEY}
-    ingress:
-      main:
-        enabled: true
-        hosts:
-        - host: vpn.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
-        integrations:
-          certManager:
-            certificateIssuer: le-staging
-            enabled: true
-          # homepage:
-          #   description: ""
-          #   enabled: true
-          #   group: Services
-          #   icon: ""
-          #   name: Wireguard
-          #   widget:
-          #     custom:
-          #       key: ""
-          #     enabled: false
-          traefik:
-            enabled: true
-            entrypoints:
-            - websecure
-            middlewares:
-            - name: auth
-              namespace: "traefik"
-            - name: ca-us
-              namespace: "traefik"
+    # ingress:
+    #   main:
+    #     enabled: true
+    #     hosts:
+    #     - host: vpn.${DOMAIN_BASE}
+    #       paths:
+    #       - path: /
+    #         pathType: Prefix
+    #     integrations:
+    #       certManager:
+    #         certificateIssuer: le-staging
+    #         enabled: true
+    #       # homepage:
+    #       #   description: ""
+    #       #   enabled: true
+    #       #   group: Services
+    #       #   icon: ""
+    #       #   name: Wireguard
+    #       #   widget:
+    #       #     custom:
+    #       #       key: ""
+    #       #     enabled: false
+    #       traefik:
+    #         enabled: true
+    #         entrypoints:
+    #         - websecure
+    #         middlewares:
+    #         - name: auth
+    #           namespace: "traefik"
+    #         - name: ca-us
+    #           namespace: "traefik"
     persistence:
       config:
         enabled: true
@@ -97,18 +97,18 @@ spec:
             enabled: true
             port: 51820
             protocol: udp
-    workload:
-      main:
-        podSpec:
-          containers:
-            main:
-              env:
-                WG_HOST: home.${DOMAIN_BASE}
-                WG_MTU: 1420
-                WG_DEFAULT_ADDRESS: "192.168.2.x"
-                WG_DEFAULT_DNS: "192.168.2.1"
-                PASSWORD_HASH: "${WG_PASSWORD_HASH}"
-                UI_TRAFFIC_STATS: true
+    # workload:
+    #   main:
+    #     podSpec:
+    #       containers:
+    #         main:
+    #           env:
+    #             WG_HOST: home.${DOMAIN_BASE}
+    #             WG_MTU: 1420
+    #             WG_DEFAULT_ADDRESS: "192.168.2.x"
+    #             WG_DEFAULT_DNS: "192.168.2.1"
+    #             PASSWORD_HASH: "${WG_PASSWORD_HASH}"
+    #             UI_TRAFFIC_STATS: true
     securityContext:
       container:
         allowPrivilegeEscalation: true
