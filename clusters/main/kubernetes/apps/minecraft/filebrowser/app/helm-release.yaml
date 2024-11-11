@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: filezilla
+  name: filebrowser
   namespace: mc-jan
 spec:
   interval: 15m
@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
-  releaseName: filezilla
+  releaseName: filebrowser
   values:
     global:
       stopAll: true
