@@ -61,15 +61,6 @@ spec:
             - name: ca-us
               namespace: "traefik"
     persistence:
-      varrun:
-        enabled: true
-      tun:
-        enabled: true
-        type: hostPath
-        hostPath: /dev/net/tun
-        mountPath: /dev/net/tun
-        hostPathType: ""
-        readOnly: false
       config:
         mountPath: /etc/wireguard
         readOnly: false
