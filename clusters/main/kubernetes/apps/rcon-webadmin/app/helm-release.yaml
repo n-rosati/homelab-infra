@@ -41,7 +41,7 @@ spec:
             certificateIssuer: le-prod
             enabled: true
           traefik:
-            allowCors: false
+            allowCors: true
             enabled: true
             entrypoints:
             - websecure
@@ -63,7 +63,7 @@ spec:
             certificateIssuer: le-prod
             enabled: true
           traefik:
-            allowCors: false
+            allowCors: true
             enabled: true
             entrypoints:
             - websecure
