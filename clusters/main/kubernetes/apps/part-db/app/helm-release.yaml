@@ -44,8 +44,6 @@ spec:
           certManager:
             certificateIssuer: le-prod
             enabled: true
-          homepage:
-            enabled: false
           traefik:
             allowCors: false
             enabled: true
