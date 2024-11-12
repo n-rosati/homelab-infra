@@ -38,18 +38,6 @@ spec:
           certManager:
             certificateIssuer: le-prod
             enabled: true
-          homepage:
-            enabled: true
-            group: Downloaders
-            widget:
-              type: jdownloader
-              customkv:
-              - key: client
-                value: Ripper
-              - key: username
-                value: ${JDOWNLOADER2_USERNAME}
-              - key: password
-                value: ${JDOWNLOADER2_PASSWORD}
           traefik:
             enabled: true
             entrypoints:
