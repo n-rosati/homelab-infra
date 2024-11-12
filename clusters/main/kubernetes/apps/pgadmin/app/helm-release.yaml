@@ -46,9 +46,9 @@ spec:
           name: minio
           type: restic
           dest:
-            enabled: true
+            enabled: false
           src:
-            enabled: true
+            enabled: false
     release_name: pgadmin
     resources: {}
     service:
