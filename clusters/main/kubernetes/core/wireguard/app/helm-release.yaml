@@ -70,18 +70,18 @@ spec:
     #           namespace: "traefik"
     #         - name: ca-us
     #           namespace: "traefik"
-    # persistence:
-    #   config:
-    #     enabled: true
-    #     mountPath: /etc/wireguard
-    #     volsync:
-    #     - credentials: minio
-    #       name: minio
-    #       type: restic
-    #       dest:
-    #         enabled: false
-    #       src:
-    #         enabled: false
+    persistence:
+      config:
+        enabled: true
+        mountPath: /etc/wireguard
+        volsync:
+        - credentials: minio
+          name: minio
+          type: restic
+          dest:
+            enabled: false
+          src:
+            enabled: false
     service:
       main:
         enabled: true
@@ -105,8 +105,6 @@ spec:
               env:
                 WG_HOST: home.${DOMAIN_BASE}
                 WG_MTU: 1420
-                #             WG_DEFAULT_ADDRESS: "192.168.2.x"
-                #             WG_DEFAULT_DNS: "192.168.2.1"
                 PASSWORD_HASH: "${WG_PASSWORD_HASH}"
                 UI_TRAFFIC_STATS: true
     securityContext:
