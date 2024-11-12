@@ -97,17 +97,17 @@ spec:
             enabled: true
             port: 51820
             protocol: udp
-    # workload:
-    #   main:
-    #     podSpec:
-    #       containers:
-    #         main:
-    #           env:
-    #             WG_HOST: home.${DOMAIN_BASE}
-    #             # WG_MTU: 1420
-    #             WG_DEFAULT_ADDRESS: "192.168.2.x"
-    #             WG_DEFAULT_DNS: "192.168.2.1"
-    #             PASSWORD_HASH: "${WG_PASSWORD_HASH}"
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                #             WG_HOST: home.${DOMAIN_BASE}
+                #             # WG_MTU: 1420
+                #             WG_DEFAULT_ADDRESS: "192.168.2.x"
+                #             WG_DEFAULT_DNS: "192.168.2.1"
+                PASSWORD_HASH: "${WG_PASSWORD_HASH}"
     #             # UI_TRAFFIC_STATS: true
     securityContext:
       container:
