@@ -45,15 +45,10 @@ spec:
             icon: ""
             name: ""
             widget:
-              custom:
-                key: ""
-              customkv:
-              - key: username
-                value: ${JDOWNLOADER2_USERNAME}
-              - key: password
-                value: ${JDOWNLOADER2_PASSWORD}
-              enabled: true
               type: jdownloader
+              client: Ripper
+              username: ${JDOWNLOADER2_USERNAME}
+              password: ${JDOWNLOADER2_PASSWORD}
           traefik:
             allowCors: false
             enabled: true
