@@ -37,3 +37,24 @@ spec:
         ports:
           main:
             port: 80
+    ingress:
+      main:
+        enabled: true
+        hosts:
+        - host: k8s-dash.${DOMAIN_BASE}
+          paths:
+          - path: /
+            pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: le-staging
+            enabled: true
+          traefik:
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: ca-us
+              namespace: "traefik"
+            - name: auth
+              namespace: "traefik"
