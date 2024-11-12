@@ -21,27 +21,10 @@ spec:
       minio:
         name: minio
         type: s3
-        accessKey: ${MINIO_ACCESS_KEY}
-        bucket: ${MINIO_BUCKET_PREFIX}
-        encrKey: ${BACKUP_ENCRYPTION_KEY}
-        secretKey: ${MINIO_SECRET_KEY}
         url: ${MINIO_BUCKET_URL}
-      r2:
-        name: r2
-        type: s3
-        accessKey: ${R2_ACCESS_KEY}
-        bucket: ${R2_BUCKET_NAME}
-        encrKey: ${BACKUP_ENCRYPTION_KEY}
-        secretKey: ${R2_SECRET_KEY}
-        url: ${R2_BUCKET_URL}
-        destinationPath: "s3://${R2_BUCKET_NAME}/"
-      aws:
-        name: aws
-        type: s3
-        url: ${AWS_S3_URL}
-        bucket: ${AWS_S3_BUCKET_NAME}
-        accessKey: ${AWS_S3_ACCESS_KEY}
-        secretKey: ${AWS_S3_SECRET_KEY}
+        bucket: ${MINIO_BUCKET_PREFIX}
+        accessKey: ${MINIO_ACCESS_KEY}
+        secretKey: ${MINIO_SECRET_KEY}
         encrKey: ${BACKUP_ENCRYPTION_KEY}
     persistence:
       data:
@@ -62,14 +45,14 @@ spec:
         backups:
           enabled: false
           revision: "3"
-          credentials: r2
+          credentials: minio
           retentionPolicy: 10d
           encryption:
             enabled: true
         recovery:
           enabled: false
           method: object_store
-          credentials: aws
+          credentials: minio
           revision: "2"
         cluster:
           singleNode: true
