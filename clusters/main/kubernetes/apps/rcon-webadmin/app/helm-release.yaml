@@ -89,7 +89,7 @@ spec:
       rwa_admin: true
       rwa_env: true
       rwa_read_only_widget_options: false
-      rwa_websocket_url: ${RWA_IP}
+      rwa_websocket_url: ""
       rwa_websocket_url_ssl: ""
     service:
       main:
