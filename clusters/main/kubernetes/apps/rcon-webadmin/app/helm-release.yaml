@@ -29,31 +29,31 @@ spec:
         secretKey: ${MINIO_SECRET_KEY}
         url: ${MINIO_BUCKET_URL}
     ingress:
-      main:
-        enabled: true
-        hosts:
-        - host: rcon-webadmin.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
-        integrations:
-          certManager:
-            certificateIssuer: le-staging
-            enabled: true
-          homepage:
-            enabled: false
-          traefik:
-            allowCors: false
-            enabled: true
-            entrypoints:
-            - websecure
-            middlewares:
-            - name: ca-us
-              namespace: "traefik"
-            - name: auth
-              namespace: "traefik"
+      # main:
+      #   enabled: true
+      #   hosts:
+      #   - host: rcon-webadmin.${DOMAIN_BASE}
+      #     paths:
+      #     - path: /
+      #       pathType: Prefix
+      #   integrations:
+      #     certManager:
+      #       certificateIssuer: le-staging
+      #       enabled: true
+      #     homepage:
+      #       enabled: false
+      #     traefik:
+      #       allowCors: false
+      #       enabled: true
+      #       entrypoints:
+      #       - websecure
+      #       middlewares:
+      #       - name: ca-us
+      #         namespace: "traefik"
+      #       - name: auth
+      #         namespace: "traefik"
       websocketaccess:
-        enabled: true
+        # enabled: true
         autoLink: true
     persistence:
       db:
@@ -70,7 +70,7 @@ spec:
             enabled: false
     rcon:
       rwa_admin: true
-      rwa_env: false
+      rwa_env: true
       rwa_game: ""
       rwa_rcon_host: ""
       rwa_rcon_port: 25575
