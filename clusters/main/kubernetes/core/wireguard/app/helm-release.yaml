@@ -105,6 +105,7 @@ spec:
               env:
                 WG_HOST: home.${DOMAIN_BASE}
                 WG_MTU: 1420
+                WG_PERSISTENT_KEEPALIVE: 25
                 PASSWORD_HASH: "${WG_PASSWORD_HASH}"
                 UI_TRAFFIC_STATS: true
     securityContext:
