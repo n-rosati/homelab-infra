@@ -32,7 +32,7 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: rcon-webadmin.${DOMAIN_BASE}
+        - host: "rcon-webadmin.${DOMAIN_BASE}"
           paths:
           - path: /
             pathType: Prefix
