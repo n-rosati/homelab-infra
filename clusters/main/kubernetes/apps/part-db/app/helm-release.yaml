@@ -181,7 +181,7 @@ spec:
                 PROVIDER_OCTOPART_CLIENT_ID: ${PARTDB_OCTOPART_CLIENT_ID}
                 PROVIDER_OCTOPART_CURRENCY: CAD
                 PROVIDER_OCTOPART_SECRET: ${PARTDB_OCTOPART_SECRET}
-                TRUSTED_PROXIES: traefik.traefik.svc.cluster.local
+                TRUSTED_PROXIES: ${PODNET},${SVCNET},192.168.2.0/24
                 USE_GRAVATAR: "0"
     securityContext:
       container:
