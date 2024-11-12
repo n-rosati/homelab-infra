@@ -47,10 +47,9 @@ spec:
             widget:
               type: jdownloader
               client: Ripper
-              username: ${JDOWNLOADER2_USERNAME}
-              password: ${JDOWNLOADER2_PASSWORD}
+              username: "${JDOWNLOADER2_USERNAME}"
+              password: "${JDOWNLOADER2_PASSWORD}"
           traefik:
-            allowCors: false
             enabled: true
             entrypoints:
             - websecure
