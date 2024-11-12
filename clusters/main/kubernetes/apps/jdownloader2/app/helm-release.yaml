@@ -38,22 +38,22 @@ spec:
           certManager:
             certificateIssuer: le-prod
             enabled: true
-          # homepage:
-          #   description: ""
-          #   enabled: true
-          #   group: Downloaders
-          #   icon: ""
-          #   name: ""
-          #   widget:
-          #     custom:
-          #       key: ""
-          #     customkv:
-          #     - key: username
-          #       value: ${JDOWNLOADER2_USERNAME}
-          #     - key: password
-          #       value: ${JDOWNLOADER2_PASSWORD}
-          #     enabled: true
-          #     type: jdownloader
+          homepage:
+            description: ""
+            enabled: true
+            group: Downloaders
+            icon: ""
+            name: ""
+            widget:
+              custom:
+                key: ""
+              customkv:
+              - key: username
+                value: ${JDOWNLOADER2_USERNAME}
+              - key: password
+                value: ${JDOWNLOADER2_PASSWORD}
+              enabled: true
+              type: jdownloader
           traefik:
             allowCors: false
             enabled: true

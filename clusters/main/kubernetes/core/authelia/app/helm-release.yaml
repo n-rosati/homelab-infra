@@ -116,16 +116,16 @@ spec:
           certManager:
             certificateIssuer: le-prod
             enabled: true
-          # homepage:
-          #   description: ""
-          #   enabled: true
-          #   group: Infrastructure
-          #   icon: ""
-          #   name: ""
-          #   widget:
-          #     custom:
-          #       key: ""
-          #     enabled: false
+          homepage:
+            description: ""
+            enabled: true
+            group: Infrastructure
+            icon: ""
+            name: ""
+            widget:
+              custom:
+                key: ""
+              enabled: false
           traefik:
             allowCors: true
             enabled: true

@@ -38,21 +38,21 @@ spec:
           certManager:
             certificateIssuer: le-prod
             enabled: true
-          # homepage:
-          #   description: ""
-          #   enabled: true
-          #   group: Downloaders
-          #   icon: ""
-          #   name: ""
-          #   widget:
-          #     custom:
-          #       key: ""
-          #     customkv:
-          #     - key: username
-          #       value: ${QBITTORRENT_USER}
-          #     - key: password
-          #       value: ${QBITTORRENT_PASSWORD}
-          #     enabled: true
+          homepage:
+            description: ""
+            enabled: true
+            group: Downloaders
+            icon: ""
+            name: ""
+            widget:
+              custom:
+                key: ""
+              customkv:
+              - key: username
+                value: ${QBITTORRENT_USER}
+              - key: password
+                value: ${QBITTORRENT_PASSWORD}
+              enabled: true
           traefik:
             allowCors: false
             enabled: true

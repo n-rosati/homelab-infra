@@ -48,16 +48,16 @@ spec:
           certManager:
             certificateIssuer: le-prod
             enabled: true
-          # homepage:
-          #   description: ""
-          #   enabled: true
-          #   group: Services
-          #   icon: ""
-          #   name: ""
-          #   widget:
-          #     custom:
-          #       key: ""
-          #     enabled: false
+          homepage:
+            description: ""
+            enabled: true
+            group: Services
+            icon: ""
+            name: ""
+            widget:
+              custom:
+                key: ""
+              enabled: false
           traefik:
             allowCors: false
             enabled: true

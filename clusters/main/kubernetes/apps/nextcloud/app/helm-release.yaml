@@ -145,16 +145,16 @@ spec:
           certManager:
             certificateIssuer: le-prod
             enabled: true
-          # homepage:
-          #   description: ""
-          #   enabled: true
-          #   group: Public
-          #   icon: ""
-          #   name: ""
-          #   widget:
-          #     custom:
-          #       key: ${HOMEPAGE_NEXTCLOUD_KEY}
-          #     enabled: true
+          homepage:
+            description: ""
+            enabled: true
+            group: Public
+            icon: ""
+            name: ""
+            widget:
+              custom:
+                key: ${HOMEPAGE_NEXTCLOUD_KEY}
+              enabled: true
           traefik:
             allowCors: false
             enabled: true

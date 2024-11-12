@@ -51,16 +51,16 @@ spec:
           certManager:
             certificateIssuer: le-prod
             enabled: true
-          # homepage:
-          #   description: ""
-          #   enabled: true
-          #   group: Services
-          #   icon: ""
-          #   name: Wireguard
-          #   widget:
-          #     custom:
-          #       key: ""
-          #     enabled: false
+          homepage:
+            description: ""
+            enabled: true
+            group: Services
+            icon: ""
+            name: Wireguard
+            widget:
+              custom:
+                key: ""
+              enabled: false
           traefik:
             enabled: true
             entrypoints:
