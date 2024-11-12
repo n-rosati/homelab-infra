@@ -30,7 +30,28 @@ spec:
         url: ${MINIO_BUCKET_URL}
     ingress:
       main:
-        enabled: false
+        enabled: true
+        hosts:
+        - host: rcon-webadmin.${DOMAIN_BASE}
+          paths:
+          - path: /
+            pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: le-staging
+            enabled: true
+          homepage:
+            enabled: false
+          traefik:
+            allowCors: false
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: ca-us
+              namespace: "traefik"
+            - name: auth
+              namespace: "traefik"
       websocketaccess:
         enabled: true
         autoLink: true
