@@ -113,6 +113,6 @@ spec:
       container:
         allowPrivilegeEscalation: true
         privileged: true
-    # resources:
-    #   limits:
-    #     truecharts.org/tun: 1
+    resources:
+      limits:
+        truecharts.org/tun: 1
