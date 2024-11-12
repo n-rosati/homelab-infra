@@ -46,9 +46,9 @@ spec:
             name: ""
             widget:
               type: jdownloader
-              client: Ripper
-              username: "${JDOWNLOADER2_USERNAME}"
-              password: "${JDOWNLOADER2_PASSWORD}"
+              client: RIPPER
+              username: ${JDOWNLOADER2_USERNAME}
+              password: ${JDOWNLOADER2_PASSWORD}
           traefik:
             enabled: true
             entrypoints:
