@@ -40,8 +40,6 @@ spec:
           certManager:
             certificateIssuer: le-staging
             enabled: true
-          homepage:
-            enabled: false
           traefik:
             allowCors: false
             enabled: true
@@ -55,6 +53,25 @@ spec:
       websocketaccess:
         enabled: true
         autoLink: true
+        hosts:
+        - host: rcon-ws.${DOMAIN_BASE}
+          paths:
+          - path: /
+            pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: le-staging
+            enabled: true
+          traefik:
+            allowCors: false
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: ca-us
+              namespace: "traefik"
+            - name: auth
+              namespace: "traefik"
     persistence:
       db:
         enabled: true
@@ -71,12 +88,7 @@ spec:
     rcon:
       rwa_admin: true
       rwa_env: true
-      rwa_game: ""
-      rwa_rcon_host: ""
-      rwa_rcon_port: 25575
       rwa_read_only_widget_options: false
-      rwa_server_name: ""
-      rwa_web_rcon: false
       rwa_websocket_url: ${RWA_IP}
       rwa_websocket_url_ssl: ""
     service:
