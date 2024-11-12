@@ -28,33 +28,33 @@ spec:
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         secretKey: ${MINIO_SECRET_KEY}
         url: ${MINIO_BUCKET_URL}
-    # ingress:
-    #   # main:
-    #   #   enabled: true
-    #   #   hosts:
-    #   #   - host: rcon-webadmin.${DOMAIN_BASE}
-    #   #     paths:
-    #   #     - path: /
-    #   #       pathType: Prefix
-    #   #   integrations:
-    #   #     certManager:
-    #   #       certificateIssuer: le-staging
-    #   #       enabled: true
-    #   #     homepage:
-    #   #       enabled: false
-    #   #     traefik:
-    #   #       allowCors: false
-    #   #       enabled: true
-    #   #       entrypoints:
-    #   #       - websecure
-    #   #       middlewares:
-    #   #       - name: ca-us
-    #   #         namespace: "traefik"
-    #   #       - name: auth
-    #   #         namespace: "traefik"
-    #   websocketaccess:
-    #     # enabled: true
-    #     autoLink: true
+    ingress:
+      # main:
+      #   enabled: true
+      #   hosts:
+      #   - host: rcon-webadmin.${DOMAIN_BASE}
+      #     paths:
+      #     - path: /
+      #       pathType: Prefix
+      #   integrations:
+      #     certManager:
+      #       certificateIssuer: le-staging
+      #       enabled: true
+      #     homepage:
+      #       enabled: false
+      #     traefik:
+      #       allowCors: false
+      #       enabled: true
+      #       entrypoints:
+      #       - websecure
+      #       middlewares:
+      #       - name: ca-us
+      #         namespace: "traefik"
+      #       - name: auth
+      #         namespace: "traefik"
+      websocketaccess:
+        enabled: true
+        autoLink: true
     persistence:
       db:
         enabled: true
