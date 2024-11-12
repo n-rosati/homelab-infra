@@ -30,6 +30,7 @@ spec:
     addons:
       codeserver:
         enabled: true
+        workingDir: "/app/config"
         ingress:
           enabled: true
           hosts:
