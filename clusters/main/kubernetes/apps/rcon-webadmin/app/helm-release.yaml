@@ -16,7 +16,7 @@ spec:
   releaseName: rcon-webadmin
   values:
     global:
-      stopAll: false
+      stopAll: true
     release_name: rcon-webadmin
     TZ: ${TIMEZONE}
     credentials:
