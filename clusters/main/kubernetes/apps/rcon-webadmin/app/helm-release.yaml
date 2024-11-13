@@ -90,7 +90,8 @@ spec:
       rwa_env: true
       rwa_read_only_widget_options: false
       rwa_websocket_url: "ws://rcon-ws.${DOMAIN_BASE}"
-      rwa_websocket_url_ssl: "wss://rcon-ws.${DOMAIN_BASE}"
+      rwa_websocket_url_ssl: ""
+      # rwa_websocket_url_ssl: "wss://rcon-ws.${DOMAIN_BASE}"
     service:
       main:
         enabled: true
