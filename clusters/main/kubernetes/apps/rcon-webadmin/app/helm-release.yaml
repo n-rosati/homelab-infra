@@ -59,7 +59,7 @@ spec:
           - path: /
             pathType: Prefix
             overrideService:
-              name: rcon-webadmin-rcon-webadmin-websocketaccess-4327
+              name: rcon-webadmin-websocketaccess-rcon-webadmin-4327
               port: 4327
         integrations:
           certManager:
