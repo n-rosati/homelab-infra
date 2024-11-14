@@ -29,27 +29,24 @@ spec:
           certManager:
             certificateIssuer: le-prod
             enabled: true
-          #                    homepage:
-          #                        description: ""
-          #                        enabled: true
-          #                        group: Infrastructure
-          #                        href: https://{{  ( index .Values.ingress.main.hosts 0 ).host  }}/dashboard/
-          #                        icon: ""
-          #                        name: ""
-          #                        widget:
-          #                            custom:
-          #                                key: ""
-          #                            customkv:
-          #                                - key: href
-          #                                  value: https://traefik.nicholasrosati.xyz/dashboard/#/
-          #                            enabled: true
+          homepage:
+            enabled: true
+            group: Infrastructure
+            href: https://{{  ( index .Values.ingress.main.hosts 0 ).host  }}/dashboard/
+            widget:
+              custom:
+                key: ""
+              customkv:
+              - key: href
+                value: https://traefik.nicholasrosati.xyz/dashboard/#/
+              enabled: true
           traefik:
             enabled: true
             middlewares:
             - name: ca-us
               namespace: "traefik"
             - name: auth
-              namespace: ""
+              namespace: "traefik"
     logs:
       access:
         enabled: true
