@@ -21,10 +21,6 @@ spec:
       repository: docker.io/itzg/minecraft-server
       tag: 2024.10.2-java17@sha256:db3ccc7db5371a7a4e7edf8696ccfa177f4b71a29ffbecc76e21a663d1bcf98d
       pullPolicy: Always
-    # webrcon-server:
-    #   repository: docker.io/forewing/webrcon-server
-    #   pullPolicy: IfNotPresent
-    #   tag: 1.5.8@sha256:066c1e9abcea171c21b1e17c96fd7b339344a286e4a0650907279b93d102d5d2
     TZ: ${TIMEZONE}
     credentials:
       minio:
@@ -114,14 +110,6 @@ spec:
           rcon:
             enabled: true
             port: ${JAN_RCON_PORT}
-      # rcon-webserver:
-      #   enabled: true
-      #   type: LoadBalancer
-      #   ports:
-      #     rcon-webserver:
-      #       enabled: true
-      #       port: 8080
-      #       protocol: http
     workload:
       main:
         replicas: 1
@@ -232,24 +220,3 @@ spec:
                   enabled: false
                 startup:
                   enabled: false
-      # rcon-webserver:
-      #   enabled: true
-      #   type: Deployment
-      #   podSpec:
-      #     containers:
-      #       rcon-webserver:
-      #         imageSelector: webrcon-server
-      #         enabled: true
-      #         primary: true
-      #         args:
-      #           addr: '{{ printf "%s-rcon" (include "tc.v1.common.lib.chart.names.fullname" $)
-      #             }}:{{.Values.service.rcon.ports.rcon.port }}'
-      #           pass: '-pass ${MC_RCON_PASSWORD}'
-      #           preset: 'minecraft-default.json'
-      #         probes:
-      #           liveness:
-      #             enabled: false
-      #           readiness:
-      #             enabled: false
-      #           startup:
-      #             enabled: false
