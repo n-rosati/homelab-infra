@@ -114,14 +114,14 @@ spec:
           rcon:
             enabled: true
             port: ${JAN_RCON_PORT}
-      rcon-webserver:
-        enabled: true
-        type: LoadBalancer
-        ports:
-          rcon-webserver:
-            enabled: true
-            port: 8080
-            protocol: http
+      # rcon-webserver:
+      #   enabled: true
+      #   type: LoadBalancer
+      #   ports:
+      #     rcon-webserver:
+      #       enabled: true
+      #       port: 8080
+      #       protocol: http
     workload:
       main:
         replicas: 1
