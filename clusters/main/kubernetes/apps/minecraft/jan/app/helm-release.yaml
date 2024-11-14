@@ -120,7 +120,7 @@ spec:
         ports:
           enabled: true
           port: 8080
-          targetPort: 8080
+          # targetPort: 8080
           protocol: http
     workload:
       main:
@@ -241,7 +241,9 @@ spec:
               imageSelector: webrcon-server
               primary: true
               args:
-              - '-addr jan-minecraft-java-rcon:25566'
+              - '-addr {{ printf "%s-rcon" (include
+                "tc.v1.common.lib.chart.names.fullname" $) }}:{{
+                .Values.service.rcon.ports.rcon.port }}'
               - '-pass ${MC_RCON_PASSWORD}'
               - '-preset minecraft-default.json'
               probes:
