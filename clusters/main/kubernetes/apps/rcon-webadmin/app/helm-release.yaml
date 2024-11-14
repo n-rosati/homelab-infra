@@ -58,6 +58,9 @@ spec:
           paths:
           - path: /
             pathType: Prefix
+            overrideService:
+              name: rcon-webadmin-rcon-webadmin-websocketaccess-4327
+              port: 4327
         integrations:
           certManager:
             certificateIssuer: le-prod
@@ -110,7 +113,7 @@ spec:
           websocketaccess:
             enabled: true
             port: 4327
-            protocol: http
+            protocol: tcp
             targetPort: 4327
     workload:
       main:
