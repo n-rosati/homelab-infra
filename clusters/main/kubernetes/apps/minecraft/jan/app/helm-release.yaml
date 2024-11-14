@@ -110,6 +110,14 @@ spec:
           rcon:
             enabled: true
             port: ${JAN_RCON_PORT}
+      rcon-webserver:
+        enabled: true
+        type: LoadBalancer
+        ports:
+          enabled: true
+          port: 8080
+          targetPort: 8080
+          protocol: http
     workload:
       main:
         replicas: 1
@@ -220,3 +228,20 @@ spec:
                   enabled: false
                 startup:
                   enabled: false
+      rcon-server:
+        enabled: true
+        imageSelector: webrcon-server
+        primary: true
+        args:
+        - '-addr {{ printf "%s-rcon" (include
+          "tc.v1.common.lib.chart.names.fullname" $) }}:{{
+          .Values.service.rcon.ports.rcon.port }}'
+        - '-pass ${MC_RCON_PASSWORD}'
+        - '-preset minecraft-default.json'
+        probes:
+          liveness:
+            enabled: false
+          readiness:
+            enabled: false
+          startup:
+            enabled: false
