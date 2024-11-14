@@ -108,10 +108,9 @@ spec:
         type: LoadBalancer
         ports:
           websocketaccess:
-            forwardedHeaders: true
             enabled: true
             port: 4327
-            protocol: tcp
+            protocol: http
             targetPort: 4327
     workload:
       main:
