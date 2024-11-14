@@ -239,6 +239,7 @@ spec:
           containers:
             rcon-webserver:
               imageSelector: webrcon-server
+              enabled: true
               primary: true
               args:
               - '-addr {{ printf "%s-rcon" (include
