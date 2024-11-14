@@ -119,9 +119,9 @@ spec:
         type: LoadBalancer
         ports:
           enabled: true
-          port: 8080
-          # targetPort: 8080
-          protocol: http
+          rcon-webserver:
+            port: 8080
+            protocol: http
     workload:
       main:
         replicas: 1
