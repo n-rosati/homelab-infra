@@ -241,7 +241,7 @@ spec:
               imageSelector: webrcon-server
               enabled: true
               primary: true
-              args:
+              extraArgs:
               - '-addr {{ printf "%s-rcon" (include
                 "tc.v1.common.lib.chart.names.fullname" $) }}:{{
                 .Values.service.rcon.ports.rcon.port }}'
