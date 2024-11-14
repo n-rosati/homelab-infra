@@ -63,7 +63,7 @@ spec:
         format: common
       general:
         format: common
-        level: ERROR
+        level: INFO
     middlewares:
       forwardAuth:
       - address: http://${AUTHELIA_DNS_NAME}/api/verify?rd=https://auth.${DOMAIN_BASE}
