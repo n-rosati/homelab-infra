@@ -69,7 +69,9 @@ spec:
           containers:
             main:
               args:
-              - "-addr jan.mc-jan.${CLUSTER_DNS}:${JAN_RCON_PORT}"
+              - "-addr
+                jan-minecraft-java-rcon.mc-jan.${CLUSTER_DNS}:${JAN_RCON_PORT}"
+              - "-pass ${MC_RCON_PASSWORD}"
               probes:
                 liveness:
                   enabled: true
