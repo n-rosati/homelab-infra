@@ -52,29 +52,26 @@ spec:
             #   namespace: "traefik"
       websocketaccess:
         enabled: true
-        # autoLink: true
-        hosts:
-        - host: rcon-ws.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
-            overrideService:
-              name: rcon-webadmin-websocketaccess-rcon-webadmin-4327
-              port: 4327
-        integrations:
-          certManager:
-            certificateIssuer: le-prod
-            enabled: true
-          traefik:
-            allowCors: true
-            enabled: true
-            entrypoints:
-            - websecure
-            middlewares:
-            - name: ca-us
-              namespace: "traefik"
-            # - name: auth
-            #   namespace: "traefik"
+        autoLink: true
+        # hosts:
+        # - host: rcon-ws.${DOMAIN_BASE}
+        #   paths:
+        #   - path: /
+        #     pathType: Prefix
+        # integrations:
+        #   certManager:
+        #     certificateIssuer: le-prod
+        #     enabled: true
+        #   traefik:
+        #     allowCors: true
+        #     enabled: true
+        #     entrypoints:
+        #     - websecure
+        #     middlewares:
+        #     - name: ca-us
+        #       namespace: "traefik"
+        #     # - name: auth
+        #     #   namespace: "traefik"
     persistence:
       db:
         enabled: true
