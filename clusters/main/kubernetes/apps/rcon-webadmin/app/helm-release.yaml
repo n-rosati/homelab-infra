@@ -110,7 +110,7 @@ spec:
           websocketaccess:
             enabled: true
             port: 4327
-            protocol: tcp
+            protocol: http
             targetPort: 4327
     workload:
       main:
