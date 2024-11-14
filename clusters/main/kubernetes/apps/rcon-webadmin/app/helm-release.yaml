@@ -58,10 +58,10 @@ spec:
         #   paths:
         #   - path: /
         #     pathType: Prefix
-        # integrations:
-        #   certManager:
-        #     certificateIssuer: le-prod
-        #     enabled: true
+        integrations:
+          certManager:
+            certificateIssuer: le-prod
+            enabled: true
         #   traefik:
         #     allowCors: true
         #     enabled: true
