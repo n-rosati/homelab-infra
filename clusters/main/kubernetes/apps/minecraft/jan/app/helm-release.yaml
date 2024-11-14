@@ -241,12 +241,11 @@ spec:
               imageSelector: webrcon-server
               enabled: true
               primary: true
-              extraArgs:
-              - '-addr {{ printf "%s-rcon" (include
-                "tc.v1.common.lib.chart.names.fullname" $) }}:{{
-                .Values.service.rcon.ports.rcon.port }}'
-              - '-pass ${MC_RCON_PASSWORD}'
-              - '-preset minecraft-default.json'
+              args:
+                addr: '{{ printf "%s-rcon" (include "tc.v1.common.lib.chart.names.fullname" $)
+                  }}:{{.Values.service.rcon.ports.rcon.port }}'
+                pass: '-pass ${MC_RCON_PASSWORD}'
+                preset: 'minecraft-default.json'
               probes:
                 liveness:
                   enabled: false
