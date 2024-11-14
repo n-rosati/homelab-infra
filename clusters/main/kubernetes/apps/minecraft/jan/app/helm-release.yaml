@@ -232,24 +232,24 @@ spec:
                   enabled: false
                 startup:
                   enabled: false
-      rcon-webserver:
-        enabled: true
-        type: Deployment
-        podSpec:
-          containers:
-            rcon-webserver:
-              imageSelector: webrcon-server
-              enabled: true
-              primary: true
-              args:
-                addr: '{{ printf "%s-rcon" (include "tc.v1.common.lib.chart.names.fullname" $)
-                  }}:{{.Values.service.rcon.ports.rcon.port }}'
-                pass: '-pass ${MC_RCON_PASSWORD}'
-                preset: 'minecraft-default.json'
-              probes:
-                liveness:
-                  enabled: false
-                readiness:
-                  enabled: false
-                startup:
-                  enabled: false
+      # rcon-webserver:
+      #   enabled: true
+      #   type: Deployment
+      #   podSpec:
+      #     containers:
+      #       rcon-webserver:
+      #         imageSelector: webrcon-server
+      #         enabled: true
+      #         primary: true
+      #         args:
+      #           addr: '{{ printf "%s-rcon" (include "tc.v1.common.lib.chart.names.fullname" $)
+      #             }}:{{.Values.service.rcon.ports.rcon.port }}'
+      #           pass: '-pass ${MC_RCON_PASSWORD}'
+      #           preset: 'minecraft-default.json'
+      #         probes:
+      #           liveness:
+      #             enabled: false
+      #           readiness:
+      #             enabled: false
+      #           startup:
+      #             enabled: false
