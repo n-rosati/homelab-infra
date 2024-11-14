@@ -118,8 +118,8 @@ spec:
         enabled: true
         type: LoadBalancer
         ports:
-          enabled: true
           rcon-webserver:
+            enabled: true
             port: 8080
             protocol: http
     workload:
