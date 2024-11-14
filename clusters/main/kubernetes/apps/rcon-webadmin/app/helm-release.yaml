@@ -51,7 +51,7 @@ spec:
             # - name: auth
             #   namespace: "traefik"
       websocketaccess:
-        enabled: true
+        enabled: false
         autoLink: true
         # hosts:
         # - host: rcon-ws.${DOMAIN_BASE}
