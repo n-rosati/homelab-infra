@@ -51,10 +51,10 @@ spec:
             # - name: auth
             #   namespace: "traefik"
       websocketaccess:
-        enabled: false
+        enabled: true
         autoLink: true
-        # hosts:
-        # - host: rcon-ws.${DOMAIN_BASE}
+        hosts:
+        - host: rcon-ws.${DOMAIN_BASE}
         #   paths:
         #   - path: /
         #     pathType: Prefix
