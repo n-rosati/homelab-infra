@@ -92,11 +92,11 @@ spec:
       # rwa_websocket_url: "ws://192.168.2.227:4327"
       rwa_websocket_url: ""
       # rwa_websocket_url_ssl: ""
-      rwa_websocket_url_ssl: "wss://rcon-ws.${DOMAIN_BASE}:443"
+      rwa_websocket_url_ssl: "wss://rcon.${DOMAIN_BASE}:443"
     service:
       main:
         enabled: true
-        type: LoadBalancer
+        type: ClusterIP
         ports:
           main:
             forwardedHeaders: true
@@ -105,7 +105,7 @@ spec:
             targetPort: 4326
       websocketaccess:
         enabled: true
-        type: LoadBalancer
+        type: ClusterIP
         ports:
           websocketaccess:
             enabled: true
