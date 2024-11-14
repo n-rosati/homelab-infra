@@ -52,7 +52,7 @@ spec:
             #   namespace: "traefik"
       websocketaccess:
         enabled: true
-        autoLink: true
+        # autoLink: true
         hosts:
         - host: rcon-ws.${DOMAIN_BASE}
           paths:
@@ -97,18 +97,18 @@ spec:
       main:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: ${RWA_IP}
         ports:
           main:
+            forwardedHeaders: true
             port: 4326
             protocol: http
             targetPort: 4326
       websocketaccess:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: ${RWA_IP}
         ports:
           websocketaccess:
+            forwardedHeaders: true
             enabled: true
             port: 4327
             protocol: tcp
