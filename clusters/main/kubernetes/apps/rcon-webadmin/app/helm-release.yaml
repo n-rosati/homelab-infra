@@ -53,25 +53,25 @@ spec:
       websocketaccess:
         enabled: true
         autoLink: true
-        # hosts:
-        # - host: rcon-ws.${DOMAIN_BASE}
-        #   paths:
-        #   - path: /
-        #     pathType: Prefix
-        # integrations:
-        #   certManager:
-        #     certificateIssuer: le-prod
-        #     enabled: true
-        #   traefik:
-        #     allowCors: true
-        #     enabled: true
-        #     entrypoints:
-        #     - websecure
-        #     middlewares:
-        #     - name: ca-us
-        #       namespace: "traefik"
-        #     # - name: auth
-        #     #   namespace: "traefik"
+        hosts:
+        - host: rcon-ws.${DOMAIN_BASE}
+          paths:
+          - path: /
+            pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: le-prod
+            enabled: true
+          traefik:
+            allowCors: true
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: ca-us
+              namespace: "traefik"
+            # - name: auth
+            #   namespace: "traefik"
     persistence:
       db:
         enabled: true
@@ -92,7 +92,7 @@ spec:
       # rwa_websocket_url: "ws://192.168.2.227:4327"
       rwa_websocket_url: ""
       # rwa_websocket_url_ssl: ""
-      rwa_websocket_url_ssl: "wss://rcon.${DOMAIN_BASE}:443"
+      rwa_websocket_url_ssl: "wss://rcon-ws.${DOMAIN_BASE}:443"
     service:
       main:
         enabled: true
