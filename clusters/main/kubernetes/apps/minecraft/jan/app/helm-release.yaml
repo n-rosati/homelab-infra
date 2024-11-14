@@ -232,7 +232,7 @@ spec:
                   enabled: false
                 startup:
                   enabled: false
-      rcon-server:
+      rcon-webserver:
         enabled: true
         type: Deployment
         podSpec:
