@@ -21,17 +21,9 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: jan.${DOMAIN_BASE}
-            # integrations:
-            #   traefik:
-            #     enabled: true
-            #     entrypoints:
-            #     - websecure
-            #     middlewares:
-            #     - name: ca-us
-            #       namespace: "traefik"
-            #     - name: auth
-            #       namespace: "traefik"
+        - host: ${JAN_URL}
+        - host: ${JAN_2_URL}
+        - host: ${STATECH_INDUSTRY_URL}
     service:
       main:
         type: LoadBalancer
