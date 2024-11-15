@@ -12,5 +12,5 @@ spec:
   wait: true
   prune: true
   sourceRef:
-    kind: OCIRepository
+    kind: GitRepository
     name: capacitor
