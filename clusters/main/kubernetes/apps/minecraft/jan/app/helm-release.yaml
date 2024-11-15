@@ -102,6 +102,8 @@ spec:
             enabled: true
             port: ${JAN_GAME_PORT}
             protocol: udp
+        annotations:
+          mc-router.itzg.me/externalServerName: "jan.${DOMAIN_BASE}"
       rcon:
         enabled: true
         type: LoadBalancer

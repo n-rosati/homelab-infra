@@ -2,5 +2,3 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: mc-jan
-  annotations:
-    mc-router.itzg.me/externalServerName: jan.${DOMAIN_BASE}
