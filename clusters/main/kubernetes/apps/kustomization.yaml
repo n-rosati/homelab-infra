@@ -18,4 +18,5 @@ resources:
 - handbrake/ks.yaml
 - minecraft
 - filebrowser/ks.yaml
-- capacitor/ks.yaml
+
+# - capacitor/ks.yaml
