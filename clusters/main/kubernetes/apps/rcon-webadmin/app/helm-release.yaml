@@ -54,7 +54,7 @@ spec:
         enabled: true
         autoLink: true
         targetSelector:
-          websocketaccess: websocketaccess
+          main: websocketaccess
         hosts:
         - host: rcon-ws.${DOMAIN_BASE}
           paths:
