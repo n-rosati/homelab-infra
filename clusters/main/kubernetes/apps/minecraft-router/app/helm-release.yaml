@@ -32,4 +32,9 @@ spec:
             #       namespace: "traefik"
             #     - name: auth
             #       namespace: "traefik"
-    mcrouter: []
+    mcrouter:
+      default: jan-minecraft-java.mc-jan.svc.cluster.local:25565
+      mappings:
+      - ${JAN_URL}=jan-minecraft-java.mc-jan.svc.cluster.local:25565
+      - ${JAN_2_URL}=jan-2-minecraft-java.mc-jan-2.svc.cluster.local:25567
+      - ${STATECH_INDUSTRY_URL}=statech-industry-minecraft-java.mc-statech-industry.svc.cluster.local:25570
