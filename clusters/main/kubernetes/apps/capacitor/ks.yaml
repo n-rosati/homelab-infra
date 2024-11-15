@@ -6,11 +6,11 @@ metadata:
 spec:
   targetNamespace: flux-system
   interval: 1h
+  path: clusters/main/kubernetes/apps/capacitor/app
   retryInterval: 2m
   timeout: 5m
   wait: true
   prune: true
-  path: "clusters/main/kubernetes/"
   sourceRef:
     kind: OCIRepository
     name: capacitor
