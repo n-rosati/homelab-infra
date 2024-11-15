@@ -92,24 +92,9 @@ spec:
       main:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: ""
-        ports:
-          main:
-            enabled: true
-            port: ${JAN_GAME_PORT}
-            protocol: tcp
-          query:
-            enabled: true
-            port: ${JAN_GAME_PORT}
-            protocol: udp
       rcon:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: ""
-        ports:
-          rcon:
-            enabled: true
-            port: ${JAN_RCON_PORT}
     workload:
       main:
         replicas: 1

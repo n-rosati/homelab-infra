@@ -93,24 +93,9 @@ spec:
       main:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: ""
-        ports:
-          main:
-            enabled: true
-            port: ${STATECH_INDUSTRY_GAME_PORT}
-            protocol: tcp
-          query:
-            enabled: true
-            port: ${STATECH_INDUSTRY_GAME_PORT}
-            protocol: udp
       rcon:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: ""
-        ports:
-          rcon:
-            enabled: true
-            port: ${STATECH_INDUSTRY_RCON_PORT}
     workload:
       main:
         replicas: 1
@@ -149,12 +134,9 @@ spec:
                 DEST_DIR: '{{.Values.persistence.backups.mountPath }}'
                 SRC_DIR: '{{.Values.persistence.data.mountPath }}'
                 SERVER_PORT: '{{ .Values.service.main.ports.main.port }}'
-                RCON_HOST: '{{ printf "%s-rcon" (include "tc.v1.common.lib.chart.names.fullname"
-                  $) }}'
+                RCON_HOST: '{{ printf "%s-rcon" (include "tc.v1.common.lib.chart.names.fullname" $) }}'
                 RCON_PORT: '{{ .Values.service.rcon.ports.rcon.port }}'
-                RCON_PASSWORD: '{{
-                  .Values.workload.main.podSpec.containers.main.env.RCON_PASSWORD
-                  }}'
+                RCON_PASSWORD: '{{ .Values.workload.main.podSpec.containers.main.env.RCON_PASSWORD }}'
                 ZSTD_PARAMETERS: '{{ join " " .Values.mcbackup.zstd_params }}'
                 EXCLUDES: '{{ join "," .Values.mcbackup.excludes }}'
                 INITIAL_DELAY: '{{ .Values.mcbackup.initial_delay }}'
