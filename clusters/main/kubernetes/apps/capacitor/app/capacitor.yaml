@@ -3,3 +3,11 @@ kind: HelmRelease
 metadata:
   name: capacitor
   namespace: flux-system
+  chart:
+    spec:
+      sourceRef:
+        kind: OCIRepository
+        name: capacitor
+        namespace: flux-system
+  spec:
+    releaseName: capacitor
