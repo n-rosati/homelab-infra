@@ -21,9 +21,9 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: ${JAN_URL}
-        - host: ${JAN_2_URL}
-        - host: ${STATECH_INDUSTRY_URL}
+        - host: jan.${DOMAIN_BASE}
+        - host: jan2.${DOMAIN_BASE}
+        # - host: ${STATECH_INDUSTRY_URL}
     service:
       main:
         type: LoadBalancer
