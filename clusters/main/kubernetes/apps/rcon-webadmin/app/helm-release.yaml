@@ -67,16 +67,15 @@ spec:
           certManager:
             certificateIssuer: le-prod
             enabled: true
-        #   traefik:
-        #     allowCors: true
-        #     enabled: true
-        #     entrypoints:
-        #     - websecure
-        #     middlewares:
-        #     - name: ca-us
+          traefik:
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: ca-us
+              namespace: "traefik"
+        #     - name: auth
         #       namespace: "traefik"
-        #     # - name: auth
-        #   namespace: "traefik"
     persistence:
       db:
         enabled: true
