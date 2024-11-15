@@ -21,7 +21,7 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: jan.${DOMAIN_BASE}
+        - host: ${JAN_URL}
         - host: ${JAN_2_URL}
         - host: ${STATECH_INDUSTRY_URL}
     service:
