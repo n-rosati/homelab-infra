@@ -23,7 +23,7 @@ spec:
         hosts:
         - host: jan.${DOMAIN_BASE}
         - host: jan2.${DOMAIN_BASE}
-        # - host: ${STATECH_INDUSTRY_URL}
+        - host: ${STATECH_INDUSTRY_URL}
     service:
       main:
         type: LoadBalancer
