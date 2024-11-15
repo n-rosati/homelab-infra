@@ -1,0 +1,34 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: minecraft-router
+  namespace: minecraft-router
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: minecraft-router
+      version: 1.1.1
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: minecraft-router
+  values:
+    timezone: ${TIMEZONE}
+    args: [ "--in-kube-cluster" ]
+    ingress:
+      main:
+        enabled: true
+        hosts:
+        - host: jan.${DOMAIN_BASE}
+            # integrations:
+            #   traefik:
+            #     enabled: true
+            #     entrypoints:
+            #     - websecure
+            #     middlewares:
+            #     - name: ca-us
+            #       namespace: "traefik"
+            #     - name: auth
+            #       namespace: "traefik"
