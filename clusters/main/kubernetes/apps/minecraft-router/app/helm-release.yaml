@@ -32,6 +32,9 @@ spec:
             #       namespace: "traefik"
             #     - name: auth
             #       namespace: "traefik"
+    service:
+      main:
+        type: LoadBalancer
     mcrouter:
       default: jan-minecraft-java.mc-jan.svc.cluster.local:25565
       mappings:
