@@ -16,7 +16,7 @@ spec:
   releaseName: jan
   values:
     global:
-      stopAll: false
+      stopAll: true
     image:
       repository: docker.io/itzg/minecraft-server
       tag: 2024.10.2-java17@sha256:db3ccc7db5371a7a4e7edf8696ccfa177f4b71a29ffbecc76e21a663d1bcf98d
@@ -201,11 +201,8 @@ spec:
                 PAUSE_IF_NO_PLAYERS: '{{ .Values.mcbackup.pause_if_no_players }}'
                 PLAYERS_ONLINE_CHECK_INTERVAL: '{{ .Values.mcbackup.player_online_check_interval }}'
                 PRUNE_BACKUPS_DAYS: '{{ .Values.mcbackup.prune_backups_days }}'
-                RCON_HOST: '{{ printf "%s-rcon" (include "tc.v1.common.lib.chart.names.fullname"
-                  $) }}'
-                RCON_PASSWORD: '{{
-                  .Values.workload.main.podSpec.containers.main.env.RCON_PASSWORD
-                  }}'
+                RCON_HOST: '{{ printf "%s-rcon" (include "tc.v1.common.lib.chart.names.fullname" $) }}'
+                RCON_PASSWORD: '{{ .Values.workload.main.podSpec.containers.main.env.RCON_PASSWORD }}'
                 RCON_PORT: '{{ .Values.service.rcon.ports.rcon.port }}'
                 SERVER_PORT: '{{ .Values.service.main.ports.main.port }}'
                 SRC_DIR: '{{.Values.persistence.data.mountPath }}'
