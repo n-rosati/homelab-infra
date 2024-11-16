@@ -40,22 +40,27 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-          # homepage:
-          #   enabled: true
-          #   name: ""
-          #   description: ""
-          #   group: Downloaders
-          #   icon: ""
-          #   widget:
-          #     enabled: true
-          #     type: qbittorrent
-          #     custom:
-          #       key: ""
-          #     customkv:
-          #     - key: username
-          #       value: ${QBITTORRENT_USER}
-          #     - key: password
-          #       value: ${QBITTORRENT_PASSWORD}
+          homepage:
+            enabled: true
+            name: ""
+            description: ""
+            group: Downloaders
+            icon: ""
+            href: qbittorrent.${DOMAIN_BASE}
+            weight: 0
+            podSelector:
+            - main
+            widget:
+              enabled: true
+              type: qbittorrent
+              custom:
+                username: ${QBITTORRENT_USER}
+                password: ${QBITTORRENT_PASSWORD}
+              # customkv:
+              # - key: username
+              #   value: ${QBITTORRENT_USER}
+              # - key: password
+              #   value: ${QBITTORRENT_PASSWORD}
           traefik:
             enabled: true
             entrypoints:
