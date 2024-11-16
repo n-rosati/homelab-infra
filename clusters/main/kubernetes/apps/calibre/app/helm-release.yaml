@@ -42,6 +42,12 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
+          homepage:
+            enabled: true
+            group: Services
+            href: calibre.${DOMAIN_BASE}
+            widget:
+              enabled: false
           traefik:
             enabled: true
             entrypoints:
