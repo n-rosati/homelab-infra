@@ -28,14 +28,17 @@ spec:
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         secretKey: ${MINIO_SECRET_KEY}
         url: ${MINIO_BUCKET_URL}
+    service:
+      main:
+        enabled: true
+        type: LoadBalancer
+      websocketaccess:
+        type: LoadBalancer
     ingress:
       main:
         enabled: true
         hosts:
         - host: rcon.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
         integrations:
           certManager:
             certificateIssuer: le-prod
@@ -78,9 +81,9 @@ spec:
               namespace: "traefik"
     persistence:
       db:
-        enabled: true
-        mountPath: /opt/rcon-web-admin/db
-        readOnly: false
+        # enabled: true
+        # mountPath: /opt/rcon-web-admin/db
+        # readOnly: false
         volsync:
         - credentials: minio
           name: minio
@@ -93,29 +96,7 @@ spec:
       rwa_admin: true
       rwa_env: true
       rwa_read_only_widget_options: false
-      # rwa_websocket_url: "ws://192.168.2.227:4327"
-      rwa_websocket_url: ""
-      # rwa_websocket_url_ssl: ""
       rwa_websocket_url_ssl: "wss://rcon-ws.${DOMAIN_BASE}:443"
-    service:
-      main:
-        enabled: true
-        type: LoadBalancer
-        ports:
-          main:
-            forwardedHeaders: true
-            port: 4326
-            protocol: http
-            targetPort: 4326
-      websocketaccess:
-        enabled: true
-        type: LoadBalancer
-        ports:
-          websocketaccess:
-            enabled: true
-            port: 4327
-            protocol: http
-            targetPort: 4327
     workload:
       main:
         podSpec:
