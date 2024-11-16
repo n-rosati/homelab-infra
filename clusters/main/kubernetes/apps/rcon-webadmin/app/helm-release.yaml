@@ -54,7 +54,6 @@ spec:
               namespace: "traefik"
       websocketaccess:
         enabled: true
-        autoLink: true
         targetSelector:
           websocketaccess: websocketaccess
         hosts:
