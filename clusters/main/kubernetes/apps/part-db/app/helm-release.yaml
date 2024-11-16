@@ -32,33 +32,16 @@ spec:
         bucket: ${MINIO_BUCKET_NAME}
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         secretKey: ${MINIO_SECRET_KEY}
-    ingress:
-      main:
-        enabled: true
-        hosts:
-        - host: partdb.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
-        integrations:
-          certManager:
-            certificateIssuer: le-prod
-            enabled: true
-          traefik:
-            allowCors: false
-            enabled: true
-            entrypoints:
-            - websecure
-            middlewares:
-            - name: ca-us
-              namespace: "traefik"
-            - name: auth
-              namespace: "traefik"
+    securityContext:
+      container:
+        readOnlyRootFilesystem: false
+        runAsNonRoot: false
+        runAsUser: 0
+        runAsGroup: 0
     service:
       main:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: ""
         ports:
           main:
             enabled: true
@@ -80,12 +63,29 @@ spec:
             port: 3003
             protocol: tcp
             targetPort: 2019
+    ingress:
+      main:
+        enabled: true
+        hosts:
+        - host: partdb.${DOMAIN_BASE}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          traefik:
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: ca-us
+              namespace: "traefik"
+            - name: auth
+              namespace: "traefik"
     persistence:
       media:
         enabled: true
         type: pvc
         mountPath: /var/www/html/public/media
-        targetSelectAll: true
         volsync:
         - name: uploads
           type: restic
@@ -98,7 +98,6 @@ spec:
         enabled: true
         type: pvc
         mountPath: /var/www/html/uploads
-        targetSelectAll: true
         volsync:
         - name: uploads
           type: restic
@@ -130,30 +129,12 @@ spec:
         podSpec:
           containers:
             main:
-              probes:
-                liveness:
-                  enabled: true
-                  path: /
-                  type: http
-                readiness:
-                  enabled: true
-                  path: /
-                  type: http
-                startup:
-                  enabled: true
-                  path: /
-                  type: http
               env:
                 ALLOW_ATTACHMENT_DOWNLOADS: "1"
                 ALLOW_EMAIL_PW_RESET: "true"
                 APP_ENV: docker
                 ATTACHMENT_DOWNLOAD_BY_DEFAULT: "1"
-                BANNER: 'Welcome to Part-DB.  <blockquote class=''pb-0''> <p style=''font-size:
-                  12px''> And God said <br> $\nabla \cdot \vec{D} = \rho$,
-                  $\nabla \cdot \vec{B} = 0$, $\nabla \times \vec{E} =
-                  -\frac{\partial \vec{B}}{\partial t}$, $\nabla \times \vec{H}
-                  = \vec{j} + \frac{\partial \vec{D}}{\partial t}$,  <br> and
-                  then there was light. </p> </blockquote>'
+                BANNER: 'Welcome to Part-DB.  <blockquote class=''pb-0''> <p style=''font-size: 12px''> And God said <br> $\nabla \cdot \vec{D} = \rho$, $\nabla \cdot \vec{B} = 0$, $\nabla \times \vec{E} = -\frac{\partial \vec{B}}{\partial t}$, $\nabla \times \vec{H} = \vec{j} + \frac{\partial \vec{D}}{\partial t}$,  <br> and then there was light. </p> </blockquote>'
                 BASE_CURRENCY: CAD
                 DATABASE_URL: postgresql://partdb:${PARTDB_DB_PASSWORD}@part-db-app-template-cnpg-main-rw.part-db.svc.cluster.local:5432/part-db?serverVersion=16.4&charset=utf8
                 DEFAULT_LANG: en
@@ -183,9 +164,3 @@ spec:
                 PROVIDER_OCTOPART_SECRET: ${PARTDB_OCTOPART_SECRET}
                 TRUSTED_PROXIES: ${PODNET},${SVCNET},192.168.2.0/24
                 USE_GRAVATAR: "0"
-    securityContext:
-      container:
-        readOnlyRootFilesystem: false
-        runAsNonRoot: false
-        runAsUser: 0
-        runAsGroup: 0
