@@ -16,7 +16,7 @@ spec:
   releaseName: calibre
   values:
     global:
-      stopAll: true
+      stopAll: false
     release_name: calibre
     TZ: ${TIMEZONE}
     credentials:
@@ -28,28 +28,26 @@ spec:
         bucket: ${MINIO_BUCKET_NAME}
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         secretKey: ${MINIO_SECRET_KEY}
+    service:
+      main:
+        type: LoadBalancer
+      webserver:
+        type: LoadBalancer
     ingress:
       main:
         enabled: true
         hosts:
         - host: calibre.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
         integrations:
           certManager:
             enabled: true
             certificateIssuer: le-prod
           homepage:
-            description: ""
             enabled: true
             group: Services
-            icon: ""
-            name: ""
-            widget:
-              custom:
-                key: ""
-              enabled: true
+            name: "Calibre"
+            description: ""
+            icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Calibre_logo_3.png/120px-Calibre_logo_3.png"
           traefik:
             allowCors: false
             enabled: true
@@ -62,9 +60,6 @@ spec:
               namespace: "traefik"
     persistence:
       config:
-        enabled: true
-        mountPath: /config
-        readOnly: false
         volsync:
         - credentials: minio
           name: minio
@@ -73,28 +68,9 @@ spec:
             enabled: true
           src:
             enabled: false
-        library:
-          type: nfs
-          enabled: true
-          server: ${TRUENAS_IP}
-          path: /mnt/DSU/Software/Calibre Library
-          mountPath: /mnt/Library
-    service:
-      main:
+      library:
+        type: nfs
         enabled: true
-        type: LoadBalancer
-        loadBalancerIP: ""
-        ports:
-          main:
-            port: 8084
-            protocol: http
-            targetPort: 8080
-      webserver:
-        enabled: true
-        type: LoadBalancer
-        loadBalancerIP: ""
-        ports:
-          webserver:
-            port: 8081
-            protocol: http
-            targetPort: 8081
+        server: ${TRUENAS_IP}
+        path: /mnt/DSU/Software/Calibre Library
+        mountPath: /mnt/Library
