@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: filebrowser
-  namespace: part-db
+  namespace: filebrowser
 spec:
   interval: 15m
   chart:
@@ -21,21 +21,11 @@ spec:
       main:
         type: LoadBalancer
     persistence:
-      # a:
-      #   enabled: true
-      #   type: pvc
-      #   mountPath: /data/part-db-1
-      #   targetSelectAll: true
-      #   existingClaim: "part-db-app-template-db"
-      b:
+      a:
         enabled: true
         type: pvc
-        mountPath: /data/part-db-2
+        # mount path in filebrowser, must be in /data
+        mountPath: /data/mount-a
         targetSelectAll: true
-        existingClaim: "part-db-app-template-media"
-      c:
-        enabled: true
-        type: pvc
-        mountPath: /data/part-db-3
-        targetSelectAll: true
-        existingClaim: "part-db-app-template-uploads"
+        # claim name
+        existingClaim: "part-db-app-template-db"
