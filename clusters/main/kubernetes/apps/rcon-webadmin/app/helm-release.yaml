@@ -30,7 +30,6 @@ spec:
         url: ${MINIO_BUCKET_URL}
     service:
       main:
-        enabled: true
         type: LoadBalancer
       websocketaccess:
         type: LoadBalancer
@@ -81,9 +80,6 @@ spec:
               namespace: "traefik"
     persistence:
       db:
-        # enabled: true
-        # mountPath: /opt/rcon-web-admin/db
-        # readOnly: false
         volsync:
         - credentials: minio
           name: minio
@@ -93,9 +89,6 @@ spec:
           src:
             enabled: false
     rcon:
-      rwa_admin: true
-      rwa_env: true
-      rwa_read_only_widget_options: false
       rwa_websocket_url_ssl: "wss://rcon-ws.${DOMAIN_BASE}:443"
     workload:
       main:
