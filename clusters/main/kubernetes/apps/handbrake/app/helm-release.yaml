@@ -31,6 +31,8 @@ spec:
     service:
       main:
         type: LoadBalancer
+      vnc:
+        type: LoadBalancer
     ingress:
       main:
         enabled: true
@@ -79,8 +81,6 @@ spec:
         server: ${TRUENAS_IP}
         path: /mnt/DSU/Media/Handbrake/Output
         mountPath: /output
-      vnc:
-        type: LoadBalancer
     # workload:
     #   main:
     #     podSpec:
