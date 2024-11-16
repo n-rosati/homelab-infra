@@ -16,6 +16,8 @@ spec:
   releaseName: qbittorrent
   values:
     release_name: qbittorrent
+    global:
+      stopAll: false
     TZ: ${TIMEZONE}
     credentials:
       minio:
@@ -26,35 +28,29 @@ spec:
         accessKey: ${MINIO_ACCESS_KEY}
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         secretKey: ${MINIO_SECRET_KEY}
+    service:
+      main:
+        type: LoadBalancer
     ingress:
       main:
         enabled: true
         hosts:
         - host: qbittorrent.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
         integrations:
           certManager:
-            certificateIssuer: le-prod
             enabled: true
+            certificateIssuer: le-prod
           homepage:
-            description: ""
             enabled: true
             group: Downloaders
-            icon: ""
-            name: ""
             widget:
-              custom:
-                key: ""
+              enabled: true
               customkv:
               - key: username
                 value: ${QBITTORRENT_USER}
               - key: password
                 value: ${QBITTORRENT_PASSWORD}
-              enabled: true
           traefik:
-            allowCors: false
             enabled: true
             entrypoints:
             - websecure
@@ -65,15 +61,12 @@ spec:
               namespace: "traefik"
     persistence:
       config:
-        enabled: true
-        mountPath: /config
-        readOnly: false
         volsync:
         - credentials: minio
           name: minio
           type: restic
           dest:
-            enabled: true
+            enabled: false
           src:
             enabled: false
       data:
@@ -86,30 +79,3 @@ spec:
       enabled: false
       QBT_USERNAME: ${QBITTORRENT_USER}
       QBT_PASSWORD: ${QBITTORRENT_PASSWORD}
-    service:
-      main:
-        type: LoadBalancer
-        ports:
-          main:
-            port: 10095
-      torrent:
-        type: LoadBalancer
-        loadBalancerIP: ""
-        ports:
-          torrent:
-            enabled: true
-            port: 6881
-            protocol: tcp
-          torrentudp:
-            enabled: true
-            port: '{{ .Values.service.torrent.ports.torrent.port }}'
-            protocol: udp
-      gluetun:
-        type: ClusterIP
-        enabled: true
-        ports:
-          gluetun:
-            enabled: true
-            port: 8000
-            protocol: http
-            targetPort: 8000
