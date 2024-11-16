@@ -47,6 +47,7 @@ spec:
           homepage:
             enabled: true
             group: Downloaders
+            href: jdownloader.${DOMAIN_BASE}
             widget:
               enabled: true
               type: jdownloader
