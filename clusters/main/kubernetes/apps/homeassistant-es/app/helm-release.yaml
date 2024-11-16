@@ -16,32 +16,27 @@ spec:
   releaseName: homeassistant-es
   values:
     release_name: homeassistant-es
+    service:
+      main:
+        type: ExternalIP
+        externalIP: ${HOMEASSISTANT_IP}
+        ports:
+          main:
+            protocol: http
+            port: 8123
     ingress:
       main:
         enabled: true
         hosts:
         - host: homeassistant.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
         integrations:
           certManager:
-            certificateIssuer: le-prod
             enabled: true
+            certificateIssuer: le-prod
           traefik:
-            allowCors: false
             enabled: true
             entrypoints:
             - websecure
             middlewares:
             - name: ca-us
               namespace: "traefik"
-    service:
-      main:
-        type: ExternalIP
-        externalIP: ${HOMEASSISTANT_IP}
-        useSlice: false
-        ports:
-          main:
-            protocol: http
-            port: 8123
