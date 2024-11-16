@@ -42,9 +42,6 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-          homepage:
-            enabled: true
-            group: Infrastructure
           traefik:
             enabled: true
             entrypoints:
