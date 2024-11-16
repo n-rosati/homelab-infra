@@ -15,6 +15,7 @@ spec:
         namespace: flux-system
   releaseName: pgadmin
   values:
+    release_name: pgadmin
     global:
       stopAll: false
     TZ: ${TIMEZONE}
@@ -27,20 +28,38 @@ spec:
         accessKey: ${MINIO_ACCESS_KEY}
         secretKey: ${MINIO_SECRET_KEY}
         encrKey: ${BACKUP_ENCRYPTION_KEY}
+    service:
+      main:
+        type: LoadBalancer
     ingress:
       main:
-        enabled: false
+        enabled: true
+        hosts:
+        - host: pgadmin.${DOMAIN_BASE}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          homepage:
+            enabled: true
+            group: Services
+          traefik:
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: ca-us
+              namespace: "traefik"
+            - name: auth
+              namespace: "traefik"
     persistence:
       nfs-vol:
         enabled: true
         type: nfs
         server: "${TRUENAS_IP}"
-        path: /mnt/DSU/Backups/pgAdmin
+        path: "/mnt/DSU/Software/App Storage/pgAdmin"
         mountPath: /var/lib/pgadmin/storage/nicholas_rosati.xyz
       config:
-        enabled: true
-        mountPath: /var/lib/pgadmin
-        readOnly: false
         volsync:
         - credentials: minio
           name: minio
@@ -49,17 +68,6 @@ spec:
             enabled: false
           src:
             enabled: false
-    release_name: pgadmin
-    resources: {}
-    service:
-      main:
-        enabled: true
-        type: LoadBalancer
-        loadBalancerIP: ""
-        ports:
-          main:
-            port: 10024
-            targetPort: 80
     workload:
       main:
         podSpec:
