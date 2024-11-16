@@ -27,48 +27,18 @@ spec:
         path: ""
         secretKey: ${MINIO_SECRET_KEY}
         url: ${MINIO_BUCKET_URL}
-    addons:
-      codeserver:
-        enabled: true
-        workingDir: "/app/config"
-        ingress:
-          enabled: true
-          hosts:
-          - host: edit-homepage.nicholasrosati.xyz
-            paths:
-            - path: /
-              pathType: Prefix
-          integrations:
-            certManager:
-              certificateIssuer: le-prod
-              enabled: true
-            traefik:
-              allowCors: false
-              enabled: true
-              entrypoints:
-              - websecure
-              middlewares:
-              - name: auth
-                namespace: "traefik"
-              - name: ca-us
-                namespace: "traefik"
-        service:
-          ports:
-            codeserver:
-              port: 10353
-          type: LoadBalancer
+    service:
+      main:
+        type: LoadBalancer
     ingress:
       main:
         enabled: true
         hosts:
         - host: homepage.nicholasrosati.xyz
-          paths:
-          - path: /
-            pathType: Prefix
         integrations:
           certManager:
-            certificateIssuer: le-prod
             enabled: true
+            certificateIssuer: le-prod
           traefik:
             allowCors: false
             enabled: true
@@ -81,31 +51,34 @@ spec:
               namespace: "traefik"
     persistence:
       config:
-        enabled: true
-        mountPath: /app/config
-        readOnly: false
-        storageClass: ""
-        targetSelector:
-          main: {}
         volsync:
         - credentials: minio
           name: config
           type: restic
           dest:
-            enabled: true
+            enabled: false
           src:
             enabled: false
-    resources: {}
-    service:
-      main:
+    addons:
+      codeserver:
         enabled: true
-        ports:
-          main:
-            port: 10352
-            protocol: http
-            targetPort: 3000
-        type: LoadBalancer
-    serviceAccount:
-      main:
-        enabled: true
-        primary: true
+        workingDir: "/app/config"
+        ingress:
+          enabled: true
+          hosts:
+          - host: edit.homepage.nicholasrosati.xyz
+          integrations:
+            certManager:
+              enabled: true
+              certificateIssuer: le-prod
+            traefik:
+              enabled: true
+              entrypoints:
+              - websecure
+              middlewares:
+              - name: auth
+                namespace: "traefik"
+              - name: ca-us
+                namespace: "traefik"
+        service:
+          type: LoadBalancer
