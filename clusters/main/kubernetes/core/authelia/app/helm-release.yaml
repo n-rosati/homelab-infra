@@ -15,8 +15,10 @@ spec:
         namespace: flux-system
   releaseName: authelia
   values:
-    TZ: ${TIMEZONE}
+    global:
+      stopAll: false
     release_name: authelia
+    TZ: ${TIMEZONE}
     credentials:
       minio-creds:
         name: minio-creds
@@ -26,6 +28,41 @@ spec:
         bucket: "${MINIOBUCKET}"
         encrKey: "${MINIOENCRKEY}"
         secretKey: "${MINIOSECRETKEY}"
+    ingress:
+      main:
+        enabled: true
+        required: true
+        hosts:
+        - host: auth.${DOMAIN_BASE}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          homepage:
+            enabled: true
+            group: Infrastructure
+            widget:
+              enabled: false
+              custom:
+                key: ""
+          traefik:
+            allowCors: true
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: ca-us
+              namespace: "traeik"
+            - name: ratelimit
+              namespace: "traefik"
+    cnpg:
+      main:
+        mode: standalone
+        password: ${CNPG_PASSWORD}
+        cluster:
+          singleNode: true
+        monitoring:
+          enablePodMonitor: true
     access_control:
       default_policy: deny
       rules:
@@ -37,7 +74,6 @@ spec:
         subject:
         - group:users
     authentication_backend:
-      disable_reset_password: false
       file:
         enabled: false
       ldap:
@@ -71,7 +107,6 @@ spec:
       level: info
       format: text
     notifier:
-      disable_startup_check: false
       filesystem:
         enabled: false
       smtp:
@@ -96,53 +131,4 @@ spec:
       zxcvbn:
         enabled: true
         min_score: 3
-    regulation:
-      ban_time: 5m
-      find_time: 2m
-      max_retries: 3
-    session:
-      remember_me_duration: 1M
     theme: auto
-    ingress:
-      main:
-        enabled: true
-        required: true
-        hosts:
-        - host: auth.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
-        integrations:
-          certManager:
-            certificateIssuer: le-prod
-            enabled: true
-          homepage:
-            description: ""
-            enabled: true
-            group: Infrastructure
-            icon: ""
-            name: ""
-            widget:
-              custom:
-                key: ""
-              enabled: false
-          traefik:
-            allowCors: true
-            enabled: true
-            entrypoints:
-            - websecure
-            middlewares:
-            - name: ratelimit
-              namespace: "traefik"
-    persistence:
-      config:
-        enabled: true
-        mountPath: '/config'
-    cnpg:
-      main:
-        mode: standalone
-        cluster:
-          singleNode: true
-        monitoring:
-          enablePodMonitor: true
-        password: ${CNPG_PASSWORD}
