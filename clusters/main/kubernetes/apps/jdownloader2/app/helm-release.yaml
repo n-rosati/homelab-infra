@@ -44,6 +44,15 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
+          homepage:
+            enabled: true
+            group: Downloaders
+            widget:
+              enabled: true
+              type: jdownloader
+              custom:
+                username: ${JDOWNLOADER_USERNAME}
+                password: ${JDOWNLOADER_PASSWORD}
           traefik:
             enabled: true
             entrypoints:
