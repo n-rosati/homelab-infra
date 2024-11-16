@@ -45,8 +45,6 @@ spec:
           homepage:
             enabled: true
             group: Infrastructure
-            widget:
-              enabled: false
           traefik:
             enabled: true
             entrypoints:
