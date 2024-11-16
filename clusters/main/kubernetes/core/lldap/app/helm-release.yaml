@@ -44,6 +44,7 @@ spec:
             certificateIssuer: le-prod
           homepage:
             enabled: true
+            name: LLDAP
             group: Infrastructure
             href: lldap.${DOMAIN_BASE}
             widget:
