@@ -43,6 +43,10 @@ spec:
           homepage:
             enabled: true
             group: Downloaders
+            href: qbittorrent.${DOMAIN_BASE}
+            weight: 0
+            podSelector:
+            - main
             widget:
               enabled: true
               type: qbittorrent
