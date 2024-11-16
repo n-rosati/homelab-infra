@@ -17,16 +17,6 @@ spec:
   values:
     release_name: homepage
     TZ: ${TIMEZONE}
-    credentials:
-      minio:
-        name: minio
-        type: s3
-        accessKey: ${MINIO_ACCESS_KEY}
-        bucket: ${MINIO_BUCKET_PREFIX}
-        encrKey: ${BACKUP_ENCRYPTION_KEY}
-        path: ""
-        secretKey: ${MINIO_SECRET_KEY}
-        url: ${MINIO_BUCKET_URL}
     service:
       main:
         type: LoadBalancer
@@ -34,7 +24,7 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: homepage.nicholasrosati.xyz
+        - host: homepage.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
@@ -49,18 +39,8 @@ spec:
               namespace: "traefik"
             - name: ca-us
               namespace: "traefik"
-    persistence:
-      config:
-        volsync:
-        - credentials: minio
-          name: config
-          type: restic
-          dest:
-            enabled: false
-          src:
-            enabled: false
     forceConfigFromValues: true
-    configMap:
+    configmap:
       config:
         data:
           settings.yaml: |
