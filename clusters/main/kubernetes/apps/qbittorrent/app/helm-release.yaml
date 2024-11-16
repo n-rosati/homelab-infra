@@ -45,11 +45,10 @@ spec:
             group: Downloaders
             widget:
               enabled: true
-              customkv:
-              - key: username
-                value: ${QBITTORRENT_USER}
-              - key: password
-                value: ${QBITTORRENT_PASSWORD}
+              type: qbittorrent
+              custom:
+              - username: ${QBITTORRENT_USER}
+              - password: ${QBITTORRENT_PASSWORD}
           traefik:
             enabled: true
             entrypoints:
