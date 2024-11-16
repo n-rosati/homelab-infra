@@ -46,9 +46,7 @@ spec:
             enabled: true
             group: Infrastructure
             widget:
-              enabled: true
-              custom:
-                key: ""
+              enabled: false
           traefik:
             enabled: true
             entrypoints:
