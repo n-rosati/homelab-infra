@@ -16,6 +16,8 @@ spec:
   releaseName: lldap
   values:
     release_name: lldap
+    global:
+      stopAll: false
     TZ: ${TIMEZONE}
     credentials:
       minio:
@@ -26,11 +28,36 @@ spec:
         accessKey: ${MINIO_ACCESS_KEY}
         secretKey: ${MINIO_SECRET_KEY}
         encrKey: ${BACKUP_ENCRYPTION_KEY}
+    service:
+      main:
+        type: LoadBalancer
+      ldap:
+        type: LoadBalancer
+    ingress:
+      main:
+        enabled: true
+        hosts:
+        - host: lldap.${DOMAIN_BASE}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          homepage:
+            enabled: true
+            group: Infrastructure
+            widget:
+              enabled: true
+          traefik:
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: ca-us
+              namespace: "traefik"
+            - name: auth
+              namespace: "traefik"
     persistence:
       data:
-        enabled: true
-        mountPath: /data
-        readOnly: false
         volsync:
         - credentials: minio
           name: data
@@ -42,9 +69,11 @@ spec:
     cnpg:
       main:
         mode: standalone
+        pgVersion: 15
+        password: ${CNPG_PASSWORD}
         backups:
           enabled: false
-          revision: "3"
+          revision: "1"
           credentials: minio
           retentionPolicy: 10d
           encryption:
@@ -53,78 +82,19 @@ spec:
           enabled: false
           method: object_store
           credentials: minio
-          revision: "2"
+          revision: "1"
         cluster:
           singleNode: true
         monitoring:
           enablePodMonitor: true
-        password: ${CNPG_PASSWORD}
-        pgVersion: 15
-    ingress:
-      main:
-        enabled: true
-        hosts:
-        - host: lldap.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
-        integrations:
-          certManager:
-            certificateIssuer: le-prod
-            enabled: true
-          #                    homepage:
-          #                        description: ""
-          #                        enabled: true
-          #                        group: Infrastructure
-          #                        icon: ""
-          #                        name: ""
-          #                        widget:
-          #                            custom:
-          #                                key: ""
-          #                            enabled: false
-          traefik:
-            enabled: true
-            entrypoints:
-            - websecure
-            middlewares:
-            - name: ca-us
-              namespace: "traefik"
-            - name: auth
-              namespace: "traefik"
-    service:
-      ldap:
-        enabled: true
-        ports:
-          ldap:
-            enabled: true
-            port: 3890
-        type: LoadBalancer
-      main:
-        enabled: true
-        ports:
-          main:
-            port: 17170
-        type: LoadBalancer
     workload:
       main:
         podSpec:
           containers:
             main:
               env:
-                smtp: false
-                LLDAP_HTTP_PORT: "{{ .Values.service.main.ports.main.port }}"
                 LLDAP_HTTP_URL: https://lldap.${DOMAIN_BASE}
-                LLDAP_JWT_SECRET:
-                - secretRef:
-                    key: LLDAP_JWT_SECRET
-                    name: secrets
                 LLDAP_LDAP_BASE_DN: ${LDAP_BASE_DN}
-                LLDAP_LDAP_PORT: "{{ .Values.service.ldap.ports.ldap.port }}"
-                LLDAP_database_url:
-                  secretKeyRef:
-                    key: std
-                    name: cnpg-main-urls
-                LLDAP_key_file: /data/private_key
                 # Admin user
                 LLDAP_LDAP_USER_DN: ${LDAP_USER_DN}
                 LLDAP_LDAP_USER_EMAIL: ${EMAIL}
@@ -138,5 +108,3 @@ spec:
                 LLDAP_SMTP_OPTIONS__PASSWORD: ${SMTP_PASSWORD}
                 LLDAP_SMTP_OPTIONS__FROM: "LLDAP <${SMTP_FROM}>"
                 LLDAP_SMTP_OPTIONS__REPLY_TO: ${SMTP_FROM}
-                # Logging
-                LLDAP_VERBOSE: true
