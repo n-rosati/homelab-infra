@@ -16,28 +16,6 @@ spec:
   releaseName: truenas-es
   values:
     release_name: truenas-es
-    ingress:
-      main:
-        enabled: true
-        hosts:
-        - host: truenas.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
-        integrations:
-          certManager:
-            certificateIssuer: le-prod
-            enabled: true
-          traefik:
-            allowCors: false
-            enabled: true
-            entrypoints:
-            - websecure
-            middlewares:
-            - name: ca-us
-              namespace: "traefik"
-            - name: auth
-              namespace: "traefik"
     service:
       main:
         type: ExternalIP
@@ -47,3 +25,21 @@ spec:
           main:
             protocol: https
             port: 444
+    ingress:
+      main:
+        enabled: true
+        hosts:
+        - host: truenas.${DOMAIN_BASE}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          traefik:
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: ca-us
+              namespace: "traefik"
+            - name: auth
+              namespace: "traefik"
