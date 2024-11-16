@@ -36,13 +36,16 @@ spec:
             certificateIssuer: le-prod
           homepage:
             enabled: true
+            name: TrueNAS
             group: Infrastructure
             href: truenas.${DOMAIN_BASE}
-            icon: truenas-scale.svg
+            icon: truenas-scale.png
             ping: ${TRUENAS_IP}
+            description: ""
             widget:
               enabled: true
               type: truenas
+              url: truenas.${DOMAIN_BASE}
               custom:
                 key: ${HOMEPAGE_TRUENAS_KEY}
           traefik:
