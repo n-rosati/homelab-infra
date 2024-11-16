@@ -48,8 +48,8 @@ spec:
             middlewares:
             - name: ca-us
               namespace: "traefik"
-            # - name: auth
-            #   namespace: "traefik"
+            - name: auth
+              namespace: "traefik"
       websocketaccess:
         enabled: true
         autoLink: true
@@ -74,8 +74,8 @@ spec:
             middlewares:
             - name: ca-us
               namespace: "traefik"
-        #     - name: auth
-        #       namespace: "traefik"
+            - name: auth
+              namespace: "traefik"
     persistence:
       db:
         enabled: true
