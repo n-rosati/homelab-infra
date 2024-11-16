@@ -15,14 +15,11 @@ spec:
         namespace: flux-system
   releaseName: cloudflareddns
   values:
-    TZ: America/Toronto
+    TZ: ${TIMEZONE}
     cloudflareddns:
       api_token: ${CF_API_TOKEN}
-      detect_mode: dig-whoami.cloudflare
       host_zone_record:
       - domain: home.${DOMAIN_BASE}
         record: A
         zone: ${CF_ZONE_ID}
-      interval: 300
-      log_level: 2
       user: ${EMAIL}
