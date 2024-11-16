@@ -89,7 +89,7 @@ spec:
         backups:
           enabled: false
           credentials: minio
-          revision: "2"
+          revision: "1"
         recovery:
           enabled: false
           credentials: minio
