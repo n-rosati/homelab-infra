@@ -43,7 +43,6 @@ spec:
             enabled: true
             certificateIssuer: le-prod
           traefik:
-            allowCors: false
             enabled: true
             entrypoints:
             - websecure
