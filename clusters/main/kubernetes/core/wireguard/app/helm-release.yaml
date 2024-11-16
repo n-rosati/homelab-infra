@@ -39,28 +39,30 @@ spec:
         bucket: ${MINIO_BUCKET_NAME}
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         secretKey: ${MINIO_SECRET_KEY}
+    securityContext:
+      container:
+        allowPrivilegeEscalation: true
+        privileged: true
+    service:
+      main:
+        type: LoadBalancer
+      vpn:
+        type: LoadBalancer
     ingress:
       main:
         enabled: true
         hosts:
         - host: vpn.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
         integrations:
           certManager:
-            certificateIssuer: le-prod
             enabled: true
+            certificateIssuer: le-prod
           homepage:
-            description: ""
             enabled: true
             group: Services
-            icon: ""
             name: Wireguard
             widget:
-              custom:
-                key: ""
-              enabled: false
+              enabled: true
           traefik:
             enabled: true
             entrypoints:
@@ -72,8 +74,6 @@ spec:
               namespace: "traefik"
     persistence:
       config:
-        enabled: true
-        mountPath: /etc/wireguard
         volsync:
         - credentials: minio
           name: minio
@@ -82,21 +82,6 @@ spec:
             enabled: false
           src:
             enabled: false
-    service:
-      main:
-        enabled: true
-        type: LoadBalancer
-        ports:
-          main:
-            port: 51821
-      vpn:
-        enabled: true
-        type: LoadBalancer
-        ports:
-          vpn:
-            enabled: true
-            port: 51820
-            protocol: udp
     workload:
       main:
         podSpec:
@@ -108,7 +93,3 @@ spec:
                 WG_PERSISTENT_KEEPALIVE: 25
                 PASSWORD_HASH: "${WG_PASSWORD_HASH}"
                 UI_TRAFFIC_STATS: true
-    securityContext:
-      container:
-        allowPrivilegeEscalation: true
-        privileged: true
