@@ -16,20 +16,24 @@ spec:
   releaseName: printer-es
   values:
     release_name: printer-es
+    service:
+      main:
+        type: ExternalIP
+        externalIP: ${PRINTER_IP}
+        ports:
+          main:
+            protocol: http
+            port: 80
     ingress:
       main:
         enabled: true
         hosts:
         - host: print.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
         integrations:
           certManager:
-            certificateIssuer: le-prod
             enabled: true
+            certificateIssuer: le-prod
           traefik:
-            allowCors: false
             enabled: true
             entrypoints:
             - websecure
@@ -38,12 +42,3 @@ spec:
               namespace: "traefik"
             - name: auth
               namespace: "traefik"
-    service:
-      main:
-        type: ExternalIP
-        externalIP: ${PRINTER_IP}
-        useSlice: false
-        ports:
-          main:
-            protocol: http
-            port: 80
