@@ -57,12 +57,12 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-          homepage:
-            enabled: true
-            group: Services
-            name: Wireguard
-            widget:
-              enabled: true
+          # homepage:
+          #   enabled: true
+          #   group: Services
+          #   name: Wireguard
+          #   widget:
+          #     enabled: true
           traefik:
             enabled: true
             entrypoints:
