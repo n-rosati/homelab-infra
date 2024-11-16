@@ -40,17 +40,22 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-          # homepage:
-          #   enabled: true
-          #   group: Downloaders
-          #   widget:
-          #     enabled: true
-          #     type: qbittorrent
-          #     customkv:
-          #     - key: username
-          #       value: ${QBITTORRENT_USER}
-          #     - key: password
-          #       value: ${QBITTORRENT_PASSWORD}
+          homepage:
+            enabled: true
+            name: ""
+            description: ""
+            group: Downloaders
+            icon: ""
+            widget:
+              enabled: true
+              type: qbittorrent
+              custom:
+                key: ""
+              customkv:
+              - key: username
+                value: ${QBITTORRENT_USER}
+              - key: password
+                value: ${QBITTORRENT_PASSWORD}
           traefik:
             enabled: true
             entrypoints:
