@@ -59,26 +59,106 @@ spec:
             enabled: false
           src:
             enabled: false
-    addons:
-      codeserver:
-        enabled: true
-        workingDir: "/app/config"
-        ingress:
-          enabled: true
-          hosts:
-          - host: edit-homepage.nicholasrosati.xyz
-          integrations:
-            certManager:
-              enabled: true
-              certificateIssuer: le-prod
-            traefik:
-              enabled: true
-              entrypoints:
-              - websecure
-              middlewares:
-              - name: auth
-                namespace: "traefik"
-              - name: ca-us
-                namespace: "traefik"
-        service:
-          type: LoadBalancer
+    # addons:
+    #   codeserver:
+    #     enabled: true
+    #     workingDir: "/app/config"
+    #     ingress:
+    #       enabled: true
+    #       hosts:
+    #       - host: edit-homepage.nicholasrosati.xyz
+    #       integrations:
+    #         certManager:
+    #           enabled: true
+    #           certificateIssuer: le-prod
+    #         traefik:
+    #           enabled: true
+    #           entrypoints:
+    #           - websecure
+    #           middlewares:
+    #           - name: auth
+    #             namespace: "traefik"
+    #           - name: ca-us
+    #             namespace: "traefik"
+    #     service:
+    #       type: LoadBalancer
+    forceConfigFromValues: true
+    configMap:
+      config:
+        data:
+          settings.yaml: |
+            statusStyle: "dot"
+            useEqualHeights: true
+            headerStyle: boxed
+            target: _blank
+            quicklaunch:
+              searchDescriptions: true
+              hideInternetSearch: false
+              hideVisitURL: false
+          widgets.yaml: |
+            - datetime: 
+              text_size: x1
+              format:
+                timeStyle: "short"
+                dateStyle: "full"
+            - search:
+            provider: [ bing, google ]
+            target: _self
+            - kubernetes:
+              cluster:
+                show: true
+                cpu: true
+                memory: true
+          services.yaml: |
+            - Games:
+              - Jack and Nicholas:
+                  icon: minecraft.svg
+                  widget:
+                    type: minecraft
+                    fields: [ "players", "version", "status" ]
+                    url: udp://${JAN_DNS_NAME}:25565
+              - Jack and Nicholas 2:
+                  icon: minecraft.svg
+                  widget:
+                    type: minecraft
+                    fields: [ "players", "version", "status" ]
+                    url: udp://${JAN_2_DNS_NAME}:25565
+              - Statech Industry:
+                  icon: https://i.imgur.com/PAj6tW1.png
+                  widget:
+                    type: minecraft
+                    fields: [ "players", "version", "status" ]
+                    url: udp://${STATECH_INDUSTRY_DNS}:25565
+            - Infrastructure:
+              - Home Assistant:
+                  href: https://homeassistant.nicholasrosati.xyz
+                  icon: home-assistant.png
+                  ping: ${HOMEASSISTANT_IP}
+                  widget:
+                    type: homeassistant
+                    url: http://${HOMEASSISTANT_IP}:8123
+                    key: ${HOMEPAGE_HOMEASSISTANT_KEY}
+              - TrueNAS:
+                  href: https://truenas.${DOMAIN_BASE}
+                  icon: truenas-scale.png
+                  ping: ${TRUENAS_IP}
+                  widget:
+                    type: truenas
+                    url: http://${TRUENAS_IP}:81
+                    key: ${HOMEPAGE_TRUENAS_KEY}
+            - Services:
+              - PartDB:
+                  href: https://partdb.${DOMAIN_BASE}
+                  icon: https://docs.part-db.de/assets/favicon.ico
+                  # ping: ${PARTDB_DNS}
+                  widget:
+                    type: customapi
+                    url: http://${PARTDB_DNS}:3000/api/parts
+                    refreshInterval: 10000 #milliseconds
+                    method: GET
+                    headers:
+                      Authorization: Bearer ${HOMEPAGE_PARTDB_KEY}
+                    mappings:
+                    - field: hydra:totalItems
+                      label: Total Parts
+                      format: number
