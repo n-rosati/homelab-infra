@@ -46,9 +46,11 @@ spec:
             widget:
               enabled: true
               type: qbittorrent
-              custom:
-              - username: ${QBITTORRENT_USER}
-              - password: ${QBITTORRENT_PASSWORD}
+              customkv:
+              - key: username
+                value: ${QBITTORRENT_USER}
+              - key: password
+                value: ${QBITTORRENT_PASSWORD}
           traefik:
             enabled: true
             entrypoints:
