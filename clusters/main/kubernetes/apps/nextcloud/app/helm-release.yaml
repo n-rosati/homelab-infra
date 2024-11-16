@@ -36,6 +36,9 @@ spec:
         enabled: true
         hosts:
         - host: nextcloud.${DOMAIN_BASE}
+          paths:
+          - path: /
+            pathType: Prefix
         integrations:
           certManager:
             certificateIssuer: le-prod
