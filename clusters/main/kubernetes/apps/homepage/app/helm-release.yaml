@@ -128,7 +128,7 @@ spec:
                   widget:
                     type: minecraft
                     fields: [ "players", "version", "status" ]
-                    url: udp://${STATECH_INDUSTRY_DNS}:25565
+                    url: udp://${STATECH_INDUSTRY_DNS_NAME}:25565
             - Infrastructure:
               - Home Assistant:
                   href: https://homeassistant.nicholasrosati.xyz
