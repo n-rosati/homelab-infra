@@ -41,7 +41,7 @@ spec:
     service:
       main:
         type: ExternalIP
-        externalIP: ${TN_NFS_SERVER}
+        externalIP: ${TRUENAS_IP}
         useSlice: false
         ports:
           main:

@@ -84,7 +84,7 @@ spec:
       data:
         enabled: true
         type: nfs
-        server: ${TN_NFS_SERVER}
+        server: ${TRUENAS_IP}
         path: /mnt/Speed/nextcloud-data
         autoPermissions:
           enabled: false

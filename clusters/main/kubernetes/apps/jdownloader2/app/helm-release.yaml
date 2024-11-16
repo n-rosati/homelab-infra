@@ -69,7 +69,7 @@ spec:
         mountPath: /output
         path: /mnt/DSU/Software/Downloads
         readOnly: false
-        server: ${TN_NFS_SERVER}
+        server: ${TRUENAS_IP}
     service:
       main:
         enabled: true

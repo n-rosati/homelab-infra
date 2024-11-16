@@ -81,7 +81,7 @@ spec:
         type: nfs
         path: /mnt/DSU/Software/Torrents
         mountPath: /mnt/Torrents
-        server: ${TN_NFS_SERVER}
+        server: ${TRUENAS_IP}
     qbitportforward:
       enabled: false
       QBT_USERNAME: ${QBITTORRENT_USER}

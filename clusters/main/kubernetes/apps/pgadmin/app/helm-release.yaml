@@ -34,7 +34,7 @@ spec:
       nfs-vol:
         enabled: true
         type: nfs
-        server: "${TN_NFS_SERVER}"
+        server: "${TRUENAS_IP}"
         path: /mnt/DSU/Backups/pgAdmin
         mountPath: /var/lib/pgadmin/storage/nicholas_rosati.xyz
       config:

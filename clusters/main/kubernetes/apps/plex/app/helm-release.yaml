@@ -76,7 +76,7 @@ spec:
         type: nfs
         path: /mnt/DSU/Media
         mountPath: /media
-        server: ${TN_NFS_SERVER}
+        server: ${TRUENAS_IP}
     plex:
       serverIP: ${PLEX_IP}
       additionalAdvertiseURL: ""
@@ -101,5 +101,4 @@ spec:
                 ALLOWED_NETWORKS: 172.16.0.0/12,10.0.0.0/24,192.168.0.0/16
                 PLEX_CLAIM: ${PLEX_CLAIM_TOKEN}
                 PLEX_PREFERENCE_GDM: GdmEnabled={{ ternary "0" "1" .Values.plex.disableGDM }}
-                PLEX_PREFERENCE_SEC_CON: secureConnections={{ ternary "0" "1"
-                  .Values.plex.requireHTTPS }}
+                PLEX_PREFERENCE_SEC_CON: secureConnections={{ ternary "0" "1" .Values.plex.requireHTTPS }}
