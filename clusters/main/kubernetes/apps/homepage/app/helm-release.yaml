@@ -61,11 +61,9 @@ spec:
             - search:
             provider: [ bing, google ]
             target: _self
-            - kubernetes:
-              cluster:
-                show: true
-                cpu: true
-                memory: true
+            - resources:
+              cpu: true
+              memory: true
           services.yaml: |
             - Games:
               - Jack and Nicholas:
