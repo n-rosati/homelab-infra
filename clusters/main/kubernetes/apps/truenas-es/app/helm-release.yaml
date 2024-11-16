@@ -34,6 +34,17 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
+          homepage:
+            enabled: true
+            group: Infrastructure
+            href: truenas.${DOMAIN_BASE}
+            icon: truenas-scale.svg
+            ping: ${TRUENAS_IP}
+            widget:
+              enabled: true
+              type: truenas
+              custom:
+                key: ${HOMEPAGE_TRUENAS_KEY}
           traefik:
             enabled: true
             entrypoints:
