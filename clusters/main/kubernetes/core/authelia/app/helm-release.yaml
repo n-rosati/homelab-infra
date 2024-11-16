@@ -51,9 +51,9 @@ spec:
             entrypoints:
             - websecure
             middlewares:
-            - name: ca-us
-              namespace: "traeik"
             - name: ratelimit
+              namespace: "traefik"
+            - name: ca-us
               namespace: "traefik"
     cnpg:
       main:
