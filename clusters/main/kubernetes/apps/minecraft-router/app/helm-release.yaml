@@ -15,8 +15,9 @@ spec:
         namespace: flux-system
   releaseName: minecraft-router
   values:
+    global:
+      stopAll: false
     timezone: ${TIMEZONE}
-    args: [ "--in-kube-cluster" ]
     ingress:
       main:
         enabled: true
