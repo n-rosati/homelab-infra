@@ -59,29 +59,6 @@ spec:
             enabled: false
           src:
             enabled: false
-    # addons:
-    #   codeserver:
-    #     enabled: true
-    #     workingDir: "/app/config"
-    #     ingress:
-    #       enabled: true
-    #       hosts:
-    #       - host: edit-homepage.nicholasrosati.xyz
-    #       integrations:
-    #         certManager:
-    #           enabled: true
-    #           certificateIssuer: le-prod
-    #         traefik:
-    #           enabled: true
-    #           entrypoints:
-    #           - websecure
-    #           middlewares:
-    #           - name: auth
-    #             namespace: "traefik"
-    #           - name: ca-us
-    #             namespace: "traefik"
-    #     service:
-    #       type: LoadBalancer
     forceConfigFromValues: true
     configMap:
       config:
@@ -162,3 +139,4 @@ spec:
                     - field: hydra:totalItems
                       label: Total Parts
                       format: number
+          bookmarks.yaml: ""
