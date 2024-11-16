@@ -47,6 +47,7 @@ spec:
             enabled: true
             group: Services
             href: k8s-dash.${DOMAIN_BASE}
+            icon: kubernetes.png
             widget:
               enabled: false
           traefik:
