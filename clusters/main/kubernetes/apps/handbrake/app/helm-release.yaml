@@ -15,6 +15,8 @@ spec:
         namespace: flux-system
   releaseName: handbrake
   values:
+    global:
+      stopAll: false
     TZ: ${TIMEZONE}
     release_name: handbrake
     credentials:
@@ -26,40 +28,22 @@ spec:
         bucket: ${MINIO_BUCKET_NAME}
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         secretKey: ${MINIO_SECRET_KEY}
-    handbrake:
-      KEEP_APP_RUNNING: true
-      DISPLAY_WIDTH: 1280
-      DISPLAY_HEIGHT: 768
-      SECURE_CONNECTION: false
-      ENABLE_CJK_FONT: false
-      AUTOMATED_CONVERSION_PRESET: General/Fast 1080pSourceFPS
-      AUTOMATED_CONVERSION_FORMAT: mp4
-      AUTOMATED_CONVERSION_KEEP_SOURCE: true
-      AUTOMATED_CONVERSION_NON_VIDEO_FILE_ACTION: ignore
+    service:
+      main:
+        type: LoadBalancer
     ingress:
       main:
         enabled: true
         hosts:
         - host: handbrake.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
         integrations:
           certManager:
-            certificateIssuer: le-prod
             enabled: true
+            certificateIssuer: le-prod
           homepage:
-            description: ""
             enabled: true
             group: Services
-            icon: ""
-            name: ""
-            widget:
-              custom:
-                key: ""
-              enabled: false
           traefik:
-            allowCors: false
             enabled: true
             entrypoints:
             - websecure
@@ -68,17 +52,17 @@ spec:
               namespace: "traefik"
             - name: auth
               namespace: "traefik"
+    handbrake:
+      KEEP_APP_RUNNING: true
+      AUTOMATED_CONVERSION_PRESET: General/Fast 1080pSourceFPS
     persistence:
       config:
-        enabled: true
-        mountPath: /config
-        readOnly: false
         volsync:
         - credentials: minio
           name: minio
           type: restic
           dest:
-            enabled: true
+            enabled: false
           src:
             enabled: false
       storage:
@@ -95,24 +79,8 @@ spec:
         server: ${TRUENAS_IP}
         path: /mnt/DSU/Media/Handbrake/Output
         mountPath: /output
-    service:
-      main:
-        enabled: true
-        type: LoadBalancer
-        loadBalancerIP: ""
-        ports:
-          main:
-            port: 10053
-            targetPort: 5800
       vnc:
-        enabled: true
         type: LoadBalancer
-        loadBalancerIP: ""
-        ports:
-          vnc:
-            enabled: true
-            port: 10055
-            targetPort: 5900
     # workload:
     #   main:
     #     podSpec:
