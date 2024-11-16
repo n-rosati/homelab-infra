@@ -15,25 +15,10 @@ spec:
         namespace: flux-system
   releaseName: jan-2
   values:
+    release_name: jan-2
     global:
       stopAll: true
-    image:
-      repository: docker.io/itzg/minecraft-server
-      tag: 2024.10.2-java17@sha256:db3ccc7db5371a7a4e7edf8696ccfa177f4b71a29ffbecc76e21a663d1bcf98d
-      pullPolicy: Always
     TZ: ${TIMEZONE}
-    release_name: jan-2
-    addons:
-      codeserver:
-        enabled: true
-        ingress:
-          enabled: false
-        service:
-          type: LoadBalancer
-          loadBalancerIP: ""
-          ports:
-            codeserver:
-              port: 36107
     credentials:
       minio:
         name: minio
@@ -43,54 +28,6 @@ spec:
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         secretKey: ${MINIO_SECRET_KEY}
         url: ${MINIO_BUCKET_URL}
-    mcbackup:
-      backup_interval: 1h
-      enabled: true
-      excludes:
-      - '*.jar'
-      - cache
-      - logs
-      - '*.tmp'
-      initial_delay: 2m
-      link_latest: false
-      pause_if_no_players: false
-      player_online_check_interval: 5m
-      prune_backups_days: 7
-      tar_compress_method: gzip
-      zstd_params:
-      - --long=25
-      - --single-thread
-    persistence:
-      data:
-        enabled: true
-        readOnly: false
-        storageClass: ""
-        targetSelector:
-          main:
-            main:
-              mountPath: /data
-          mcbackup:
-            mcbackup:
-              mountPath: /data
-              readOnly: true
-        volsync:
-        - credentials: minio
-          name: minio
-          type: restic
-          dest:
-            enabled: true
-          src:
-            enabled: false
-      backups:
-        enabled: true
-        type: nfs
-        path: /mnt/DSU/Backups/Minecraft/jan-2
-        readOnly: false
-        server: ${TRUENAS_IP}
-        targetSelector:
-          mcbackup:
-            mcbackup:
-              mountPath: /backups
     service:
       main:
         enabled: true
@@ -98,110 +35,56 @@ spec:
       rcon:
         enabled: true
         type: LoadBalancer
+    persistence:
+      data:
+        volsync:
+        - credentials: minio
+          name: minio
+          type: restic
+          dest:
+            enabled: false
+          src:
+            enabled: false
+      backups:
+        type: nfs
+        path: /mnt/DSU/Backups/Minecraft/jan-2
+        server: ${TRUENAS_IP}
     workload:
       main:
-        replicas: 1
-        type: Deployment
         podSpec:
           containers:
             main:
+              imageSelector: image
               env:
-                ALLOW_NETHER: true
-                ANNOUNCE_PLAYER_ACHIEVEMENTS: true
-                DIFFICULTY: easy
-                ENABLE_COMMAND_BLOCK: true
-                ENABLE_QUERY: "true"
-                EULA: true
-                FABRIC_INSTALLER: ""
-                FABRIC_INSTALLER_URL: ""
-                FABRIC_LOADER_VERSION: 0.14.21
-                FORCE_GAMEMODE: false
-                FORCE_REDOWNLOAD: "false"
-                GENERATE_STRUCTURES: true
-                GENERATOR_SETTINGS: ""
-                GUI: "FALSE"
-                HARDCORE: false
-                ICON: ""
-                JVM_OPTS: ""
-                JVM_XX_OPTS: ""
-                LEVEL: world
-                LEVEL_TYPE: DEFAULT
-                MAX_BUILD_HEIGHT: 256
-                MAX_PLAYERS: 2
-                MAX_TICK_TIME: 60000
-                MAX_WORLD_SIZE: 10000
-                MEMORY: 3G
-                MODE: survival
-                MOTD: <3
-                ONLINE_MODE: true
                 OPS: SunnyEar4432867,Hydranoid620
-                OVERRIDE_SERVER_PROPERTIES: true
-                PACKWIZ_URL: ""
+                WHITELIST: Hydranoid620,SunnyEar4432867
+                ENABLE_COMMAND_BLOCK: true
+                FABRIC_LOADER_VERSION: 0.14.21
+                FORCE_REDOWNLOAD: "false"
+                MAX_PLAYERS: 2
+                MEMORY: 3G
+                MOTD: <3
                 PVP: true
-                QUERY_PORT: '{{ .Values.service.main.ports.query.port }}'
                 RCON_PASSWORD: ${MC_RCON_PASSWORD}
-                RCON_PORT: '{{ .Values.service.rcon.ports.rcon.port }}'
                 SEED: "-2750416327677348285"
-                SERVER_PORT: '{{ .Values.service.main.ports.main.port }}'
-                SPAWN_ANIMALS: true
-                SPAWN_MONSTERS: true
-                SPAWN_NPCS: true
                 TYPE: FABRIC
                 USE_AIKAR_FLAGS: true
+                USE_SIMD_FLAGS: true
                 USE_FLARE_FLAGS: false
-                USE_SIMD_FLAGS: false
                 VERSION: 1.19.2
-                VIEW_DISTANCE: 16
-                WHITELIST: Hydranoid620,SunnyEar4432867
-                WORLD: ""
-                advanced: true
-              imageSelector: image
-              probes:
-                liveness:
-                  command:
-                  - mc-health
-                  enabled: true
-                  type: exec
-                readiness:
-                  command:
-                  - mc-health
-                  enabled: true
-                  type: exec
-                startup:
-                  command:
-                  - mc-health
-                  enabled: true
-                  type: exec
-      mcbackup:
-        enabled: true
-        type: Deployment
-        podSpec:
-          containers:
             mcbackup:
-              enabled: true
               env:
-                BACKUP_INTERVAL: '{{ .Values.mcbackup.backup_interval }}'
-                BACKUP_METHOD: tar
-                DEST_DIR: '{{.Values.persistence.backups.mountPath }}'
-                EXCLUDES: '{{ join "," .Values.mcbackup.excludes }}'
-                INITIAL_DELAY: '{{ .Values.mcbackup.initial_delay }}'
-                LINK_LATEST: '{{ .Values.mcbackup.link_latest }}'
-                PAUSE_IF_NO_PLAYERS: '{{ .Values.mcbackup.pause_if_no_players }}'
-                PLAYERS_ONLINE_CHECK_INTERVAL: '{{ .Values.mcbackup.player_online_check_interval }}'
-                PRUNE_BACKUPS_DAYS: '{{ .Values.mcbackup.prune_backups_days }}'
-                RCON_HOST: '{{ printf "%s-rcon" (include "tc.v1.common.lib.chart.names.fullname" $) }}'
-                RCON_PASSWORD: '{{ .Values.workload.main.podSpec.containers.main.env.RCON_PASSWORD }}'
-                RCON_PORT: '{{ .Values.service.rcon.ports.rcon.port }}'
-                SERVER_PORT: '{{ .Values.service.main.ports.main.port }}'
-                SRC_DIR: '{{.Values.persistence.data.mountPath }}'
-                TAR_COMPRESS_METHOD: '{{ .Values.mcbackup.tar_compress_method }}'
-                ZSTD_PARAMETERS: '{{ join " " .Values.mcbackup.zstd_params }}'
-              imageSelector: mcBackupImage
-              primary: true
-              probes:
-                liveness:
-                  enabled: false
-                readiness:
-                  enabled: false
-                startup:
-                  enabled: false
+                BACKUP_INTERVAL: "1h"
+                INITIAL_DELAY: '2m'
+                LINK_LATEST: 'false'
+                PAUSE_IF_NO_PLAYERS: 'false'
+                PLAYERS_ONLINE_CHECK_INTERVAL: '5m'
+                PRUNE_BACKUPS_DAYS: '7'
+                TAR_COMPRESS_METHOD: 'zstd'
+    addons:
+      codeserver:
+        enabled: true
+        ingress:
+          enabled: false
+        service:
+          type: LoadBalancer
