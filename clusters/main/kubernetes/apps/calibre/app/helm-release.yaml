@@ -44,9 +44,9 @@ spec:
             certificateIssuer: le-prod
           homepage:
             enabled: true
-            group: Services
             name: "Calibre"
             description: ""
+            group: Services
             icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Calibre_logo_3.png/120px-Calibre_logo_3.png"
           traefik:
             allowCors: false
