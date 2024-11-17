@@ -107,7 +107,7 @@ spec:
                   icon: https://docs.part-db.de/assets/favicon.ico
                   # ping: ${PARTDB_DNS}
                   namespace: part-db
-                  app: part-db
+                  app: app-template
                   widget:
                     type: customapi
                     url: http://${PARTDB_DNS}:3000/api/parts
