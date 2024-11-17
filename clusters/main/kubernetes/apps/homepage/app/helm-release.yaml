@@ -39,6 +39,10 @@ spec:
               namespace: "traefik"
             - name: ca-us
               namespace: "traefik"
+    persistence:
+      cache:
+        type: pvc
+        mountPath: /app/.next
     forceConfigFromValues: true
     configmap:
       config:
