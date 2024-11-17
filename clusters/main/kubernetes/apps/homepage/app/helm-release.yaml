@@ -102,7 +102,7 @@ spec:
               - PartDB:
                   href: https://partdb.${DOMAIN_BASE}
                   icon: https://docs.part-db.de/assets/favicon.ico
-                  # ping: ${PARTDB_DNS}
+                  ping: ${PARTDB_DNS}
                   widget:
                     type: customapi
                     url: http://${PARTDB_DNS}:3000/api/parts
