@@ -62,7 +62,7 @@ spec:
                 provider: [ bing, google ]
                 target: _self
           services.yaml: |
-            - Games:
+            - Minecraft:
               - Jack and Nicholas:
                   icon: minecraft.svg
                   widget:
