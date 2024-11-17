@@ -57,12 +57,16 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-          # homepage:
-          #   enabled: true
-          #   group: Services
-          #   name: Wireguard
-          #   widget:
-          #     enabled: true
+          homepage:
+            enabled: true
+            group: Services
+            name: Wireguard
+            href: vpn.${DOMAIN_BASE}
+            widget:
+              enabled: true
+              type: wgeasy
+              custom:
+                password: ${WG_PASSWORD_HASH}
           traefik:
             enabled: true
             entrypoints:
