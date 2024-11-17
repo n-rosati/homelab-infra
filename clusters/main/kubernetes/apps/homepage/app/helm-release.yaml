@@ -61,6 +61,13 @@ spec:
             - search:
                 provider: [ bing, google ]
                 target: _self
+            - kubernetes:
+                cluster:
+                  show: true
+                  cpu: true
+                  memory: true
+                nodes: 
+                  show: false
           services.yaml: |
             - Minecraft:
               - Jack and Nicholas:
