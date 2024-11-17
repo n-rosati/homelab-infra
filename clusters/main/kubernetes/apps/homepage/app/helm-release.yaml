@@ -54,13 +54,13 @@ spec:
               hideVisitURL: false
           widgets.yaml: |
             - datetime: 
-              text_size: x1
-              format:
-                timeStyle: "short"
-                dateStyle: "full"
+                text_size: x1
+                format:
+                  timeStyle: "short"
+                  dateStyle: "full"
             - search:
-              provider: [ bing, google ]
-              target: _self
+                provider: [ bing, google ]
+                target: _self
           services.yaml: |
             - Games:
               - Jack and Nicholas:
