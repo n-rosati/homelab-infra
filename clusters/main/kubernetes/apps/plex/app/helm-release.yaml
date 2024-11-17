@@ -51,9 +51,9 @@ spec:
               custom:
                 key: ${HOMEPAGE_PLEX_KEY}
                 fields:
-                - streams
-                - movies
-                - tv
+                - "streams"
+                - "movies"
+                - "tv"
           traefik:
             enabled: true
             entrypoints:
