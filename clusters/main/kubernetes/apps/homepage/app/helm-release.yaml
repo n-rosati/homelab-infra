@@ -42,7 +42,8 @@ spec:
     persistence:
       cache:
         enabled: true
-        type: pvc
+        type: emptyDir
+        medium: Memory
         mountPath: /app/.next
         targetSelectAll: true
     forceConfigFromValues: true
