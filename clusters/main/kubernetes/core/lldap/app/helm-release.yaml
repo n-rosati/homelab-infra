@@ -46,7 +46,7 @@ spec:
             enabled: true
             name: LLDAP
             group: Infrastructure
-            href: lldap.${DOMAIN_BASE}
+            href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
             widget:
               enabled: false
           traefik:

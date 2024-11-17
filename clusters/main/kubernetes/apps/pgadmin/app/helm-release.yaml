@@ -42,7 +42,10 @@ spec:
             certificateIssuer: le-prod
           homepage:
             enabled: true
-            group: Services
+            name: PGAdmin
+            group: Apps
+            icon: pgadmin.svg
+            href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
           traefik:
             enabled: true
             entrypoints:

@@ -45,7 +45,7 @@ spec:
             enabled: true
           homepage:
             enabled: true
-            group: Public
+            group: Apps
             widget:
               enabled: true
               custom:

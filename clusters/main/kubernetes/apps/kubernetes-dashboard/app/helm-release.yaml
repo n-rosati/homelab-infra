@@ -45,8 +45,8 @@ spec:
             certificateIssuer: le-prod
           homepage:
             enabled: true
-            group: Services
-            href: k8s-dash.${DOMAIN_BASE}
+            group: Apps
+            href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
             icon: kubernetes.png
             name: Kubernetes Dashboard
             widget:

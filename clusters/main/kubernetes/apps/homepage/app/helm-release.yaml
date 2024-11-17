@@ -90,7 +90,7 @@ spec:
                     url: udp://${STATECH_INDUSTRY_DNS_NAME}:25565
             - Infrastructure:
               - Home Assistant:
-                  href: https://homeassistant.nicholasrosati.xyz
+                  href: https://homeassistant.${DOMAIN_BASE}
                   icon: home-assistant.png
                   ping: ${HOMEASSISTANT_IP}
                   widget:

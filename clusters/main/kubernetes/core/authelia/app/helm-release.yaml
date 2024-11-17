@@ -38,13 +38,6 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-          # homepage:
-          #   enabled: true
-          #   group: Infrastructure
-          #   widget:
-          #     enabled: false
-          #     custom:
-          #       key: ""
           traefik:
             allowCors: true
             enabled: true

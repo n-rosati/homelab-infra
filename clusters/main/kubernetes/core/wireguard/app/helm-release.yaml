@@ -59,9 +59,9 @@ spec:
             certificateIssuer: le-prod
           homepage:
             enabled: true
-            group: Services
+            group: Infrastructure
             name: Wireguard
-            href: vpn.${DOMAIN_BASE}
+            href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
             widget:
               enabled: true
               type: wgeasy
