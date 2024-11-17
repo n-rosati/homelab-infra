@@ -65,8 +65,7 @@ spec:
             widget:
               enabled: true
               type: wgeasy
-              custom:
-                password: ${WG_PASSWORD}
+              password: ${WG_PASSWORD}
           traefik:
             enabled: true
             entrypoints:
