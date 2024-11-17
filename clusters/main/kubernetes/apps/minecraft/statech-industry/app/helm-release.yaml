@@ -54,7 +54,7 @@ spec:
         podSpec:
           containers:
             main:
-              imageSelector: j17image
+              imageSelector: j17Image
               env:
                 OPS: Hydranoid620,b227
                 WHITELIST: Hydranoid620,b227
