@@ -59,8 +59,8 @@ spec:
                 timeStyle: "short"
                 dateStyle: "full"
             - search:
-            provider: [ bing, google ]
-            target: _self
+              provider: [ bing, google ]
+              target: _self
             - resources:
               cpu: true
               memory: true
