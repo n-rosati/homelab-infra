@@ -44,7 +44,10 @@ spec:
             certificateIssuer: le-prod
           homepage:
             enabled: true
+            name: Handbrake
             group: Media
+            icon: handbrake.svg
+            href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
           traefik:
             enabled: true
             entrypoints:
