@@ -51,7 +51,6 @@ spec:
             widget:
               enabled: true
               type: jdownloader
-              url: jdownloader.${DOMAIN_BASE}
               custom:
                 username: ${JDOWNLOADER_USERNAME}
                 password: ${JDOWNLOADER_PASSWORD}
