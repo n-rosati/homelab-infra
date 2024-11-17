@@ -39,13 +39,6 @@ spec:
               namespace: "traefik"
             - name: ca-us
               namespace: "traefik"
-    persistence:
-      cache:
-        enabled: true
-        type: emptyDir
-        medium: Memory
-        mountPath: /app/.next
-        targetSelectAll: true
     forceConfigFromValues: true
     configmap:
       config:
