@@ -66,7 +66,7 @@ spec:
               enabled: true
               type: wgeasy
               custom:
-                password: ${WG_PASSWORD_HASH}
+                password: ${WG_PASSWORD}
           traefik:
             enabled: true
             entrypoints:
