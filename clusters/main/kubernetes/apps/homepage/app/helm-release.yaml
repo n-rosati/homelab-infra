@@ -61,9 +61,11 @@ spec:
             - search:
               provider: [ bing, google ]
               target: _self
-            - resources:
-              cpu: true
-              memory: true
+            - kubernetes:
+                cluster:
+                  show: true
+                  cpu: true
+                  memory: true
           services.yaml: |
             - Games:
               - Jack and Nicholas:
@@ -106,8 +108,6 @@ spec:
                   href: https://partdb.${DOMAIN_BASE}
                   icon: https://docs.part-db.de/assets/favicon.ico
                   # ping: ${PARTDB_DNS}
-                  namespace: part-db
-                  app: app-template
                   widget:
                     type: customapi
                     url: http://${PARTDB_DNS}:3000/api/parts
