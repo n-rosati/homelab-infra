@@ -19,3 +19,4 @@ resources:
 - minecraft
 - filebrowser/ks.yaml
 - minecraft-router/ks.yaml
+- ps3netsrv/ks.yaml
