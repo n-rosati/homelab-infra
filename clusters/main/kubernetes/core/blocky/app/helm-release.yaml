@@ -30,7 +30,7 @@ spec:
     ## set stopAll to "true" if you do not want to use blocky
     # and/or disable its service
     global:
-      stopAll: true
+      stopAll: false
     service:
       dns:
         externalTrafficPolicy: Local
