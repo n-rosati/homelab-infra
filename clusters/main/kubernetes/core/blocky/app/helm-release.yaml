@@ -69,5 +69,5 @@ spec:
     cnpg:
       main:
         enabled: false
-      cluster:
-        singleNode: true
+        cluster:
+          singleNode: true
