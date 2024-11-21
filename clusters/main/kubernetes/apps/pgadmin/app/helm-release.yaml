@@ -61,7 +61,7 @@ spec:
         enabled: true
         type: nfs
         server: "${TRUENAS_IP}"
-        path: "/mnt/DSU/Software/App Storage/pgAdmin"
+        path: ${NFS_APPS_PATH}/pgAdmin
         mountPath: /var/lib/pgadmin/storage/nicholas_rosati.xyz
       config:
         volsync:
