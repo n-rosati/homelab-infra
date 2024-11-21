@@ -16,7 +16,7 @@ spec:
   releaseName: calibre
   values:
     global:
-      stopAll: true
+      stopAll: false
     release_name: calibre
     TZ: ${TIMEZONE}
     credentials:
@@ -71,5 +71,5 @@ spec:
         type: nfs
         enabled: true
         server: ${TRUENAS_IP}
-        path: /mnt/DSU/Software/Calibre Library
+        path: ${NFS_APPS_PATH}/Calibre
         mountPath: /mnt/Library
