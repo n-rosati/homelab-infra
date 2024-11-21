@@ -75,7 +75,6 @@ spec:
         server: ${TRUENAS_IP}
     plex:
       serverIP: ${PLEX_IP}
-      additionalAdvertiseURL: ""
     workload:
       main:
         podSpec:
