@@ -70,7 +70,7 @@ spec:
       media:
         enabled: true
         type: nfs
-        path: /mnt/DSU/Media
+        path: ${NFS_MEDIA_PATH}
         mountPath: /media
         server: ${TRUENAS_IP}
     plex:
