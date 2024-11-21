@@ -17,7 +17,7 @@ spec:
   values:
     release_name: nextcloud
     global:
-      stopAll: true
+      stopAll: false
     TZ: ${TIMEZONE}
     credentials:
       minio:
@@ -79,7 +79,7 @@ spec:
       data:
         type: nfs
         server: ${TRUENAS_IP}
-        path: /mnt/Speed/nextcloud-data
+        path: ${NFS_APPS_PATH}/Nextcloud
     cnpg:
       main:
         hibernate: false
