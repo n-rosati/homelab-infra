@@ -72,7 +72,7 @@ spec:
       data:
         enabled: true
         type: nfs
-        path: /mnt/DSU/Software/Torrents
+        path: ${NFS_APPS_PATH}/qBittorrent
         mountPath: /mnt/Torrents
         server: ${TRUENAS_IP}
     qbitportforward:
