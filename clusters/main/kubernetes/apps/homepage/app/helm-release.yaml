@@ -103,7 +103,7 @@ spec:
                   ping: ${TRUENAS_IP}
                   widget:
                     type: truenas
-                    url: http://${TRUENAS_IP}:81
+                    url: http://${TRUENAS_IP}
                     key: ${HOMEPAGE_TRUENAS_KEY}
             - Apps:
               - PartDB:
