@@ -77,14 +77,14 @@ spec:
         enabled: true
         readOnly: false
         server: ${TRUENAS_IP}
-        path: /mnt/DSU/Media/Handbrake/Input
+        path: ${NFS_MEDIA_PATH}/Handbrake/Input
         mountPath: /storage
       output:
         type: nfs
         enabled: true
         readOnly: false
         server: ${TRUENAS_IP}
-        path: /mnt/DSU/Media/Handbrake/Output
+        path: ${NFS_MEDIA_PATH}/Handbrake/Output
         mountPath: /output
     # workload:
     #   main:
