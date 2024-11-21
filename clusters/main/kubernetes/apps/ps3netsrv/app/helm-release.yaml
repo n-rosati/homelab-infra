@@ -16,7 +16,7 @@ spec:
   releaseName: ps3netsrv
   values:
     global:
-      stopAll: true
+      stopAll: false
     service:
       main:
         type: LoadBalancer
@@ -24,6 +24,6 @@ spec:
     persistence:
       games:
         type: nfs
-        path: /mnt/DSU/Software/ISOs/PS3
+        path: ${NFS_APPS_PATH}/ps3netsrv
         mountPath: /games
         server: ${TRUENAS_IP}
