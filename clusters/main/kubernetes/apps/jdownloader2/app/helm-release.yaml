@@ -16,7 +16,7 @@ spec:
   releaseName: jdownloader2
   values:
     global:
-      stopAll: true
+      stopAll: false
     release_name: jdownloader2
     TZ: ${TIMEZONE}
     credentials:
@@ -77,7 +77,7 @@ spec:
         type: nfs
         enabled: true
         mountPath: /output
-        path: /mnt/DSU/Software/Downloads
+        path: ${NFS_APPS_PATH}/JDownloader2
         server: ${TRUENAS_IP}
     jdownloader:
       KEEP_APP_RUNNING: true
