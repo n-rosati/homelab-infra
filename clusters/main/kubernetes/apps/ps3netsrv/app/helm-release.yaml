@@ -16,7 +16,7 @@ spec:
   releaseName: ps3netsrv
   values:
     global:
-      stopAll: false
+      stopAll: true
     service:
       main:
         type: LoadBalancer
