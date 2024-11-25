@@ -51,8 +51,8 @@ spec:
             entrypoints:
             - websecure
             middlewares:
-            - name: auth
-              namespace: "traefik"
+            # - name: auth
+            #   namespace: "traefik"
             - name: ca-us
               namespace: "traefik"
     persistence:
