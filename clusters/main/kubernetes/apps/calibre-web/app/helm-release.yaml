@@ -39,7 +39,7 @@ spec:
         integrations:
           certManager:
             enabled: true
-            certificateIssuer: le-staging
+            certificateIssuer: le-prod
           homepage:
             enabled: true
             group: Media
