@@ -1,22 +1,23 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- kubernetes-dashboard/ks.yaml
-- cloudflareddns/ks.yaml
-- pgadmin/ks.yaml
-- homepage/ks.yaml
-- nextcloud/ks.yaml
-- plex/ks.yaml
-- qbittorrent/ks.yaml
-- jdownloader2/ks.yaml
-- truenas-es/ks.yaml
-- homeassistant-es/ks.yaml
-- printer-es/ks.yaml
-- rcon-webadmin/ks.yaml
-- part-db/ks.yaml
-- calibre/ks.yaml
-- handbrake/ks.yaml
-- minecraft
-- filebrowser/ks.yaml
-- minecraft-router/ks.yaml
-- ps3netsrv/ks.yaml
+  - kubernetes-dashboard/ks.yaml
+  - cloudflareddns/ks.yaml
+  - pgadmin/ks.yaml
+  - homepage/ks.yaml
+  - nextcloud/ks.yaml
+  - plex/ks.yaml
+  - qbittorrent/ks.yaml
+  - jdownloader2/ks.yaml
+  - truenas-es/ks.yaml
+  - homeassistant-es/ks.yaml
+  - printer-es/ks.yaml
+  - rcon-webadmin/ks.yaml
+  - part-db/ks.yaml
+  - calibre/ks.yaml
+  - handbrake/ks.yaml
+  - minecraft
+  - filebrowser/ks.yaml
+  - minecraft-router/ks.yaml
+  - ps3netsrv/ks.yaml
+  - calibre-web/ks.yaml
