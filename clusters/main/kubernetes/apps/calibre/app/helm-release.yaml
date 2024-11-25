@@ -64,7 +64,7 @@ spec:
           name: minio
           type: restic
           dest:
-            enabled: true
+            enabled: false
           src:
             enabled: false
       library:
