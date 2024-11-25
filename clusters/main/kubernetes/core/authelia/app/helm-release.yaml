@@ -44,8 +44,6 @@ spec:
             entrypoints:
             - websecure
             middlewares:
-            - name: ratelimit
-              namespace: "traefik"
             - name: geoAllow
               namespace: "traefik"
     cnpg:

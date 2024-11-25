@@ -93,10 +93,6 @@ spec:
         logApiRequests: false
         logLocalRequests: false
         unknownCountryApiResponse: nil
-      rateLimit:
-      - name: ratelimit
-        average: 100
-        burst: 50
     service:
       tcp:
         externalTrafficPolicy: Local
