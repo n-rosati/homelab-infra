@@ -31,6 +31,30 @@ spec:
     service:
       main:
         type: LoadBalancer
+    ingress:
+      main:
+        enabled: true
+        hosts:
+        - host: calibre-web.${DOMAIN_BASE}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          homepage:
+            enabled: true
+            group: Media
+            href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
+            widget:
+              enabled: false
+          traefik:
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: auth
+              namespace: "traefik"
+            - name: ca-us
+              namespace: "traefik"
     persistence:
       config:
         volsync:
@@ -41,3 +65,9 @@ spec:
             enabled: false
           src:
             enabled: false
+      library:
+        type: nfs
+        enabled: true
+        server: ${TRUENAS_IP}
+        path: ${NFS_APPS_PATH}/Calibre
+        mountPath: /mnt/Library
