@@ -46,7 +46,7 @@ spec:
             middlewares:
             - name: ratelimit
               namespace: "traefik"
-            - name: ca-us
+            - name: geoAllow
               namespace: "traefik"
     cnpg:
       main:

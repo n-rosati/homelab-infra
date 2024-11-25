@@ -51,7 +51,7 @@ spec:
             entrypoints:
             - websecure
             middlewares:
-            - name: ca-us
+            - name: geoAllow
               namespace: "traefik"
     persistence:
       config:

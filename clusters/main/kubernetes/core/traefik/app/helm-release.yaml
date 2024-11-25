@@ -43,7 +43,7 @@ spec:
           traefik:
             enabled: true
             middlewares:
-            - name: ca-us
+            - name: geoAllow
               namespace: "traefik"
             - name: auth
               namespace: "traefik"
@@ -66,19 +66,20 @@ spec:
         level: INFO
     middlewares:
       forwardAuth:
-      - address: http://${AUTHELIA_DNS_NAME}/api/verify?rd=https://auth.${DOMAIN_BASE}
+      - name: auth
+        address: http://${AUTHELIA_DNS_NAME}/api/verify?rd=https://auth.${DOMAIN_BASE}
         authRequestHeaders: []
         authResponseHeaders:
         - Remote-User
         - Remote-Group
         - Remote-Name
         - Remote-Email
-        name: auth
         tls:
         insecureSkipVerify: true
         trustForwardHeader: true
       geoBlock:
-      - allowLocalRequests: true
+      - name: geoAllow
+        allowLocalRequests: true
         allowUnknownCountries: false
         api: https://get.geojs.io/v1/ip/country/{ip}
         apiTimeoutMs: 500
@@ -87,18 +88,15 @@ spec:
         countries:
         - CA
         - US
-        - JP
-        - FR
         forceMonthlyUpdate: true
         logAllowedRequests: false
         logApiRequests: false
         logLocalRequests: false
-        name: ca-us
         unknownCountryApiResponse: nil
       rateLimit:
-      - average: 100
+      - name: ratelimit
+        average: 100
         burst: 50
-        name: ratelimit
     service:
       tcp:
         externalTrafficPolicy: Local

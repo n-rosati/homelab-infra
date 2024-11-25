@@ -55,7 +55,7 @@ spec:
             middlewares:
             - name: auth
               namespace: "traefik"
-            - name: ca-us
+            - name: geoAllow
               namespace: "traefik"
     persistence:
       config:
