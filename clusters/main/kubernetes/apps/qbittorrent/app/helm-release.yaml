@@ -55,7 +55,7 @@ spec:
             entrypoints:
             - websecure
             middlewares:
-            - name: geo-allowlistlow
+            - name: geo-allowlist
               namespace: "traefik"
             - name: auth
               namespace: "traefik"
