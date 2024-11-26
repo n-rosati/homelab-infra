@@ -93,6 +93,21 @@ spec:
         logApiRequests: false
         logLocalRequests: false
         unknownCountryApiResponse: nil
+      - name: ca-us
+        allowLocalRequests: true
+        allowUnknownCountries: false
+        api: https://get.geojs.io/v1/ip/country/{ip}
+        apiTimeoutMs: 500
+        blackListMode: false
+        cacheSize: 25
+        countries:
+        - CA
+        - US
+        forceMonthlyUpdate: true
+        logAllowedRequests: false
+        logApiRequests: false
+        logLocalRequests: false
+        unknownCountryApiResponse: nil
     service:
       tcp:
         externalTrafficPolicy: Local
