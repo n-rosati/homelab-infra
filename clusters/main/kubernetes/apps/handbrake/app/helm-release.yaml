@@ -55,6 +55,8 @@ spec:
             entrypoints:
             - websecure
             middlewares:
+            - name: real-ip
+              namespace: "traefik"
             - name: geo-allowlist
               namespace: "traefik"
             - name: auth
