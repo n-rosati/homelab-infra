@@ -43,8 +43,8 @@ spec:
           traefik:
             enabled: true
             middlewares:
-            - name: geoAllow
-              namespace: "traefik"
+            # - name: geoAllow
+            #   namespace: "traefik"
             - name: auth
               namespace: "traefik"
     logs:
