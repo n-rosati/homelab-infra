@@ -63,10 +63,10 @@ spec:
           minduration: 10ms
           retryattempts: true
           statuscodes: 200,300-302
-        format: common
+        format: json
       general:
-        format: common
-        level: INFO
+        format: json
+        level: ERROR
     middlewares:
       forwardAuth:
       - name: auth
