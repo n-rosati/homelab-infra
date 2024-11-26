@@ -95,7 +95,8 @@ spec:
         unknownCountryApiResponse: nil
       realIP:
       - name: real-ip
-        excludedNetworks: 192.168.0.0/16
+        excludedNetworks:
+        - 192.168.0.0/16
     service:
       tcp:
         externalTrafficPolicy: Local
