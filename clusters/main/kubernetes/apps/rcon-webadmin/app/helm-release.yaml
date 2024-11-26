@@ -54,7 +54,7 @@ spec:
             entrypoints:
             - websecure
             middlewares:
-            - name: geoAllow
+            - name: geo-allowlist
               namespace: "traefik"
             - name: auth
               namespace: "traefik"
@@ -79,7 +79,7 @@ spec:
             entrypoints:
             - websecure
             middlewares:
-            - name: geoAllow
+            - name: geo-allowlist
               namespace: "traefik"
             - name: auth
               namespace: "traefik"
