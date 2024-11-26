@@ -43,7 +43,7 @@ spec:
           traefik:
             enabled: true
             middlewares:
-            # - name: geoAllow
+            # - name: geo-allowlist
             #   namespace: "traefik"
             - name: auth
               namespace: "traefik"
@@ -78,7 +78,7 @@ spec:
         insecureSkipVerify: true
         trustForwardHeader: true
       geoBlock:
-      - name: geoallow
+      - name: geo-allowlist
         allowLocalRequests: true
         allowUnknownCountries: false
         api: https://get.geojs.io/v1/ip/country/{ip}
