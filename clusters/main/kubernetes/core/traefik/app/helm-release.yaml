@@ -56,6 +56,9 @@ spec:
             defaultmode: keep
           headers:
             defaultmode: keep
+            names:
+              X-Real-Ip: keep
+              Cf-Connecting-Ip: keep
         filters:
           minduration: 10ms
           retryattempts: true
