@@ -21,9 +21,9 @@ spec:
       main:
         type: LoadBalancer
         loadBalancerIP: ${PS3NETSRV_IP}
-    persistence:
-      games:
-        type: nfs
-        path: ${NFS_APPS_PATH}/ps3netsrv
-        mountPath: /games
-        server: ${TRUENAS_IP}
+    # persistence:
+    #   games:
+    #     type: nfs
+    #     path: ${NFS_APPS_PATH}/ps3netsrv
+    #     mountPath: /games
+    #     server: ${TRUENAS_IP}
