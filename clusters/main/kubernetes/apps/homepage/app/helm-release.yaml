@@ -107,6 +107,9 @@ spec:
                     type: truenas
                     url: http://${TRUENAS_IP}
                     key: ${HOMEPAGE_TRUENAS_KEY}
+              - Capacitor:
+                  href: https://capacitor.${DOMAIN_BASE}
+                  icon: https://raw.githubusercontent.com/gimlet-io/capacitor/refs/heads/main/web/public/logo512.png
             - Apps:
               - PartDB:
                   href: https://partdb.${DOMAIN_BASE}
