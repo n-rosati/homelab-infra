@@ -21,3 +21,4 @@ resources:
   - minecraft-router/ks.yaml
   - ps3netsrv/ks.yaml
   - calibre-web/ks.yaml
+  - bluebubbles-es/ks.yaml
