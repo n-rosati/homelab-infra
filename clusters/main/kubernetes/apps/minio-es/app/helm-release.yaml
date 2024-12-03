@@ -25,6 +25,7 @@ spec:
             protocol: http
             port: 9002
       api:
+        enabled: true
         type: ExternalIP
         externalIP: ${TRUENAS_IP}
         ports:
