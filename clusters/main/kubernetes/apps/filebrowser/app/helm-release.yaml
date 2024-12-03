@@ -30,6 +30,7 @@ spec:
         # claim name
         existingClaim: "nextcloud-html"
       b:
+        enabled: true
         type: nfs
         server: ${TRUENAS_IP}
         mountPath: /data/mount-b
