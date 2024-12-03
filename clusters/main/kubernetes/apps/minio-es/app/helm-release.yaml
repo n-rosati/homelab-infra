@@ -23,12 +23,26 @@ spec:
         ports:
           main:
             protocol: http
+            port: 9002
+      api:
+        type: ExternalIP
+        externalIP: ${TRUENAS_IP}
+        ports:
+          main:
+            protocol: http
             port: 9000
     ingress:
       main:
         enabled: true
         hosts:
         - host: minio.${DOMAIN_BASE}
+        - host: minio-api.${DOMAIN_BASE}
+          paths:
+          - path: /
+            pathType: Prefix
+            overrideService:
+              name: api
+              port: 9000
         integrations:
           certManager:
             enabled: true
