@@ -102,6 +102,10 @@ spec:
       - name: real-ip
         excludedNetworks:
         - 192.168.0.0/16
+      ipWhiteList:
+      - name: allow-local-net-only
+        sourceRange:
+        - 192.168.0.0/16
     service:
       tcp:
         externalTrafficPolicy: Local

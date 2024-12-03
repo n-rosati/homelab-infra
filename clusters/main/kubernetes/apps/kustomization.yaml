@@ -24,3 +24,4 @@ resources:
   - bluebubbles-es/ks.yaml
   - reubah/ks.yaml
   - vaultwarden/ks.yaml
+  - minio-es/ks.yaml
