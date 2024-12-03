@@ -27,6 +27,5 @@ spec:
         # mount path in filebrowser, must be in /data
         mountPath: /data/mount-a
         targetSelectAll: true
-        dataSource:
-          kind: PersistentVolumeClaim
-          name: "pvc-485cc529-f1d5-40dd-a469-5d2c7995854e"
+        # claim name
+        existingClaim: "nextcloud-html"
