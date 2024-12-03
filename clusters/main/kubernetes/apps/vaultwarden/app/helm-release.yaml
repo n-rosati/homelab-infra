@@ -60,8 +60,8 @@ spec:
     vaultwarden:
       signupDomains:
       - ${EMAIL_DOMAIN}
-      verifySignup: false
-      smpt:
+      verifySignup: true
+      smtp:
         enabled: true
         host: ${SMTP_SERVER}
         from: ${SMTP_FROM}
