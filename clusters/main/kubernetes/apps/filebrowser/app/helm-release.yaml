@@ -16,7 +16,7 @@ spec:
   releaseName: filebrowser
   values:
     global:
-      stopAll: false
+      stopAll: true
     service:
       main:
         type: LoadBalancer
