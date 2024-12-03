@@ -16,7 +16,7 @@ spec:
   releaseName: calibre
   values:
     global:
-      stopAll: false
+      stopAll: true
     release_name: calibre
     TZ: ${TIMEZONE}
     credentials:

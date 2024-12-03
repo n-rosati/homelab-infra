@@ -16,7 +16,7 @@ spec:
   releaseName: jdownloader2
   values:
     global:
-      stopAll: false
+      stopAll: true
     release_name: jdownloader2
     TZ: ${TIMEZONE}
     credentials:
