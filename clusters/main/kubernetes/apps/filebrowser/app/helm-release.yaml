@@ -29,3 +29,7 @@ spec:
         targetSelectAll: true
         # claim name
         existingClaim: "nextcloud-html"
+      b:
+        type: nfs
+        server: ${TRUENAS_IP}
+        path: ${NFS_APPS_PATH}/Nextcloud
