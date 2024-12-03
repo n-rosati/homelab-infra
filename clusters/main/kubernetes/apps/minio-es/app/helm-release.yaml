@@ -30,7 +30,7 @@ spec:
         type: ExternalIP
         externalIP: ${TRUENAS_IP}
         ports:
-          main:
+          api:
             port: 9000
             protocol: http
             targetPort: 9000
