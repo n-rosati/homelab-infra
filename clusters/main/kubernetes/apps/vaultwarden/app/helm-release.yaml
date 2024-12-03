@@ -40,21 +40,21 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-        homepage:
-          enabled: true
-          group: Apps
-          href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
-          widget:
-            enabled: false
-          traefik:
+          homepage:
             enabled: true
-            entrypoints:
-            - websecure
-            middlewares:
-            - name: real-ip
-              namespace: "traefik"
-            - name: geo-allowlist
-              namespace: "traefik"
+            group: Apps
+            href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
+            widget:
+              enabled: false
+            traefik:
+              enabled: true
+              entrypoints:
+              - websecure
+              middlewares:
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
     vaultwarden:
       signupDomains:
       - ${EMAIL_DOMAIN}
