@@ -28,4 +28,4 @@ spec:
         mountPath: /data/mount-a
         targetSelectAll: true
         # claim name
-        existingClaim: "nextcloud-html"
+        volumeName: "pvc-485cc529-f1d5-40dd-a469-5d2c7995854e"
