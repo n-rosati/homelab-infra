@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: filebrowser
-  namespace: nextcloud
+  namespace: filebrowser
 spec:
   interval: 15m
   chart:
@@ -16,22 +16,22 @@ spec:
   releaseName: filebrowser
   values:
     global:
-      stopAll: false
+      stopAll: true
     service:
       main:
         type: LoadBalancer
-    persistence:
-      a:
-        enabled: true
-        type: pvc
-        # mount path in filebrowser, must be in /data
-        mountPath: /data/mount-a
-        targetSelectAll: true
-        # claim name
-        existingClaim: "nextcloud-html"
-      b:
-        enabled: true
-        type: nfs
-        server: ${TRUENAS_IP}
-        mountPath: /data/mount-b
-        path: ${NFS_APPS_PATH}/Nextcloud
+    # persistence:
+    #   a:
+    #     enabled: true
+    #     type: pvc
+    #     # mount path in filebrowser, must be in /data
+    #     mountPath: /data/mount-a
+    #     targetSelectAll: true
+    #     # claim name
+    #     existingClaim: "nextcloud-html"
+    #   b:
+    #     enabled: true
+    #     type: nfs
+    #     server: ${TRUENAS_IP}
+    #     mountPath: /data/mount-b
+    #     path: ${NFS_APPS_PATH}/Nextcloud
