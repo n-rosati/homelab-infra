@@ -32,4 +32,5 @@ spec:
       b:
         type: nfs
         server: ${TRUENAS_IP}
+        mountPath: /data/mount-b
         path: ${NFS_APPS_PATH}/Nextcloud
