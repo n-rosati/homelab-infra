@@ -22,16 +22,18 @@ spec:
         externalIP: ${TRUENAS_IP}
         ports:
           main:
-            protocol: http
             port: 9002
+            protocol: http
+            targetPort: 9002
       api:
         enabled: true
         type: ExternalIP
         externalIP: ${TRUENAS_IP}
         ports:
           main:
-            protocol: http
             port: 9000
+            protocol: http
+            targetPort: 9000
     ingress:
       main:
         enabled: true
