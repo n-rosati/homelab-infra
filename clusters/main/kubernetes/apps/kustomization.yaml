@@ -22,3 +22,4 @@ resources:
   - ps3netsrv/ks.yaml
   - calibre-web/ks.yaml
   - bluebubbles-es/ks.yaml
+  - reubah/ks.yaml
