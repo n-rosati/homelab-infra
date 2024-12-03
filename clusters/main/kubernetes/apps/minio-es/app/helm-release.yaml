@@ -31,6 +31,7 @@ spec:
         externalIP: ${TRUENAS_IP}
         ports:
           api:
+            enabled: true
             port: 9000
             protocol: http
             targetPort: 9000
