@@ -28,4 +28,4 @@ spec:
         mountPath: /data/mount-a
         targetSelectAll: true
         # claim name
-        existingClaim: "part-db-app-template-db"
+        existingClaim: "nextcloud-html"
