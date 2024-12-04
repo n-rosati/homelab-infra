@@ -41,5 +41,5 @@ spec:
             middlewares:
             - name: real-ip
               namespace: "traefik"
-            - name: allow-local-net-only
-              namespace: "traefik"
+            # - name: allow-local-net-only
+            #   namespace: "traefik"
