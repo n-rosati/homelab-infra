@@ -78,7 +78,7 @@ spec:
           traefik:
             enabled: true
             entrypoints:
-            - websecure
+            - web
             middlewares:
             - name: real-ip
               namespace: "traefik"
