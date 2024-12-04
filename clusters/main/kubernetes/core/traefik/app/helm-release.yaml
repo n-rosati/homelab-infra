@@ -106,7 +106,6 @@ spec:
       - name: allow-local-net-only
         sourceRange:
         - 192.168.2.0/24
-        ipStrategy: {}
     service:
       tcp:
         externalTrafficPolicy: Local
