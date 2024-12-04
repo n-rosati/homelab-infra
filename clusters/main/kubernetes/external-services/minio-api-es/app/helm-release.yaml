@@ -1,0 +1,45 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: minio-api-es
+  namespace: minio-api-es
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: external-service
+      version: 15.2.2
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: minio-api-es
+  values:
+    release_name: minio-api-es
+    service:
+      main:
+        type: ExternalIP
+        externalIP: ${TRUENAS_IP}
+        useSlice: false
+        ports:
+          main:
+            protocol: http
+            port: 9000
+    ingress:
+      main:
+        enabled: true
+        hosts:
+        - host: minio-api.${DOMAIN_BASE}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          traefik:
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: real-ip
+              namespace: "traefik"
+            - name: allow-local-net-only
+              namespace: "traefik"

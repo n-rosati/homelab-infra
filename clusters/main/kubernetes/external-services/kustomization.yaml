@@ -7,3 +7,4 @@ resources:
   - printer-es/ks.yaml
   - truenas-es/ks.yaml
   - minio-es/ks.yaml
+  - minio-api-es/ks.yaml
