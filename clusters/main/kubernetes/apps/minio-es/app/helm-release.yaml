@@ -33,7 +33,7 @@ spec:
           api:
             enabled: true
             port: 9000
-            protocol: http
+            protocol: tcp
             targetPort: 9000
     ingress:
       main:
@@ -63,6 +63,7 @@ spec:
               namespace: "traefik"
       api:
         enabled: true
+        autoLink: true
         targetSelector:
           api: api
         hosts:
