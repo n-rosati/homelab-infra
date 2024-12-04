@@ -42,8 +42,8 @@ spec:
         - host: minio.${DOMAIN_BASE}
         integrations:
           certManager:
-            enabled: true
-            certificateIssuer: le-prod
+            enabled: false
+            certificateIssuer: le-staging
           traefik:
             enabled: true
             entrypoints:
@@ -70,8 +70,8 @@ spec:
               port: 9000
         integrations:
           certManager:
-            enabled: true
-            certificateIssuer: le-prod
+            enabled: false
+            certificateIssuer: le-staging
           traefik:
             enabled: true
             entrypoints:
