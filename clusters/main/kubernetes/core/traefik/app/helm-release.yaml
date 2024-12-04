@@ -101,11 +101,12 @@ spec:
       realIP:
       - name: real-ip
         excludedNetworks:
-        - 192.168.0.0/16
+        - 192.168.2.0/24
       ipWhiteList:
       - name: allow-local-net-only
         sourceRange:
-        - 192.168.0.0/16
+        - 192.168.2.0/24
+        ipStrategy: {}
     service:
       tcp:
         externalTrafficPolicy: Local

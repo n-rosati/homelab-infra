@@ -45,3 +45,5 @@ spec:
               namespace: "traefik"
             - name: auth
               namespace: "traefik"
+            - name: allow-local-net-only
+              namespace: "traefik"
