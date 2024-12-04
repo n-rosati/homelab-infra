@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: traefik-whitelist-ddns
+  namespace: traefik-whitelist-ddns
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: traefik-whitelist-ddns
+      version: 1.0.5
+      sourceRef:
+        kind: HelmRepository
+        name: kubitodev
+        namespace: flux-system
+  releaseName: traefik-whitelist-ddns

@@ -11,3 +11,4 @@ resources:
   - blocky/ks.yaml
   - generic-device-plugin/ks.yaml
   - wireguard/ks.yaml
+  - traefik-whitelist-ddns/ks.yaml
