@@ -16,7 +16,7 @@ spec:
   releaseName: minecraft-router
   values:
     global:
-      stopAll: false
+      stopAll: true
     timezone: ${TIMEZONE}
     ingress:
       main:
