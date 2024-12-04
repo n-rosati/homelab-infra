@@ -69,17 +69,16 @@ spec:
           dest:
             enabled: false
           src:
-            enabled: false
+            enabled: true
     cnpg:
       main:
         mode: standalone
         pgVersion: 15
         password: ${CNPG_PASSWORD}
         backups:
-          enabled: false
+          enabled: true
           revision: "1"
           credentials: minio
-          retentionPolicy: 10d
           encryption:
             enabled: true
         recovery:

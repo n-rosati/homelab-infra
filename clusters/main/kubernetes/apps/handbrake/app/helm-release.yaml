@@ -73,7 +73,7 @@ spec:
           dest:
             enabled: false
           src:
-            enabled: false
+            enabled: true
       storage:
         type: nfs
         enabled: true

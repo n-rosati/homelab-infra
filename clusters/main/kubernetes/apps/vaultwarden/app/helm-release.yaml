@@ -76,7 +76,7 @@ spec:
           dest:
             enabled: false
           src:
-            enabled: false
+            enabled: true
     cnpg:
       main:
         cluster:
@@ -86,6 +86,6 @@ spec:
           method: object_store
           credentials: minio
         backups:
-          enabled: false
+          enabled: true
           revision: "1"
           credentials: minio

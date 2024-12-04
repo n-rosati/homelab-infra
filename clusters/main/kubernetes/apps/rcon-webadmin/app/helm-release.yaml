@@ -96,7 +96,7 @@ spec:
           dest:
             enabled: false
           src:
-            enabled: false
+            enabled: true
     rcon:
       rwa_websocket_url_ssl: "wss://rcon-ws.${DOMAIN_BASE}:443"
     workload:

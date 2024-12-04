@@ -95,7 +95,7 @@ spec:
           dest:
             enabled: false
           src:
-            enabled: false
+            enabled: true
       uploads:
         enabled: true
         type: pvc
@@ -107,7 +107,7 @@ spec:
           dest:
             enabled: false
           src:
-            enabled: false
+            enabled: true
     cnpg:
       main:
         enabled: true
@@ -123,7 +123,7 @@ spec:
           method: object_store
           credentials: minio
         backups:
-          enabled: false
+          enabled: true
           revision: "1"
           credentials: minio
     workload:
