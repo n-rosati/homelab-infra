@@ -9,9 +9,6 @@ resources:
   - plex/ks.yaml
   - qbittorrent/ks.yaml
   - jdownloader2/ks.yaml
-  - truenas-es/ks.yaml
-  - homeassistant-es/ks.yaml
-  - printer-es/ks.yaml
   - rcon-webadmin/ks.yaml
   - part-db/ks.yaml
   - calibre/ks.yaml
@@ -21,6 +18,5 @@ resources:
   - minecraft-router/ks.yaml
   - ps3netsrv/ks.yaml
   - calibre-web/ks.yaml
-  - bluebubbles-es/ks.yaml
   - reubah/ks.yaml
   - vaultwarden/ks.yaml

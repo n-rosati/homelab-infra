@@ -11,4 +11,3 @@ resources:
   - blocky/ks.yaml
   - generic-device-plugin/ks.yaml
   - wireguard/ks.yaml
-  - capacitor-es/ks.yaml
