@@ -40,12 +40,6 @@ spec:
         enabled: true
         hosts:
         - host: minio.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
-            overrideService:
-              name: main
-              port: 9002
         integrations:
           certManager:
             enabled: true
