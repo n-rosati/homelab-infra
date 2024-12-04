@@ -6,3 +6,4 @@ resources:
   - homeassistant-es/ks.yaml
   - printer-es/ks.yaml
   - truenas-es/ks.yaml
+  - minio-es/ks.yaml
