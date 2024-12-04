@@ -63,6 +63,8 @@ spec:
               namespace: "traefik"
       api:
         enabled: true
+        targetSelector:
+          api: api
         hosts:
         - host: minio-api.${DOMAIN_BASE}
           paths:
