@@ -46,6 +46,24 @@ spec:
             overrideService:
               name: main
               port: 9002
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          traefik:
+            enabled: true
+            entrypoints:
+            - websecure
+            middlewares:
+            - name: real-ip
+              namespace: "traefik"
+            - name: geo-allowlist
+              namespace: "traefik"
+            - name: auth
+              namespace: "traefik"
+      api:
+        enabled: true
+        hosts:
         - host: minio-api.${DOMAIN_BASE}
           paths:
           - path: /
