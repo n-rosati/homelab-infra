@@ -110,13 +110,16 @@ spec:
               - Capacitor:
                   href: https://capacitor.${DOMAIN_BASE}
                   icon: https://raw.githubusercontent.com/gimlet-io/capacitor/refs/heads/main/web/public/logo512.png
+                  siteMonitor: capacitor.flux-system.${DNS_SUFFIX}:9000
               - Minio:
                   href: https://minio.${DOMAIN_BASE}
                   icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/refs/heads/main/svg/minio.svg
+                  siteMonitor: ${TRUENAS_IP}:9002
             - Apps:
               - PartDB:
                   href: https://partdb.${DOMAIN_BASE}
                   icon: https://docs.part-db.de/assets/favicon.ico
+                  siteMonitor: part-db-app-template.part-db${DNS_SUFFIX}:3000
                   widget:
                     type: customapi
                     url: http://${PARTDB_DNS}:3000/api/parts
