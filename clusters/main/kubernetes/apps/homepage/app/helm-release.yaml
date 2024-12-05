@@ -110,11 +110,11 @@ spec:
               - Capacitor:
                   href: https://capacitor.${DOMAIN_BASE}
                   icon: https://raw.githubusercontent.com/gimlet-io/capacitor/refs/heads/main/web/public/logo512.png
-                  siteMonitor: capacitor.flux-system.${DNS_SUFFIX}:9000
+                  siteMonitor: http://capacitor.flux-system:9000
               - Minio:
                   href: https://minio.${DOMAIN_BASE}
                   icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/refs/heads/main/svg/minio.svg
-                  siteMonitor: ${TRUENAS_IP}:9002
+                  ping: ${TRUENAS_IP}:9002
             - Apps:
               - PartDB:
                   href: https://partdb.${DOMAIN_BASE}
