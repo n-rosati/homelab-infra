@@ -83,6 +83,7 @@ spec:
         server: ${TRUENAS_IP}
         path: ${NFS_APPS_PATH}/Nextcloud
       software-external-storage:
+        enabled: true
         type: nfs
         server: ${TRUENAS_IP}
         path: ${NFS_DSU_PATH}/Software
