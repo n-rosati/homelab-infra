@@ -82,6 +82,11 @@ spec:
         type: nfs
         server: ${TRUENAS_IP}
         path: ${NFS_APPS_PATH}/Nextcloud
+      software-external-storage:
+        type: nfs
+        server: ${TRUENAS_IP}
+        path: ${NFS_DSU_PATH}/Software
+        mountPath: /mnt/Software
     cnpg:
       main:
         hibernate: false
