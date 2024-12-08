@@ -17,7 +17,7 @@ spec:
   values:
     release_name: pgadmin
     global:
-      stopAll: true
+      stopAll: false
     TZ: ${TIMEZONE}
     credentials:
       minio:
