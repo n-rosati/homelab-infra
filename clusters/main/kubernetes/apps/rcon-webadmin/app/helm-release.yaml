@@ -16,7 +16,7 @@ spec:
   releaseName: rcon-webadmin
   values:
     global:
-      stopAll: true
+      stopAll: false
     release_name: rcon-webadmin
     TZ: ${TIMEZONE}
     credentials:
@@ -37,7 +37,7 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: rcon.${DOMAIN_BASE}
+          - host: rcon.${DOMAIN_BASE}
         integrations:
           certManager:
             certificateIssuer: le-prod
@@ -52,26 +52,26 @@ spec:
             allowCors: true
             enabled: true
             entrypoints:
-            - websecure
+              - websecure
             middlewares:
-            - name: real-ip
-              namespace: "traefik"
-            - name: geo-allowlist
-              namespace: "traefik"
-            - name: auth
-              namespace: "traefik"
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
+              - name: auth
+                namespace: "traefik"
       websocketaccess:
         enabled: true
         targetSelector:
           websocketaccess: websocketaccess
         hosts:
-        - host: rcon-ws.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
-            overrideService:
-              name: websocketaccess
-              port: 4327
+          - host: rcon-ws.${DOMAIN_BASE}
+            paths:
+              - path: /
+                pathType: Prefix
+                overrideService:
+                  name: websocketaccess
+                  port: 4327
         integrations:
           certManager:
             certificateIssuer: le-prod
@@ -79,24 +79,24 @@ spec:
           traefik:
             enabled: true
             entrypoints:
-            - websecure
+              - websecure
             middlewares:
-            - name: real-ip
-              namespace: "traefik"
-            - name: geo-allowlist
-              namespace: "traefik"
-            - name: auth
-              namespace: "traefik"
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
+              - name: auth
+                namespace: "traefik"
     persistence:
       db:
         volsync:
-        - credentials: minio
-          name: minio
-          type: restic
-          dest:
-            enabled: false
-          src:
-            enabled: true
+          - credentials: minio
+            name: minio
+            type: restic
+            dest:
+              enabled: false
+            src:
+              enabled: true
     rcon:
       rwa_websocket_url_ssl: "wss://rcon-ws.${DOMAIN_BASE}:443"
     workload:
