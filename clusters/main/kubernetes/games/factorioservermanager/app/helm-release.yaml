@@ -1,8 +1,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: factorio-server-manager
-  namespace: factorio-server-manager
+  name: factorioservermanager
+  namespace: factorioservermanager
 spec:
   interval: 15m
   chart:
@@ -13,11 +13,11 @@ spec:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
-  releaseName: factorio-server-manager
+  releaseName: factorioservermanager
   values:
     global:
       stopAll: false
-    release_name: factorio-server-manager
+    release_name: factorioservermanager
     TZ: ${TIMEZONE}
     credentials:
       minio:
