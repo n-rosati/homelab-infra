@@ -72,3 +72,11 @@ spec:
         type: nfs
         server: ${TRUENAS_IP}
         path: ${NFS_APPS_PATH}/FactorioServerManager/Saves
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                FSM_AUTOSTART: true
+                FACTORIO_VERSION: 2.0.23
