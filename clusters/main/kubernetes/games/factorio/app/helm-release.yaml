@@ -19,6 +19,9 @@ spec:
     global:
       stopAll: false
     TZ: ${TIMEZONE}
+    service:
+      main:
+        type: LoadBalancer
     persistence:
       config:
         type: nfs
