@@ -28,7 +28,7 @@ spec:
         mountPath: /data/mount-a
         targetSelectAll: true
         # claim name
-        existingClaim: "factorio-html"
+        existingClaim: "factorio-config"
     #   b:
     #     enabled: true
     #     type: nfs
