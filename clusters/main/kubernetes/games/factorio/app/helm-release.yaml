@@ -17,10 +17,18 @@ spec:
   values:
     release_name: factorio
     global:
-      stopAll: false
+      stopAll: true
     TZ: ${TIMEZONE}
     persistence:
       config:
         type: nfs
         server: ${TRUENAS_IP}
         path: ${NFS_APPS_PATH}/Factorio
+    # workload:
+    #   main:
+    #     podSpec:
+    #       containers:
+    #         main:
+    #           env:
+    #             SAVE_NAME: "Space Age"
+
