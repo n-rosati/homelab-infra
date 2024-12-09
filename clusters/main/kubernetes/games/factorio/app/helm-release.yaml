@@ -16,7 +16,7 @@ spec:
   releaseName: factorio
   values:
     global:
-      stopAll: false
+      stopAll: true
     release_name: factorio
     TZ: ${TIMEZONE}
     credentials:
