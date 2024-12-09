@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: filebrowser
-  namespace: filebrowser
+  namespace: factorio
 spec:
   interval: 15m
   chart:
@@ -16,19 +16,19 @@ spec:
   releaseName: filebrowser
   values:
     global:
-      stopAll: true
+      stopAll: false
     service:
       main:
         type: LoadBalancer
-    # persistence:
-    #   a:
-    #     enabled: true
-    #     type: pvc
-    #     # mount path in filebrowser, must be in /data
-    #     mountPath: /data/mount-a
-    #     targetSelectAll: true
-    #     # claim name
-    #     existingClaim: "nextcloud-html"
+    persistence:
+      a:
+        enabled: true
+        type: pvc
+        # mount path in filebrowser, must be in /data
+        mountPath: /data/mount-a
+        targetSelectAll: true
+        # claim name
+        existingClaim: "factorio-html"
     #   b:
     #     enabled: true
     #     type: nfs
