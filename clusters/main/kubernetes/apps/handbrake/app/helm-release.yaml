@@ -16,7 +16,7 @@ spec:
   releaseName: handbrake
   values:
     global:
-      stopAll: true
+      stopAll: false
     TZ: ${TIMEZONE}
     release_name: handbrake
     credentials:
@@ -37,7 +37,7 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: handbrake.${DOMAIN_BASE}
+          - host: handbrake.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
@@ -53,27 +53,27 @@ spec:
           traefik:
             enabled: true
             entrypoints:
-            - websecure
+              - websecure
             middlewares:
-            - name: real-ip
-              namespace: "traefik"
-            - name: geo-allowlist
-              namespace: "traefik"
-            - name: auth
-              namespace: "traefik"
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
+              - name: auth
+                namespace: "traefik"
     handbrake:
       KEEP_APP_RUNNING: true
       AUTOMATED_CONVERSION_PRESET: General/Fast 1080pSourceFPS
     persistence:
       config:
         volsync:
-        - credentials: minio
-          name: minio
-          type: restic
-          dest:
-            enabled: false
-          src:
-            enabled: true
+          - credentials: minio
+            name: minio
+            type: restic
+            dest:
+              enabled: false
+            src:
+              enabled: true
       storage:
         type: nfs
         enabled: true
@@ -88,11 +88,10 @@ spec:
         server: ${TRUENAS_IP}
         path: ${NFS_MEDIA_PATH}/Handbrake/Output
         mountPath: /output
-    # workload:
-    #   main:
-    #     podSpec:
-    #       containers:
-    #         main:
-    #           resources:
-    #             limits:
-    #               nvidia.com/gpu: 1
+    workload:
+      main:
+        podSpec:
+          runtimeClassName: "nvidia"
+    resources:
+      limits:
+        nvidia.com/gpu: 1
