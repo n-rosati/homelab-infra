@@ -16,7 +16,7 @@ spec:
   releaseName: handbrake
   values:
     global:
-      stopAll: false
+      stopAll: true
     TZ: ${TIMEZONE}
     release_name: handbrake
     credentials:
