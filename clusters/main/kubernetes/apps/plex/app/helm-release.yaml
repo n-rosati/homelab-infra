@@ -17,7 +17,7 @@ spec:
   values:
     release_name: plex
     global:
-      stopAll: true
+      stopAll: false
     TZ: ${TIMEZONE}
     credentials:
       minio:
@@ -80,12 +80,12 @@ spec:
     workload:
       main:
         podSpec:
-          # runtimeClassName: "nvidia"
+          runtimeClassName: "nvidia"
           containers:
             main:
               env:
                 ALLOWED_NETWORKS: 172.16.0.0/12,10.0.0.0/24,192.168.0.0/16
                 PLEX_CLAIM: ${PLEX_CLAIM_TOKEN}
-    # resources:
-    #   limits:
-    #     nvidia.com/gpu: 1
+    resources:
+      limits:
+        nvidia.com/gpu: 1
