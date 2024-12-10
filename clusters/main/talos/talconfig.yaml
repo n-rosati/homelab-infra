@@ -6,65 +6,61 @@ kubernetesVersion: v1.31.3
 endpoint: https://${VIP}:6443
 allowSchedulingOnControlPlanes: true
 additionalMachineCertSans:
-    - 127.0.0.1
-    - ${VIP}
+  - 127.0.0.1
+  - ${VIP}
 additionalApiServerCertSans:
-    - 127.0.0.1
-    - ${VIP}
+  - 127.0.0.1
+  - ${VIP}
 # Warning: Also used in Cilium CNI values!
 clusterPodNets:
-    - ${PODNET}
+  - ${PODNET}
 clusterSvcNets:
-    - ${SVCNET}
+  - ${SVCNET}
 cniConfig:
-    name: none
+  name: none
 patches:
-    - '@./patches/all.yaml'
+  - '@./patches/all.yaml'
 #    - '@./patches/add-mount.yaml'
 nodes:
-    # We would adivce to always stick to a "k8s-something-1" style naming scheme
-    - hostname: k8s-control-1
-      ipAddress: ${MASTER1IP_IP}
-      controlPlane: true
-      nameservers:
-        - 1.1.1.1
-        - 8.8.8.8
-      installDiskSelector:
-        model: ADATA*
-      networkInterfaces:
-        # suffix is the adapter mac adres.
-        - interface: eth0
-          addresses:
-            - ${MASTER1IP_CIDR}
-          routes:
-            - network: 0.0.0.0/0
-              gateway: ${GATEWAY}
-          vip:
-            ip: ${VIP}
+  # We would adivce to always stick to a "k8s-something-1" style naming scheme
+  - hostname: k8s-control-1
+    ipAddress: ${MASTER1IP_IP}
+    controlPlane: true
+    nameservers:
+      - 1.1.1.1
+      - 8.8.8.8
+    installDiskSelector:
+      model: ADATA*
+    networkInterfaces:
+      # suffix is the adapter mac adres.
+      - interface: eth0
+        addresses:
+          - ${MASTER1IP_CIDR}
+        routes:
+          - network: 0.0.0.0/0
+            gateway: ${GATEWAY}
+        vip:
+          ip: ${VIP}
 controlPlane:
-    patches:
-        - '@./patches/controlplane.yaml'
-    kernelModules:
-     - name: nvme_tcp
-     - name: vfio_pci
-     - name: uio_pci_generic
-     - name: nvidia
-     - name: nvidia_uvm
-     - name: nvidia_drm
-     - name: nvidia_modeset
-    schematic:
-        customization:
-            extraKernelArgs:
-                - net.ifnames=0
-            systemExtensions:
-                officialExtensions:
-                    - siderolabs/util-linux-tools
-                    - siderolabs/iscsi-tools
-#                    - siderolabs/qemu-guest-agent
-                    - siderolabs/amd-ucode
-                    - siderolabs/nvidia-container-toolkit-lts
-                    - siderolabs/nonfree-kmod-nvidia-lts
-    machineFiles:
+  patches:
+    - '@./patches/controlplane.yaml'
+    - '@./patches/gpu.yaml'
+  kernelModules:
+    - name: nvme_tcp
+    - name: vfio_pci
+    - name: uio_pci_generic
+  schematic:
+    customization:
+      extraKernelArgs:
+        - net.ifnames=0
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/util-linux-tools
+          - siderolabs/iscsi-tools
+          - siderolabs/amd-ucode
+          - siderolabs/nvidia-container-toolkit-lts
+          - siderolabs/nonfree-kmod-nvidia-lts
+  machineFiles:
     - content: |
         [plugins."io.containerd.grpc.v1.cri"]
           enable_unprivileged_ports = true
@@ -90,27 +86,23 @@ controlPlane:
       op: overwrite
 
 worker:
-    patches:
-        - '@./patches/worker.yaml'
-    kernelModules:
-     - name: nvme_tcp
-     - name: vfio_pci
-     - name: uio_pci_generic
-     - name: nvidia
-     - name: nvidia_uvm
-     - name: nvidia_drm
-     - name: nvidia_modeset
-    schematic:
-        customization:
-            systemExtensions:
-                officialExtensions:
-                    - siderolabs/util-linux-tools
-                    - siderolabs/iscsi-tools
-#                    - siderolabs/qemu-guest-agent
-                    - siderolabs/amd-ucode
-                    - siderolabs/nvidia-container-toolkit-lts
-                    - siderolabs/nonfree-kmod-nvidia-lts
-    machineFiles:
+  patches:
+    - '@./patches/worker.yaml'
+    - '@./patches/gpu.yaml'
+  kernelModules:
+    - name: nvme_tcp
+    - name: vfio_pci
+    - name: uio_pci_generic
+  schematic:
+    customization:
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/util-linux-tools
+          - siderolabs/iscsi-tools
+          - siderolabs/amd-ucode
+          - siderolabs/nvidia-container-toolkit-lts
+          - siderolabs/nonfree-kmod-nvidia-lts
+  machineFiles:
     - content: |
         [plugins."io.containerd.grpc.v1.cri"]
           enable_unprivileged_ports = true
