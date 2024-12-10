@@ -88,10 +88,3 @@ spec:
         server: ${TRUENAS_IP}
         path: ${NFS_MEDIA_PATH}/Handbrake/Output
         mountPath: /output
-    workload:
-      main:
-        podSpec:
-          runtimeClassName: "nvidia"
-    resources:
-      limits:
-        nvidia.com/gpu: 1

@@ -37,7 +37,7 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: plex.${DOMAIN_BASE}
+          - host: plex.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
@@ -53,22 +53,22 @@ spec:
           traefik:
             enabled: true
             entrypoints:
-            - websecure
+              - websecure
             middlewares:
-            - name: real-ip
-              namespace: "traefik"
-            - name: geo-allowlist
-              namespace: "traefik"
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
     persistence:
       config:
         volsync:
-        - credentials: minio
-          name: config
-          type: restic
-          dest:
-            enabled: false
-          src:
-            enabled: true
+          - credentials: minio
+            name: config
+            type: restic
+            dest:
+              enabled: false
+            src:
+              enabled: true
       media:
         enabled: true
         type: nfs
@@ -80,8 +80,12 @@ spec:
     workload:
       main:
         podSpec:
+          runtimeClassName: "nvidia"
           containers:
             main:
               env:
                 ALLOWED_NETWORKS: 172.16.0.0/12,10.0.0.0/24,192.168.0.0/16
                 PLEX_CLAIM: ${PLEX_CLAIM_TOKEN}
+    resources:
+      limits:
+        nvidia.com/gpu: 1
