@@ -17,7 +17,7 @@ spec:
   values:
     release_name: nextcloud
     global:
-      stopAll: false
+      stopAll: true
     TZ: ${TIMEZONE}
     credentials:
       minio:
@@ -35,10 +35,10 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: nextcloud.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: nextcloud.${DOMAIN_BASE}
+            paths:
+              - path: /
+                pathType: Prefix
         integrations:
           certManager:
             certificateIssuer: le-prod
@@ -53,31 +53,31 @@ spec:
           traefik:
             enabled: true
             entrypoints:
-            - websecure
+              - websecure
             middlewares:
-            - name: real-ip
-              namespace: "traefik"
-            - name: geo-allowlist
-              namespace: "traefik"
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
     persistence:
       html:
         volsync:
-        - credentials: minio
-          name: app-html
-          type: restic
-          dest:
-            enabled: false
-          src:
-            enabled: true
+          - credentials: minio
+            name: app-html
+            type: restic
+            dest:
+              enabled: false
+            src:
+              enabled: true
       config:
         volsync:
-        - credentials: minio
-          name: app-config
-          type: restic
-          dest:
-            enabled: false
-          src:
-            enabled: true
+          - credentials: minio
+            name: app-config
+            type: restic
+            dest:
+              enabled: false
+            src:
+              enabled: true
       data:
         type: nfs
         server: ${TRUENAS_IP}
@@ -123,13 +123,13 @@ spec:
         upload_limit: 1000G
       previews:
         providers:
-        - BMP
-        - GIF
-        - JPEG
-        - Krita
-        - MarkDown
-        - MP3
-        - OpenDocument
-        - PNG
-        - TXT
-        - XBitmap
+          - BMP
+          - GIF
+          - JPEG
+          - Krita
+          - MarkDown
+          - MP3
+          - OpenDocument
+          - PNG
+          - TXT
+          - XBitmap
