@@ -38,13 +38,13 @@ spec:
     persistence:
       data:
         volsync:
-        - credentials: minio
-          name: minio
-          type: restic
-          dest:
-            enabled: false
-          src:
-            enabled: true
+          - credentials: minio
+            name: minio
+            type: restic
+            dest:
+              enabled: false
+            src:
+              enabled: true
       backups:
         type: nfs
         path: /mnt/DSU/Backups/Minecraft/statech-industry
@@ -88,6 +88,23 @@ spec:
       codeserver:
         enabled: true
         ingress:
-          enabled: false
+          enabled: true
+          hosts:
+            - host: statech-industry-config.${DOMAIN_BASE}
+          integrations:
+            certManager:
+              enabled: true
+              certificateIssuer: le-prod
+            traefik:
+              enabled: true
+              entrypoints:
+                - websecure
+              middlewares:
+                - name: real-ip
+                  namespace: "traefik"
+                - name: geo-allowlist
+                  namespace: "traefik"
+                - name: auth
+                  namespace: "traefik"
         service:
           type: LoadBalancer

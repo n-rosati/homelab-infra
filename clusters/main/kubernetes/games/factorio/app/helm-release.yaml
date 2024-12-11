@@ -43,8 +43,27 @@ spec:
               enabled: false
             src:
               enabled: true
-    # persistence:
-    #   config:
-    #     type: nfs
-    #     server: ${TRUENAS_IP}
-    #     path: ${NFS_APPS_PATH}/Factorio
+    addons:
+      codeserver:
+        enabled: true
+        ingress:
+          enabled: true
+          hosts:
+            - host: factorio-config.${DOMAIN_BASE}
+          integrations:
+            certManager:
+              enabled: true
+              certificateIssuer: le-prod
+            traefik:
+              enabled: true
+              entrypoints:
+                - websecure
+              middlewares:
+                - name: real-ip
+                  namespace: "traefik"
+                - name: geo-allowlist
+                  namespace: "traefik"
+                - name: auth
+                  namespace: "traefik"
+        service:
+          type: LoadBalancer
