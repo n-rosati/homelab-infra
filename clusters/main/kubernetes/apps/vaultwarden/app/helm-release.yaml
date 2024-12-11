@@ -35,7 +35,7 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: vaultwarden.${DOMAIN_BASE}
+          - host: vaultwarden.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
@@ -49,15 +49,15 @@ spec:
             traefik:
               enabled: true
               entrypoints:
-              - websecure
+                - websecure
               middlewares:
-              - name: real-ip
-                namespace: "traefik"
-              - name: geo-allowlist
-                namespace: "traefik"
+                - name: real-ip
+                  namespace: "traefik"
+                - name: geo-allowlist
+                  namespace: "traefik"
     vaultwarden:
       signupDomains:
-      - ${EMAIL_DOMAIN}
+        - ${EMAIL_DOMAIN}
       verifySignup: true
       smtp:
         enabled: true
@@ -70,13 +70,13 @@ spec:
     persistence:
       data:
         volsync:
-        - name: data
-          type: restic
-          credentials: minio
-          dest:
-            enabled: false
-          src:
-            enabled: true
+          - name: data
+            type: restic
+            credentials: minio
+            dest:
+              enabled: false
+            src:
+              enabled: true
     cnpg:
       main:
         cluster:

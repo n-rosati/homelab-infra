@@ -98,6 +98,7 @@ spec:
           enabled: true
           credentials: minio
           revision: "1"
+          retentionPolicy: "7d"
         recovery:
           enabled: false
           credentials: minio

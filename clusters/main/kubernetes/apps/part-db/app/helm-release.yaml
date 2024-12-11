@@ -67,7 +67,7 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: partdb.${DOMAIN_BASE}
+          - host: partdb.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
@@ -75,39 +75,39 @@ spec:
           traefik:
             enabled: true
             entrypoints:
-            - websecure
+              - websecure
             middlewares:
-            - name: real-ip
-              namespace: "traefik"
-            - name: geo-allowlist
-              namespace: "traefik"
-            - name: auth
-              namespace: "traefik"
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
+              - name: auth
+                namespace: "traefik"
     persistence:
       media:
         enabled: true
         type: pvc
         mountPath: /var/www/html/public/media
         volsync:
-        - name: uploads
-          type: restic
-          credentials: minio
-          dest:
-            enabled: false
-          src:
-            enabled: true
+          - name: uploads
+            type: restic
+            credentials: minio
+            dest:
+              enabled: false
+            src:
+              enabled: true
       uploads:
         enabled: true
         type: pvc
         mountPath: /var/www/html/uploads
         volsync:
-        - name: uploads
-          type: restic
-          credentials: minio
-          dest:
-            enabled: false
-          src:
-            enabled: true
+          - name: uploads
+            type: restic
+            credentials: minio
+            dest:
+              enabled: false
+            src:
+              enabled: true
     cnpg:
       main:
         enabled: true
@@ -126,6 +126,7 @@ spec:
           enabled: true
           revision: "1"
           credentials: minio
+          retentionPolicy: "7d"
     workload:
       main:
         podSpec:

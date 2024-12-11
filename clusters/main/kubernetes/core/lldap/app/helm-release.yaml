@@ -37,7 +37,7 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: lldap.${DOMAIN_BASE}
+          - host: lldap.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
@@ -52,24 +52,24 @@ spec:
           traefik:
             enabled: true
             entrypoints:
-            - websecure
+              - websecure
             middlewares:
-            - name: real-ip
-              namespace: "traefik"
-            - name: geo-allowlist
-              namespace: "traefik"
-            - name: auth
-              namespace: "traefik"
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
+              - name: auth
+                namespace: "traefik"
     persistence:
       data:
         volsync:
-        - credentials: minio
-          name: data
-          type: restic
-          dest:
-            enabled: false
-          src:
-            enabled: true
+          - credentials: minio
+            name: data
+            type: restic
+            dest:
+              enabled: false
+            src:
+              enabled: true
     cnpg:
       main:
         mode: standalone
@@ -86,6 +86,7 @@ spec:
           method: object_store
           credentials: minio
           revision: "1"
+          retentionPolicy: "7d"
         cluster:
           singleNode: true
         monitoring:
