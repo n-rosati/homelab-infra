@@ -1,0 +1,13 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: longhorn-es
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: clusters/main/kubernetes/external-services/longhorn-es/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: cluster
+

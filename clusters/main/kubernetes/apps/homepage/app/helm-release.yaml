@@ -24,7 +24,7 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: homepage.${DOMAIN_BASE}
+          - host: homepage.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
@@ -33,14 +33,14 @@ spec:
             allowCors: false
             enabled: true
             entrypoints:
-            - websecure
+              - websecure
             middlewares:
-            - name: real-ip
-              namespace: "traefik"
-            - name: geo-allowlist
-              namespace: "traefik"
-            - name: auth
-              namespace: "traefik"
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
+              - name: auth
+                namespace: "traefik"
     forceConfigFromValues: true
     configmap:
       config:
@@ -115,6 +115,10 @@ spec:
                   href: https://minio.${DOMAIN_BASE}
                   icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/refs/heads/main/svg/minio.svg
                   ping: ${TRUENAS_IP}:9002
+              - Longhorn:
+                  href: https://longhorn.${DOMAIN_BASE}
+                  icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/refs/heads/main/svg/longhorn.svg
+                  siteMonitor: http://longhorn.longhorn-system.${DNS_SUFFIX}:80
             - Apps:
               - PartDB:
                   href: https://partdb.${DOMAIN_BASE}

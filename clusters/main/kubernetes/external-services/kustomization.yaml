@@ -8,3 +8,4 @@ resources:
   - truenas-es/ks.yaml
   - minio-es/ks.yaml
   - minio-api-es/ks.yaml
+  - longhorn-es/ks.yaml
