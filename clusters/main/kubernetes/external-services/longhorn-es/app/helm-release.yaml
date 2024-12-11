@@ -19,7 +19,7 @@ spec:
     service:
       main:
         type: ExternalName
-        externalName: longhorn.longhorn-system.${DNS_SUFFIX}
+        externalName: longhorn-frontend.longhorn-system.${DNS_SUFFIX}
         ports:
           main:
             protocol: http

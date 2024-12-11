@@ -118,7 +118,7 @@ spec:
               - Longhorn:
                   href: https://longhorn.${DOMAIN_BASE}
                   icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/refs/heads/main/svg/longhorn.svg
-                  siteMonitor: http://longhorn.longhorn-system.${DNS_SUFFIX}:80
+                  siteMonitor: http://longhorn-frontend.longhorn-system.${DNS_SUFFIX}:80
             - Apps:
               - PartDB:
                   href: https://partdb.${DOMAIN_BASE}
