@@ -5,9 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: clusters/main/kubernetes/apps/minecraft/statech-industry/app
+  path: clusters/main/kubernetes/games/minecraft/statech-industry/app
   prune: true
   sourceRef:
     kind: GitRepository
     name: cluster
-
