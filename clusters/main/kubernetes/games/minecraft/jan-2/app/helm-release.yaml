@@ -35,7 +35,7 @@ spec:
       rcon:
         enabled: true
         type: LoadBalancer
-    #persistence:
+    persistence:
       #data:
         #volsync:
           #- credentials: minio
@@ -46,6 +46,7 @@ spec:
             #src:
               #enabled: true
       backups:
+        enabled: true
         type: nfs
         path: /mnt/DSU/Backups/Minecraft/jan-2
         server: ${TRUENAS_IP}
@@ -104,6 +105,4 @@ spec:
                 - name: auth
                   namespace: "traefik"
         service:
-          backups: 
-            enabled: false
           type: LoadBalancer
