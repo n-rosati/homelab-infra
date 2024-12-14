@@ -46,7 +46,6 @@ spec:
             src:
               enabled: true
       backups:
-        enabled: true
         type: nfs
         path: /mnt/DSU/Backups/Minecraft/statech-industry
         server: ${TRUENAS_IP}
