@@ -86,7 +86,7 @@ spec:
                 TAR_COMPRESS_METHOD: 'zstd'
     addons:
       codeserver:
-        enabled: true
+        enabled: false
         ingress:
           enabled: true
           hosts:
