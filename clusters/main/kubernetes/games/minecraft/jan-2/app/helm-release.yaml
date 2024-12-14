@@ -35,16 +35,16 @@ spec:
       rcon:
         enabled: true
         type: LoadBalancer
-    persistence:
-      data:
-        volsync:
-          - credentials: minio
-            name: minio
-            type: restic
-            dest:
-              enabled: false
-            src:
-              enabled: true
+    #persistence:
+      #data:
+        #volsync:
+          #- credentials: minio
+            #name: minio
+            #type: restic
+            #dest:
+              #enabled: false
+            #src:
+              #enabled: true
       backups:
         type: nfs
         path: /mnt/DSU/Backups/Minecraft/jan-2
