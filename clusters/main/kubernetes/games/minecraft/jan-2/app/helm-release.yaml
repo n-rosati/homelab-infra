@@ -104,4 +104,6 @@ spec:
                 - name: auth
                   namespace: "traefik"
         service:
+          backups: 
+            enabled: false
           type: LoadBalancer
