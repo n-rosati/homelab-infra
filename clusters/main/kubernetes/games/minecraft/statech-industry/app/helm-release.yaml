@@ -35,7 +35,7 @@ spec:
       rcon:
         enabled: true
         type: LoadBalancer
-    #persistence:
+    persistence:
       #data:
         #volsync:
           #- credentials: minio
