@@ -36,17 +36,16 @@ spec:
         enabled: true
         type: LoadBalancer
     persistence:
-      #data:
-        #volsync:
-          #- credentials: minio
-            #name: minio
-            #type: restic
-            #dest:
-              #enabled: false
-            #src:
-              #enabled: true
+      data:
+        volsync:
+          - credentials: minio
+            name: minio
+            type: restic
+            dest:
+              enabled: false
+            src:
+              enabled: true
       backups:
-        enabled: true
         type: nfs
         path: /mnt/DSU/Backups/Minecraft/jan-2
         server: ${TRUENAS_IP}
