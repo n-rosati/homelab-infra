@@ -17,7 +17,7 @@ spec:
   values:
     release_name: statech-industry
     global:
-      stopAll: true
+      stopAll: false
     TZ: ${TIMEZONE}
     credentials:
       minio:
