@@ -22,6 +22,7 @@ spec:
       repository: jbtronics/part-db1
       registry: docker.io
       pullPolicy: IfNotPresent
+      # renovate: datasource=docker depName=docker.io/jbtronics/part-db1
       tag: v1.14.4@sha256:019587c7821d12414aeb26b8d3058e5093db66bfc0190ef4b9356f92d664a38d
     TZ: ${TIMEZONE}
     credentials:
