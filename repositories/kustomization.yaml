@@ -7,4 +7,3 @@ resources:
   - ./helm
   - ./oci
   - ./entries
-  - ./image
