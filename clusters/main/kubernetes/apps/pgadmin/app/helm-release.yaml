@@ -17,7 +17,7 @@ spec:
   values:
     release_name: pgadmin
     global:
-      stopAll: false
+      stopAll: true
     TZ: ${TIMEZONE}
     credentials:
       minio:
@@ -35,7 +35,7 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: pgadmin.${DOMAIN_BASE}
+          - host: pgadmin.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
@@ -50,14 +50,14 @@ spec:
           traefik:
             enabled: true
             entrypoints:
-            - websecure
+              - websecure
             middlewares:
-            - name: real-ip
-              namespace: "traefik"
-            - name: geo-allowlist
-              namespace: "traefik"
-            - name: auth
-              namespace: "traefik"
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
+              - name: auth
+                namespace: "traefik"
     persistence:
       nfs-vol:
         enabled: true
@@ -67,13 +67,13 @@ spec:
         mountPath: /var/lib/pgadmin/storage/nicholas_rosati.xyz
       config:
         volsync:
-        - credentials: minio
-          name: minio
-          type: restic
-          dest:
-            enabled: false
-          src:
-            enabled: true
+          - credentials: minio
+            name: minio
+            type: restic
+            dest:
+              enabled: false
+            src:
+              enabled: true
     workload:
       main:
         podSpec:
