@@ -42,10 +42,12 @@ spec:
             dest:
               enabled: false
             src:
-              enabled: true
+              enabled: false
     addons:
       codeserver:
         enabled: true
+        service:
+          type: LoadBalancer
         ingress:
           enabled: true
           hosts:
@@ -65,5 +67,3 @@ spec:
                   namespace: "traefik"
                 - name: auth
                   namespace: "traefik"
-        service:
-          type: LoadBalancer
