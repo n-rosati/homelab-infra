@@ -1,0 +1,19 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "flux": {
+        "fileMatch": [
+            "(^|\/)kubernetes/apps/part-db/.+\\.ya?ml$"
+        ],
+        "enabled": true,
+        "updateTypes": [
+            "major",
+            "minor",
+            "patch",
+            "digest",
+            "pin"
+        ],
+        "semanticCommitScope": "flux",
+        "pinDigests": true,
+        "branchPrefix": "renovate/image-"
+    }
+}

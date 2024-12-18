@@ -2,31 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    "github>truecharts/public//.github/renovate/main.json5"
-  ],
-  "minor": {
-    "packageRules": [
-      {
-        "description": ["Block automerge for Kubelet and Talos version Patch"],
-        "matchUpdateTypes": ["patch"],
-        "automerge": false,
-        "matchPackageNames": ["ghcr.io/siderolabs/kubelet", "ghcr.io/siderolabs/installer"],
-        "labels": ["type/patch", "system-upgrade"]
-      },
-      {
-        "description": ["Block automerge for Kubelet and Talos version Minor"],
-        "matchUpdateTypes": ["minor"],
-        "automerge": false,
-        "matchPackageNames": ["ghcr.io/siderolabs/kubelet", "ghcr.io/siderolabs/installer"],
-        "labels": ["type/minor", "system-upgrade"]
-      },
-      {
-        "description": ["Block automerge for Kubelet and Talos version Major"],
-        "matchUpdateTypes": ["major"],
-        "dependencyDashboardApproval": true,
-        "matchPackageNames": ["ghcr.io/siderolabs/kubelet", "ghcr.io/siderolabs/installer"],
-        "labels": ["type/major", "system-upgrade"]
-      }
-    ]
-  }
+    "github>truecharts/public//.github/renovate/main.json5",
+    "github>n-rosati/homelab-infra//.github/renovate/talos.json5",
+    "github>n-rosati/homelab-infra//.github/renovate/part-db.json5"
+  ]
 }
