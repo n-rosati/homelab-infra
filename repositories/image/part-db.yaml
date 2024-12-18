@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: part-db1
+  namespace: flux-system
+spec:
+  image: docker.io/jbtronics/part-db1
+  interval: 5m
