@@ -64,7 +64,7 @@ spec:
             dest:
               enabled: false
             src:
-              enabled: true
+              enabled: false
       library:
         type: nfs
         enabled: true
