@@ -2,7 +2,7 @@
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "flux": {
         "fileMatch": [
-            "(^|\/)kubernetes/apps/part-db/.+\\.ya?ml$"
+            "(^|\/)kubernetes\/apps\/part-db\/.+\\.ya?ml$"
         ],
         "enabled": true,
         "updateTypes": [
