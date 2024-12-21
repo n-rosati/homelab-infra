@@ -113,12 +113,12 @@ spec:
         backups:
           enabled: true
           credentials: minio
-          revision: "1"
+          revision: "2"
         recovery:
           enabled: false
           credentials: minio
           method: object_store
-          revision: "1"
+          revision: "2"
         cluster:
           singleNode: true
     nextcloud:
