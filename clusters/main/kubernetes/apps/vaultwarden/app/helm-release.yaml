@@ -93,8 +93,6 @@ spec:
                 schedule: 0 3 * * *
     cnpg:
       main:
-        cluster:
-          singleNode: true
         backups:
           enabled: true
           revision: "2"
@@ -104,3 +102,5 @@ spec:
           credentials: minio
           method: object_store
           revision: "2"
+        cluster:
+          singleNode: true

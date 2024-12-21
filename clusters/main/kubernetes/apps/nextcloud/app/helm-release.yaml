@@ -106,7 +106,6 @@ spec:
         mountPath: /mnt/Software
     cnpg:
       main:
-        hibernate: false
         pgVersion: 15
         password: ${CNPG_PASSWORD}
         mode: standalone
