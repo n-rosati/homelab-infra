@@ -93,8 +93,6 @@ spec:
           enabled: true
           revision: "2"
           credentials: minio
-          encryption:
-            enabled: true
         recovery:
           enabled: true
           method: object_store
