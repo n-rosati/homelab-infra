@@ -31,7 +31,7 @@ spec:
   values:
     release_name: part-db
     global:
-      stopAll: false
+      stopAll: true
     image:
       repository: jbtronics/part-db1
       registry: docker.io
