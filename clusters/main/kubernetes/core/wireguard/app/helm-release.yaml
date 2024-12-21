@@ -56,8 +56,6 @@ spec:
         allowPrivilegeEscalation: true
         privileged: true
     service:
-      # main:
-      #   type: LoadBalancer
       vpn:
         type: LoadBalancer
     ingress:
