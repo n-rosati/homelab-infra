@@ -31,7 +31,7 @@ spec:
     TZ: ${TIMEZONE}
     service:
       main:
-        type: LoadBalancer
+        type: ClusterIP
     ingress:
       main:
         enabled: true
