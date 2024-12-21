@@ -61,7 +61,7 @@ spec:
             statusStyle: "dot"
             useEqualHeights: true
             headerStyle: boxed
-            target: _self
+            target: _blank
             quicklaunch:
               searchDescriptions: true
               hideInternetSearch: false
