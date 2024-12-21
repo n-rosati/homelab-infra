@@ -31,7 +31,7 @@ spec:
   values:
     release_name: part-db
     global:
-      stopAll: true
+      stopAll: false
     image:
       repository: jbtronics/part-db1
       registry: docker.io
@@ -141,11 +141,11 @@ spec:
           enabled: true
           method: object_store
           credentials: minio
+          revision: "2"
         backups:
           enabled: true
           revision: "2"
           credentials: minio
-          retentionPolicy: "7d"
     workload:
       main:
         podSpec:
