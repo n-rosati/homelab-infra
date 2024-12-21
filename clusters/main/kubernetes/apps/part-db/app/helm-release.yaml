@@ -36,7 +36,7 @@ spec:
       repository: jbtronics/part-db1
       registry: docker.io
       pullPolicy: IfNotPresent
-      tag: v1.14.5@sha256:019587c7821d12414aeb26b8d3058e5093db66bfc0190ef4b9356f92d664a38d
+      tag: v1.14.5@sha256:4571984e2e52d95b2253c778de673c65f94c2c389838ece52af089537664f71f
     TZ: ${TIMEZONE}
     credentials:
       minio:
