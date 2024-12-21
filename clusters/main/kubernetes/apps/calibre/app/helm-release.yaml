@@ -69,6 +69,8 @@ spec:
               enabled: false
             src:
               enabled: true
+              trigger:
+                schedule: 0 1 * * *
       library:
         type: nfs
         enabled: true

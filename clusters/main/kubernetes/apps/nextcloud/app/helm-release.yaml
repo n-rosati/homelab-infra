@@ -69,6 +69,8 @@ spec:
               enabled: false
             src:
               enabled: true
+              trigger:
+                schedule: 0 2 * * *
       config:
         volsync:
           - credentials: minio
@@ -78,6 +80,8 @@ spec:
               enabled: false
             src:
               enabled: true
+              trigger:
+                schedule: 0 2 * * *
       data:
         type: nfs
         server: ${TRUENAS_IP}

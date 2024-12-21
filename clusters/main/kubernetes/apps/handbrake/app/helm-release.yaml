@@ -74,6 +74,8 @@ spec:
               enabled: false
             src:
               enabled: true
+              trigger:
+                schedule: 0 1 * * *
       storage:
         type: nfs
         enabled: true

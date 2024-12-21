@@ -43,6 +43,8 @@ spec:
               enabled: false
             src:
               enabled: true
+              trigger:
+                schedule: 0 3 * * *
     addons:
       codeserver:
         enabled: true
