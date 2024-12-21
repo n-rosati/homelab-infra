@@ -96,7 +96,7 @@ spec:
           encryption:
             enabled: true
         recovery:
-          enabled: false
+          enabled: true
           method: object_store
           credentials: minio
           revision: "1"
