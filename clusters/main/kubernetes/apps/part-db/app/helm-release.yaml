@@ -108,7 +108,7 @@ spec:
             type: restic
             credentials: minio
             dest:
-              enabled: false
+              enabled: true
             src:
               enabled: true
               trigger:
@@ -122,7 +122,7 @@ spec:
             type: restic
             credentials: minio
             dest:
-              enabled: false
+              enabled: true
             src:
               enabled: true
               trigger:
@@ -138,7 +138,7 @@ spec:
         cluster:
           singleNode: true
         recovery:
-          enabled: false
+          enabled: true
           method: object_store
           credentials: minio
         backups:
