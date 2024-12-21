@@ -29,9 +29,6 @@ spec:
     keepHistory: false
   values:
     TZ: ${TIMEZONE}
-    service:
-      main:
-        type: ClusterIP
     ingress:
       main:
         enabled: true
