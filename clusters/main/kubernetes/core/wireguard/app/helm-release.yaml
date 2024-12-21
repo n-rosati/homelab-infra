@@ -97,7 +97,7 @@ spec:
             name: minio
             type: restic
             dest:
-              enabled: false
+              enabled: true
             src:
               enabled: true
     workload:
