@@ -56,7 +56,6 @@ spec:
     service:
       main:
         enabled: true
-        type: LoadBalancer
         ports:
           main:
             enabled: true

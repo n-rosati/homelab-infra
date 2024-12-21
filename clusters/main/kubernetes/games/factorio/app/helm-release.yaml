@@ -60,8 +60,6 @@ spec:
     addons:
       codeserver:
         enabled: true
-        service:
-          type: LoadBalancer
         ingress:
           enabled: true
           hosts:
