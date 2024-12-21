@@ -13,13 +13,26 @@ spec:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
-  releaseName: cloudflareddns
+  timeout: 20m
+  maxHistory: 3
+  driftDetection:
+    mode: warn
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
     TZ: ${TIMEZONE}
     cloudflareddns:
       api_token: ${CF_API_TOKEN}
       host_zone_record:
-      - domain: home.${DOMAIN_BASE}
-        record: A
-        zone: ${CF_ZONE_ID}
+        - domain: home.${DOMAIN_BASE}
+          record: A
+          zone: ${CF_ZONE_ID}
       user: ${EMAIL}

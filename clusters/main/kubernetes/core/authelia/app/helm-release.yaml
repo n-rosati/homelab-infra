@@ -13,11 +13,23 @@ spec:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
-  releaseName: authelia
+  timeout: 20m
+  maxHistory: 3
+  driftDetection:
+    mode: warn
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
     global:
       stopAll: false
-    release_name: authelia
     TZ: ${TIMEZONE}
     credentials:
       minio-creds:
@@ -33,7 +45,7 @@ spec:
         enabled: true
         required: true
         hosts:
-        - host: auth.${DOMAIN_BASE}
+          - host: auth.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
@@ -42,12 +54,12 @@ spec:
             allowCors: true
             enabled: true
             entrypoints:
-            - websecure
+              - websecure
             middlewares:
-            - name: real-ip
-              namespace: "traefik"
-            - name: geo-allowlist
-              namespace: "traefik"
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
     cnpg:
       main:
         mode: standalone
@@ -59,13 +71,13 @@ spec:
     access_control:
       default_policy: deny
       rules:
-      - domain: '*.${DOMAIN_BASE}'
-        domain_regex: []
-        networks: []
-        policy: one_factor
-        resources: []
-        subject:
-        - group:users
+        - domain: '*.${DOMAIN_BASE}'
+          domain_regex: []
+          networks: []
+          policy: one_factor
+          resources: []
+          subject:
+            - group:users
     authentication_backend:
       file:
         enabled: false

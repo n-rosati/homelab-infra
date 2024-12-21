@@ -30,7 +30,6 @@ spec:
   values:
     global:
       stopAll: true
-    release_name: calibre
     TZ: ${TIMEZONE}
     credentials:
       minio:

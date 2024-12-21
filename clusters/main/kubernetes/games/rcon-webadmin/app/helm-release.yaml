@@ -13,11 +13,23 @@ spec:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
-  releaseName: rcon-webadmin
+  timeout: 20m
+  maxHistory: 3
+  driftDetection:
+    mode: warn
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
     global:
       stopAll: false
-    release_name: rcon-webadmin
     TZ: ${TIMEZONE}
     credentials:
       minio:

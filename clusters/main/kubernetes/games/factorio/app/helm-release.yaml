@@ -13,11 +13,23 @@ spec:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
-  releaseName: factorio
+  timeout: 20m
+  maxHistory: 3
+  driftDetection:
+    mode: warn
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
     image:
       tag: 2.0.23@sha256:3548f7912d86ab73900fd28e5d85fbd6419e1da191aeb775624a7e230e0fe334
-    release_name: factorio
     global:
       stopAll: false
     TZ: ${TIMEZONE}

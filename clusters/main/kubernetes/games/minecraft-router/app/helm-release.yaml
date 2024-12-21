@@ -13,7 +13,20 @@ spec:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
-  releaseName: minecraft-router
+  timeout: 20m
+  maxHistory: 3
+  driftDetection:
+    mode: warn
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
     global:
       stopAll: true
@@ -22,39 +35,39 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: ${JAN_URL}
-          integrations:
-            traefik:
-              enabled: true
-              middlewares:
-              - name: real-ip
-                namespace: "traefik"
-              - name: geo-allowlist
-                namespace: "traefik"
-        - host: ${JAN_2_URL}
-          integrations:
-            traefik:
-              enabled: true
-              middlewares:
-              - name: real-ip
-                namespace: "traefik"
-              - name: geo-allowlist
-                namespace: "traefik"
-        - host: ${STATECH_INDUSTRY_URL}
-          integrations:
-            traefik:
-              enabled: true
-              middlewares:
-              - name: real-ip
-                namespace: "traefik"
-              - name: geo-allowlist
-                namespace: "traefik"
+          - host: ${JAN_URL}
+            integrations:
+              traefik:
+                enabled: true
+                middlewares:
+                  - name: real-ip
+                    namespace: "traefik"
+                  - name: geo-allowlist
+                    namespace: "traefik"
+          - host: ${JAN_2_URL}
+            integrations:
+              traefik:
+                enabled: true
+                middlewares:
+                  - name: real-ip
+                    namespace: "traefik"
+                  - name: geo-allowlist
+                    namespace: "traefik"
+          - host: ${STATECH_INDUSTRY_URL}
+            integrations:
+              traefik:
+                enabled: true
+                middlewares:
+                  - name: real-ip
+                    namespace: "traefik"
+                  - name: geo-allowlist
+                    namespace: "traefik"
     service:
       main:
         type: LoadBalancer
     mcrouter:
       default: jan-minecraft-java.mc-jan.svc.cluster.local:25565
       mappings:
-      - ${JAN_URL}=jan-minecraft-java.mc-jan.svc.cluster.local:25565
-      - ${JAN_2_URL}=jan-2-minecraft-java.mc-jan-2.svc.cluster.local:25567
-      - ${STATECH_INDUSTRY_URL}=statech-industry-minecraft-java.mc-statech-industry.svc.cluster.local:25570
+        - ${JAN_URL}=jan-minecraft-java.mc-jan.svc.cluster.local:25565
+        - ${JAN_2_URL}=jan-2-minecraft-java.mc-jan-2.svc.cluster.local:25567
+        - ${STATECH_INDUSTRY_URL}=statech-industry-minecraft-java.mc-statech-industry.svc.cluster.local:25570
