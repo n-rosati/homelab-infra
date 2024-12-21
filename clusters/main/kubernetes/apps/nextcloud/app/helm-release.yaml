@@ -126,7 +126,6 @@ spec:
         initialAdminUser: ${INITIAL_ADMIN_USER}
         initialAdminPassword: ${INITIAL_ADMIN_PASSWORD}
       general:
-        accessIP: ${NEXTCLOUD_IP}
         default_phone_region: CA
       logging:
         log_date_format: Y-m-d H:i:s
