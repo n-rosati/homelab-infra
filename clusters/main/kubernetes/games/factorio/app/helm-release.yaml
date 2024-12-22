@@ -28,8 +28,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      tag: 2.0.23@sha256:3548f7912d86ab73900fd28e5d85fbd6419e1da191aeb775624a7e230e0fe334
     global:
       stopAll: false
     TZ: ${TIMEZONE}
