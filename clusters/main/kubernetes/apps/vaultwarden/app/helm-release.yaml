@@ -86,7 +86,7 @@ spec:
             type: restic
             credentials: minio
             dest:
-              enabled: false
+              enabled: true
             src:
               enabled: true
               trigger:
@@ -98,7 +98,7 @@ spec:
           revision: "2"
           credentials: minio
         recovery:
-          enabled: false
+          enabled: true
           credentials: minio
           method: object_store
           revision: "2"
