@@ -35,7 +35,7 @@ spec:
       main:
         enabled: true
         hosts:
-          - host: ${JAN_URL}
+          - host: jan.${DOMAIN_BASE}
             integrations:
               traefik:
                 enabled: true
@@ -44,7 +44,7 @@ spec:
                     namespace: "traefik"
                   - name: geo-allowlist
                     namespace: "traefik"
-          - host: ${JAN_2_URL}
+          - host: jan2.${DOMAIN_BASE}
             integrations:
               traefik:
                 enabled: true
@@ -53,7 +53,7 @@ spec:
                     namespace: "traefik"
                   - name: geo-allowlist
                     namespace: "traefik"
-          - host: ${STATECH_INDUSTRY_URL}
+          - host: statech-industry.${DOMAIN_BASE}
             integrations:
               traefik:
                 enabled: true
