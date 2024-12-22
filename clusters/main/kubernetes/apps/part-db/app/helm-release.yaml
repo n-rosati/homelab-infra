@@ -136,14 +136,14 @@ spec:
         mode: standalone
         cluster:
           singleNode: true
+        backups:
+          enabled: true
+          revision: "4"
+          credentials: minio
         recovery:
           enabled: true
           credentials: minio
-          revision: "4"
-        backups:
-          enabled: true
           revision: "3"
-          credentials: minio
     workload:
       main:
         podSpec:
