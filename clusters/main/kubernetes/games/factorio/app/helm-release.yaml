@@ -31,7 +31,7 @@ spec:
     image:
       tag: 2.0.28@sha256:2b9253e18690c6395c32f1c60076e319349a99c013d0c26071a781689f2ea1fc
     global:
-      stopAll: true
+      stopAll: false
     TZ: ${TIMEZONE}
     credentials:
       minio:
