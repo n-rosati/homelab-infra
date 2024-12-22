@@ -42,19 +42,19 @@ spec:
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         accessKey: ${MINIO_ACCESS_KEY}
         secretKey: ${MINIO_SECRET_KEY}
-    ingress:
-      main:
-        enabled: true
-        hosts:
-          - host: factorio.${DOMAIN_BASE}
-            integrations:
-              traefik:
-                enabled: true
-                middlewares:
-                  - name: real-ip
-                    namespace: "traefik"
-                  - name: geo-allowlist
-                    namespace: "traefik"
+    # ingress:
+    #   main:
+    #     enabled: true
+    #     hosts:
+    #       - host: factorio.${DOMAIN_BASE}
+    #         integrations:
+    #           traefik:
+    #             enabled: true
+    #             middlewares:
+    #               - name: real-ip
+    #                 namespace: "traefik"
+    #               - name: geo-allowlist
+    #                 namespace: "traefik"
     service:
       main:
         type: LoadBalancer
