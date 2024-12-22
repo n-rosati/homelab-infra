@@ -95,12 +95,12 @@ spec:
       main:
         backups:
           enabled: true
-          revision: "2"
+          revision: "3"
           credentials: minio
         recovery:
           enabled: true
           credentials: minio
           method: object_store
-          revision: "2"
+          revision: "3"
         cluster:
           singleNode: true
