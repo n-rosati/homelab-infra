@@ -93,6 +93,7 @@ spec:
                 schedule: 0 3 * * *
     cnpg:
       main:
+        mode: recovery
         backups:
           enabled: true
           revision: "3"
