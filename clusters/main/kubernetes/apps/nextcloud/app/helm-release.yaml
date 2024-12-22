@@ -105,11 +105,11 @@ spec:
       main:
         pgVersion: 15
         password: ${CNPG_PASSWORD}
-        mode: standalone
+        mode: recovery
         backups:
           enabled: true
           credentials: minio
-          revision: "2"
+          revision: "3"
         recovery:
           enabled: true
           credentials: minio
