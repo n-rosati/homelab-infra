@@ -51,7 +51,7 @@ spec:
         integrations:
           certManager:
             enabled: true
-            certificateIssuer: le-prod
+            certificateIssuer: le-staging
           homepage:
             enabled: true
             group: Apps
@@ -95,7 +95,7 @@ spec:
       main:
         mode: recovery
         backups:
-          enabled: true
+          enabled: false
           revision: "3"
           credentials: minio
         recovery:
