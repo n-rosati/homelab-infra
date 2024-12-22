@@ -75,7 +75,7 @@ spec:
             name: app-html
             type: restic
             dest:
-              enabled: false
+              enabled: true
             src:
               enabled: true
               trigger:
@@ -86,7 +86,7 @@ spec:
             name: app-config
             type: restic
             dest:
-              enabled: false
+              enabled: true
             src:
               enabled: true
               trigger:
