@@ -139,7 +139,7 @@ spec:
         recovery:
           enabled: true
           credentials: minio
-          revision: "3"
+          revision: "4"
         backups:
           enabled: true
           revision: "3"

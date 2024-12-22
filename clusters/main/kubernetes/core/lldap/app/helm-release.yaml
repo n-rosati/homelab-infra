@@ -89,7 +89,7 @@ spec:
         password: ${CNPG_PASSWORD}
         backups:
           enabled: true
-          revision: "2"
+          revision: "3"
           credentials: minio
         recovery:
           enabled: true
