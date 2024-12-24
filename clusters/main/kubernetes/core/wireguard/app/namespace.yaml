@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: wireguard
+  name: wg-easy
   annotations:
     volsync.backube/privileged-movers: "true"
   labels:
