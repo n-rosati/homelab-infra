@@ -53,11 +53,24 @@ spec:
         secretKey: ${MINIO_SECRET_KEY}
     securityContext:
       container:
-        allowPrivilegeEscalation: true
+        PUID: 0
+        UMASK: '0022'
+        advanced: false
+        capabilities:
+          add:
+            - NET_ADMIN
+            - NET_RAW
+            - SYS_MODULE
+        readOnlyRootFilesystem: false
+        runAsGroup: 0
+        runAsNonRoot: false
+        runAsUser: 0
         privileged: true
     service:
       vpn:
         type: LoadBalancer
+        loadBalancerIP: ${WG_EASY_IP}
+        externalTrafficPolicy: Local
     ingress:
       main:
         enabled: true
@@ -107,5 +120,6 @@ spec:
                 WG_HOST: home.${DOMAIN_BASE}
                 WG_MTU: 1420
                 WG_PERSISTENT_KEEPALIVE: 25
+                WG_DEFAULT_DNS: ${BLOCKY_IP}
                 PASSWORD_HASH: "${WG_PASSWORD_HASH}"
                 UI_TRAFFIC_STATS: true
