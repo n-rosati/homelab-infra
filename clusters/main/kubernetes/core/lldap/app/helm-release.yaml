@@ -84,7 +84,7 @@ spec:
                 schedule: 0 3 * * *
     cnpg:
       main:
-        mode: standalone
+        mode: recovery
         pgVersion: 15
         password: ${CNPG_PASSWORD}
         backups:
