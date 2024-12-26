@@ -149,6 +149,13 @@ spec:
         podSpec:
           containers:
             main:
+              probes:
+                liveness:
+                  enabled: false
+                readiness:
+                  enabled: false
+                startup:
+                  enabled: false
               env:
                 ALLOW_ATTACHMENT_DOWNLOADS: "1"
                 ALLOW_EMAIL_PW_RESET: "true"
