@@ -90,7 +90,7 @@ spec:
             src:
               enabled: true
               trigger:
-                schedule: 0 3 * * *
+                schedule: 15 3 * * *
     cnpg:
       main:
         # bump backup and recovery revisions if app is being remade

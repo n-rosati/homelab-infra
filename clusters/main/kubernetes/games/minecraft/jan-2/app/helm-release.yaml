@@ -58,7 +58,7 @@ spec:
             src:
               enabled: true
               trigger:
-                schedule: 0 4 * * *
+                schedule: 15 4 * * *
       backups:
         type: nfs
         path: /mnt/DSU/Backups/Minecraft/jan-2

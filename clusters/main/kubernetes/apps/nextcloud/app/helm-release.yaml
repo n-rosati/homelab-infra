@@ -90,7 +90,7 @@ spec:
             src:
               enabled: true
               trigger:
-                schedule: 0 2 * * *
+                schedule: 15 2 * * *
       data:
         type: nfs
         server: ${TRUENAS_IP}
