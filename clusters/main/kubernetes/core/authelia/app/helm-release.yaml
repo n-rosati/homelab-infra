@@ -71,6 +71,11 @@ spec:
     access_control:
       default_policy: deny
       rules:
+        # Local network bypass auth
+        - domain: '*.${DOMAIN_BASE}'
+          networks:
+            - 192.168.2.0/24
+          policy: bypass
         - domain: '*.${DOMAIN_BASE}'
           domain_regex: []
           networks: []
@@ -110,7 +115,7 @@ spec:
     domain: ${DOMAIN_BASE}
     log:
       level: info
-      format: text
+      format: json
     notifier:
       filesystem:
         enabled: false
