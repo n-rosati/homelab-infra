@@ -132,10 +132,10 @@ spec:
               - Spoolman:
                   href: https://spoolman.${DOMAIN_BASE}
                   icons: spoolman.svg
-                  siteMonitor: spoolman-app-template.spoolman.${DNS_SUFFIX}:7912
+                  siteMonitor: http://spoolman-app-template.spoolman.${DNS_SUFFIX}:7912
                   widget:
                     type: spoolman
-                    url: https://spoolman.${DOMAIN_BASE}
+                    url: http://spoolman-app-template.spoolman.${DNS_SUFFIX}:7912
               - PartDB:
                   href: https://partdb.${DOMAIN_BASE}
                   icon: https://docs.part-db.de/assets/favicon.ico
