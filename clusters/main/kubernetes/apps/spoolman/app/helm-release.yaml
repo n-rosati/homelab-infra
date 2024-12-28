@@ -33,8 +33,7 @@ spec:
     global:
       stopAll: false
     image:
-      repository: donkie/spoolman
-      registry: ghcr.io
+      repository: ghcr.io/donkie/spoolman
       pullPolicy: IfNotPresent
       tag: 0.21.0
     TZ: ${TIMEZONE}
