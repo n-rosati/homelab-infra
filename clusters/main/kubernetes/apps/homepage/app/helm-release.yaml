@@ -131,7 +131,7 @@ spec:
             - Apps:
               - Spoolman:
                   href: https://spoolman.${DOMAIN_BASE}
-                  icons: spoolman.svg
+                  icons: spoolman.png
                   siteMonitor: http://spoolman-app-template.spoolman.${DNS_SUFFIX}:7912
                   widget:
                     type: spoolman
