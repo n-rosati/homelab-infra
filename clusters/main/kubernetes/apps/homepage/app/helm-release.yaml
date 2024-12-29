@@ -152,7 +152,7 @@ spec:
                       label: Total Parts
                       format: number
           bookmarks.yaml: |
-            - TrueCharts
+            - TrueCharts:
               - Github:
                 - abbr: GH
                   href: https://github.com/truecharts/public/tree/master/charts
