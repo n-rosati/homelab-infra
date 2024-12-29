@@ -151,4 +151,11 @@ spec:
                     - field: hydra:totalItems
                       label: Total Parts
                       format: number
-          bookmarks.yaml: ""
+          bookmarks.yaml: |
+            - TrueCharts
+              - Github:
+                - abbr: GH
+                  href: https://github.com/truecharts/public/tree/master/charts
+              - Docs:
+                - abbr: TC
+                  href: https://truecharts.org/general/
