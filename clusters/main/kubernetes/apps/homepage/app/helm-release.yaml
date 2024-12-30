@@ -151,6 +151,13 @@ spec:
                     - field: hydra:totalItems
                       label: Total Parts
                       format: number
+              - Scrutiny:
+                  href: https://scrutiny.${DOMAIN_BASE}
+                  icon: scrutiny.png
+                  ping: ${TRUENAS_IP}:31054
+                  widget:
+                    type: scrutiny
+                    url: http://${TRUENAS_IP}:31054
           bookmarks.yaml: |
             - TrueCharts:
               - Github:
