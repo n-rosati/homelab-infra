@@ -82,20 +82,10 @@ spec:
               - name: auth
                 namespace: "traefik"
     persistence:
-      media:
+      data:
         enabled: true
         type: pvc
         mountPath: /home/app/.local/share/spoolman
-        volsync:
-          - name: uploads
-            type: restic
-            credentials: minio
-            dest:
-              enabled: true
-            src:
-              enabled: true
-              trigger:
-                schedule: 0 5 * * *
     cnpg:
       main:
         enabled: true
