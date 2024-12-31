@@ -13,11 +13,6 @@ spec:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
-  releaseName: spoolman
-  timeout: 20m
-  maxHistory: 3
-  driftDetection:
-    mode: warn
   install:
     createNamespace: true
     remediation:
@@ -26,10 +21,7 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 3
-  uninstall:
-    keepHistory: false
   values:
-    release_name: spoolman
     global:
       stopAll: false
     image:
