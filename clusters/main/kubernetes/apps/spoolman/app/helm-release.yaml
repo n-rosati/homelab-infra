@@ -118,7 +118,7 @@ spec:
                   enabled: false
               env:
                 SPOOLMAN_DB_TYPE: postgres
-                SPOOLMAN_DB_HOST: spoolman-app-template-cnpg-main-rw.spoolman.svc.cluster.local
+                SPOOLMAN_DB_HOST: spoolman-app-template-cnpg-main-rw.spoolman.${DNS_SUFFIX}
                 SPOOLMAN_DB_PORT: 5432
                 SPOOLMAN_DB_NAME: spoolman
                 SPOOLMAN_DB_USERNAME: spoolman
