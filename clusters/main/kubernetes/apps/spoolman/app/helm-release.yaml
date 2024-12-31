@@ -96,6 +96,24 @@ spec:
               enabled: true
               trigger:
                 schedule: 0 5 * * *
+    cnpg:
+      main:
+        enabled: true
+        database: spoolman
+        user: spoolman
+        password: ${SPOOLMAN_DB_PASSWORD}
+        pgVersion: 16
+        mode: recovery
+        cluster:
+          singleNode: true
+        backups:
+          enabled: true
+          revision: "2"
+          credentials: minio
+        recovery:
+          enabled: true
+          credentials: minio
+          revision: "1"
     workload:
       main:
         podSpec:
@@ -108,3 +126,13 @@ spec:
                   enabled: false
                 startup:
                   enabled: false
+              env:
+                SPOOLMAN_DB_TYPE: postgres
+                SPOOLMAN_DB_HOST: spoolman-app-template-cnpg-main-rw.spoolman.svc.cluster.local
+                SPOOLMAN_DB_PORT: 5432
+                SPOOLMAN_DB_NAME: spoolman
+                SPOOLMAN_DB_USERNAME: spoolman
+                SPOOLMAN_DB_PASSWORD: ${SPOOLMAN_DB_PASSWORD}
+                SPOOLMAN_DB_QUERY: serverVersion=16.4&charset=utf8
+                PUID: 568
+                GID: 568
