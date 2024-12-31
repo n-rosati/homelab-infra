@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: filebrowser
-  namespace: filebrowser
+  namespace: spoolman
 spec:
   interval: 15m
   chart:
@@ -29,19 +29,19 @@ spec:
     keepHistory: false
   values:
     global:
-      stopAll: true
+      stopAll: false
     service:
       main:
         type: LoadBalancer
-    # persistence:
-    #   a:
-    #     enabled: true
-    #     type: pvc
-    #     # mount path in filebrowser, must be in /data
-    #     mountPath: /data/mount-a
-    #     targetSelectAll: true
-    #     # claim name
-    #     existingClaim: "factorio-config"
+    persistence:
+      a:
+        enabled: true
+        type: pvc
+        # mount path in filebrowser, must be in /data
+        mountPath: /data/mount-a
+        targetSelectAll: true
+        # claim name
+        existingClaim: "spoolman-app-template-media"
     #   b:
     #     enabled: true
     #     type: nfs
