@@ -31,7 +31,7 @@ spec:
   values:
     release_name: spoolman
     global:
-      stopAll: false
+      stopAll: true
     image:
       repository: ghcr.io/donkie/spoolman
       pullPolicy: IfNotPresent
