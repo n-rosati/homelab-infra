@@ -185,3 +185,25 @@ spec:
                 PROVIDER_OCTOPART_SECRET: ${PARTDB_OCTOPART_SECRET}
                 TRUSTED_PROXIES: ${PODNET},${SVCNET},192.168.2.0/24
                 USE_GRAVATAR: "0"
+    addons:
+      codeserver:
+        enabled: true
+        ingress:
+          enabled: true
+          hosts:
+            - host: partdb-config.${DOMAIN_BASE}
+          integrations:
+            certManager:
+              enabled: true
+              certificateIssuer: le-prod
+            traefik:
+              enabled: true
+              entrypoints:
+                - websecure
+              middlewares:
+                - name: real-ip
+                  namespace: "traefik"
+                - name: geo-allowlist
+                  namespace: "traefik"
+                - name: auth
+                  namespace: "traefik"
