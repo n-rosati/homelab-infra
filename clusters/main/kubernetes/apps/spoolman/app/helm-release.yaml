@@ -133,4 +133,3 @@ spec:
                 SPOOLMAN_DB_NAME: spoolman
                 SPOOLMAN_DB_USERNAME: spoolman
                 SPOOLMAN_DB_PASSWORD: ${SPOOLMAN_DB_PASSWORD}
-                SPOOLMAN_DB_QUERY: serverVersion=16.4&charset=utf8
