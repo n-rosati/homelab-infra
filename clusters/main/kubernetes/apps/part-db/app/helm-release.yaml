@@ -57,6 +57,15 @@ spec:
             port: 4443
             protocol: tcp
             targetPort: 443
+      insecure:
+        enabled: true
+        type: LoadBalancer
+        ports:
+          insecure:
+            enabled: true
+            port: 4080
+            protocol: tcp
+            targetPort: 80
     ingress:
       main:
         enabled: true
