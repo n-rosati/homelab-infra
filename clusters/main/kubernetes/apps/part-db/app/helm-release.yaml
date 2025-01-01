@@ -50,10 +50,10 @@ spec:
     service:
       main:
         enabled: true
+        type: LoadBalancer
         ports:
           main:
             enabled: true
-            type: LoadBalancer
             port: 4443
             protocol: tcp
             targetPort: 443
