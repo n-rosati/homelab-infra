@@ -53,9 +53,9 @@ spec:
         ports:
           main:
             enabled: true
-            port: 4080
-            protocol: http
-            targetPort: 80
+            port: 4443
+            protocol: https
+            targetPort: 443
     ingress:
       main:
         enabled: true
