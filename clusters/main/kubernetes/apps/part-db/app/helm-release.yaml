@@ -27,10 +27,10 @@ spec:
     global:
       stopAll: false
     image:
-      repository: jbtronics/part-db1
+      repository: partdborg/part-db
       registry: docker.io
       pullPolicy: IfNotPresent
-      tag: v1.14.5@sha256:4571984e2e52d95b2253c778de673c65f94c2c389838ece52af089537664f71f
+      tag: v1.14.5@sha256:e9c709dce7c1299f2c66744c25cb14a8440567e6d7dde071d4497b2d15fa167a
     TZ: ${TIMEZONE}
     credentials:
       minio:
@@ -53,24 +53,9 @@ spec:
         ports:
           main:
             enabled: true
-            port: 3000
+            port: 4080
             protocol: http
             targetPort: 80
-          secure:
-            enabled: false
-            port: 3001
-            protocol: https
-            targetPort: 443
-          secure-udp:
-            enabled: false
-            port: 3002
-            protocol: udp
-            targetPort: 443
-          api:
-            enabled: false
-            port: 3003
-            protocol: tcp
-            targetPort: 2019
     ingress:
       main:
         enabled: true
@@ -92,6 +77,34 @@ spec:
               - name: auth
                 namespace: "traefik"
     persistence:
+      data:
+        enabled: true
+        type: pvc
+        mountPath: /data
+        volsync:
+          - name: uploads
+            type: restic
+            credentials: minio
+            dest:
+              enabled: true
+            src:
+              enabled: true
+              trigger:
+                schedule: 30 2 * * *
+      config:
+        enabled: true
+        type: pvc
+        mountPath: /config
+        volsync:
+          - name: uploads
+            type: restic
+            credentials: minio
+            dest:
+              enabled: true
+            src:
+              enabled: true
+              trigger:
+                schedule: 35 2 * * *
       media:
         enabled: true
         type: pvc
@@ -105,7 +118,7 @@ spec:
             src:
               enabled: true
               trigger:
-                schedule: 30 2 * * *
+                schedule: 40 2 * * *
       uploads:
         enabled: true
         type: pvc
@@ -132,12 +145,12 @@ spec:
           singleNode: true
         backups:
           enabled: true
-          revision: "5"
+          revision: "1"
           credentials: minio
         recovery:
           enabled: true
           credentials: minio
-          revision: "4"
+          revision: ""
     workload:
       main:
         podSpec:
@@ -183,5 +196,6 @@ spec:
                 PROVIDER_OCTOPART_CLIENT_ID: ${PARTDB_OCTOPART_CLIENT_ID}
                 PROVIDER_OCTOPART_CURRENCY: CAD
                 PROVIDER_OCTOPART_SECRET: ${PARTDB_OCTOPART_SECRET}
-                TRUSTED_PROXIES: ${PODNET},${SVCNET},192.168.2.0/24
+                TRUSTED_PROXIES: ${PODNET},${SVCNET},${TRAEFIK_IP},192.168.2.0/24
+                TRUSTED_HOSTS: partdb.${DOMAIN_BASE}
                 USE_GRAVATAR: "0"
