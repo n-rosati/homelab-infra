@@ -27,10 +27,10 @@ spec:
     global:
       stopAll: false
     image:
-      repository: partdborg/part-db
+      repository: jbtronics/part-db1
       registry: docker.io
       pullPolicy: IfNotPresent
-      tag: v1.14.5@sha256:e9c709dce7c1299f2c66744c25cb14a8440567e6d7dde071d4497b2d15fa167a
+      tag: v1.14.5@sha256:4571984e2e52d95b2253c778de673c65f94c2c389838ece52af089537664f71f
     TZ: ${TIMEZONE}
     credentials:
       minio:
@@ -54,17 +54,8 @@ spec:
         ports:
           main:
             enabled: true
-            port: 4443
-            protocol: tcp
-            targetPort: 443
-      insecure:
-        enabled: true
-        type: LoadBalancer
-        ports:
-          insecure:
-            enabled: true
-            port: 4080
-            protocol: tcp
+            port: 80
+            protocol: http
             targetPort: 80
     ingress:
       main:
@@ -74,7 +65,7 @@ spec:
         integrations:
           certManager:
             enabled: true
-            certificateIssuer: le-prod
+            certificateIssuer: le-staging
           traefik:
             enabled: true
             entrypoints:
@@ -87,34 +78,6 @@ spec:
               - name: auth
                 namespace: "traefik"
     persistence:
-      data:
-        enabled: true
-        type: pvc
-        mountPath: /data
-        volsync:
-          - name: uploads
-            type: restic
-            credentials: minio
-            dest:
-              enabled: true
-            src:
-              enabled: true
-              trigger:
-                schedule: 30 2 * * *
-      config:
-        enabled: true
-        type: pvc
-        mountPath: /config
-        volsync:
-          - name: uploads
-            type: restic
-            credentials: minio
-            dest:
-              enabled: true
-            src:
-              enabled: true
-              trigger:
-                schedule: 35 2 * * *
       media:
         enabled: true
         type: pvc
@@ -193,9 +156,6 @@ spec:
                 HISTORY_SAVE_REMOVED_DATA: "true"
                 INSTANCE_NAME: Part-DB
                 MAILER_DSN: ${SMTP_MAILER_DSN}
-                MERCURE_PUBLISHER_JWT_KEY: ${PARTDB_JWT_SECRET}
-                MERCURE_SUBSCRIBER_JWT_KEY: ${PARTDB_JWT_SECRET}
-                MERCURE_JWT_SECRET: ${PARTDB_JWT_SECRET}
                 PROVIDER_DIGIKEY_CLIENT_ID: ${PARTDB_DIGIKEY_CLIENT_ID}
                 PROVIDER_DIGIKEY_COUNTRY: ca
                 PROVIDER_DIGIKEY_CURRENCY: CAD
@@ -215,22 +175,5 @@ spec:
     addons:
       codeserver:
         enabled: true
-        ingress:
-          enabled: true
-          hosts:
-            - host: partdb-config.${DOMAIN_BASE}
-          integrations:
-            certManager:
-              enabled: true
-              certificateIssuer: le-prod
-            traefik:
-              enabled: true
-              entrypoints:
-                - websecure
-              middlewares:
-                - name: real-ip
-                  namespace: "traefik"
-                - name: geo-allowlist
-                  namespace: "traefik"
-                - name: auth
-                  namespace: "traefik"
+        service:
+          type: LoadBalancer
