@@ -145,12 +145,12 @@ spec:
           singleNode: true
         backups:
           enabled: true
-          revision: "1"
+          revision: "2"
           credentials: minio
         recovery:
           enabled: true
           credentials: minio
-          revision: ""
+          revision: "1"
     workload:
       main:
         podSpec:
