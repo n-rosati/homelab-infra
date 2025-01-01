@@ -133,7 +133,7 @@ spec:
               - PartDB:
                   href: https://partdb.${DOMAIN_BASE}
                   icon: https://docs.part-db.de/assets/favicon.ico
-                  siteMonitor: http://part-db-app-template.part-db.${DNS_SUFFIX}:3000
+                  siteMonitor: http://${PARTDB_DNS}:3000
                   widget:
                     type: customapi
                     url: http://${PARTDB_DNS}:3000/api/parts

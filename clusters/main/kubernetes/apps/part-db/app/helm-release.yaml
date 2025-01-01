@@ -169,7 +169,7 @@ spec:
                 PROVIDER_OCTOPART_CURRENCY: CAD
                 PROVIDER_OCTOPART_SECRET: ${PARTDB_OCTOPART_SECRET}
                 TRUSTED_PROXIES: ${PODNET},${SVCNET},${TRAEFIK_IP},192.168.2.0/24
-                TRUSTED_HOSTS: partdb.${DOMAIN_BASE}
+                TRUSTED_HOSTS: '^(partdb\.nicholasrosati\.xyz|[a-z0-9-]+\.[a-z0-9-]+\.svc\.cluster\.local)$'
                 USE_GRAVATAR: "0"
     addons:
       codeserver:
