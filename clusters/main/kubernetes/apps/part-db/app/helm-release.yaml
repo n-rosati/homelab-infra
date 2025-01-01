@@ -140,17 +140,17 @@ spec:
         user: partdb
         password: ${PARTDB_DB_PASSWORD}
         pgVersion: 16
-        mode: recovery
+        mode: standalone
         cluster:
           singleNode: true
         backups:
           enabled: true
-          revision: "2"
+          revision: "1"
           credentials: minio
         recovery:
           enabled: true
           credentials: minio
-          revision: "1"
+          revision: ""
     workload:
       main:
         podSpec:
