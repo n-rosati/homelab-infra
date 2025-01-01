@@ -171,8 +171,3 @@ spec:
                 TRUSTED_PROXIES: ${PODNET},${SVCNET},${TRAEFIK_IP},192.168.2.0/24
                 TRUSTED_HOSTS: '^(partdb\.nicholasrosati\.xyz|[a-z0-9-]+\.[a-z0-9-]+\.svc\.cluster\.local)$'
                 USE_GRAVATAR: "0"
-    addons:
-      codeserver:
-        enabled: true
-        service:
-          type: LoadBalancer
