@@ -53,8 +53,9 @@ spec:
         ports:
           main:
             enabled: true
+            type: LoadBalancer
             port: 4443
-            protocol: https
+            protocol: tcp
             targetPort: 443
     ingress:
       main:
