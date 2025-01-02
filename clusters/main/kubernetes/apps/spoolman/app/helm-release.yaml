@@ -47,6 +47,7 @@ spec:
     service:
       main:
         enabled: true
+        type: LoadBalancer
         ports:
           main:
             enabled: true
@@ -61,7 +62,7 @@ spec:
         integrations:
           certManager:
             enabled: true
-            certificateIssuer: le-prod
+            certificateIssuer: le-staging
           traefik:
             enabled: true
             entrypoints:
