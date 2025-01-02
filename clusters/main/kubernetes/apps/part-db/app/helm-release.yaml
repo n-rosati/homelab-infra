@@ -31,7 +31,6 @@ spec:
       registry: docker.io
       pullPolicy: IfNotPresent
       tag: v1.14.5@sha256:4571984e2e52d95b2253c778de673c65f94c2c389838ece52af089537664f71f
-    TZ: ${TIMEZONE}
     credentials:
       minio:
         name: minio

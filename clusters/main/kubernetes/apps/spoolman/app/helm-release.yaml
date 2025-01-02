@@ -28,7 +28,6 @@ spec:
       repository: ghcr.io/donkie/spoolman
       pullPolicy: IfNotPresent
       tag: 0.21.0
-    TZ: ${TIMEZONE}
     credentials:
       minio:
         name: minio

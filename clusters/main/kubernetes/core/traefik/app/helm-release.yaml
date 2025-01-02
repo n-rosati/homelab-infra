@@ -15,16 +15,15 @@ spec:
         namespace: flux-system
   releaseName: traefik
   values:
-    TZ: ${TIMEZONE}
     defaultCertificate: cluster-wildcard
     ingress:
       main:
         enabled: true
         hosts:
-        - host: traefik.${DOMAIN_BASE}
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: traefik.${DOMAIN_BASE}
+            paths:
+              - path: /
+                pathType: Prefix
         integrations:
           certManager:
             certificateIssuer: le-prod
@@ -37,18 +36,18 @@ spec:
               custom:
                 key: ""
               customkv:
-              - key: href
-                value: https://traefik.nicholasrosati.xyz/dashboard/#/
+                - key: href
+                  value: https://traefik.nicholasrosati.xyz/dashboard/#/
               enabled: true
           traefik:
             enabled: true
             middlewares:
-            - name: real-ip
-              namespace: "traefik"
-            - name: geo-allowlist
-              namespace: "traefik"
-            - name: auth
-              namespace: "traefik"
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
+              - name: auth
+                namespace: "traefik"
     logs:
       access:
         enabled: true
@@ -71,41 +70,41 @@ spec:
         level: ERROR
     middlewares:
       forwardAuth:
-      - name: auth
-        address: http://${AUTHELIA_DNS_NAME}/api/verify?rd=https://auth.${DOMAIN_BASE}
-        authRequestHeaders: []
-        authResponseHeaders:
-        - Remote-User
-        - Remote-Group
-        - Remote-Name
-        - Remote-Email
-        tls:
-        insecureSkipVerify: true
-        trustForwardHeader: true
+        - name: auth
+          address: http://${AUTHELIA_DNS_NAME}/api/verify?rd=https://auth.${DOMAIN_BASE}
+          authRequestHeaders: []
+          authResponseHeaders:
+            - Remote-User
+            - Remote-Group
+            - Remote-Name
+            - Remote-Email
+          tls:
+          insecureSkipVerify: true
+          trustForwardHeader: true
       geoBlock:
-      - name: geo-allowlist
-        allowLocalRequests: true
-        allowUnknownCountries: false
-        api: https://get.geojs.io/v1/ip/country/{ip}
-        apiTimeoutMs: 500
-        blackListMode: false
-        cacheSize: 25
-        countries:
-        - CA
-        - US
-        forceMonthlyUpdate: true
-        logAllowedRequests: false
-        logApiRequests: false
-        logLocalRequests: false
-        unknownCountryApiResponse: nil
+        - name: geo-allowlist
+          allowLocalRequests: true
+          allowUnknownCountries: false
+          api: https://get.geojs.io/v1/ip/country/{ip}
+          apiTimeoutMs: 500
+          blackListMode: false
+          cacheSize: 25
+          countries:
+            - CA
+            - US
+          forceMonthlyUpdate: true
+          logAllowedRequests: false
+          logApiRequests: false
+          logLocalRequests: false
+          unknownCountryApiResponse: nil
       realIP:
-      - name: real-ip
-        excludedNetworks:
-        - 192.168.2.0/24
+        - name: real-ip
+          excludedNetworks:
+            - 192.168.2.0/24
       ipWhiteList:
-      - name: allow-local-net-only
-        sourceRange:
-        - 192.168.2.0/24
+        - name: allow-local-net-only
+          sourceRange:
+            - 192.168.2.0/24
     service:
       tcp:
         externalTrafficPolicy: Local

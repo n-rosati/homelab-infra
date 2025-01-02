@@ -25,7 +25,6 @@ spec:
   values:
     global:
       stopAll: false
-    TZ: ${TIMEZONE}
     credentials:
       minio:
         name: minio
