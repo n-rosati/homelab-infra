@@ -22,7 +22,6 @@ spec:
     remediation:
       retries: 3
   values:
-    TZ: ${TIMEZONE}
     ingress:
       main:
         enabled: true
