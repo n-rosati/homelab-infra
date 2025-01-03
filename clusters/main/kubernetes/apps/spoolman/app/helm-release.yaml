@@ -23,7 +23,7 @@ spec:
       retries: 3
   values:
     global:
-      stopAll: false
+      stopAll: true
     image:
       repository: ghcr.io/donkie/spoolman
       pullPolicy: IfNotPresent
