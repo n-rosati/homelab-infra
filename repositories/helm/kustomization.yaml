@@ -30,4 +30,3 @@ resources:
   - truecharts.yaml
   # more goes here!
   - nvdp.yaml
-  - k8tz.yaml
