@@ -25,3 +25,17 @@ spec:
     timezone: ${TIMEZONE}
     injectionStrategy: hostPath
     verbose: true
+    readinessProbe:
+      httpGet:
+        path: /healthz
+        port: 443
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      failureThreshold: 3
+    livenessProbe:
+      httpGet:
+        path: /healthz
+        port: 443
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      failureThreshold: 3
