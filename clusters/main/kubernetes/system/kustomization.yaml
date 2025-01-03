@@ -15,4 +15,3 @@ resources:
   - traefik-crds/ks.yaml
   - volsync/ks.yaml
   - nvidia-device-plugin/ks.yaml
-  - k8tz/ks.yaml
