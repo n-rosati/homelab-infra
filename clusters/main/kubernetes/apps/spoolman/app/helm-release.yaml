@@ -85,12 +85,12 @@ spec:
         user: spoolman
         password: ${SPOOLMAN_DB_PASSWORD}
         pgVersion: 16
-        mode: standalone
+        mode: recovery
         cluster:
           singleNode: true
         backups:
           enabled: true
-          revision: "1"
+          revision: "2"
           credentials: minio
         recovery:
           enabled: true
