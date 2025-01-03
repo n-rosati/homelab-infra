@@ -23,8 +23,8 @@ spec:
       retries: 3
   values:
     timezone: ${TIMEZONE}
-    injectionStrategy: hostPath
-    verbose: true
+    # injectionStrategy: hostPath
+    # verbose: true
     # readinessProbe:
     #   httpGet:
     #     path: /healthz
