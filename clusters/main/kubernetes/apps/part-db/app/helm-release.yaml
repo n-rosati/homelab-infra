@@ -83,6 +83,8 @@ spec:
         volsync:
           - name: uploads
             type: restic
+            cleanupTempPVC: true
+            cleanupCachePVC: true
             credentials: minio
             dest:
               enabled: true
@@ -97,6 +99,8 @@ spec:
         volsync:
           - name: uploads
             type: restic
+            cleanupTempPVC: true
+            cleanupCachePVC: true
             credentials: minio
             dest:
               enabled: true

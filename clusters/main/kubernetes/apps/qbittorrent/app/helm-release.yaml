@@ -69,10 +69,14 @@ spec:
           - credentials: minio
             name: minio
             type: restic
+            cleanupTempPVC: true
+            cleanupCachePVC: true
             dest:
               enabled: true
             src:
               enabled: true
+              trigger:
+                schedule: 10 1 * * *
       data:
         enabled: true
         type: nfs

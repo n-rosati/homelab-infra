@@ -68,6 +68,8 @@ spec:
           - credentials: minio
             name: app-html
             type: restic
+            cleanupTempPVC: true
+            cleanupCachePVC: true
             dest:
               enabled: true
             src:
@@ -79,6 +81,8 @@ spec:
           - credentials: minio
             name: app-config
             type: restic
+            cleanupTempPVC: true
+            cleanupCachePVC: true
             dest:
               enabled: true
             src:

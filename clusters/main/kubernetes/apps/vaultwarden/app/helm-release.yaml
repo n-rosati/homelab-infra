@@ -75,9 +75,11 @@ spec:
     persistence:
       data:
         volsync:
-          - name: data
+          - credentials: minio
+            name: data
             type: restic
-            credentials: minio
+            cleanupTempPVC: true
+            cleanupCachePVC: true
             dest:
               enabled: true
             src:
