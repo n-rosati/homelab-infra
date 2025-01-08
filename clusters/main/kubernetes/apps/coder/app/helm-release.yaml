@@ -49,6 +49,23 @@ spec:
             port: 8080
             protocol: http
             targetPort: 8080
+    persistence:
+      data:
+        enabled: true
+        type: pvc
+        mountPath: /home/coder
+        volsync:
+          - name: data
+            type: restic
+            cleanupTempPVC: true
+            cleanupCachePVC: true
+            credentials: minio
+            dest:
+              enabled: true
+            src:
+              enabled: true
+              trigger:
+                schedule: 25 1 * * *
     cnpg:
       main:
         enabled: true
