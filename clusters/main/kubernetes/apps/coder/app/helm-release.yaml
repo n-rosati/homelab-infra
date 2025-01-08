@@ -54,18 +54,6 @@ spec:
         enabled: true
         type: pvc
         mountPath: /home/coder
-        volsync:
-          - name: data
-            type: restic
-            cleanupTempPVC: true
-            cleanupCachePVC: true
-            credentials: minio
-            dest:
-              enabled: true
-            src:
-              enabled: true
-              trigger:
-                schedule: 25 1 * * *
     cnpg:
       main:
         enabled: true
