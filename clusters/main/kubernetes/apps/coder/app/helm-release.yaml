@@ -85,4 +85,4 @@ spec:
                 startup:
                   enabled: false
               env:
-                CODER_PG_CONNECTION_URL: postgresql://coder:${CODER_DB_PASSWORD}@coder-app-template-cnpg-main-rw.coder.${DNS_SUFFIX}:5432/coder?serverVersion=16.4&charset=utf8
+                CODER_PG_CONNECTION_URL: postgresql://coder:${CODER_DB_PASSWORD}@coder-app-template-cnpg-main-rw.coder.${DNS_SUFFIX}:5432/coder
