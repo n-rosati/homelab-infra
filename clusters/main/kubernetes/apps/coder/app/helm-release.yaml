@@ -94,3 +94,26 @@ spec:
         namespace: coder
         targetSelector:
           - coder-app-template
+    rbac:
+      coder-app-template:
+        enabled: true
+        primary: true
+        clusterWide: false
+        allServiceAccounts: false
+        rules:
+          - resources:
+              - "persistentvolumeclaims"
+              - "pods"
+              - "services"
+              - "configmaps"
+              - "secrets"
+          - verbs:
+              - create
+              - get
+              - list
+              - watch
+              - update
+              - delete
+        subjects:
+          - kind: ServiceAccount
+            name: coder-app-template
