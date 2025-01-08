@@ -25,7 +25,7 @@ spec:
   values:
     release_name: coder
     global:
-      stopAll: true
+      stopAll: false
     image:
       repository: ghcr.io/coder/coder
       pullPolicy: IfNotPresent
