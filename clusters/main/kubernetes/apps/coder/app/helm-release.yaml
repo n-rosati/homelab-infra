@@ -22,6 +22,7 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 3
+  serviceAccountName: coder-sa
   values:
     release_name: coder
     global:
