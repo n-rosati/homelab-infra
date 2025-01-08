@@ -117,3 +117,4 @@ spec:
         subjects:
           - kind: ServiceAccount
             name: coder-app-template
+            apiGroup: rbac.authorization.k8s.io
