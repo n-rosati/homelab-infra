@@ -1,0 +1,75 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: coder
+  namespace: coder
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 14.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: coder
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    release_name: coder
+    global:
+      stopAll: false
+    image:
+      repository: coder/coder
+      registry: ghcr.io
+      pullPolicy: IfNotPresent
+      tag: v2.18.2
+    service:
+      main:
+        enabled: true
+        type: LoadBalancer
+        ports:
+          main:
+            enabled: true
+            port: 8080
+            protocol: http
+            targetPort: 8080
+    cnpg:
+      main:
+        enabled: true
+        database: coder
+        user: coder
+        password: ${CODER_DB_PASSWORD}
+        pgVersion: 16
+        mode: standalone
+        cluster:
+          singleNode: true
+        backups:
+          enabled: true
+          revision: "1"
+          credentials: minio
+        recovery:
+          enabled: true
+          credentials: minio
+          revision: ""
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              probes:
+                liveness:
+                  enabled: false
+                readiness:
+                  enabled: false
+                startup:
+                  enabled: false
+              env:
+                CODER_PG_CONNECTION_URL: postgresql://coder:${CODER_DB_PASSWORD}@coder-app-template-cnpg-main-rw.coder.${DNS_SUFFIX}:5432/coder?serverVersion=16.4&charset=utf8
