@@ -87,3 +87,10 @@ spec:
                   enabled: false
               env:
                 CODER_PG_CONNECTION_URL: postgresql://coder:${CODER_DB_PASSWORD}@coder-app-template-cnpg-main-rw.coder.${DNS_SUFFIX}:5432/coder
+    serviceAccount:
+      coder-app-template:
+        enabled: true
+        primary: true
+        namespace: coder
+        targetSelector:
+          - coder-app-template
