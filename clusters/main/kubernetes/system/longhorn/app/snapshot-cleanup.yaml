@@ -1,7 +1,6 @@
 apiVersion: longhorn.io/v1beta2
 kind: RecurringJob
 metadata:
-  name: snapshotCleanup
   namespace: longhorn-system
 spec:
   name: "Snapshot Cleanup"
