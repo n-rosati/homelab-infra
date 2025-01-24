@@ -4,10 +4,10 @@ metadata:
   name: trim
   namespace: longhorn-system
 spec:
-  concurrency: 1
+  name: trim
   cron: 0 11 * * *
+  task: filesystem-trim
+  concurrency: 1
+  retain: 0
   groups:
     - default
-  name: trim
-  retain: 0
-  task: filesystem-trim
