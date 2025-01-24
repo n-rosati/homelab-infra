@@ -24,7 +24,3 @@ spec:
       strategy: rollback
       retries: 3
   values:
-    service:
-      main:
-        LoadBalancerIP: ${SPEGEL_IP}
-        type: LoadBalancer
