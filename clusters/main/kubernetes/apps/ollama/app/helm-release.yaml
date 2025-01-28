@@ -1,0 +1,65 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ollama
+  namespace: ollama
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: ollama
+      version: 9.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: ollama.${DOMAIN_BASE}
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
+            certificateIssuer: le-staging
+            enabled: true
+          # homepage:
+          #   enabled: true
+          #   group: Apps
+          #   widget:
+          #     enabled: true
+          #     custom:
+          #       key: ${}
+          traefik:
+            enabled: true
+            entrypoints:
+              - websecure
+            middlewares:
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
+    ollama:
+      rag:
+        # cpu | cuda | mps
+        model_device_type: "cuda"
+        # embedding model
+        model: "deepseek-r1:1.5b"
+    workload:
+      main:
+        podSpec:
+          runtimeClassName: "nvidia"
+          resources:
+            limits:
+              nvidia.com/gpu: 1
