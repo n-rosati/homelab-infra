@@ -22,6 +22,9 @@ spec:
     remediation:
       retries: 3
   values:
+    service:
+      main:
+        type: LoadBalancer
     ingress:
       main:
         enabled: true
