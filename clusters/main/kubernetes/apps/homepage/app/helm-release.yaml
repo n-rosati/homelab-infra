@@ -22,6 +22,15 @@ spec:
     remediation:
       retries: 3
   values:
+    credentials:
+      minio:
+        name: minio
+        type: s3
+        url: ${MINIO_URL}
+        bucket: homepage
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        accessKey: ${MINIO_ACCESS_KEY}
+        secretKey: ${MINIO_SECRET_KEY}
     ingress:
       main:
         enabled: true
@@ -43,119 +52,55 @@ spec:
                 namespace: "traefik"
               - name: auth
                 namespace: "traefik"
-    forceConfigFromValues: true
-    configmap:
+    persistence:
       config:
-        data:
-          settings.yaml: |
-            statusStyle: "dot"
-            useEqualHeights: true
-            headerStyle: boxed
-            target: _blank
-            quicklaunch:
-              searchDescriptions: true
-              hideInternetSearch: false
-              hideVisitURL: false
-          widgets.yaml: |
-            - datetime: 
-                text_size: x1
-                format:
-                  timeStyle: "short"
-                  dateStyle: "full"
-            - search:
-                provider: [ bing, google ]
-                target: _self
-            - kubernetes:
-                cluster:
-                  show: true
-                  cpu: true
-                  memory: true
-                nodes: 
-                  show: false
-          services.yaml: |
-            - Minecraft:
-              - Jack and Nicholas:
-                  icon: minecraft.svg
-                  widget:
-                    type: minecraft
-                    fields: [ "players", "version", "status" ]
-                    url: udp://${JAN_DNS_NAME}:25565
-              - Jack and Nicholas 2:
-                  icon: minecraft.svg
-                  widget:
-                    type: minecraft
-                    fields: [ "players", "version", "status" ]
-                    url: udp://${JAN_2_DNS_NAME}:25565
-              - Statech Industry:
-                  icon: https://i.imgur.com/PAj6tW1.png
-                  widget:
-                    type: minecraft
-                    fields: [ "players", "version", "status" ]
-                    url: udp://${STATECH_INDUSTRY_DNS_NAME}:25565
-            - Infrastructure:
-              - Home Assistant:
-                  href: https://homeassistant.${DOMAIN_BASE}
-                  icon: home-assistant.png
-                  ping: ${HOMEASSISTANT_IP}
-                  widget:
-                    type: homeassistant
-                    url: http://${HOMEASSISTANT_IP}:8123
-                    key: ${HOMEPAGE_HOMEASSISTANT_KEY}
-              - TrueNAS:
-                  href: https://truenas.${DOMAIN_BASE}
-                  icon: truenas-scale.png
-                  ping: ${TRUENAS_IP}
-                  widget:
-                    type: truenas
-                    url: http://${TRUENAS_IP}
-                    key: ${HOMEPAGE_TRUENAS_KEY}
-              - Capacitor:
-                  href: https://capacitor.${DOMAIN_BASE}
-                  icon: https://raw.githubusercontent.com/gimlet-io/capacitor/refs/heads/main/web/public/logo512.png
-                  siteMonitor: http://capacitor.flux-system.${DNS_SUFFIX}:9000
-              - Minio:
-                  href: https://minio.${DOMAIN_BASE}
-                  icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/refs/heads/main/svg/minio.svg
-                  ping: ${TRUENAS_IP}:9002
-              - Longhorn:
-                  href: https://longhorn.${DOMAIN_BASE}
-                  icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/refs/heads/main/svg/longhorn.svg
-                  siteMonitor: http://longhorn-frontend.longhorn-system.${DNS_SUFFIX}:80
-            - Apps:
-              - Spoolman:
-                  href: https://spoolman.${DOMAIN_BASE}
-                  icons: spoolman.png
-                  siteMonitor: http://spoolman-app-template.spoolman.${DNS_SUFFIX}:7912
-                  widget:
-                    type: spoolman
-                    url: http://spoolman-app-template.spoolman.${DNS_SUFFIX}:7912
-              - PartDB:
-                  href: https://partdb.${DOMAIN_BASE}
-                  icon: https://docs.part-db.de/assets/favicon.ico
-                  siteMonitor: http://${PARTDB_DNS}:3000
-                  widget:
-                    type: customapi
-                    url: http://${PARTDB_DNS}:3000/api/parts
-                    refreshInterval: 10000 #milliseconds
-                    method: GET
-                    headers:
-                      Authorization: Bearer ${HOMEPAGE_PARTDB_KEY}
-                    mappings:
-                    - field: hydra:totalItems
-                      label: Total Parts
-                      format: number
-              - Scrutiny:
-                  href: https://scrutiny.${DOMAIN_BASE}
-                  icon: scrutiny.png
-                  ping: ${TRUENAS_IP}:31054
-                  widget:
-                    type: scrutiny
-                    url: http://${TRUENAS_IP}:31054
-          bookmarks.yaml: |
-            - TrueCharts:
-              - Github:
-                - abbr: GH
-                  href: https://github.com/truecharts/public/tree/master/charts
-              - Docs:
-                - abbr: TC
-                  href: https://truecharts.org/general/
+        volsync:
+        - name: config
+          credentials: minio
+          type: restic
+          dest: 
+            enabled: false
+          src:
+            enabled: true
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                JAN_DNS_NAME: ${JAN_DNS_NAME}
+                JAN_2_DNS_NAME: ${JAN_2_DNS_NAME}
+                STATECH_INDUSTRY_DNS_NAME: ${STATECH_INDUSTRY_DNS_NAME}
+                DOMAIN_BASE: ${DOMAIN_BASE}
+                HOMEASSISTANT_IP: ${HOMEASSISTANT_IP}
+                HOMEPAGE_HOMEASSISTANT_KEY: ${HOMEPAGE_HOMEASSISTANT_KEY}
+                TRUENAS_IP: ${TRUENAS_IP}
+                HOMEPAGE_TRUENAS_KEY: ${HOMEPAGE_TRUENAS_KEY}
+                DNS_SUFFIX: ${DNS_SUFFIX}
+                PARTDB_DNS: ${PARTDB_DNS}
+                HOMEPAGE_PARTDB_KEY: ${HOMEPAGE_PARTDB_KEY}
+    addons:
+      codeserver:
+        enabled: true
+        workingDir: "/app/config"
+        service:
+          type: LoadBalancer
+        ingress:
+          enabled: true
+          hosts:
+          - host: edit-homepage.nicholasrosati.xyz
+          integrations:
+            certManager:
+              enabled: true
+              certificateIssuer: le-prod
+            traefik:
+              enabled: true
+              entrypoints:
+              - websecure
+              middlewares:
+                - name: real-ip
+                  namespace: "traefik"
+                - name: geo-allowlist
+                  namespace: "traefik"
+                - name: auth
+                  namespace: "traefik"
