@@ -68,10 +68,10 @@ spec:
           containers:
             main:
               env:
+                DOMAIN_BASE: ${DOMAIN_BASE}
                 JAN_DNS_NAME: ${JAN_DNS_NAME}
                 JAN_2_DNS_NAME: ${JAN_2_DNS_NAME}
                 STATECH_INDUSTRY_DNS_NAME: ${STATECH_INDUSTRY_DNS_NAME}
-                DOMAIN_BASE: ${DOMAIN_BASE}
                 HOMEASSISTANT_IP: ${HOMEASSISTANT_IP}
                 HOMEPAGE_HOMEASSISTANT_KEY: ${HOMEPAGE_HOMEASSISTANT_KEY}
                 TRUENAS_IP: ${TRUENAS_IP}
