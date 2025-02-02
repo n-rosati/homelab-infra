@@ -55,30 +55,30 @@ spec:
     persistence:
       config:
         volsync:
-        - name: config
-          credentials: minio
-          type: restic
-          dest: 
-            enabled: false
-          src:
-            enabled: true
+          - name: config
+            credentials: minio
+            type: restic
+            dest:
+              enabled: false
+            src:
+              enabled: true
     workload:
       main:
         podSpec:
           containers:
             main:
               env:
-                DOMAIN_BASE: ${DOMAIN_BASE}
-                JAN_DNS_NAME: ${JAN_DNS_NAME}
-                JAN_2_DNS_NAME: ${JAN_2_DNS_NAME}
-                STATECH_INDUSTRY_DNS_NAME: ${STATECH_INDUSTRY_DNS_NAME}
-                HOMEASSISTANT_IP: ${HOMEASSISTANT_IP}
-                HOMEPAGE_HOMEASSISTANT_KEY: ${HOMEPAGE_HOMEASSISTANT_KEY}
-                TRUENAS_IP: ${TRUENAS_IP}
-                HOMEPAGE_TRUENAS_KEY: ${HOMEPAGE_TRUENAS_KEY}
-                DNS_SUFFIX: ${DNS_SUFFIX}
-                PARTDB_DNS: ${PARTDB_DNS}
-                HOMEPAGE_PARTDB_KEY: ${HOMEPAGE_PARTDB_KEY}
+                HOMEPAGE_VAR_DOMAIN_BASE: ${DOMAIN_BASE}
+                HOMEPAGE_VAR_JAN_DNS_NAME: ${JAN_DNS_NAME}
+                HOMEPAGE_VAR_JAN_2_DNS_NAME: ${JAN_2_DNS_NAME}
+                HOMEPAGE_VAR_STATECH_INDUSTRY_DNS_NAME: ${STATECH_INDUSTRY_DNS_NAME}
+                HOMEPAGE_VAR_HOMEASSISTANT_IP: ${HOMEASSISTANT_IP}
+                HOMEPAGE_VAR_HOMEPAGE_HOMEASSISTANT_KEY: ${HOMEPAGE_HOMEASSISTANT_KEY}
+                HOMEPAGE_VAR_TRUENAS_IP: ${TRUENAS_IP}
+                HOMEPAGE_VAR_HOMEPAGE_TRUENAS_KEY: ${HOMEPAGE_TRUENAS_KEY}
+                HOMEPAGE_VAR_DNS_SUFFIX: ${DNS_SUFFIX}
+                HOMEPAGE_VAR_PARTDB_DNS: ${PARTDB_DNS}
+                HOMEPAGE_VAR_HOMEPAGE_PARTDB_KEY: ${HOMEPAGE_PARTDB_KEY}
     addons:
       codeserver:
         enabled: true
@@ -88,7 +88,7 @@ spec:
         ingress:
           enabled: true
           hosts:
-          - host: edit-homepage.nicholasrosati.xyz
+            - host: edit-homepage.nicholasrosati.xyz
           integrations:
             certManager:
               enabled: true
@@ -96,7 +96,7 @@ spec:
             traefik:
               enabled: true
               entrypoints:
-              - websecure
+                - websecure
               middlewares:
                 - name: real-ip
                   namespace: "traefik"
