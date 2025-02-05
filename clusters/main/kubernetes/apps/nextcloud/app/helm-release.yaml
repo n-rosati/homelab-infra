@@ -73,7 +73,7 @@ spec:
             dest:
               enabled: true
             src:
-              enabled: false
+              enabled: true
               trigger:
                 schedule: 0 2 * * *
       config:
