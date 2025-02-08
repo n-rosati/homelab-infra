@@ -78,9 +78,6 @@ spec:
             - Remote-Group
             - Remote-Name
             - Remote-Email
-          tls:
-          insecureSkipVerify: true
-          trustForwardHeader: true
       geoBlock:
         - name: geo-allowlist
           allowLocalRequests: true
