@@ -22,6 +22,8 @@ spec:
     remediation:
       retries: 3
   values:
+    global:
+      stopAll: true
     service:
       main:
         type: LoadBalancer
@@ -57,12 +59,12 @@ spec:
       rag:
         # cpu | cuda | mps
         model_device_type: "cuda"
-#        # embedding model
-#        model: "deepseek-r1:1.5b"
+    #        # embedding model
+    #        model: "deepseek-r1:1.5b"
     resources:
       limits:
         nvidia.com/gpu: 1
     workload:
       main:
-          podSpec:
-              runtimeClassName: "nvidia"
+        podSpec:
+          runtimeClassName: "nvidia"
