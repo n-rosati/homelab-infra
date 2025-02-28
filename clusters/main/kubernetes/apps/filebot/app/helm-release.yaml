@@ -81,4 +81,4 @@ spec:
         readOnly: false
         server: ${TRUENAS_IP}
         path: ${NFS_MEDIA_PATH}
-        mountPath: /storage
+        mountPath: /watch
