@@ -1,0 +1,77 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: tdarr
+  namespace: tdarr
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: tdarr
+      version: 11.20.0
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    global:
+      stopAll: false
+    credentials:
+      minio:
+        name: minio
+        type: s3
+        url: ${MINIO_URL}
+        bucket: tdarr
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        accessKey: ${MINIO_ACCESS_KEY}
+        secretKey: ${MINIO_SECRET_KEY}
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: tdarr.${DOMAIN_BASE}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          homepage:
+            enabled: true
+            name: Tdarr
+            group: Media
+            icon: filebot.svg
+            href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
+            widget:
+              enabled: false
+          traefik:
+            enabled: true
+            entrypoints:
+              - websecure
+            middlewares:
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
+              - name: auth
+                namespace: "traefik"
+    persistence:
+      configs:
+        volsync:
+          - credentials: minio
+            name: minio
+            type: restic
+            cleanupTempPVC: true
+            cleanupCachePVC: true
+            dest:
+              enabled: true
+            src:
+              enabled: true
+              trigger:
+                schedule: 25 1 * * *

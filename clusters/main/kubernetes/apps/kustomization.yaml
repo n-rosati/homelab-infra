@@ -17,4 +17,5 @@ resources:
   - vaultwarden/ks.yaml
   - spoolman/ks.yaml
   - ollama/ks.yaml
-#  - filebot/ks.yaml
+  #  - filebot/ks.yaml
+  - tdarr/ks.yaml
