@@ -75,3 +75,10 @@ spec:
               enabled: true
               trigger:
                 schedule: 25 1 * * *
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                serverIP: tdarr-comm.tdarr.${DNS_SUFFIX}
