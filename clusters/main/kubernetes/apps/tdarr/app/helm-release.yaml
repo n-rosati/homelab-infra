@@ -65,7 +65,7 @@ spec:
       configs:
         volsync:
           - credentials: minio
-            name: minio
+            name: config
             type: restic
             cleanupTempPVC: true
             cleanupCachePVC: true
@@ -75,10 +75,17 @@ spec:
               enabled: true
               trigger:
                 schedule: 25 1 * * *
+      media:
+        type: nfs
+        enabled: true
+        readOnly: false
+        server: ${TRUENAS_IP}
+        path: ${NFS_MEDIA_PATH}
+        mountPath: /media
     workload:
       main:
         podSpec:
-          containers:
-            main:
-              env:
-                serverIP: tdarr-comm.tdarr.${DNS_SUFFIX}
+          runtimeClassName: "nvidia"
+    resources:
+      limits:
+        nvidia.com/gpu: 1
