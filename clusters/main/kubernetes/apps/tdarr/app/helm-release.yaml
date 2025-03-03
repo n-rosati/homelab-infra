@@ -86,10 +86,6 @@ spec:
       main:
         podSpec:
           runtimeClassName: "nvidia"
-          containers:
-            main:
-              env:
-                serverIP: tdarr-comm.tdarr.${DNS_SUFFIX}
     resources:
       limits:
         nvidia.com/gpu: 1
