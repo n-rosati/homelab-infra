@@ -49,7 +49,9 @@ spec:
             icon: tdarr.png
             href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
             widget:
-              enabled: false
+              enabled: true
+              type: tdarr
+              url: http://tdarr.tdarr.${DNS_SUFFIX}:8265
           traefik:
             enabled: true
             entrypoints:
