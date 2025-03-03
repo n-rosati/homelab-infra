@@ -75,6 +75,19 @@ spec:
               enabled: true
               trigger:
                 schedule: 25 1 * * *
+      server:
+        volsync:
+          - name: server
+            type: restic
+            cleanupTempPVC: true
+            cleanupCachePVC: true
+            credentials: minio
+            dest:
+              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+            src:
+              enabled: true
+              trigger:
+                schedule: 35 0 * * *
       media:
         type: nfs
         enabled: true
