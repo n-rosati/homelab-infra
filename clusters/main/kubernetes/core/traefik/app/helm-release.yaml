@@ -96,8 +96,8 @@ spec:
           unknownCountryApiResponse: nil
       realIP:
         - name: real-ip
-          # excludedNetworks:
-          #   - 192.168.2.0/24
+          excludedNetworks:
+            - 192.168.2.0/24
       ipWhiteList:
         - name: allow-local-net-only
           sourceRange:
