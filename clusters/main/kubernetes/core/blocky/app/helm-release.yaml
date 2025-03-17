@@ -47,12 +47,12 @@ spec:
       clientGroupsBlock:
         - name: default
           groups:
-            - customAllow
             - default
             - default-ads
             - default-tracking
             # - default-malicious
             # - default-suspicious
+            - customAllow
     k8sgateway:
       # -- list of processed domains
       domains:
