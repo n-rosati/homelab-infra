@@ -46,13 +46,13 @@ spec:
             - https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/optional-list.txt
       clientGroupsBlock:
         - name: default
-          groups:
-            - default
-            - default-ads
-            - default-tracking
-            - default-malicious
-            - default-suspicious
-            - customWhitelist
+          groups: []
+            # - default
+            # - default-ads
+            # - default-tracking
+            # - default-malicious
+            # - default-suspicious
+            # - customWhitelist
     k8sgateway:
       # -- list of processed domains
       domains:
