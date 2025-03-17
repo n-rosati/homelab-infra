@@ -49,8 +49,8 @@ spec:
           groups:
             - customAllow
             - default
-            # - default-ads
-            # - default-tracking
+            - default-ads
+            - default-tracking
             # - default-malicious
             # - default-suspicious
     k8sgateway:
