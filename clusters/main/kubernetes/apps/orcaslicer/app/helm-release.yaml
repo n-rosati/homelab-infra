@@ -58,9 +58,9 @@ spec:
               - name: auth
                 namespace: "traefik"
     persistence:
-      config:
+      data:
         enabled: true
         type: nfs
         server: "${TRUENAS_IP}"
         path: ${NFS_APPS_PATH}/OrcaSlicer
-        mountPath: /config
+        mountPath: /data
