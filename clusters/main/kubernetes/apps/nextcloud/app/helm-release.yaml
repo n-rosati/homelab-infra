@@ -99,6 +99,12 @@ spec:
         server: ${TRUENAS_IP}
         path: ${NFS_DSU_PATH}/Software
         mountPath: /mnt/Software
+      orcaslicer-external-storage:
+        enabled: true
+        type: nfs
+        server: ${TRUENAS_IP}
+        path: ${NFS_APPS_PATH}/OrcaSlicer
+        mountPath: /mnt/OrcaSlicer
     cnpg:
       main:
         pgVersion: 15
