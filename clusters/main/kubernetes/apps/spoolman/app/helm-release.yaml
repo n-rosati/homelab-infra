@@ -27,7 +27,7 @@ spec:
     image:
       repository: ghcr.io/donkie/spoolman
       pullPolicy: IfNotPresent
-      tag: 0.22.0
+      tag: 0.22.1
     credentials:
       minio:
         name: minio
