@@ -81,7 +81,3 @@ spec:
         server: ${TRUENAS_IP}
     autodiscovery:
       enabled: true
-
-#    resources:
-#      limits:
-#        nvidia.com/gpu: 1
