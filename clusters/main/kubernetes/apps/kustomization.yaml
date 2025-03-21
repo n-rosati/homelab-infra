@@ -18,3 +18,4 @@ resources:
   # - ollama/ks.yaml
   - tdarr/ks.yaml
   - orcaslicer/ks.yaml
+  - jellyfin/ks.yaml

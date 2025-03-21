@@ -1,0 +1,87 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: jellyfin
+  namespace: jellyfin
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: jellyfin
+      version: 20.6.13
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    global:
+      stopAll: false
+    credentials:
+      minio:
+        name: minio
+        type: s3
+        url: ${MINIO_URL}
+        bucket: jellyfin
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        accessKey: ${MINIO_ACCESS_KEY}
+        secretKey: ${MINIO_SECRET_KEY}
+    # ingress:
+    #   main:
+    #     enabled: true
+    #     hosts:
+    #       - host: jellyfin.${DOMAIN_BASE}
+    #     integrations:
+    #       certManager:
+    #         enabled: true
+    #         certificateIssuer: le-prod
+    #       homepage:
+    #         enabled: true
+    #         group: Media
+    #         href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
+    #         # widget:
+    #         #   enabled: true
+    #         #   custom:
+    #         #     key: ${HOMEPAGE_PLEX_KEY}
+    #       traefik:
+    #         enabled: true
+    #         entrypoints:
+    #           - websecure
+    #         middlewares:
+    #           - name: real-ip
+    #             namespace: "traefik"
+    #           - name: geo-allowlist
+    #             namespace: "traefik"
+    persistence:
+      config:
+        volsync:
+          - credentials: minio
+            name: config
+            type: restic
+            cleanupTempPVC: true
+            cleanupCachePVC: true
+            dest:
+              enabled: true
+            src:
+              enabled: true
+              trigger:
+                schedule: 0 3 * * *
+      media:
+        enabled: true
+        type: nfs
+        path: ${NFS_MEDIA_PATH}
+        mountPath: /media
+        server: ${TRUENAS_IP}
+    autodiscovery:
+      enabled: true
+
+#    resources:
+#      limits:
+#        nvidia.com/gpu: 1
