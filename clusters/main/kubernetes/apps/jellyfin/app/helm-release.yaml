@@ -24,6 +24,10 @@ spec:
   values:
     global:
       stopAll: false
+    # TEMP 
+    service:
+      main:
+        type: LoadBalancer
     credentials:
       minio:
         name: minio
