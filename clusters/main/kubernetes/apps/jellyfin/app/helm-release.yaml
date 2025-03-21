@@ -37,32 +37,34 @@ spec:
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         accessKey: ${MINIO_ACCESS_KEY}
         secretKey: ${MINIO_SECRET_KEY}
-    # ingress:
-    #   main:
-    #     enabled: true
-    #     hosts:
-    #       - host: jellyfin.${DOMAIN_BASE}
-    #     integrations:
-    #       certManager:
-    #         enabled: true
-    #         certificateIssuer: le-prod
-    #       homepage:
-    #         enabled: true
-    #         group: Media
-    #         href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
-    #         # widget:
-    #         #   enabled: true
-    #         #   custom:
-    #         #     key: ${HOMEPAGE_PLEX_KEY}
-    #       traefik:
-    #         enabled: true
-    #         entrypoints:
-    #           - websecure
-    #         middlewares:
-    #           - name: real-ip
-    #             namespace: "traefik"
-    #           - name: geo-allowlist
-    #             namespace: "traefik"
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: jellyfin.${DOMAIN_BASE}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          homepage:
+            enabled: true
+            group: Media
+            href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
+            widget:
+              enabled: true
+              type: jellyfin
+              url: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
+              custom:
+                key: ${HOMEPAGE_JELLYFIN_KEY}
+          traefik:
+            enabled: true
+            entrypoints:
+              - websecure
+            middlewares:
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
     persistence:
       config:
         volsync:
@@ -75,8 +77,8 @@ spec:
               enabled: false
             src:
               enabled: true
-              # trigger:
-              #   schedule: 0 3 * * * < need to find a non-conflicting time
+              trigger:
+                schedule: 5 3 * * *
       media:
         enabled: true
         type: nfs
