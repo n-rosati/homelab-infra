@@ -38,16 +38,16 @@ spec:
         accessKey: ${MINIO_ACCESS_KEY}
         secretKey: ${MINIO_SECRET_KEY}
     service:
-      jellyfinUpdatePoster:
+      jellyfin-up:
         enabled: true
-        targetSelector: jellyfinUpdatePoster
+        targetSelector: jellyfin-up
         ports:
-          jellyfinUpdatePoster:
+          jellyfin-up:
             enabled: true
             primary: true
             port: 8080
             targetPort: 8080
-            targetSelector: jellyfinUpdatePoster
+            targetSelector: jellyfin-up
     ingress:
       main:
         enabled: true
@@ -113,14 +113,14 @@ spec:
               resources:
                 limits:
                   nvidia.com/gpu: 1
-    jellyfinUpdatePoster:
+    jellyfin-up:
       enabled: true
       type: Deployment
       strategy: RollingUpdate
       replicas: 1
       podSpec:
         containers:
-          jellyfinUpdatePoster:
+          jellyfin-up:
             primary: true
             enabled: true
             imageSelector: jellyfinUpdatePosterImage
