@@ -116,37 +116,37 @@ spec:
               resources:
                 limits:
                   nvidia.com/gpu: 1
-    jellyfin-up:
-      enabled: true
-      type: Deployment
-      strategy: RollingUpdate
-      replicas: 1
-      podSpec:
-        containers:
-          jellyfin-up:
-            primary: true
-            enabled: true
-            imageSelector: jellyfinUpdatePosterImage
-            env:
-              JELLYFIN_URL: http://jellyfin.jellyfin.${DNS_SUFFIX}:8096
-              JELLYFIN_API_KEY: ${JELLYFIN_UPDATE_POSTER_API_KEY}
-              TMDB_API_KEY: ${TMDB_API_KEY}
-              INCLUDE_EPISODES: false
-              TZ: ${TIMEZONE}
-              ENABLE_WEBHOOK: false
-              # SCHEDULED_TIMES: 06:00,12:00,18:00 # Optional: Schedule poster updates at specific times (HH:MM)
-            args:
-              - --force
-            probes:
-              readiness:
-                enabled: true
-                type: tcp
-                port: 8080
-              liveness:
-                enabled: true
-                type: tcp
-                port: 8080
-              startup:
-                enabled: true
-                type: tcp
-                port: 8080
+      jellyfin-up:
+        enabled: true
+        type: Deployment
+        strategy: RollingUpdate
+        replicas: 1
+        podSpec:
+          containers:
+            jellyfin-up:
+              primary: true
+              enabled: true
+              imageSelector: jellyfinUpdatePosterImage
+              env:
+                JELLYFIN_URL: http://jellyfin.jellyfin.${DNS_SUFFIX}:8096
+                JELLYFIN_API_KEY: ${JELLYFIN_UPDATE_POSTER_API_KEY}
+                TMDB_API_KEY: ${TMDB_API_KEY}
+                INCLUDE_EPISODES: false
+                TZ: ${TIMEZONE}
+                ENABLE_WEBHOOK: false
+                # SCHEDULED_TIMES: 06:00,12:00,18:00 # Optional: Schedule poster updates at specific times (HH:MM)
+              args:
+                - --force
+              probes:
+                readiness:
+                  enabled: true
+                  type: tcp
+                  port: 8080
+                liveness:
+                  enabled: true
+                  type: tcp
+                  port: 8080
+                startup:
+                  enabled: true
+                  type: tcp
+                  port: 8080
