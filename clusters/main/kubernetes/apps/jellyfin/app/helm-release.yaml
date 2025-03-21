@@ -105,8 +105,8 @@ spec:
           jellyfin-up:
             jellyfin-up:
               mountPath: /mount
-    # autodiscovery:
-    #   enabled: true
+    autodiscovery:
+      enabled: true
     workload:
       main:
         podSpec:
