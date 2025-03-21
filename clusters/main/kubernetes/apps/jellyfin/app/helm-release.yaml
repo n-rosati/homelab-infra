@@ -87,3 +87,12 @@ spec:
         server: ${TRUENAS_IP}
     autodiscovery:
       enabled: true
+    workload:
+      main:
+        podSpec:
+          runtimeClassName: "nvidia"
+          containers:
+            main:
+              resources:
+                limits:
+                  nvidia.com/gpu: 1
