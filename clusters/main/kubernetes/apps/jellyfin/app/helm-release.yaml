@@ -104,13 +104,6 @@ spec:
         targetSelector:
           jellyfin-up:
             jellyfin-up:
-              mountPath: /appdata
-      data:
-        enabled: true
-        type: pvc
-        targetSelector:
-          jellyfin-up:
-            jellyfin-up:
               mountPath: /mount
     # autodiscovery:
     #   enabled: true
@@ -145,14 +138,8 @@ spec:
                 - --force
               probes:
                 readiness:
-                  enabled: true
-                  type: tcp
-                  port: 8080
+                  enabled: false
                 liveness:
-                  enabled: true
-                  type: tcp
-                  port: 8080
+                  enabled: false
                 startup:
-                  enabled: true
-                  type: tcp
-                  port: 8080
+                  enabled: false
