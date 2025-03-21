@@ -105,6 +105,13 @@ spec:
           jellyfin-up:
             jellyfin-up:
               mountPath: /appdata
+      data:
+        enabled: true
+        type: pvc
+        targetSelector:
+          jellyfin-up:
+            jellyfin-up:
+              mountPath: /mount
     autodiscovery:
       enabled: true
     workload:
