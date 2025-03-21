@@ -99,7 +99,7 @@ spec:
       mount:
         enabled: true
         type: nfs
-        path: ${NFS_APPS_PATH}
+        path: ${NFS_APPS_PATH}/JellyfinUpdatePoster
         server: ${TRUENAS_IP}
         targetSelector:
           jellyfin-up:
