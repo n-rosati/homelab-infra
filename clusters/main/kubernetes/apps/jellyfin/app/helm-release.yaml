@@ -100,8 +100,11 @@ spec:
         enabled: true
         type: nfs
         path: ${NFS_APPS_PATH}
-        mountPath: /appdata
         server: ${TRUENAS_IP}
+        targetSelector:
+          jellyfin-up:
+            jellyfin-up:
+              mountPath: /appdata
     autodiscovery:
       enabled: true
     workload:
