@@ -96,7 +96,7 @@ spec:
         path: ${NFS_MEDIA_PATH}
         mountPath: /media
         server: ${TRUENAS_IP}
-      appdata:
+      mount:
         enabled: true
         type: nfs
         path: ${NFS_APPS_PATH}
