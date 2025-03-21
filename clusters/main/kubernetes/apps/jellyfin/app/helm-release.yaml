@@ -68,11 +68,11 @@ spec:
             cleanupTempPVC: true
             cleanupCachePVC: true
             dest:
-              enabled: true
-            src:
               enabled: false
-              trigger:
-                schedule: 0 3 * * *
+            src:
+              enabled: true
+              # trigger:
+              #   schedule: 0 3 * * * < need to find a non-conflicting time
       media:
         enabled: true
         type: nfs
