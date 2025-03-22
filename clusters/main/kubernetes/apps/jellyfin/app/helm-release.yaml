@@ -27,7 +27,7 @@ spec:
       pullPolicy: IfNotPresent
       tag: latest@sha256:71aa995de738ab37bc2c558fd62893b3f5295c1a8a6a1beb95b6ed81f024851c
     global:
-      stopAll: true
+      stopAll: false
     credentials:
       minio:
         name: minio
@@ -85,7 +85,7 @@ spec:
             cleanupTempPVC: true
             cleanupCachePVC: true
             dest:
-              enabled: false
+              enabled: true
             src:
               enabled: true
               trigger:

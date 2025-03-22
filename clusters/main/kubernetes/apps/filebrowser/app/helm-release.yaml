@@ -1,8 +1,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: jellyfin
-  namespace: jellyfin
+  name: filebrowser
+  namespace: filebrowser
 spec:
   interval: 15m
   chart:
@@ -23,19 +23,19 @@ spec:
       retries: 3
   values:
     global:
-      stopAll: false
+      stopAll: true
     service:
       main:
         type: LoadBalancer
-    persistence:
-      a:
-        enabled: true
-        type: pvc
-        # mount path in filebrowser, must be in /data
-        mountPath: /data/mount-a
-        targetSelectAll: true
-        # claim name
-        existingClaim: "jellyfin-config"
+    # persistence:
+    #   a:
+    #     enabled: true
+    #     type: pvc
+    #     # mount path in filebrowser, must be in /data
+    #     mountPath: /data/mount-a
+    #     targetSelectAll: true
+    #     # claim name
+    #     existingClaim: "jellyfin-config"
     #   b:
     #     enabled: true
     #     type: nfs
