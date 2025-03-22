@@ -27,15 +27,15 @@ spec:
     service:
       main:
         type: LoadBalancer
-    # persistence:
-    #   a:
-    #     enabled: true
-    #     type: pvc
-    #     # mount path in filebrowser, must be in /data
-    #     mountPath: /data/mount-a
-    #     targetSelectAll: true
-    #     # claim name
-    #     existingClaim: "spoolman-app-template-media"
+    persistence:
+      a:
+        enabled: true
+        type: pvc
+        # mount path in filebrowser, must be in /data
+        mountPath: /data/mount-a
+        targetSelectAll: true
+        # claim name
+        existingClaim: "jellyfin-config"
     #   b:
     #     enabled: true
     #     type: nfs
