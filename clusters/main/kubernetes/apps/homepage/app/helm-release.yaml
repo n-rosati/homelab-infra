@@ -68,7 +68,6 @@ spec:
           containers:
             main:
               env:
-                HOMEPAGE_ALLOWED_HOSTS: homepage.${DOMAIN_BASE}
                 HOMEPAGE_VAR_DOMAIN_BASE: ${DOMAIN_BASE}
                 HOMEPAGE_VAR_JAN_DNS_NAME: ${JAN_DNS_NAME}
                 HOMEPAGE_VAR_JAN_2_DNS_NAME: ${JAN_2_DNS_NAME}
@@ -80,6 +79,7 @@ spec:
                 HOMEPAGE_VAR_DNS_SUFFIX: ${DNS_SUFFIX}
                 HOMEPAGE_VAR_PARTDB_DNS: ${PARTDB_DNS}
                 HOMEPAGE_VAR_HOMEPAGE_PARTDB_KEY: ${HOMEPAGE_PARTDB_KEY}
+                HOMEPAGE_ALLOWED_HOSTS: homepage.${DOMAIN_BASE}
     addons:
       codeserver:
         enabled: true
