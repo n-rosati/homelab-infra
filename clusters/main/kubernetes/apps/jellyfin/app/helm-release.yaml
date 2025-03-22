@@ -41,7 +41,6 @@ spec:
     service:
       main:
         type: LoadBalancer
-    service:
       jellyfin-up:
         enabled: true
         targetSelector: jellyfin-up
