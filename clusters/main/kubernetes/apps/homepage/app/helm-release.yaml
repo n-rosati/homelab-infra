@@ -68,6 +68,7 @@ spec:
           containers:
             main:
               env:
+                HOMEPAGE_ALLOWED_HOSTS: homepage.${DOMAIN_BASE}
                 HOMEPAGE_VAR_DOMAIN_BASE: ${DOMAIN_BASE}
                 HOMEPAGE_VAR_JAN_DNS_NAME: ${JAN_DNS_NAME}
                 HOMEPAGE_VAR_JAN_2_DNS_NAME: ${JAN_2_DNS_NAME}
