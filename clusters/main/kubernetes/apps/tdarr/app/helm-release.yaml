@@ -100,11 +100,12 @@ spec:
         path: ${NFS_APPS_PATH}/Tdarr
         server: ${TRUENAS_IP}
         mountPath: /temp
-
     workload:
       main:
         podSpec:
           runtimeClassName: "nvidia"
-    resources:
-      limits:
-        nvidia.com/gpu: 1
+          containers:
+            main:
+              resources:
+                limits:
+                  nvidia.com/gpu: 1
