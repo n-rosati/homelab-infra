@@ -34,6 +34,9 @@ spec:
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         accessKey: ${MINIO_ACCESS_KEY}
         secretKey: ${MINIO_SECRET_KEY}
+    service:
+      comm:
+        type: LoadBalancer
     ingress:
       main:
         enabled: true
