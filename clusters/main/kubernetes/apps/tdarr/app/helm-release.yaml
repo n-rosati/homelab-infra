@@ -70,8 +70,6 @@ spec:
           - credentials: minio
             name: minio
             type: restic
-            cleanupTempPVC: true
-            cleanupCachePVC: true
             dest:
               enabled: true
             src:
@@ -82,8 +80,6 @@ spec:
         volsync:
           - name: server
             type: restic
-            cleanupTempPVC: true
-            cleanupCachePVC: true
             credentials: minio
             dest:
               enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP

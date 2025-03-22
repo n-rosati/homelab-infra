@@ -69,8 +69,6 @@ spec:
           - credentials: minio
             name: data
             type: restic
-            cleanupTempPVC: true
-            cleanupCachePVC: true
             dest:
               enabled: true
             src:
