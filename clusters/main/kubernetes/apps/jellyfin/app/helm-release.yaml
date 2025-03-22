@@ -67,7 +67,7 @@ spec:
             widget:
               enabled: true
               type: jellyfin
-              url: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
+              url: jellyfin.jellyfin.${DNS_SUFFIX}
               custom:
                 key: ${HOMEPAGE_JELLYFIN_KEY}
           traefik:
