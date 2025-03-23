@@ -67,7 +67,7 @@ spec:
             widget:
               enabled: true
               type: jellyfin
-              url: jellyfin.jellyfin.${DNS_SUFFIX}:8096
+              url: http://jellyfin.jellyfin.${DNS_SUFFIX}:8096
               custom:
                 key: ${HOMEPAGE_JELLYFIN_KEY}
           traefik:
