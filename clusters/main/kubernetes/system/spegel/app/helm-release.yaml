@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: spegel
-      version: 3.1.1
+      version: 3.1.2
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -24,3 +24,6 @@ spec:
       strategy: rollback
       retries: 3
   values:
+    metrics:
+      main:
+        enabled: false
