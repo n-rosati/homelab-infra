@@ -30,7 +30,7 @@ spec:
             defaultReplicaCount: 1
             # Overprovisioning might be needed when using volsync
             storageOverProvisioningPercentage: 100000
-            # v2DataEngine: true
+            concurrentAutomaticEngineUpgradePerNodeLimit: 2
         csi:
             attacherReplicaCount: 1
             provisionerReplicaCount: 1
