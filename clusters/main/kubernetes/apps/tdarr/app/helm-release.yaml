@@ -98,11 +98,11 @@ spec:
         path: ${NFS_MEDIA_PATH}
         mountPath: /media
       # Temp mount for a temp remote worker node
-      transcode-cache:
-        type: nfs
-        path: ${NFS_APPS_PATH}/Tdarr
-        server: ${TRUENAS_IP}
-        mountPath: /temp
+      # transcode-cache:
+      #   type: nfs
+      #   path: ${NFS_APPS_PATH}/Tdarr
+      #   server: ${TRUENAS_IP}
+      #   mountPath: /temp
     workload:
       main:
         podSpec:
