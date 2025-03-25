@@ -133,7 +133,7 @@ spec:
                 JELLYFIN_API_KEY: ${JELLYFIN_UPDATE_POSTER_API_KEY}
                 TMDB_API_KEY: ${TMDB_API_KEY}
                 INCLUDE_EPISODES: false
-                ENABLE_WEBHOOK: false
+                ENABLE_WEBHOOK: true
                 # SCHEDULED_TIMES: 06:00,12:00,18:00 # Optional: Schedule poster updates at specific times (HH:MM)
                 args:
                   - --force
