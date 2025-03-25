@@ -6,3 +6,4 @@ resources:
   - volumeSnapshotClass.yaml
   - trim.yaml
   - snapshot-cleanup.yaml
+  - snapshot-delete.yaml
