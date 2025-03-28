@@ -21,4 +21,28 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 3
-  values: # see https://github.com/headlamp-k8s/headlamp/blob/main/charts/headlamp/values.yaml
+  values:
+    # see https://github.com/headlamp-k8s/headlamp/blob/main/charts/headlamp/values.yaml
+    initContainers:
+      - command:
+          - /bin/sh
+          - -c
+          - mkdir -p /build/plugins && cp -r /plugins/* /build/plugins/
+        image: ghcr.io/headlamp-k8s/headlamp-plugin-flux:latest
+        imagePullPolicy: Always
+        name: headlamp-plugins
+        volumeMounts:
+          - mountPath: /build/plugins
+            name: headlamp-plugins
+    persistentVolumeClaim:
+      accessModes:
+        - ReadWriteOnce
+      enabled: true
+      size: 1Gi
+    volumeMounts:
+      - mountPath: /build/plugins
+        name: headlamp-plugins
+    volumes:
+      - name: headlamp-plugins
+        persistentVolumeClaim:
+          claimName: headlamp
