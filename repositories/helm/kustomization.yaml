@@ -30,3 +30,4 @@ resources:
   - truecharts.yaml
   # more goes here!
   - nvdp.yaml
+  - headlamp.yaml
