@@ -30,6 +30,8 @@ spec:
     remediation:
       retries: 3
   values:
+    service:
+      type: LoadBalancer
     # see https://github.com/headlamp-k8s/headlamp/blob/main/charts/headlamp/values.yaml
     # initContainers:
     #   - command:
