@@ -1,0 +1,55 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: headlamp
+  namespace: kube-system
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: headlamp
+      version: 0.30.0
+      sourceRef:
+        kind: HelmRepository
+        name: headlamp
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    # service:
+    #   main:
+    #     ports:
+    #       main:
+    #         port: 4466
+    # ingress:
+    #   main:
+    #     enabled: true
+    #     hosts:
+    #       - host: headlamp.${DOMAIN_BASE}
+    #     integrations:
+    #       certManager:
+    #         enabled: true
+    #         certificateIssuer: le-staging
+    #       homepage:
+    #         enabled: true
+    #         group: Infrastructure
+    #         href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
+    #         widget:
+    #           enabled: false
+    #       traefik:
+    #         enabled: true
+    #         entrypoints:
+    #           - websecure
+    #         middlewares:
+    #           - name: real-ip
+    #             namespace: "traefik"
+    #           - name: geo-allowlist
+    #             namespace: "traefik"
+    #           - name: auth
+    #             namespace: "traefik"
