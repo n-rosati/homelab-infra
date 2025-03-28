@@ -40,14 +40,14 @@ spec:
       whitelist:
         - name: customList
           lists:
-            - https://raw.githubusercontent.com/n-rosati/homelab-infra/refs/heads/main/clusters/main/kubernetes/core/blocky/app/filters/allowlist.txt
+            - https://raw.githubusercontent.com/n-rosati/homelab-infra/refs/heads/main/clusters/main/kubernetes/core/blocky/app/allowlist.txt
             # - https://raw.githubusercontent.com/rahilpathan/pihole-whitelist/main/1.LowWL.txt
             # - https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt
             # - https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/optional-list.txt
       blacklist:
         - name: customList
           lists:
-            - https://raw.githubusercontent.com/n-rosati/homelab-infra/refs/heads/main/clusters/main/kubernetes/core/blocky/app/filters/denylist.txt
+            - https://raw.githubusercontent.com/n-rosati/homelab-infra/refs/heads/main/clusters/main/kubernetes/core/blocky/app/denylist.txt
             - https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt
       clientGroupsBlock:
         - name: default
