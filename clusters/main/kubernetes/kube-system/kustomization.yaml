@@ -9,3 +9,4 @@ resources:
   - node-feature-discovery/ks.yaml
   - node-role.yaml
   - reloader/ks.yaml
+  - headlamp/ks.yaml
