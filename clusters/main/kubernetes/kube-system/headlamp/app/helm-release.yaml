@@ -12,7 +12,7 @@ spec:
       version: v0.30.0
       sourceRef:
         kind: HelmRepository
-        name: headlamp
+        name: headlamp-k8s
         namespace: flux-system
   install:
     remediation:
