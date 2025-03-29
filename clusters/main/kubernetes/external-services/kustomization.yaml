@@ -9,4 +9,5 @@ resources:
   - minio-api-es/ks.yaml
   - longhorn-es/ks.yaml
   - scrutiny-es/ks.yaml
-  - headlamp-es/ks.yaml
+  #  - headlamp-es/ks.yaml
+  - capacitor-es/ks.yaml
