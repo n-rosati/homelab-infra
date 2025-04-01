@@ -27,10 +27,9 @@ spec:
     global:
       stopAll: false
     image:
-      repository: wez/govee2mqtt
-      registry: ghcr.io
+      repository: ghcr.io/wez/govee2mqtt
       pullPolicy: IfNotPresent
-      tag: 2025.01.04-2c39a50f@sha256:ce8459b0c6ca0b82ec2dfba42a8b349dce59f61cc5a8ea4b787de60c9ebcabf7
+      tag: latest@sha256:af2ef02e9dfb84f5d30139d34758f64e8e109bccc8c01a466ba96940f541bf0a
     service:
       main:
         enabled: true
