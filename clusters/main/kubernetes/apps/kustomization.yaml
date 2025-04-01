@@ -20,3 +20,4 @@ resources:
   - orcaslicer/ks.yaml
   - jellyfin/ks.yaml
   - home-assistant/ks.yaml
+  - mosquitto/ks.yaml
