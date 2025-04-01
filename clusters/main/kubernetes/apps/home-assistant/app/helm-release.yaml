@@ -31,6 +31,10 @@ spec:
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         accessKey: ${MINIO_ACCESS_KEY}
         secretKey: ${MINIO_SECRET_KEY}
+    workload:
+      main:
+        podSpec:
+          hostNetwork: true
     service:
       main:
         type: LoadBalancer
