@@ -33,6 +33,12 @@ spec:
       tag: 2025.01.04-2c39a50f@sha256:ce8459b0c6ca0b82ec2dfba42a8b349dce59f61cc5a8ea4b787de60c9ebcabf7
     services:
       main:
+        enabled: true
+        ports: 
+          main: 
+            enabled: true
+            port: 1883
+            protocol: tcp
         podSpec:
           hostNetwork: true
     workload:
@@ -40,6 +46,13 @@ spec:
         podSpec:
           containers:
             main:
+              probes:
+                liveness:
+                  enabled: false
+                readiness:
+                  enabled: false
+                startup:
+                  enabled: false
               env:
                 GOVEE_MQTT_HOST: mosquitto.mosquitto.${DNS_SUFFIX}
                 GOVEE_EMAIL: ${GOVEE_EMAIL}
