@@ -19,3 +19,4 @@ resources:
   - tdarr/ks.yaml
   - orcaslicer/ks.yaml
   - jellyfin/ks.yaml
+  - home-assistant/ks.yaml
