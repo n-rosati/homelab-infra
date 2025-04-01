@@ -31,7 +31,7 @@ spec:
       registry: ghcr.io
       pullPolicy: IfNotPresent
       tag: 2025.01.04-2c39a50f@sha256:ce8459b0c6ca0b82ec2dfba42a8b349dce59f61cc5a8ea4b787de60c9ebcabf7
-    services:
+    service:
       main:
         enabled: true
         ports: 
