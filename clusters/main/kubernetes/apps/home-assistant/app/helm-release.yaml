@@ -41,7 +41,7 @@ spec:
             name: minio
             type: restic
             dest:
-              enabled: true
+              enabled: false
             src:
               enabled: true
               trigger:
@@ -49,7 +49,7 @@ spec:
     cnpg:
       main:
         password: ${CNPG_PASSWORD}
-        mode: recovery
+        mode: standalone
         backups:
           enabled: true
           credentials: minio
