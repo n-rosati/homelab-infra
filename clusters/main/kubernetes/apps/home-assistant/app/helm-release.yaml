@@ -61,3 +61,8 @@ spec:
           revision: ""
         cluster:
           singleNode: true
+    addons:
+      codeserver:
+        enabled: true
+        service:
+          type: LoadBalancer
