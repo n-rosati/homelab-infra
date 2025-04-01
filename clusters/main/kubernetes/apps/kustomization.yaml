@@ -21,3 +21,4 @@ resources:
   - jellyfin/ks.yaml
   - home-assistant/ks.yaml
   - mosquitto/ks.yaml
+  - govee2mqtt/ks.yaml
