@@ -39,6 +39,7 @@ spec:
             enabled: true
             port: 1883
             protocol: tcp
+            targetPort: 1883
         podSpec:
           hostNetwork: true
     workload:
