@@ -24,5 +24,6 @@ spec:
   values:
     global:
       stopAll: false
-    websockets:
-      enabled: true
+    service:
+      main:
+        type: LoadBalancer
