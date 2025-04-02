@@ -25,7 +25,7 @@ spec:
   values:
     release_name: govee2mqtt
     global:
-      stopAll: false
+      stopAll: true
     image:
       repository: ghcr.io/wez/govee2mqtt
       pullPolicy: IfNotPresent
