@@ -17,11 +17,11 @@ spec:
   install:
     createNamespace: true
     remediation:
-      retries: 3
+      retries: 3000
   upgrade:
     cleanupOnFail: true
     remediation:
-      retries: 3
+      retries: 3000
   values:
     release_name: part-db
     global:
@@ -141,8 +141,7 @@ spec:
               enabled: true
               type: install
               imageSelector: busyboxImage
-              # command: [ "sh", "-c", "chown -R www-data:www-data /var/www/html" ]
-              command: [ "sh", "-c", "sh" ]
+              command: [ "sh", "-c", "chown -R www-data:www-data /var/www/html" ]
               securityContext:
                 runAsUser: 0
               persistence:
