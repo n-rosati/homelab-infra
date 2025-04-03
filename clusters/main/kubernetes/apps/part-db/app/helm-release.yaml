@@ -77,38 +77,34 @@ spec:
               - name: auth
                 namespace: "traefik"
     persistence:
-      html:
-        enabled: true
-        type: emptyDir
-        mountPath: /var/www/html
       media:
         enabled: true
         type: pvc
         mountPath: /var/www/html/public/media
-        volsync:
-          - name: uploads
-            type: restic
-            credentials: minio
-            dest:
-              enabled: false
-            src:
-              enabled: true
-              trigger:
-                schedule: 40 2 * * *
+        # volsync:
+        #   - name: uploads
+        #     type: restic
+        #     credentials: minio
+        #     dest:
+        #       enabled: false
+        #     src:
+        #       enabled: true
+        #       trigger:
+        #         schedule: 40 2 * * *
       uploads:
         enabled: true
         type: pvc
         mountPath: /var/www/html/uploads
-        volsync:
-          - name: uploads
-            type: restic
-            credentials: minio
-            dest:
-              enabled: false
-            src:
-              enabled: true
-              trigger:
-                schedule: 45 2 * * *
+        # volsync:
+        #   - name: uploads
+        #     type: restic
+        #     credentials: minio
+        #     dest:
+        #       enabled: false
+        #     src:
+        #       enabled: true
+        #       trigger:
+        #         schedule: 45 2 * * *
     cnpg:
       main:
         enabled: true
