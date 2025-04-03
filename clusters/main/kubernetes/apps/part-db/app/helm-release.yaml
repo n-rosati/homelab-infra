@@ -32,8 +32,7 @@ spec:
       pullPolicy: IfNotPresent
       tag: v1.17.0@sha256:a0a61e14aebfa5817c6f574db084f9f32356b87ee06bdaf1bf5ed40e27c29463
     busyboxImage:
-      repository: library/busybox
-      registry: docker.io
+      repository: docker.io/library/busybox
       pullPolicy: IfNotPresent
       tag: latest@sha256:37f7b378a29ceb4c551b1b5582e27747b855bbfaa73fa11914fe0df028dc581f
     credentials:
