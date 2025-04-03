@@ -40,12 +40,12 @@ spec:
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         accessKey: ${MINIO_ACCESS_KEY}
         secretKey: ${MINIO_SECRET_KEY}
-    securityContext:
-      container:
-        readOnlyRootFilesystem: false
-        runAsNonRoot: false
-        runAsUser: 0
-        runAsGroup: 0
+    # securityContext:
+    #   container:
+    #     readOnlyRootFilesystem: false
+    #     runAsNonRoot: false
+    #     runAsUser: 0
+    #     runAsGroup: 0
     service:
       main:
         type: LoadBalancer
@@ -86,7 +86,7 @@ spec:
             type: restic
             credentials: minio
             dest:
-              enabled: true
+              enabled: false
             src:
               enabled: true
               trigger:
@@ -100,7 +100,7 @@ spec:
             type: restic
             credentials: minio
             dest:
-              enabled: true
+              enabled: false
             src:
               enabled: true
               trigger:
@@ -120,7 +120,7 @@ spec:
           revision: "1"
           credentials: minio
         recovery:
-          enabled: true
+          enabled: false
           credentials: minio
           revision: ""
     workload:
@@ -130,11 +130,14 @@ spec:
             main:
               probes:
                 liveness:
-                  enabled: false
+                  type: http
+                  path: /
                 readiness:
-                  enabled: false
+                  type: http
+                  path: /
                 startup:
-                  enabled: false
+                  type: http
+                  path: /
               env:
                 ALLOW_ATTACHMENT_DOWNLOADS: "1"
                 ALLOW_EMAIL_PW_RESET: "true"
