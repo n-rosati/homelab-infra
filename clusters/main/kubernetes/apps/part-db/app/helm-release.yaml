@@ -44,11 +44,8 @@ spec:
       container:
         runAsUser: 33
         runAsGroup: 33
-        fsGroup: 33
         # readOnlyRootFilesystem: false
         # runAsNonRoot: false
-      pod:
-        fsGroup: 33
     service:
       main:
         type: LoadBalancer
@@ -133,6 +130,15 @@ spec:
     workload:
       main:
         podSpec:
+          initContainers:
+            - name: init-chown
+              image: busybox
+              command: [ "sh", "-c", "chown -R www-data:www-data /var/www/html" ]
+              securityContext:
+                runAsUser: 0
+              volumeMounts:
+                - mountPath: /var/www/html
+                  name: www-data-storage
           containers:
             main:
               probes:
