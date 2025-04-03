@@ -80,10 +80,7 @@ spec:
       html:
         enabled: true
         type: emptyDir
-        targetSelector:
-          main:
-            main:
-              mountPath: /var/www/html
+        mountPath: /var/www/html
       media:
         enabled: true
         type: pvc
