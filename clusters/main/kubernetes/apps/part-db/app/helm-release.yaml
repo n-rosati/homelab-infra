@@ -79,7 +79,7 @@ spec:
     persistence:
       html:
         enabled: true
-        type: EmptyDir
+        type: emptyDir
         targetSelector:
           main:
             main:
