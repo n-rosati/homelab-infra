@@ -27,6 +27,15 @@ spec:
     service:
       main:
         type: LoadBalancer
+    workload:
+      main:
+        podSpec:
+          runtimeClassName: "nvidia"
+          containers:
+            main:
+              resources:
+                limits:
+                  nvidia.com/gpu: 1
     ingress:
       main:
         enabled: true
