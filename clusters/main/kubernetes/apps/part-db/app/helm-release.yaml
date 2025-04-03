@@ -170,10 +170,10 @@ spec:
                 PROVIDER_ELEMENT14_STORE_ID: canada.newark.com
                 PROVIDER_LCSC_CURRENCY: CAD
                 PROVIDER_LCSC_ENABLED: "1"
-                # PROVIDER_OCOTPART_COUNTRY: CA
-                # PROVIDER_OCTOPART_CLIENT_ID: ${PARTDB_OCTOPART_CLIENT_ID}
-                # PROVIDER_OCTOPART_CURRENCY: CAD
-                # PROVIDER_OCTOPART_SECRET: ${PARTDB_OCTOPART_SECRET}
+                PROVIDER_OCOTPART_COUNTRY: CA
+                PROVIDER_OCTOPART_CLIENT_ID: ${PARTDB_OCTOPART_CLIENT_ID}
+                PROVIDER_OCTOPART_CURRENCY: CAD
+                PROVIDER_OCTOPART_SECRET: ${PARTDB_OCTOPART_SECRET}
                 # TRUSTED_PROXIES: ${PODNET},${SVCNET},${TRAEFIK_IP},192.168.2.0/24
                 # TRUSTED_HOSTS: '^(partdb\.nicholasrosati\.xyz|[a-z0-9-]+\.[a-z0-9-]+\.svc\.cluster\.local)$'
                 USE_GRAVATAR: "0"
