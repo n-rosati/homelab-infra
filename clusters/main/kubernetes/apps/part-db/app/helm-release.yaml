@@ -129,12 +129,15 @@ spec:
             main:
               probes:
                 liveness:
+                  enabled: false
                   type: http
                   path: /
                 readiness:
+                  enabled: false
                   type: http
                   path: /
                 startup:
+                  enabled: false
                   type: http
                   path: /
               env:
