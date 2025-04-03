@@ -40,12 +40,14 @@ spec:
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         accessKey: ${MINIO_ACCESS_KEY}
         secretKey: ${MINIO_SECRET_KEY}
-    # securityContext:
-    #   container:
-    #     readOnlyRootFilesystem: false
-    #     runAsNonRoot: false
-    #     runAsUser: 0
-    #     runAsGroup: 0
+    securityContext:
+      container:
+        runAsUser: 33
+        runAsGroup: 33
+        # readOnlyRootFilesystem: false
+        # runAsNonRoot: false
+      pod:
+        fsGroup: 33
     service:
       main:
         type: LoadBalancer
