@@ -17,11 +17,11 @@ spec:
   install:
     createNamespace: true
     remediation:
-      retries: 3000
+      retries: 3
   upgrade:
     cleanupOnFail: true
     remediation:
-      retries: 3000
+      retries: 3
   values:
     release_name: part-db
     global:
