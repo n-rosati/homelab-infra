@@ -154,7 +154,7 @@ spec:
                 DEFAULT_URI: https://partdb.${DOMAIN_BASE}
                 EMAIL_SENDER_EMAIL: ${SMTP_FROM}
                 EMAIL_SENDER_NAME: PartDB Service
-                # FIXER_API_KEY: ${PARTDB_FIXER_API_KEY}
+                FIXER_API_KEY: ${PARTDB_FIXER_API_KEY}
                 HISTORY_SAVE_CHANGED_DATA: "true"
                 HISTORY_SAVE_CHANGED_FIELDS: "true"
                 HISTORY_SAVE_NEW_DATA: "true"
