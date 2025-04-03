@@ -45,13 +45,10 @@ spec:
         secretKey: ${MINIO_SECRET_KEY}
     securityContext:
       container:
-        runAsUser: 33
-        runAsGroup: 33
-        fsGroup: 33
-        # readOnlyRootFilesystem: false
-        # runAsNonRoot: false
-      pod:
-        fsGroup: 33
+        readOnlyRootFilesystem: false
+        runAsNonRoot: false
+        runAsUser: 0
+        runAsGroup: 0
     service:
       main:
         type: LoadBalancer
@@ -83,72 +80,55 @@ spec:
               - name: auth
                 namespace: "traefik"
     persistence:
-      html:
-        enabled: true
-        type: pvc
-        mountPath: /var/www/html
       media:
         enabled: true
         type: pvc
         mountPath: /var/www/html/public/media
-        # volsync:
-        #   - name: uploads
-        #     type: restic
-        #     credentials: minio
-        #     dest:
-        #       enabled: false
-        #     src:
-        #       enabled: true
-        #       trigger:
-        #         schedule: 40 2 * * *
+        volsync:
+          - name: uploads
+            type: restic
+            credentials: minio
+            dest:
+              enabled: false
+            src:
+              enabled: true
+              trigger:
+                schedule: 40 2 * * *
       uploads:
         enabled: true
         type: pvc
         mountPath: /var/www/html/uploads
-        # volsync:
-        #   - name: uploads
-        #     type: restic
-        #     credentials: minio
-        #     dest:
-        #       enabled: false
-        #     src:
-        #       enabled: true
-        #       trigger:
-        #         schedule: 45 2 * * *
-        # cnpg:
-        #   main:
-        #     enabled: true
-        #     database: part-db
-        #     user: partdb
-        #     password: ${PARTDB_DB_PASSWORD}
-        #     pgVersion: 16
-        #     mode: standalone
-        #     cluster:
-        #       singleNode: true
-        #     backups:
-        #       enabled: true
-        #       revision: "1"
-        #       credentials: minio
-        #     recovery:
-        #       enabled: false
-        #       credentials: minio
-        #       revision: ""
+        volsync:
+          - name: uploads
+            type: restic
+            credentials: minio
+            dest:
+              enabled: false
+            src:
+              enabled: true
+              trigger:
+                schedule: 45 2 * * *
+        cnpg:
+          main:
+            enabled: true
+            database: part-db
+            user: partdb
+            password: ${PARTDB_DB_PASSWORD}
+            pgVersion: 16
+            mode: standalone
+            cluster:
+              singleNode: true
+            backups:
+              enabled: true
+              revision: "1"
+              credentials: minio
+            recovery:
+              enabled: false
+              credentials: minio
+              revision: ""
     workload:
       main:
         podSpec:
-          initContainers:
-            init-chown:
-              enabled: true
-              type: install
-              imageSelector: busyboxImage
-              command: [ "sh", "-c", "chown -R www-data:www-data /var/www/html" ]
-              securityContext:
-                runAsUser: 0
-              persistence:
-                uploads:
-                  enabled: true
-                  type: pvc
-                  mountPath: /var/www/html
           containers:
             main:
               probes:
