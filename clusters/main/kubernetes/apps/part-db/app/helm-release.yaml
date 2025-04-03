@@ -27,8 +27,7 @@ spec:
     global:
       stopAll: false
     image:
-      repository: jbtronics/part-db1
-      registry: docker.io
+      repository: docker.io/jbtronics/part-db1
       pullPolicy: IfNotPresent
       tag: v1.17.0@sha256:a0a61e14aebfa5817c6f574db084f9f32356b87ee06bdaf1bf5ed40e27c29463
     busyboxImage:
@@ -116,24 +115,24 @@ spec:
         #       enabled: true
         #       trigger:
         #         schedule: 45 2 * * *
-    cnpg:
-      main:
-        enabled: true
-        database: part-db
-        user: partdb
-        password: ${PARTDB_DB_PASSWORD}
-        pgVersion: 16
-        mode: standalone
-        cluster:
-          singleNode: true
-        backups:
-          enabled: true
-          revision: "1"
-          credentials: minio
-        recovery:
-          enabled: false
-          credentials: minio
-          revision: ""
+        # cnpg:
+        #   main:
+        #     enabled: true
+        #     database: part-db
+        #     user: partdb
+        #     password: ${PARTDB_DB_PASSWORD}
+        #     pgVersion: 16
+        #     mode: standalone
+        #     cluster:
+        #       singleNode: true
+        #     backups:
+        #       enabled: true
+        #       revision: "1"
+        #       credentials: minio
+        #     recovery:
+        #       enabled: false
+        #       credentials: minio
+        #       revision: ""
     workload:
       main:
         podSpec:
