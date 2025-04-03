@@ -81,6 +81,10 @@ spec:
               - name: auth
                 namespace: "traefik"
     persistence:
+      html:
+        enabled: true
+        type: pvc
+        mountPath: /var/www/html
       media:
         enabled: true
         type: pvc
@@ -142,7 +146,7 @@ spec:
                 uploads:
                   enabled: true
                   type: pvc
-                  mountPath: /var/www/html/uploads
+                  mountPath: /var/www/html
           containers:
             main:
               probes:
