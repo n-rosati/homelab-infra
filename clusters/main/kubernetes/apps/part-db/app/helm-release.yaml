@@ -104,24 +104,24 @@ spec:
               enabled: true
               trigger:
                 schedule: 45 2 * * *
-        cnpg:
-          main:
-            enabled: true
-            database: part-db
-            user: partdb
-            password: ${PARTDB_DB_PASSWORD}
-            pgVersion: 16
-            mode: standalone
-            cluster:
-              singleNode: true
-            backups:
-              enabled: true
-              revision: "1"
-              credentials: minio
-            recovery:
-              enabled: false
-              credentials: minio
-              revision: ""
+    cnpg:
+      main:
+        enabled: true
+        database: part-db
+        user: partdb
+        password: ${PARTDB_DB_PASSWORD}
+        pgVersion: 16
+        mode: standalone
+        cluster:
+          singleNode: true
+        backups:
+          enabled: true
+          revision: "1"
+          credentials: minio
+        recovery:
+          enabled: false
+          credentials: minio
+          revision: ""
     workload:
       main:
         podSpec:
