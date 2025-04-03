@@ -31,6 +31,11 @@ spec:
       registry: docker.io
       pullPolicy: IfNotPresent
       tag: v1.17.0@sha256:a0a61e14aebfa5817c6f574db084f9f32356b87ee06bdaf1bf5ed40e27c29463
+    busyboxImage:
+      repository: library/busybox
+      registry: docker.io
+      pullPolicy: IfNotPresent
+      tag: 1.37.0-glibc@sha256:sha256:45fb3214fa75ede765da7fa85a18a96d0973c26d84dac49b1af23923e627a219
     credentials:
       minio:
         name: minio
@@ -127,14 +132,18 @@ spec:
       main:
         podSpec:
           initContainers:
-            - name: init-chown
-              image: busybox
+            init-chown:
+              enabled: true
+              type: install
+              imageSelector: busyboxImage
               command: [ "sh", "-c", "chown -R www-data:www-data /var/www/html" ]
               securityContext:
                 runAsUser: 0
-              volumeMounts:
-                - mountPath: /var/www/html
-                  name: www-data-storage
+              persistence:
+                uploads:
+                  enabled: true
+                  type: pvc
+                  mountPath: /var/www/html/uploads
           containers:
             main:
               probes:
