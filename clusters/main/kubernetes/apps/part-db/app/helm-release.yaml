@@ -77,6 +77,13 @@ spec:
               - name: auth
                 namespace: "traefik"
     persistence:
+      html:
+        enabled: true
+        type: EmptyDir
+        targetSelector:
+          main:
+            main:
+              mountPath: /var/www/html
       media:
         enabled: true
         type: pvc
@@ -146,8 +153,9 @@ spec:
                 BANNER: 'Welcome to Part-DB.  <blockquote class=''pb-0''> <p style=''font-size: 12px''> And God said <br> $\nabla \cdot \vec{D} = \rho$, $\nabla \cdot \vec{B} = 0$, $\nabla \times \vec{E} = -\frac{\partial \vec{B}}{\partial t}$, $\nabla \times \vec{H} = \vec{j} + \frac{\partial \vec{D}}{\partial t}$,  <br> and then there was light. </p> </blockquote>'
                 BASE_CURRENCY: CAD
                 DATABASE_URL: postgresql://partdb:${PARTDB_DB_PASSWORD}@part-db-app-template-cnpg-main-rw.part-db.${DNS_SUFFIX}:5432/part-db?serverVersion=16.4&charset=utf8
+                DB_AUTOMIGRATE: true
                 DEFAULT_LANG: en
-                DEFAULT_TIMEZONE: ${TIMEZONE}
+                DEFAULT_TIMEZONE: Etc/UTC
                 DEFAULT_URI: https://partdb.${DOMAIN_BASE}
                 EMAIL_SENDER_EMAIL: ${SMTP_FROM}
                 EMAIL_SENDER_NAME: PartDB Service
