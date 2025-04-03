@@ -42,12 +42,12 @@ spec:
         secretKey: ${MINIO_SECRET_KEY}
     securityContext:
       container:
-        runAsUser: 33
-        runAsGroup: 33
+        runAsUser: www-data
+        runAsGroup: www-data
         # readOnlyRootFilesystem: false
         # runAsNonRoot: false
       pod:
-        fsGroup: 33
+        fsGroup: www-data
     service:
       main:
         type: LoadBalancer
