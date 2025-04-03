@@ -154,7 +154,7 @@ spec:
                 DEFAULT_URI: https://partdb.${DOMAIN_BASE}
                 EMAIL_SENDER_EMAIL: ${SMTP_FROM}
                 EMAIL_SENDER_NAME: PartDB Service
-                FIXER_API_KEY: ${PARTDB_FIXER_API_KEY}
+                # FIXER_API_KEY: ${PARTDB_FIXER_API_KEY}
                 HISTORY_SAVE_CHANGED_DATA: "true"
                 HISTORY_SAVE_CHANGED_FIELDS: "true"
                 HISTORY_SAVE_NEW_DATA: "true"
@@ -166,10 +166,10 @@ spec:
                 PROVIDER_DIGIKEY_CURRENCY: CAD
                 PROVIDER_DIGIKEY_LANGUAGE: en
                 PROVIDER_DIGIKEY_SECRET: ${PARTDB_DIGIKEY_SECRET}
-                PROVIDER_ELEMENT14_KEY: ${PARTDB_ELEMENT14_KEY}
-                PROVIDER_ELEMENT14_STORE_ID: canada.newark.com
-                PROVIDER_LCSC_CURRENCY: CAD
-                PROVIDER_LCSC_ENABLED: "1"
+                # PROVIDER_ELEMENT14_KEY: ${PARTDB_ELEMENT14_KEY}
+                # PROVIDER_ELEMENT14_STORE_ID: canada.newark.com
+                # PROVIDER_LCSC_CURRENCY: CAD
+                # PROVIDER_LCSC_ENABLED: "1"
                 PROVIDER_OCOTPART_COUNTRY: CA
                 PROVIDER_OCTOPART_CLIENT_ID: ${PARTDB_OCTOPART_CLIENT_ID}
                 PROVIDER_OCTOPART_CURRENCY: CAD
