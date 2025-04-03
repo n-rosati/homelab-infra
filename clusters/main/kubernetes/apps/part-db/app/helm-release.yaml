@@ -136,19 +136,20 @@ spec:
     workload:
       main:
         podSpec:
-          # initContainers:
-          #   init-chown:
-          #     enabled: true
-          #     type: install
-          #     imageSelector: busyboxImage
-          #     command: [ "sh", "-c", "chown -R www-data:www-data /var/www/html" ]
-          #     securityContext:
-          #       runAsUser: 0
-          #     persistence:
-          #       uploads:
-          #         enabled: true
-          #         type: pvc
-          #         mountPath: /var/www/html
+          initContainers:
+            init-chown:
+              enabled: true
+              type: install
+              imageSelector: busyboxImage
+              # command: [ "sh", "-c", "chown -R www-data:www-data /var/www/html" ]
+              command: [ "sh", "-c", "bash" ]
+              securityContext:
+                runAsUser: 0
+              persistence:
+                uploads:
+                  enabled: true
+                  type: pvc
+                  mountPath: /var/www/html
           containers:
             main:
               probes:
