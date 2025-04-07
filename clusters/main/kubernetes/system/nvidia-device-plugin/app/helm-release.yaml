@@ -25,6 +25,20 @@ spec:
     remediation:
       retries: 3
   values:
+    controllers:
+      defaultPodOptions:
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: topology.kubernetes.io/zone
+                      operator: In
+                      values:
+                        - "lemnos"
+    image:
+      repository: nvcr.io/nvidia/k8s-device-plugin
+      tag: v0.17.1
     runtimeClassName: nvidia
     config:
       map:
@@ -41,3 +55,5 @@ spec:
                   replicas: 5
     gfd:
       enabled: true
+    nfd:
+      enabled: false
