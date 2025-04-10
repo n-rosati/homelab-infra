@@ -36,7 +36,7 @@ spec:
     workload:
       main:
         podSpec:
-          hostNetwork: true
+          hostNetwork: true # main service: 8123; codeserver: 12321
     ingress:
       main:
         enabled: true
