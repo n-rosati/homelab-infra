@@ -5,3 +5,4 @@ resources:
   - nginx-internal/ks.yaml
   - nginx-external/ks.yaml
   - cloudflareddns/ks.yaml
+  - blocky/ks.yaml
