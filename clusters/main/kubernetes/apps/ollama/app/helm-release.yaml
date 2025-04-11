@@ -39,13 +39,11 @@ spec:
           certManager:
             certificateIssuer: le-prod
             enabled: true
-          # homepage:
-          #   enabled: true
-          #   group: Apps
-          #   widget:
-          #     enabled: true
-          #     custom:
-          #       key: ${}
+          homepage:
+            enabled: true
+            group: Apps
+            widget:
+              enabled: false
           traefik:
             enabled: true
             entrypoints:
@@ -59,12 +57,12 @@ spec:
       rag:
         # cpu | cuda | mps
         model_device_type: "cuda"
-    #        # embedding model
-    #        model: "deepseek-r1:1.5b"
-    resources:
-      limits:
-        nvidia.com/gpu: 1
     workload:
       main:
         podSpec:
           runtimeClassName: "nvidia"
+          containers:
+            main:
+              resources:
+                limits:
+                  nvidia.com/gpu: 1
