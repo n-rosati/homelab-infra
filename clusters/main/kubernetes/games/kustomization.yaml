@@ -4,5 +4,5 @@ resources:
   - factorio/ks.yaml
   - minecraft
   - minecraft-router/ks.yaml
-  - ps3netsrv/ks.yaml
+  # - ps3netsrv/ks.yaml
   - rcon-webadmin/ks.yaml
