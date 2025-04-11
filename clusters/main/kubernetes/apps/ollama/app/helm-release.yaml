@@ -61,8 +61,6 @@ spec:
       main:
         podSpec:
           runtimeClassName: "nvidia"
-          containers:
-            main:
-              resources:
-                limits:
-                  nvidia.com/gpu: 1
+    resources:
+      limits:
+        nvidia.com/gpu: 1

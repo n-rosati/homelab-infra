@@ -108,15 +108,13 @@ spec:
               mountPath: /mount
     autodiscovery:
       enabled: true
+    resources:
+      limits:
+        nvidia.com/gpu: 1
     workload:
       main:
         podSpec:
           runtimeClassName: "nvidia"
-          containers:
-            main:
-              resources:
-                limits:
-                  nvidia.com/gpu: 1
       jellyfin-up:
         enabled: true
         type: Deployment
