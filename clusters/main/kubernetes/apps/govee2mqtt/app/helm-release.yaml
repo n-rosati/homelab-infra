@@ -29,7 +29,7 @@ spec:
     image:
       repository: ghcr.io/wez/govee2mqtt
       pullPolicy: IfNotPresent
-      tag: latest@sha256:af2ef02e9dfb84f5d30139d34758f64e8e109bccc8c01a466ba96940f541bf0a
+      tag: latest@sha256:622cd7b382312f5b80979be893ee5aec6490e2d7a2886c2594fd00181006311d
     service:
       main:
         enabled: true
