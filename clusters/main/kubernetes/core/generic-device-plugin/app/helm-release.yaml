@@ -15,3 +15,25 @@ spec:
         namespace: flux-system
   releaseName: generic-device-plugin
   values:
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              args:
+                - --domain
+                - truecharts.org
+                - --device
+                - |
+                  name: tun
+                  groups:
+                    - count: 1000
+                      paths:
+                      - path: /dev/net/tun
+                - --device
+                - |
+                  name: bluray
+                  groups:
+                    - count: 10
+                      paths:
+                      - path: /dev/bd0
