@@ -8,6 +8,6 @@ resources:
   - traefik/ks.yaml
   - lldap/ks.yaml
   - authelia/ks.yaml
-#  - blocky/ks.yaml
+  - blocky/ks.yaml
   - generic-device-plugin/ks.yaml
   - wg-easy/ks.yaml
