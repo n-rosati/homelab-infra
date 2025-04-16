@@ -27,6 +27,8 @@ spec:
     service:
       main:
         type: LoadBalancer
+      api:
+        type: LoadBalancer
     ingress:
       main:
         enabled: true
