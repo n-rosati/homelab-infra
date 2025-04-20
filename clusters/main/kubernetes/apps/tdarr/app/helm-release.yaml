@@ -105,11 +105,11 @@ spec:
         path: ${NFS_DSU_PATH}/Other Media
         mountPath: /othermedia
       # Temp mount for a temp remote worker node
-      # transcode-cache:
-      #   type: nfs
-      #   path: ${NFS_APPS_PATH}/Tdarr
-      #   server: ${TRUENAS_IP}
-      #   mountPath: /temp
+      transcode-cache:
+        type: nfs
+        path: ${NFS_APPS_PATH}/Tdarr
+        server: ${TRUENAS_IP}
+        mountPath: /temp
     workload:
       main:
         podSpec:
