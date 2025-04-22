@@ -112,7 +112,7 @@ spec:
         user: partdb
         password: ${PARTDB_DB_PASSWORD}
         pgVersion: 16
-        mode: standalone
+        mode: recovery
         cluster:
           singleNode: true
         backups:
