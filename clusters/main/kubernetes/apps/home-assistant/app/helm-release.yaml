@@ -70,7 +70,7 @@ spec:
     cnpg:
       main:
         password: ${CNPG_PASSWORD}
-        mode: standalone
+        mode: standalone # CHANGE ME TO RECOVERY MODE 
         backups:
           enabled: true
           credentials: minio
@@ -78,7 +78,6 @@ spec:
         recovery:
           enabled: true
           credentials: minio
-          method: object_store
           revision: ""
         cluster:
           singleNode: true
