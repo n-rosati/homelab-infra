@@ -9,5 +9,5 @@ spec:
   groups:
     - default
   name: delete
-  retain: 0
+  retain: 1
   task: snapshot-delete
