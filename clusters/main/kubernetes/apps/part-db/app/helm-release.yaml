@@ -5,6 +5,7 @@ metadata:
   namespace: part-db
 spec:
   interval: 15m
+  timeout: 20m
   chart:
     spec:
       chart: app-template
