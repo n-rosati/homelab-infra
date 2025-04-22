@@ -85,7 +85,7 @@ spec:
             type: restic
             credentials: minio
             dest:
-              enabled: false
+              enabled: true
             src:
               enabled: true
               trigger:
@@ -99,7 +99,7 @@ spec:
             type: restic
             credentials: minio
             dest:
-              enabled: false
+              enabled: true
             src:
               enabled: true
               trigger:
@@ -116,12 +116,12 @@ spec:
           singleNode: true
         backups:
           enabled: true
-          revision: "2"
+          revision: "3"
           credentials: minio
         recovery:
-          enabled: false
+          enabled: true
           credentials: minio
-          revision: ""
+          revision: "2"
     workload:
       main:
         podSpec:
