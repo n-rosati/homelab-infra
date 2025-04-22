@@ -1,8 +1,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: part-db
-  namespace: part-db
+  name: convertx
+  namespace: convertx
 spec:
   interval: 15m
   chart:
