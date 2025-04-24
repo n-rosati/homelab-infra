@@ -35,6 +35,8 @@ spec:
         accessKey: ${MINIO_ACCESS_KEY}
         secretKey: ${MINIO_SECRET_KEY}
     service:
+      main:
+        type: LoadBalancer
       comm:
         type: LoadBalancer
     ingress:
