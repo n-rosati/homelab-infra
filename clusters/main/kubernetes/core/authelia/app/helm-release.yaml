@@ -112,6 +112,7 @@ spec:
           min_score: 3
     workload:
       main:
+        replicas: 1
         podSpec:
           containers:
             main:
