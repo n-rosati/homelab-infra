@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: authelia
-      version: 26.4.8
+      version: 27.1.8
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -61,77 +61,68 @@ spec:
           singleNode: true
         monitoring:
           enablePodMonitor: true
-    access_control:
-      default_policy: deny
-      rules:
-        # Local network bypass auth
-        - domain: '*.${DOMAIN_BASE}'
-          networks:
-            - 192.168.2.0/24
-          policy: bypass
-        - domain: '*.${DOMAIN_BASE}'
-          domain_regex: []
-          networks: []
-          policy: one_factor
-          resources: []
-          subject:
-            - group:users
-    authentication_backend:
-      file:
-        enabled: false
-      ldap:
-        enabled: true
-        additional_groups_dn: ou=groups
-        additional_users_dn: ou=people
-        base_dn: ${LDAP_BASE_DN}
-        display_name_attribute: displayName
-        group_name_attribute: cn
-        groups_filter: (member={dn})
-        implementation: custom
-        mail_attribute: mail
-        plain_password: ${LDAP_USER_PASS}
-        start_tls: false
-        timeout: 5s
-        tls:
-          minimum_version: TLS1.2
-          server_name: ""
-          skip_verify: false
-        url: ldap://${LLDAP_DNS_NAME}:3890
-        user: uid=admin,ou=people,${LDAP_BASE_DN}
-        username_attribute: uid
-        users_filter: (&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))
-    totp:
-      issuer: Authelia
-      period: 30
-      skew: 1
-    default_redirection_url: https://auth.${DOMAIN_BASE}
-    domain: ${DOMAIN_BASE}
-    log:
-      level: info
-      format: json
-    notifier:
-      filesystem:
-        enabled: false
-      smtp:
-        enabled: true
-        disable_html_emails: false
-        disable_require_tls: false
-        enabledSecret: false
-        host: ${SMTP_SERVER}
-        identifier: ${SMTP_FROM}
-        plain_password: ${SMTP_PASSWORD}
-        port: ${SMTP_PORT}
-        sender: ${SMTP_FROM}
-        startup_check_address: test@authelia.com
-        subject: '[Authelia] {title}'
-        timeout: 5s
-        tls:
-          minimum_version: TLS1.2
-          server_name: ""
-          skip_verify: false
-        username: ${SMTP_FROM}
-    password_policy:
-      zxcvbn:
-        enabled: true
-        min_score: 3
-    theme: auto
+    authelia:
+      theme: auto
+      domain: ${DOMAIN_BASE}
+      default_redirection_url: https://auth.${DOMAIN_BASE}
+      log:
+        level: info
+        format: json
+      totp:
+        issuer: Authelia
+      authentication_backend:
+        ldap:
+          address: ldap://${LLDAP_DNS_NAME}:3890
+          implementation: lldap
+          tls:
+            server_name: lldap.${DOMAIN_BASE}
+          base_dn: ${LDAP_BASE_DN}
+          username_attribute: uid
+          users_filter: (&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))
+          additional_users_dn: ou=people
+          groups_filter: (&(member={dn})(objectClass=groupOfNames))
+          additional_groups_dn: ou=groups
+          group_name_attribute: cn
+          mail_attribute: mail
+          display_name_attribute: cn
+          user: uid=admin,ou=people,${LDAP_BASE_DN}
+      notifier:
+        smtp:
+          address: "smtp://${SMTP_SERVER}:${SMTP_PORT}"
+          timeout: 5s
+          username: ${SMTP_FROM}
+          password: ${SMTP_PASSWORD}
+          sender: "Authelia <${SMTP_FROM}>"
+          identifier: ${SMTP_FROM}
+          subject: '[Authelia] {title}'
+          startup_check_address: test@authelia.com
+          disable_require_tls: false
+          disable_html_emails: false
+          tls:
+            server_name: ${EMAIL_DOMAIN}
+      access_control:
+        default_policy: deny
+        rules:
+          - domain: '*.${DOMAIN_BASE}'
+            networks:
+              - 192.168.2.0/24
+            policy: bypass
+          - domain: '*.${DOMAIN_BASE}'
+            policy: one_factor
+            subject:
+              - group:users
+      regulation:
+        max_retries: 5
+      password_policy:
+        zxcvbn:
+          enabled: true
+          min_score: 3
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                AUTHELIA_SESSION_SECRET: ${AUTHELIA_SESSION_SECRET}
+                AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET: ${AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET}
+                AUTHELIA_STORAGE_ENCRYPTION_KEY: ${AUTHELIA_STORAGE_ENCRYPTION_KEY}
