@@ -77,15 +77,17 @@ spec:
           tls:
             server_name: lldap.${DOMAIN_BASE}
           base_dn: ${LDAP_BASE_DN}
-          username_attribute: uid
-          users_filter: (&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))
           additional_users_dn: ou=people
-          groups_filter: (&(member={dn})(objectClass=groupOfNames))
+          users_filter: (&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))
           additional_groups_dn: ou=groups
-          group_name_attribute: cn
-          mail_attribute: mail
-          display_name_attribute: cn
+          groups_filter: (&(member={dn})(objectClass=groupOfNames))
           user: uid=admin,ou=people,${LDAP_BASE_DN}
+          password: ${LDAP_USER_PASS}
+          attributes:
+            username: uid
+            display_name: cn
+            mail: mail
+            group_name: cn
       notifier:
         smtp:
           address: "smtp://${SMTP_SERVER}:${SMTP_PORT}"
