@@ -127,7 +127,7 @@ spec:
         zxcvbn:
           enabled: true
           min_score: 3
-      session: {}
+      session: null
     workload:
       main:
         replicas: 1
