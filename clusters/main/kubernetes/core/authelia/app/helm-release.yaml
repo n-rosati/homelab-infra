@@ -72,12 +72,17 @@ spec:
           enablePodMonitor: true
     authelia:
       theme: auto
-      default_redirection_url: https://auth.${DOMAIN_BASE}
       log:
         level: info
         format: json
       totp:
         issuer: Authelia
+      session:
+        cookies:
+          - domain: ${DOMAIN_BASE}
+            authelia_url: https://auth.${DOMAIN_BASE}
+            default_redirection_url: https://homepage.${DOMAIN_BASE}
+            inactivity: 2w
       authentication_backend:
         ldap:
           address: ldap://${LLDAP_DNS_NAME}:3890
@@ -127,7 +132,6 @@ spec:
         zxcvbn:
           enabled: true
           min_score: 3
-      session: null
     workload:
       main:
         replicas: 1
