@@ -102,18 +102,13 @@ spec:
             mail: mail
             group_name: cn
       notifier:
-        disable_startup_check: true #FIXME: REMOVE
         smtp:
           address: "smtp://${SMTP_SERVER}:${SMTP_PORT}"
-          timeout: 5s
           username: ${SMTP_FROM}
           password: ${SMTP_PASSWORD}
-          sender: "Authelia <${SMTP_FROM}>"
-          identifier: ${SMTP_FROM}
+          sender: ${SMTP_FROM}
           subject: '[Authelia] {title}'
-          startup_check_address: test@authelia.com
-          disable_require_tls: false
-          disable_html_emails: false
+          startup_check_address: ${SMTP_FROM}
           tls:
             server_name: ${EMAIL_DOMAIN}
       access_control:
