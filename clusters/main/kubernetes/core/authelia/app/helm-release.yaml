@@ -24,15 +24,6 @@ spec:
   values:
     global:
       stopAll: false
-    credentials:
-      minio-creds:
-        name: minio-creds
-        type: s3
-        url: "${MINIOBUCKETURL}"
-        accessKey: "${MINIOACCESSKEY}"
-        bucket: "${MINIOBUCKET}"
-        encrKey: "${MINIOENCRKEY}"
-        secretKey: "${MINIOSECRETKEY}"
     ingress:
       main:
         enabled: true
