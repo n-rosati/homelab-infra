@@ -23,7 +23,7 @@ spec:
       retries: 3
   values:
     reloader:
-      # autoReloadAll: true
+      autoReloadAll: true
       reloadOnCreate: true
       reloadOnDelete: true
       syncAfterRestart: true
