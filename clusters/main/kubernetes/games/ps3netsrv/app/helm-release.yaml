@@ -24,6 +24,10 @@ spec:
   values:
     global:
       stopAll: false
+    image:
+      repository: ghcr.io/shawly/ps3netsrv
+      pullPolicy: IfNotPresent
+      tag: edge@sha256:73a8093f6d11bc28c29883dc7d65ef2e5e12b17c0137a0dc089d26b4a75a4c59
     service:
       main:
         type: LoadBalancer
