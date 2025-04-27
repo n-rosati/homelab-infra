@@ -107,7 +107,7 @@ spec:
           username: ${SMTP_FROM}
           password: ${SMTP_PASSWORD}
           sender: 'Authelia <${SMTP_FROM}>'
-          identifier: auth.nicholasrosati.xyz
+          identifier: auth.${DOMAIN_BASE}
           subject: '{title}'
       access_control:
         default_policy: deny
