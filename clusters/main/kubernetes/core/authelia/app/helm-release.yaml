@@ -102,16 +102,13 @@ spec:
             mail: mail
             group_name: cn
       notifier:
-        disable_startup_check: true
         smtp:
-          address: "smtp://${SMTP_SERVER}:${SMTP_PORT}"
+          address: smtp://${SMTP_SERVER}:587
           username: ${SMTP_FROM}
           password: ${SMTP_PASSWORD}
-          sender: ${SMTP_FROM}
-          subject: '[Authelia] {title}'
-          startup_check_address: ${SMTP_FROM}
-          tls:
-            server_name: ${EMAIL_DOMAIN}
+          sender: 'Authelia <${SMTP_FROM}>'
+          identifier: auth.nicholasrosati.xyz
+          subject: '{title}'
       access_control:
         default_policy: deny
         rules:
