@@ -22,9 +22,6 @@ spec:
     remediation:
       retries: 3
   values:
-    annotations:
-      # reloader.stakater.com/auto: "true"
-      reloader.stakater.com/rollout-strategy: restart
     credentials:
       minio:
         name: minio
