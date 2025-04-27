@@ -28,4 +28,4 @@ spec:
       syncAfterRestart: true
       reloadStrategy: annotations
       namespaceSelector: flux-system
-      resourceLabelSelector: cluster-config
+      ignoreSecrets: true
