@@ -5,11 +5,12 @@ metadata:
   namespace: homepage
   annotations:
     reloader.stakater.com/auto: "true"
+    configmap.reloader.stakater.com/reload: "cluster-config"
 spec:
   interval: 15m
   chart:
     annotations:
-      reloader.stakater.com/auto: "true"
+      configmap.reloader.stakater.com/reload: "cluster-config"
     spec:
       chart: homepage
       version: 10.1.1
