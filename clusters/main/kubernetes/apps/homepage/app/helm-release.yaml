@@ -23,8 +23,8 @@ spec:
       retries: 3
   values:
     annotations:
-      reloader.stakater.com/auto: "true"
-      # configmap.reloader.stakater.com/reload: "cluster-config"
+      # reloader.stakater.com/auto: "true"
+      configmap.reloader.stakater.com/reload: "cluster-config"
       reloader.stakater.com/rollout-strategy: restart
     credentials:
       minio:
@@ -43,7 +43,7 @@ spec:
         integrations:
           certManager:
             enabled: true
-            certificateIssuer: le-staging
+            certificateIssuer: le-prod
           traefik:
             allowCors: false
             enabled: true
