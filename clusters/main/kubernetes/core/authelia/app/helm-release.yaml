@@ -102,6 +102,7 @@ spec:
             mail: mail
             group_name: cn
       notifier:
+        disable_startup_check: true
         smtp:
           address: "smtp://${SMTP_SERVER}:${SMTP_PORT}"
           username: ${SMTP_FROM}
