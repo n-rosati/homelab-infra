@@ -28,5 +28,5 @@ spec:
       reloadOnDelete: true
       syncAfterRestart: true
       reloadStrategy: annotations
-      namespaceSelector: flux-system
+      # namespaceSelector: flux-system
       ignoreSecrets: true
