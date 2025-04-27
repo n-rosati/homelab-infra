@@ -26,4 +26,3 @@ spec:
       reloadOnCreate: true
       reloadOnDelete: true
       syncAfterRestart: true
-      namespaceSelector: homepage
