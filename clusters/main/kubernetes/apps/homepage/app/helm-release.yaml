@@ -3,10 +3,6 @@ kind: HelmRelease
 metadata:
   name: homepage
   namespace: homepage
-  annotations:
-    reloader.stakater.com/auto: "true"
-    configmap.reloader.stakater.com/reload: "cluster-config"
-    reloader.stakater.com/rollout-strategy: "restart"
 spec:
   interval: 15m
   chart:
@@ -26,6 +22,10 @@ spec:
     remediation:
       retries: 3
   values:
+    annotations:
+      reloader.stakater.com/auto: "true"
+      # configmap.reloader.stakater.com/reload: "cluster-config"
+      reloader.stakater.com/rollout-strategy: restart
     credentials:
       minio:
         name: minio
@@ -43,7 +43,7 @@ spec:
         integrations:
           certManager:
             enabled: true
-            certificateIssuer: le-prod
+            certificateIssuer: le-staging
           traefik:
             allowCors: false
             enabled: true
@@ -63,7 +63,7 @@ spec:
             credentials: minio
             type: restic
             dest:
-              enabled: false
+              enabled: true
             src:
               enabled: true
               trigger:
