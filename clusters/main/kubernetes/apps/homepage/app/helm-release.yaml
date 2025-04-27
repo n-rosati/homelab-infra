@@ -6,11 +6,10 @@ metadata:
   annotations:
     reloader.stakater.com/auto: "true"
     configmap.reloader.stakater.com/reload: "cluster-config"
+    reloader.stakater.com/rollout-strategy: "restart"
 spec:
   interval: 15m
   chart:
-    annotations:
-      configmap.reloader.stakater.com/reload: "cluster-config"
     spec:
       chart: homepage
       version: 10.1.1
