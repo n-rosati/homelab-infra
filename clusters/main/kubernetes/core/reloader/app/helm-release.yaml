@@ -26,3 +26,4 @@ spec:
       reloadOnCreate: true
       reloadOnDelete: true
       syncAfterRestart: true
+      reloadStrategy: annotations
