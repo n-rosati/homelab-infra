@@ -63,7 +63,7 @@ spec:
             credentials: minio
             type: restic
             dest:
-              enabled: true
+              enabled: false #FIXME
             src:
               enabled: true
               trigger:
