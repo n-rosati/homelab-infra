@@ -11,3 +11,4 @@ resources:
   - blocky/ks.yaml
   - generic-device-plugin/ks.yaml
   - wg-easy/ks.yaml
+  - reloader/ks.yaml
