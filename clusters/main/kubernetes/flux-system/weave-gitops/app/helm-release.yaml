@@ -30,6 +30,10 @@ spec:
   values:
     service:
       type: LoadBalancer
+    adminUser:
+      create: true
+      username: admin
+      passwordHash: "$2a$12$Z/GfQUyktfdowUrKM5jxAeSIcKGiHADTxG.5s1t2d3k4tsVQ0j9ii"
     ingress:
       enabled: true
       annotations:
