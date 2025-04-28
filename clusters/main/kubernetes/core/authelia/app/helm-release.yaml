@@ -122,7 +122,7 @@ spec:
             subject:
               - group:users
       regulation:
-        max_retries: 5
+        max_retries: 3
       password_policy:
         zxcvbn:
           enabled: true
