@@ -110,6 +110,7 @@ spec:
           sender: 'Authelia <${SMTP_FROM}>'
           identifier: auth.${DOMAIN_BASE}
           subject: '{title}'
+          timeout: 15s
       access_control:
         default_policy: deny
         rules:
