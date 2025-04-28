@@ -74,6 +74,10 @@ spec:
         authMechanism: Login
         user: ${SMTP_FROM}
         password: ${SMTP_PASSWORD}
+      push:
+        enabled: true
+        installationId: ${VAULTWARDEN_INST_ID}
+        installationKey: ${VAULTWARDEN_INST_KEY}
     persistence:
       data:
         volsync:
