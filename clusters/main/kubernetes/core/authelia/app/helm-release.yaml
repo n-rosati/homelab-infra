@@ -104,7 +104,7 @@ spec:
       notifier:
         # disable_startup_check: true
         smtp:
-          address: smtp://${SMTP_SERVER}:${SMTP_PORT}
+          address: submissions://${SMTP_SERVER}:${SMTP_PORT}
           username: ${SMTP_FROM}
           password: ${SMTP_PASSWORD}
           sender: 'Authelia <${SMTP_FROM}>'
