@@ -69,7 +69,7 @@ spec:
         host: ${SMTP_SERVER}
         from: ${SMTP_FROM}
         fromName: Vaultwarden
-        security: FORCE_TLS
+        security: force_tls
         port: ${SMTP_PORT}
         authMechanism: Login
         user: ${SMTP_FROM}
