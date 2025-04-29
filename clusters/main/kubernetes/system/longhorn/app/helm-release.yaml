@@ -54,7 +54,7 @@ spec:
       tls:
         - hosts:
             - longhorn.${DOMAIN_BASE}
-          secretName: longhorn-tls-0
+          secretName: longhorn-system-longhorn
       hosts:
         - host: longhorn.${DOMAIN_BASE}
           paths:
