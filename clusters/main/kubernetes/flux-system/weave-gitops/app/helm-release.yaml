@@ -33,7 +33,7 @@ spec:
     adminUser:
       create: true
       username: admin
-      passwordHash: "$2a$12$Z/GfQUyktfdowUrKM5jxAeSIcKGiHADTxG.5s1t2d3k4tsVQ0j9ii"
+      passwordHash: "$2a$12$ZCj5LZVMiFQw6LIp.Z.iWu.14vqV7iPiTpVPGUte3M16ZILeBClqy"
     ingress:
       enabled: true
       annotations:
