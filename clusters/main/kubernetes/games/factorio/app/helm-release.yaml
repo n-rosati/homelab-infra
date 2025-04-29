@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: docker.io/factoriotools/factorio
-      tag: 2.0.46@sha256:4b891c02ad399c4286e3db9fff4347e040113119bbc05a34c374d2a1554c79d3
+      tag: 2.0.47@sha256:3d661f54e94abbd97ed91cf35660a7454a396ae0d39b37b614f51db2b75fc062
       pullPolicy: IfNotPresent
     global:
       stopAll: false
