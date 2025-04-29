@@ -3,8 +3,8 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - helm-release.yaml
+  - ingress.yaml
   - volumeSnapshotClass.yaml
   - trim.yaml
-  - snapshot-cleanup.yaml
-  - snapshot-delete.yaml
-  - ingress.yaml
+  - cleanup.yaml
+  - delete.yaml
