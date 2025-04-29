@@ -43,27 +43,3 @@ spec:
       defaultClassReplicaCount: 1
     longhornUI:
       replicas: 1
-    ingress:
-      enabled: true
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        cert-manager.io/cluster-issuer: le-staging
-        cert-manager.io/private-key-rotation-policy: Always
-        traefik.ingress.kubernetes.io/router.tls: 'true'
-        traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd,traefik-real-ip@kubernetescrd,traefik-geo-allowlist@kubernetescrd,traefik-auth@kubernetescrd
-      tls:
-        - hosts:
-            - longhorn.${DOMAIN_BASE}
-          secretName: longhorn-system-longhorn
-      hosts:
-        - host: longhorn.${DOMAIN_BASE}
-          paths:
-            - path: /
-              pathType: Prefix
-          backend:
-            service:
-              name: longhorn-system
-              port:
-                number: 80
-    networkPolicy:
-      create: false
