@@ -6,7 +6,6 @@ resources:
   - pgadmin/ks.yaml
   - homepage/ks.yaml
   - nextcloud/ks.yaml
-  - plex/ks.yaml
   - qbittorrent/ks.yaml
   - jdownloader2/ks.yaml
   - part-db/ks.yaml
