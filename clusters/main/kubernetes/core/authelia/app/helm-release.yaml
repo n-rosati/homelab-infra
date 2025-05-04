@@ -42,7 +42,7 @@ spec:
         integrations:
           certManager:
             enabled: true
-            certificateIssuer: le-staging
+            certificateIssuer: le-prod
           traefik:
             allowCors: true
             enabled: true
