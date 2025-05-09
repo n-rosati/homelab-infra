@@ -13,6 +13,9 @@ spec:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
+      interval: 15m
+  timeout: 5m
+  maxHistory: 3
   install:
     createNamespace: true
     remediation:
@@ -21,6 +24,8 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 3
+  uninstall:
+    keepHistory: false
   values:
     global:
       stopAll: false
@@ -105,5 +110,5 @@ spec:
                 WG_MTU: 1420
                 WG_PERSISTENT_KEEPALIVE: 25
                 WG_DEFAULT_DNS: ${BLOCKY_IP}
-                PASSWORD_HASH: "${WG_PASSWORD_HASH}"
+                PASSWORD_HASH: ${WG_PASSWORD_HASH}
                 UI_TRAFFIC_STATS: true
