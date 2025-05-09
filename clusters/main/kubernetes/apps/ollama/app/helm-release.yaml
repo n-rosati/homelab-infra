@@ -61,6 +61,7 @@ spec:
         model_device_type: "cuda"
     workload:
       main:
+        strategy: Recreate
         podSpec:
           runtimeClassName: "nvidia"
           containers:

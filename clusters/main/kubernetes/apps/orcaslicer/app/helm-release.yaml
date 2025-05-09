@@ -29,6 +29,7 @@ spec:
         type: LoadBalancer
     workload:
       main:
+        strategy: Recreate
         podSpec:
           runtimeClassName: "nvidia"
           containers:

@@ -114,6 +114,7 @@ spec:
         mountPath: /temp
     workload:
       main:
+        strategy: Recreate
         podSpec:
           runtimeClassName: "nvidia"
           containers:
