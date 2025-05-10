@@ -1,0 +1,116 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: portnote
+  namespace: portnote
+spec:
+  interval: 15m
+  timeout: 20m
+  chart:
+    spec:
+      chart: app-template
+      version: 14.5.3
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: portnote
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    release_name: portnote
+    global:
+      stopAll: false
+    image:
+      repository: docker.io/haedlessdev/portnote
+      pullPolicy: IfNotPresent
+      tag: v1.0.0@sha256:2e6c15895f386ec76a5424bae54e8f07b3475731bd5383a6e92906e963da7a64
+    credentials:
+      minio:
+        name: minio
+        type: s3
+        url: ${MINIO_URL}
+        bucket: portnote
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        accessKey: ${MINIO_ACCESS_KEY}
+        secretKey: ${MINIO_SECRET_KEY}
+    service:
+      main:
+        type: LoadBalancer
+        enabled: true
+        ports:
+          main:
+            enabled: true
+            port: 3000
+            protocol: http
+            targetPort: 3000
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: portnote.${DOMAIN_BASE}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-staging
+          traefik:
+            enabled: true
+            entrypoints:
+              - websecure
+            middlewares:
+              - name: real-ip
+                namespace: "traefik"
+              - name: geo-allowlist
+                namespace: "traefik"
+              - name: auth
+                namespace: "traefik"
+    cnpg:
+      main:
+        enabled: true
+        database: portnote
+        user: ${PORTNOTE_DB_USERNAME}
+        password: ${PORTNOTE_DB_PASSWORD}
+        mode: standalone #FIXME change to recovery on restore
+        cluster:
+          singleNode: true
+        backups:
+          enabled: true
+          revision: "1"
+          credentials: minio
+        recovery:
+          enabled: true
+          credentials: minio
+          revision: ""
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              # probes:
+              #   liveness:
+              #     enabled: false
+              #     type: http
+              #     path: /
+              #   readiness:
+              #     enabled: false
+              #     type: http
+              #     path: /
+              #   startup:
+              #     enabled: false
+              #     type: http
+              #     path: /
+              env:
+                JWT_SECRET: ${PORTNOTE_JWT_SECRET}
+                USER_SECRET: ${PORTNOTE_USER_SECRET}
+                LOGIN_USERNAME: ${PORTNOTE_USERNAME}
+                LOGIN_PASSWORD: ${PORTNOTE_PASSWORD}
+                POSTGRES_USER: ${PORTNOTE_DB_USERNAME}
+                POSTGRES_PASSWORD: ${PORTNOTE_DB_PASSWORD}
+                DATABASE_URL: "postgresql://${PORTNOTE_DB_USERNAME}:${PORTNOTE_DB_PASSWORD}@portnote-app-template-cnpg-main-rw.portnote.${DNS_SUFFIX}:5432/portnote"
+                POSTGRES_DB: postgres
