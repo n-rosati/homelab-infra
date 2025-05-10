@@ -58,7 +58,7 @@ spec:
         integrations:
           certManager:
             enabled: true
-            certificateIssuer: le-staging
+            certificateIssuer: le-prod
           traefik:
             enabled: true
             entrypoints:
@@ -92,19 +92,6 @@ spec:
         podSpec:
           containers:
             main:
-              # probes:
-              #   liveness:
-              #     enabled: false
-              #     type: http
-              #     path: /
-              #   readiness:
-              #     enabled: false
-              #     type: http
-              #     path: /
-              #   startup:
-              #     enabled: false
-              #     type: http
-              #     path: /
               env:
                 JWT_SECRET: ${PORTNOTE_JWT_SECRET}
                 USER_SECRET: ${PORTNOTE_USER_SECRET}
