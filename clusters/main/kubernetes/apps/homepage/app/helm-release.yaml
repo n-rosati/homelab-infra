@@ -86,8 +86,6 @@ spec:
       codeserver:
         enabled: true
         workingDir: "/app/config"
-        service:
-          type: LoadBalancer
         ingress:
           enabled: true
           hosts:

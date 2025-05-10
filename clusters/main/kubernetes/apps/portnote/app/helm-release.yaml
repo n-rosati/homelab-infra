@@ -42,7 +42,6 @@ spec:
         secretKey: ${MINIO_SECRET_KEY}
     service:
       main:
-        type: LoadBalancer
         enabled: true
         ports:
           main:
