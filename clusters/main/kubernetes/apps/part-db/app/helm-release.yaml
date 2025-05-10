@@ -48,7 +48,6 @@ spec:
         runAsGroup: 0
     service:
       main:
-        type: LoadBalancer
         enabled: true
         ports:
           main:

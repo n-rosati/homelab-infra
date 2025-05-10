@@ -32,7 +32,6 @@ spec:
       tag: v0.12.1@sha256:d54b3deb00f990d90ccd18b5340d9ba91da209e5d8ccc670203f5dd342acf672
     service:
       main:
-        type: LoadBalancer
         enabled: true
         ports:
           main:
