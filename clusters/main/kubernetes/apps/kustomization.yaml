@@ -23,4 +23,4 @@ resources:
   - govee2mqtt/ks.yaml
   - grafana/ks.yaml
   - convertx/ks.yaml
-  # - portnote/ks.yaml
+  - portnote/ks.yaml
