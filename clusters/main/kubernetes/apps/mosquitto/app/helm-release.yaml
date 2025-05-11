@@ -27,3 +27,4 @@ spec:
     service:
       main:
         type: LoadBalancer
+        loadBalancerIP: ${MOSQUITTO_IP}

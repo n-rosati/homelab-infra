@@ -59,6 +59,7 @@ spec:
     service:
       main:
         type: LoadBalancer
+        loadBalancerIP: ${MINECRAFT_ROUTER_IP}
     mcrouter:
       default: jan-minecraft-java.mc-jan.svc.cluster.local:25565
       mappings:

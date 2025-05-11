@@ -27,8 +27,10 @@ spec:
     service:
       main:
         type: LoadBalancer
+        loadBalancerIP: ${OLLAMA_IP}
       api:
         type: LoadBalancer
+        loadBalancerIP: ${OLLAMA_IP}
     ingress:
       main:
         enabled: true

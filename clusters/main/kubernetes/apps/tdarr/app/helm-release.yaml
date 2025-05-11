@@ -37,8 +37,10 @@ spec:
     service:
       main:
         type: LoadBalancer
+        loadBalancerIP: ${TDARR_IP}
       comm:
         type: LoadBalancer
+        loadBalancerIP: ${TDARR_IP}
     ingress:
       main:
         enabled: true
