@@ -15,3 +15,4 @@ resources:
   - kubernetes-sigs-metrics-server.yaml
   - stakater.yaml
   - kyverno.yaml
+  - weave-gitops.yaml
