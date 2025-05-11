@@ -36,7 +36,7 @@ spec:
     service:
       ldap:
         type: LoadBalancer
-        LoadBalancerIP: ${LDAP_IP}
+        loadBalancerIP: ${LDAP_IP}
     ingress:
       main:
         enabled: true
