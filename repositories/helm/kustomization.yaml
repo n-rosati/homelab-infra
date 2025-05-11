@@ -13,3 +13,5 @@ resources:
   - spegel.yaml
   - truecharts.yaml
   - kubernetes-sigs-metrics-server.yaml
+  - stakater.yaml
+  - kyverno.yaml
