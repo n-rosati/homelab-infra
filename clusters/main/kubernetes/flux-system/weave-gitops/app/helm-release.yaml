@@ -35,12 +35,12 @@ spec:
       passwordHash: "$2a$12$ZCj5LZVMiFQw6LIp.Z.iWu.14vqV7iPiTpVPGUte3M16ZILeBClqy"
     ingress:
       enabled: true
+      ingressClassName: external
       annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        cert-manager.io/cluster-issuer: le-prod
-        cert-manager.io/private-key-rotation-policy: Always
-        traefik.ingress.kubernetes.io/router.tls: 'true'
-        traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd,traefik-real-ip@kubernetescrd,traefik-geo-allowlist@kubernetescrd,traefik-auth@kubernetescrd
+        nginx.ingress.kubernetes.io/auth-method: 'GET'
+          nginx.ingress.kubernetes.io/auth-url: 'http://${AUTHELIA_DNS_NAME}/api/verify'
+          nginx.ingress.kubernetes.io/auth-signin: 'https://auth.${DOMAIN_0}?rm=$request_method'
+          nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
       tls:
         - hosts:
             - gitops.${DOMAIN_BASE}
