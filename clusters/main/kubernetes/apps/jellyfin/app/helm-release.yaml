@@ -28,7 +28,7 @@ spec:
       pullPolicy: IfNotPresent
       tag: latest@sha256:9258ad15b9091848255a975796b52012bba00fc92c815a90c2a0ff5259ffa045
     global:
-      stopAll: false
+      stopAll: true
     credentials:
       minio:
         name: minio
