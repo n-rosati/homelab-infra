@@ -5,7 +5,7 @@ resources:
   - metallb-config/ks.yaml
   - system-upgrade-controller-plans/ks.yaml
   - clusterissuer/ks.yaml
-  - traefik/ks.yaml
+  # - traefik/ks.yaml
   - lldap/ks.yaml
   - authelia/ks.yaml
   - blocky/ks.yaml
