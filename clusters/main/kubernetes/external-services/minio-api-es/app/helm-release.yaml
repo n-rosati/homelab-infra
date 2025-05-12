@@ -35,7 +35,6 @@ spec:
       main:
         enabled: true
         ingressClassName: internal
-        annotations:
         hosts:
           - host: minio-api.${DOMAIN_BASE}
         integrations:
