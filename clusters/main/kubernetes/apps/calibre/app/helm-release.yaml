@@ -49,16 +49,13 @@ spec:
             widget:
               enabled: false
           traefik:
+            enabled: false
+          nginx:
             enabled: true
-            entrypoints:
-              - websecure
-            middlewares:
-              - name: real-ip
-                namespace: "traefik"
-              - name: geo-allowlist
-                namespace: "traefik"
-              - name: auth
-                namespace: "traefik"
+            auth:
+              type: authelia
+              internalHost: ${AUTHELIA_DNS_NAME}
+              externalHost: auth.${DOMAIN_0}
     persistence:
       config:
         volsync:
