@@ -36,6 +36,7 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: external
         hosts:
           - host: calibre.${DOMAIN_BASE}
         integrations:
