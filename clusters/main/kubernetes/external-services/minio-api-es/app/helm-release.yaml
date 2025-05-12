@@ -35,6 +35,8 @@ spec:
       main:
         enabled: true
         ingressClassName: internal
+        annotations:
+          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         hosts:
           - host: minio-api.${DOMAIN_BASE}
         integrations:
