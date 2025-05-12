@@ -52,9 +52,9 @@ spec:
           nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
         hosts:
           - host: factorio.${DOMAIN_BASE}
-            integrations:
-              traefik:
-                enabled: false
+        integrations:
+          traefik:
+            enabled: false
     persistence:
       config:
         volsync:
