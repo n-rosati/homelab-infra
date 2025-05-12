@@ -36,7 +36,12 @@ spec:
     ingress:
       main:
         enabled: true
-        required: true
+        ingressClassName: external
+        annotations:
+          nginx.ingress.kubernetes.io/auth-method: 'GET'
+          nginx.ingress.kubernetes.io/auth-url: 'http://${AUTHELIA_DNS_NAME}/api/verify'
+          nginx.ingress.kubernetes.io/auth-signin: 'https://auth.${DOMAIN_0}?rm=$request_method'
+          nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
         hosts:
           - host: auth.${DOMAIN_BASE}
         integrations:
@@ -44,15 +49,7 @@ spec:
             enabled: true
             certificateIssuer: le-prod
           traefik:
-            allowCors: true
-            enabled: true
-            entrypoints:
-              - websecure
-            middlewares:
-              - name: real-ip
-                namespace: "traefik"
-              - name: geo-allowlist
-                namespace: "traefik"
+            enabled: false
     cnpg:
       main:
         mode: standalone # FIXME CHANGE TO RECOVERY WHEN RESTORING
