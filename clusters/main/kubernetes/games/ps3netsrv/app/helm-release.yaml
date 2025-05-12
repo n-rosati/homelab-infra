@@ -34,3 +34,9 @@ spec:
         path: ${NFS_APPS_PATH}/ps3netsrv
         mountPath: /games
         server: ${TRUENAS_IP}
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: internal
+        hosts:
+          - host: ps3netsrv.${DOMAIN_BASE}
