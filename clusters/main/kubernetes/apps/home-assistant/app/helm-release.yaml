@@ -78,7 +78,7 @@ spec:
     addons:
       codeserver:
         enabled: true
-        workingDir: "/app/config"
+        workingDir: "/config"
         service:
           type: LoadBalancer
         ingress:
