@@ -23,22 +23,45 @@ spec:
       retries: 3
   values:
     global:
-      stopAll: true
+      stopAll: false
     service:
       main:
         type: LoadBalancer
-    # persistence:
-    #   a:
-    #     enabled: true
-    #     type: pvc
-    #     # mount path in filebrowser, must be in /data
-    #     mountPath: /data/mount-a
-    #     targetSelectAll: true
-    #     # claim name
-    #     existingClaim: "jellyfin-config"
-    #   b:
-    #     enabled: true
-    #     type: nfs
-    #     server: ${TRUENAS_IP}
-    #     mountPath: /data/mount-b
-    #     path: ${NFS_APPS_PATH}/Nextcloud
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: external
+        annotations:
+          nginx.ingress.kubernetes.io/auth-method: 'GET'
+          nginx.ingress.kubernetes.io/auth-url: 'http://${AUTHELIA_DNS_NAME}/api/verify'
+          nginx.ingress.kubernetes.io/auth-signin: 'https://auth.${DOMAIN_0}?rm=$request_method'
+          nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
+        hosts:
+          - host: filebrowser.${DOMAIN_BASE}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          homepage:
+            enabled: false
+          traefik:
+            enabled: false
+    persistence:
+      appdata:
+        enabled: true
+        type: nfs
+        server: ${TRUENAS_IP}
+        mountPath: /data/appdata
+        path: ${NFS_APPS_PATH}/
+      media:
+        enabled: true
+        type: nfs
+        path: ${NFS_MEDIA_PATH}
+        mountPath: /media
+        server: ${TRUENAS_IP}
+      software:
+        enabled: true
+        type: nfs
+        server: ${TRUENAS_IP}
+        path: ${NFS_DSU_PATH}/Software
+        mountPath: /mnt/Software
