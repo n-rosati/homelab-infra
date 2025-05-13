@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: weave-gitops
+  name: weave
   namespace: weave
 spec:
   interval: 15m
@@ -46,7 +46,7 @@ spec:
       tls:
         - hosts:
             - gitops.${DOMAIN_BASE}
-          secretName: flux-system-weave-gitops
+          secretName: flux-system-weave
       hosts:
         - host: gitops.${DOMAIN_BASE}
           paths:
