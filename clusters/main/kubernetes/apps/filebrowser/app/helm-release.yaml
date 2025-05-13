@@ -57,11 +57,11 @@ spec:
         enabled: true
         type: nfs
         path: ${NFS_MEDIA_PATH}
-        mountPath: /media
+        mountPath: /data/media
         server: ${TRUENAS_IP}
       software:
         enabled: true
         type: nfs
         server: ${TRUENAS_IP}
         path: ${NFS_DSU_PATH}/Software
-        mountPath: /mnt/Software
+        mountPath: /data/software
