@@ -49,6 +49,9 @@ spec:
           secretName: flux-system-weave-gitops
       hosts:
         - host: gitops.${DOMAIN_BASE}
+          paths:
+            - path: /
+              pathType: Prefix
     networkPolicy:
       create: false
     annotations:
