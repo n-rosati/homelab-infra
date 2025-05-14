@@ -30,7 +30,7 @@ spec:
     image:
       repository: docker.io/haedlessdev/portnote
       pullPolicy: IfNotPresent
-      tag: 1.1.0@sha256:82bb994971113855deba80ae2f168b813e78cadcf761b61421ac60bd215c5f32
+      tag: 1.2.0@sha256:237090f54671df81f00408fef436a6f710d4fe5b9d4c216a6a79484f66687d8a
     credentials:
       minio:
         name: minio
