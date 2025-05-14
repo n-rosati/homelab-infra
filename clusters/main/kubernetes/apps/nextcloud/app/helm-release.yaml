@@ -126,7 +126,7 @@ spec:
         initialAdminPassword: ${INITIAL_ADMIN_PASSWORD}
       general:
         default_phone_region: CA
-        accessIP: ${TRAEFIK_IP}
+        accessIP: ${NGINX_EXTERNAL_IP}
       logging:
         log_date_format: Y-m-d H:i:s
       php:
