@@ -76,6 +76,16 @@ spec:
         enabled: true
         type: pvc
         mountPath: /home/app/.local/share/spoolman
+        volsync:
+          - credentials: minio
+            name: data
+            type: restic
+            dest:
+              enabled: false #FIXME
+            src:
+              enabled: true
+              trigger:
+                schedule: 10 3 * * *
     cnpg:
       main:
         enabled: true
