@@ -16,3 +16,4 @@ resources:
   - stakater.yaml
   - kyverno.yaml
   - weave-gitops.yaml
+  - metallb.yaml
