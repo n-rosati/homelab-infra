@@ -37,10 +37,36 @@ spec:
     # autoDirectNodeRoutes: true
     # routingMode: native
     hubble:
-      enabled: false
+      enabled: true
+      metrics:
+        enabled:
+          - dns:query
+          - drop
+          - tcp
+          - flow
+          - port-distribution
+          - icmp
+          - http
+        serviceMonitor:
+          enabled: true
+        dashboards:
+          enabled: true
+      relay:
+        enabled: false
+      ui:
+        enabled: true
+        rollOutPods: true
     cluster:
       name: ${CLUSTERNAME}
       id: 1
+    cni:
+      exclusive: false
+    enableIPv4BIGTCP: true
+    envoy:
+      rollOutPods: false
+    gatewayAPI:
+      enabled: false
+      enableAlpn: false
     ipv4NativeRoutingCIDR: ${PODNET}
     securityContext:
       privileged: true
