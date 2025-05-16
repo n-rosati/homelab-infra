@@ -65,7 +65,6 @@ spec:
       id: 1
     cni:
       exclusive: false
-    enableIPv4BIGTCP: true
     envoy:
       rollOutPods: false
     gatewayAPI:
