@@ -17,3 +17,4 @@ resources:
   - kyverno.yaml
   - weave-gitops.yaml
   - metallb.yaml
+  - cilium.yaml
