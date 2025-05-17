@@ -109,13 +109,6 @@ spec:
         podSpec:
           containers:
             main:
-              probes:
-                liveness:
-                  enabled: false
-                readiness:
-                  enabled: false
-                startup:
-                  enabled: false
               env:
                 SPOOLMAN_DB_TYPE: postgres
                 SPOOLMAN_DB_HOST: spoolman-app-template-cnpg-main-rw.spoolman.${DNS_SUFFIX}
