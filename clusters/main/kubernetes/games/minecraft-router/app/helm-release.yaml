@@ -28,34 +28,17 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: external
         hosts:
           - host: jan.${DOMAIN_BASE}
-            integrations:
-              traefik:
-                enabled: true
-                middlewares:
-                  - name: real-ip
-                    namespace: "traefik"
-                  - name: geo-allowlist
-                    namespace: "traefik"
           - host: jan2.${DOMAIN_BASE}
-            integrations:
-              traefik:
-                enabled: true
-                middlewares:
-                  - name: real-ip
-                    namespace: "traefik"
-                  - name: geo-allowlist
-                    namespace: "traefik"
           - host: statech-industry.${DOMAIN_BASE}
-            integrations:
-              traefik:
-                enabled: true
-                middlewares:
-                  - name: real-ip
-                    namespace: "traefik"
-                  - name: geo-allowlist
-                    namespace: "traefik"
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          traefik:
+            enabled: false
     service:
       main:
         type: LoadBalancer
