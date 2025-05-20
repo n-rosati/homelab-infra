@@ -1,0 +1,56 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "major": {
+        "enabled": true,
+        "automerge": false,
+        "dependencyDashboardApproval": false
+    },
+    "pinDigest": {
+        "enabled": true,
+        "automerge": true,
+        "dependencyDashboardApproval": false,
+        "labels": [
+            "type/pin",
+            "automerge"
+        ]
+    },
+    "ignore": [],
+    "packageRules": [
+        {
+            "description": [
+                "Block automerge for Kubelet and Talos version Major"
+            ],
+            "matchUpdateTypes": [
+                "major",
+                "minor",
+                "patch"
+            ],
+            "automerge": false,
+            "dependencyDashboardApproval": false,
+            "matchPackageNames": [
+                "ghcr.io/siderolabs/kubelet",
+                "ghcr.io/siderolabs/installer"
+            ],
+            "labels": [
+                "type/major",
+                "system-upgrade"
+            ]
+        },
+        {
+            "description": [
+                "Custom schedule for frequently updated packages"
+            ],
+            "matchDataSources": [
+                "docker",
+                "helm"
+            ],
+            "matchPackagePatterns": [
+                "postgresql",
+                "reloader"
+            ],
+            "schedule": [
+                "at any time"
+            ]
+        }
+    ]
+}
