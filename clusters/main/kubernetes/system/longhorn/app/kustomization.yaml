@@ -8,4 +8,4 @@ resources:
   - trim.yaml
   - cleanup.yaml
   - delete.yaml
-  # - external-share-manager.yaml
+  - external-share-manager.yaml
