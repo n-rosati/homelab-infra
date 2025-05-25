@@ -26,7 +26,7 @@ spec:
     jellyfinUpdatePosterImage:
       repository: docker.io/iceshadow/jellyfinupdateposter
       pullPolicy: IfNotPresent
-      tag: latest@sha256:ca3568f3c53d6ba45f2662cbf1ee115d8c789f06ee263edf0feb4ee887f373c5
+      tag: latest@sha256:ecbaa6a8a6bd59e516d8b11cd044f3772e0ce04b095a981875b93244152a5a6b
     global:
       stopAll: false
     credentials:
