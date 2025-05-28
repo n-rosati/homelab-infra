@@ -1,8 +1,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: versity-es
-  namespace: versity-es
+  name: s3
+  namespace: s3
 spec:
   interval: 15m
   chart:
@@ -30,13 +30,13 @@ spec:
         ports:
           main:
             protocol: http
-            port: 30157
+            port: ${S3_PORT}
     ingress:
       main:
         enabled: true
         ingressClassName: internal
         hosts:
-          - host: versity.${DOMAIN_BASE}
+          - host: s3.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
