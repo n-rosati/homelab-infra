@@ -54,6 +54,21 @@ spec:
             certificateIssuer: le-staging
           traefik:
             enabled: false
+    persistence:
+      media:
+        enabled: true
+        type: pvc
+        mountPath: /app
+        # volsync:
+        #   - name: uploads
+        #     type: restic
+        #     credentials: minio
+        #     dest:
+        #       enabled: true
+        #     src:
+        #       enabled: false
+        #       trigger:
+        #         schedule: 40 2 * * *
     workload:
       main:
         podSpec:
