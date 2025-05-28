@@ -55,7 +55,7 @@ spec:
             credentials: home-s3
             type: restic
             dest:
-              enabled: false #FIXME
+              enabled: false #CHANGE TO TRUE WHEN REINSTALLING AP
             src:
               enabled: true
               trigger:

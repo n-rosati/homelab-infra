@@ -82,9 +82,9 @@ spec:
             type: restic
             credentials: home-s3
             dest:
-              enabled: true
+              enabled: false #CHANGE TO TRUE WHEN REINSTALLING AP
             src:
-              enabled: false
+              enabled: true
               trigger:
                 schedule: 40 2 * * *
       uploads:
@@ -96,9 +96,9 @@ spec:
             type: restic
             credentials: home-s3
             dest:
-              enabled: true
+              enabled: false #CHANGE TO TRUE WHEN REINSTALLING AP
             src:
-              enabled: false
+              enabled: true
               trigger:
                 schedule: 45 2 * * *
     cnpg:

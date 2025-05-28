@@ -81,7 +81,7 @@ spec:
             name: data
             type: restic
             dest:
-              enabled: false #FIXME
+              enabled: false #CHANGE TO TRUE WHEN REINSTALLING AP
             src:
               enabled: true
               trigger:
