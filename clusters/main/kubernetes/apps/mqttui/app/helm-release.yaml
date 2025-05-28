@@ -27,7 +27,7 @@ spec:
     global:
       stopAll: false
     image:
-      repository: ghcr.io/terdia07/mqttui
+      repository: docker.io/terdia07/mqttui
       pullPolicy: IfNotPresent
       tag: v1.0.0
     service:
