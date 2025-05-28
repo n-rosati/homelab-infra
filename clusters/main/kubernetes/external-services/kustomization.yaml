@@ -8,3 +8,4 @@ resources:
   - minio-api-es/ks.yaml
   - scrutiny-es/ks.yaml
   - arm-es/ks.yaml
+  - versity-es/ks.yaml
