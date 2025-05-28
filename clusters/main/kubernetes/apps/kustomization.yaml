@@ -24,3 +24,4 @@ resources:
   - grafana/ks.yaml
   - convertx/ks.yaml
   - portnote/ks.yaml
+  - mqttui/ks.yaml
