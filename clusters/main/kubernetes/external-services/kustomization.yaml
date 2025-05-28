@@ -9,3 +9,4 @@ resources:
   - scrutiny-es/ks.yaml
   - arm-es/ks.yaml
   - s3/ks.yaml
+  - versity-es/ks.yaml
