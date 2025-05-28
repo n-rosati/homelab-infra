@@ -1,8 +1,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: minio-es
-  namespace: minio-es
+  name: versity-es
+  namespace: versity-es
 spec:
   interval: 15m
   chart:
@@ -30,18 +30,13 @@ spec:
         ports:
           main:
             protocol: http
-            port: 9002
+            port: 30157
     ingress:
       main:
         enabled: true
-        ingressClassName: external
-        annotations:
-          nginx.ingress.kubernetes.io/auth-method: 'GET'
-          nginx.ingress.kubernetes.io/auth-url: 'http://${AUTHELIA_DNS_NAME}/api/verify'
-          nginx.ingress.kubernetes.io/auth-signin: 'https://auth.${DOMAIN_0}?rm=$request_method'
-          nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
+        ingressClassName: internal
         hosts:
-          - host: minio.${DOMAIN_BASE}
+          - host: versity.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true

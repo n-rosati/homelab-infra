@@ -1,13 +1,12 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: minio-es
+  name: versity-es
   namespace: flux-system
 spec:
   interval: 10m
-  path: clusters/main/kubernetes/external-services/minio-es/app
+  path: clusters/main/kubernetes/external-services/versity-es/app
   prune: true
   sourceRef:
     kind: GitRepository
     name: cluster
-
