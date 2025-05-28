@@ -23,8 +23,8 @@ spec:
       retries: 3
   values:
     credentials:
-      minio:
-        name: minio
+      home-s3:
+        name: home-s3
         type: s3
         url: ${S3_URL}
         bucket: homepage
@@ -52,7 +52,7 @@ spec:
       config:
         volsync:
           - name: config
-            credentials: minio
+            credentials: home-s3
             type: restic
             dest:
               enabled: false #FIXME

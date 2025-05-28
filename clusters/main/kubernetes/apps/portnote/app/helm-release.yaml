@@ -32,8 +32,8 @@ spec:
       pullPolicy: IfNotPresent
       tag: 1.2.0@sha256:237090f54671df81f00408fef436a6f710d4fe5b9d4c216a6a79484f66687d8a
     credentials:
-      minio:
-        name: minio
+      home-s3:
+        name: home-s3
         type: s3
         url: ${S3_URL}
         bucket: portnote
@@ -78,10 +78,10 @@ spec:
         backups:
           enabled: true
           revision: "3"
-          credentials: minio
+          credentials: home-s3
         recovery:
           enabled: true
-          credentials: minio
+          credentials: home-s3
           revision: ""
     workload:
       main:

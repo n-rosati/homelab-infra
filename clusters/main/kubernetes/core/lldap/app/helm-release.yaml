@@ -25,8 +25,8 @@ spec:
     global:
       stopAll: false
     credentials:
-      minio:
-        name: minio
+      home-s3:
+        name: home-s3
         type: s3
         url: ${S3_URL}
         bucket: lldap
@@ -64,7 +64,7 @@ spec:
     persistence:
       data:
         volsync:
-          - credentials: minio
+          - credentials: home-s3
             name: data
             type: restic
             dest:
@@ -81,11 +81,11 @@ spec:
         backups:
           enabled: true
           revision: "3"
-          credentials: minio
+          credentials: home-s3
         recovery:
           enabled: true
           method: object_store
-          credentials: minio
+          credentials: home-s3
           revision: "2"
         cluster:
           singleNode: true

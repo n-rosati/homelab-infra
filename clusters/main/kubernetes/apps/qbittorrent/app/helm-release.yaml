@@ -25,8 +25,8 @@ spec:
     global:
       stopAll: false
     credentials:
-      minio:
-        name: minio
+      home-s3:
+        name: home-s3
         type: s3
         url: ${S3_URL}
         bucket: qbittorrent
@@ -63,8 +63,8 @@ spec:
     persistence:
       config:
         volsync:
-          - credentials: minio
-            name: minio
+          - credentials: home-s3
+            name: home-s3
             type: restic
             dest:
               enabled: true

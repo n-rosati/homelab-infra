@@ -26,8 +26,8 @@ spec:
     global:
       stopAll: false
     credentials:
-      minio:
-        name: minio
+      home-s3:
+        name: home-s3
         type: s3
         url: ${S3_URL}
         bucket: nextcloud
@@ -59,7 +59,7 @@ spec:
     persistence:
       html:
         volsync:
-          - credentials: minio
+          - credentials: home-s3
             name: app-html
             type: restic
             dest:
@@ -70,7 +70,7 @@ spec:
                 schedule: 0 2 * * *
       config:
         volsync:
-          - credentials: minio
+          - credentials: home-s3
             name: app-config
             type: restic
             dest:
@@ -102,11 +102,11 @@ spec:
         mode: recovery
         backups:
           enabled: true
-          credentials: minio
+          credentials: home-s3
           revision: "3"
         recovery:
           enabled: true
-          credentials: minio
+          credentials: home-s3
           method: object_store
           revision: "2"
         cluster:

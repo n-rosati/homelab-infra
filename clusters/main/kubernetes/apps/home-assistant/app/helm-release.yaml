@@ -25,8 +25,8 @@ spec:
     global:
       stopAll: false
     credentials:
-      minio:
-        name: minio
+      home-s3:
+        name: home-s3
         type: s3
         url: ${S3_URL}
         bucket: home-assistant
@@ -52,8 +52,8 @@ spec:
     persistence:
       config:
         volsync:
-          - credentials: minio
-            name: minio
+          - credentials: home-s3
+            name: home-s3
             type: restic
             dest:
               enabled: false
@@ -67,11 +67,11 @@ spec:
         mode: standalone # CHANGE ME TO RECOVERY MODE 
         backups:
           enabled: true
-          credentials: minio
+          credentials: home-s3
           revision: "1"
         recovery:
           enabled: true
-          credentials: minio
+          credentials: home-s3
           revision: ""
         cluster:
           singleNode: true

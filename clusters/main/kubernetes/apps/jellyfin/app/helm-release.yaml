@@ -30,8 +30,8 @@ spec:
     global:
       stopAll: false
     credentials:
-      minio:
-        name: minio
+      home-s3:
+        name: home-s3
         type: s3
         url: ${S3_URL}
         bucket: jellyfin
@@ -74,7 +74,7 @@ spec:
     persistence:
       config:
         volsync:
-          - credentials: minio
+          - credentials: home-s3
             name: config
             type: restic
             dest:

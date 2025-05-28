@@ -29,8 +29,8 @@ spec:
       pullPolicy: IfNotPresent
       tag: 0.22.1@sha256:238ea5bfb2eeda4436c39f54e73df5fef4ee904fb7c291617588b856786fe0ef
     credentials:
-      minio:
-        name: minio
+      home-s3:
+        name: home-s3
         type: s3
         url: ${S3_URL}
         bucket: spoolman
@@ -77,7 +77,7 @@ spec:
         type: pvc
         mountPath: /home/app/.local/share/spoolman
         volsync:
-          - credentials: minio
+          - credentials: home-s3
             name: data
             type: restic
             dest:
@@ -99,10 +99,10 @@ spec:
         backups:
           enabled: true
           revision: "2"
-          credentials: minio
+          credentials: home-s3
         recovery:
           enabled: true
-          credentials: minio
+          credentials: home-s3
           revision: "1"
     workload:
       main:
