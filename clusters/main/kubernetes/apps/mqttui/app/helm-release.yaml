@@ -30,6 +30,13 @@ spec:
       repository: ghcr.io/terdia07/mqttui
       pullPolicy: IfNotPresent
       tag: v1.0.0
+    service:
+      main:
+        enabled: true
+        ports:
+          main:
+            enabled: true
+            port: 5000
     ingress:
       main:
         enabled: true
