@@ -28,11 +28,11 @@ spec:
       minio:
         name: minio
         type: s3
-        url: ${MINIO_URL}
+        url: ${S3_URL}
         bucket: jan-2
         encrKey: ${BACKUP_ENCRYPTION_KEY}
-        accessKey: ${MINIO_ACCESS_KEY}
-        secretKey: ${MINIO_SECRET_KEY}
+        accessKey: ${S3_ACCESS_KEY}
+        secretKey: ${S3_SECRET_KEY}
     service:
       main:
         enabled: true
