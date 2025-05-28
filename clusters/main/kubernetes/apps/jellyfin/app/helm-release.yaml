@@ -28,7 +28,7 @@ spec:
       pullPolicy: IfNotPresent
       tag: latest@sha256:ecbaa6a8a6bd59e516d8b11cd044f3772e0ce04b095a981875b93244152a5a6b
     global:
-      stopAll: false
+      stopAll: true
     credentials:
       home-s3:
         name: home-s3
