@@ -1,13 +1,13 @@
 apiVersion: longhorn.io/v1beta2
 kind: RecurringJob
 metadata:
-  name: cleanup
+  name: snapshotcleanup
   namespace: longhorn-system
 spec:
   concurrency: 1
   cron: 30 10 * * *
   groups:
     - default
-  name: cleanup
+  name: snapshotcleanup
   retain: 0
   task: snapshot-cleanup
