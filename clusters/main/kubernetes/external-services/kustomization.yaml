@@ -1,12 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  - arm-es/ks.yaml
   - bluebubbles-es/ks.yaml
   - printer-es/ks.yaml
-  - truenas-es/ks.yaml
-  - minio-es/ks.yaml
-  - minio-api-es/ks.yaml
-  - scrutiny-es/ks.yaml
-  - arm-es/ks.yaml
   - s3/ks.yaml
-  - versity-es/ks.yaml
+  - scrutiny-es/ks.yaml
+  - truenas-es/ks.yaml
