@@ -103,7 +103,7 @@ spec:
         backups:
           enabled: true
           credentials: home-s3
-          revision: "3"
+          revision: "4"
           retentionPolicy: "14d"
         recovery:
           enabled: true
