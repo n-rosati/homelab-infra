@@ -100,6 +100,7 @@ spec:
           enabled: true
           revision: "2"
           credentials: home-s3
+          retentionPolicy: "7d"
         recovery:
           enabled: true
           credentials: home-s3

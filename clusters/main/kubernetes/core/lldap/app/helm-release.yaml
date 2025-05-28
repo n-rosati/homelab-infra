@@ -82,6 +82,7 @@ spec:
           enabled: true
           revision: "3"
           credentials: home-s3
+          retentionPolicy: "14d"
         recovery:
           enabled: true
           method: object_store

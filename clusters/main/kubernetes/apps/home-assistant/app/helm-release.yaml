@@ -69,6 +69,7 @@ spec:
           enabled: true
           credentials: home-s3
           revision: "1"
+          retentionPolicy: "14d"
         recovery:
           enabled: true
           credentials: home-s3
