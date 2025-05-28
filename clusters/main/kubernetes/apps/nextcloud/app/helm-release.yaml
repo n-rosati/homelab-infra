@@ -63,7 +63,7 @@ spec:
             name: app-html
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING AP
+              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
             src:
               enabled: true
               trigger:
@@ -74,7 +74,7 @@ spec:
             name: app-config
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING AP
+              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
             src:
               enabled: true
               trigger:

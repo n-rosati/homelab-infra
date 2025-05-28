@@ -75,7 +75,7 @@ spec:
             name: home-s3
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING AP
+              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
             src:
               enabled: true
               trigger:
