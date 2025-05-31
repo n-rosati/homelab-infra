@@ -37,11 +37,6 @@ spec:
       main:
         podSpec:
           hostNetwork: true # main service: 8123; codeserver: 12321
-    # service:
-    #   main:
-    #     ports:
-    #       main:
-    #         8124
     ingress:
       main:
         enabled: true
