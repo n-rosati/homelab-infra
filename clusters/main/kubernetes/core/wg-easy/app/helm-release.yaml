@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: wg-easy
-      version: 16.4.2
+      version: 17.0.0
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -103,9 +103,9 @@ spec:
           containers:
             main:
               env:
-                WG_HOST: wireguard.${DOMAIN_BASE}
-                WG_MTU: 1420
-                WG_PERSISTENT_KEEPALIVE: 25
-                WG_DEFAULT_DNS: ${BLOCKY_IP}
-                PASSWORD_HASH: ${WG_PASSWORD_HASH}
-                UI_TRAFFIC_STATS: true
+                INIT_ENABLED: true
+                INIT_USERNAME: admin
+                INIT_PASSWORD: ${WG_PASSWORD}
+                INIT_HOST: wireguard.${DOMAIN_BASE}
+                INIT_PORT: 51820
+                INIT_DNS: ${BLOCKY_IP}
