@@ -24,3 +24,6 @@ spec:
   values:
     global:
       stopAll: false
+    service:
+      main:
+        type: LoadBalancer
