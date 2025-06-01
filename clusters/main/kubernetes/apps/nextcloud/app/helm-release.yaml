@@ -101,7 +101,7 @@ spec:
         password: ${CNPG_PASSWORD}
         mode: standalone
         backups:
-          enabled: false
+          enabled: true
           credentials: home-s3
           revision: "6"
           retentionPolicy: "14d"
