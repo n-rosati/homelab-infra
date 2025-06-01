@@ -99,14 +99,14 @@ spec:
       main:
         pgVersion: 15
         password: ${CNPG_PASSWORD}
-        mode: recovery
+        mode: standalone
         backups:
-          enabled: true
+          enabled: false
           credentials: home-s3
           revision: "5"
           retentionPolicy: "14d"
         recovery:
-          enabled: true
+          enabled: false
           credentials: home-s3
           method: object_store
           revision: "2"
