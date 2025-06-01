@@ -97,8 +97,6 @@ spec:
         mountPath: /mnt/OrcaSlicer
     cnpg:
       main:
-        cluster:
-          instances: 1
         pgVersion: 15
         password: ${CNPG_PASSWORD}
         mode: standalone
