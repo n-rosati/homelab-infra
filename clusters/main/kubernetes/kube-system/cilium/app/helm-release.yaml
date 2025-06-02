@@ -38,38 +38,9 @@ spec:
     # routingMode: native
     hubble:
       enabled: false
-      metrics:
-        enabled:
-          - dns:query
-          - drop
-          - tcp
-          - flow
-          - port-distribution
-          - icmp
-          - http
-        serviceMonitor:
-          enabled: true
-        dashboards:
-          enabled: true
-      relay:
-        enabled: false
-        rollOutPods: true
-        prometheus:
-          serviceMonitor:
-            enabled: true
-      ui:
-        enabled: false
-        rollOutPods: true
     cluster:
       name: ${CLUSTERNAME}
       id: 1
-    cni:
-      exclusive: false
-    envoy:
-      rollOutPods: false
-    gatewayAPI:
-      enabled: false
-      enableAlpn: false
     ipv4NativeRoutingCIDR: ${PODNET}
     securityContext:
       privileged: true
@@ -105,6 +76,6 @@ spec:
     kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
     localRedirectPolicy: true
     operator:
-      replicas: 1
       rollOutPods: true
+      replicas: 1
     rollOutCiliumPods: true
