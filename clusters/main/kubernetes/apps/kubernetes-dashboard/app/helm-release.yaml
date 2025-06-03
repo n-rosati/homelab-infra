@@ -23,25 +23,10 @@ spec:
     remediation:
       retries: 3
   values:
-    workload:
-      main:
-        podSpec:
-          hostUsers: true
-      # kubernetes-dashboard-api:
-      #   enabled: true
-      #   podSpec:
-      #     hostUsers: true
-      kubernetes-dashboard-auth:
-        enabled: true
-        podSpec:
-          hostUsers: true
-      kubernetes-dashboard-scraper:
-        podSpec:
-          hostUsers: true
-      # kubernetes-dashboard-web:
-      #   enabled: true
-      #   podSpec:
-      #     hostUsers: true
+    global:
+      stopAll: false
+    podOptions:
+      hostUsers: true
     service:
       main:
         type: LoadBalancer
@@ -71,3 +56,7 @@ spec:
               enabled: false
           traefik:
             enabled: false
+    configmap:
+      kubernetes-dashboard-settings:
+        data:
+          settings: '{"itemsPerPage":100,"defaultNamespace":"_all"}'
