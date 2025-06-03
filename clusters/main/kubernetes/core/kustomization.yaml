@@ -8,4 +8,3 @@ resources:
   - authelia/ks.yaml
   - blocky/ks.yaml
   - generic-device-plugin/ks.yaml
-  - wg-easy/ks.yaml
