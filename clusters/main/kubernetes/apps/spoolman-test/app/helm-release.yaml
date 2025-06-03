@@ -28,12 +28,12 @@ spec:
       repository: ghcr.io/donkie/spoolman
       pullPolicy: IfNotPresent
       tag: 0.22.1@sha256:238ea5bfb2eeda4436c39f54e73df5fef4ee904fb7c291617588b856786fe0ef
-    # securityContext:
-    #   container:
-    #     readOnlyRootFilesystem: false
-    #     runAsNonRoot: false
-    #     runAsUser: 0
-    #     runAsGroup: 0
+    securityContext:
+      container:
+        # readOnlyRootFilesystem: false
+        # runAsNonRoot: false
+        runAsUser: 1000
+        runAsGroup: 1001
     podOptions:
       hostUsers: true
     service:
