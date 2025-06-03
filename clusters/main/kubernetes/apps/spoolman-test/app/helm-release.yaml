@@ -68,25 +68,25 @@ spec:
         enabled: true
         type: pvc
         mountPath: /home/app/.local/share/spoolman
-    cnpg:
-      main:
-        enabled: true
-        database: spoolman-test
-        user: spoolman-test
-        password: ${SPOOLMAN_DB_PASSWORD}
-        pgVersion: 16
-        mode: standalone
-        cluster:
-          singleNode: true
-    workload:
-      main:
-        podSpec:
-          containers:
-            main:
-              env:
-                SPOOLMAN_DB_TYPE: postgres
-                SPOOLMAN_DB_HOST: spoolman-test-app-template-cnpg-main-rw.spoolman-test.${DNS_SUFFIX}
-                SPOOLMAN_DB_PORT: 5432
-                SPOOLMAN_DB_NAME: spoolman-test
-                SPOOLMAN_DB_USERNAME: spoolman-test
-                SPOOLMAN_DB_PASSWORD: ${SPOOLMAN_DB_PASSWORD}
+    # cnpg:
+    #   main:
+    #     enabled: true
+    #     database: spoolman-test
+    #     user: spoolman-test
+    #     password: ${SPOOLMAN_DB_PASSWORD}
+    #     pgVersion: 16
+    #     mode: standalone
+    #     cluster:
+    #       singleNode: true
+    # workload:
+    #   main:
+    #     podSpec:
+    #       containers:
+    #         main:
+    #           env:
+    #             SPOOLMAN_DB_TYPE: postgres
+    #             SPOOLMAN_DB_HOST: spoolman-test-app-template-cnpg-main-rw.spoolman-test.${DNS_SUFFIX}
+    #             SPOOLMAN_DB_PORT: 5432
+    #             SPOOLMAN_DB_NAME: spoolman-test
+    #             SPOOLMAN_DB_USERNAME: spoolman-test
+    #             SPOOLMAN_DB_PASSWORD: ${SPOOLMAN_DB_PASSWORD}
