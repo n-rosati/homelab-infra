@@ -26,6 +26,7 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  prune: false
   values:
     global:
       stopAll: false
