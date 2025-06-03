@@ -24,6 +24,9 @@ spec:
       retries: 3
   values:
     workload:
+      main:
+        podSpec:
+          hostUsers: true
       kubernetes-dashboard-api:
         podSpec:
           hostUsers: true
@@ -34,9 +37,6 @@ spec:
         podSpec:
           hostUsers: true
       kubernetes-dashboard-web:
-        podSpec:
-          hostUsers: true
-      main:
         podSpec:
           hostUsers: true
     service:
