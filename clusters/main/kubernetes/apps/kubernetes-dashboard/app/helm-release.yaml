@@ -28,15 +28,19 @@ spec:
         podSpec:
           hostUsers: true
       kubernetes-dashboard-api:
+        enabled: true
         podSpec:
           hostUsers: true
       kubernetes-dashboard-auth:
+        enabled: true
         podSpec:
           hostUsers: true
       kubernetes-dashboard-scraper:
+        enabled: true
         podSpec:
           hostUsers: true
       kubernetes-dashboard-web:
+        enabled: true
         podSpec:
           hostUsers: true
     service:
