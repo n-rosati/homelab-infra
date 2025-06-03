@@ -34,6 +34,8 @@ spec:
     #     runAsNonRoot: false
     #     runAsUser: 0
     #     runAsGroup: 0
+    podOptions:
+      hostUsers: true
     service:
       main:
         enabled: true
