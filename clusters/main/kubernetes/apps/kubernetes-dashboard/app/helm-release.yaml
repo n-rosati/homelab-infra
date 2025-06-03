@@ -23,6 +23,10 @@ spec:
     remediation:
       retries: 3
   values:
+    workload:
+      main:
+        podSpec:
+          hostUsers: true
     service:
       main:
         type: LoadBalancer
