@@ -14,7 +14,7 @@ resources:
   - calibre-web/ks.yaml
   - vaultwarden/ks.yaml
   - spoolman/ks.yaml
-  - spoolman-test/ks.yaml
+  # - spoolman-test/ks.yaml
   - ollama/ks.yaml
   - tdarr/ks.yaml
   - orcaslicer/ks.yaml
