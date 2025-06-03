@@ -1,0 +1,90 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: spoolman-test
+  namespace: spoolman-test
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 14.5.3
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    global:
+      stopAll: false
+    image:
+      repository: ghcr.io/donkie/spoolman
+      pullPolicy: IfNotPresent
+      tag: 0.22.1@sha256:238ea5bfb2eeda4436c39f54e73df5fef4ee904fb7c291617588b856786fe0ef
+    # securityContext:
+    #   container:
+    #     readOnlyRootFilesystem: false
+    #     runAsNonRoot: false
+    #     runAsUser: 0
+    #     runAsGroup: 0
+    service:
+      main:
+        enabled: true
+        type: LoadBalancer
+        ports:
+          main:
+            enabled: true
+            port: 7912
+            protocol: http
+            targetPort: 8000
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: external
+        annotations:
+          nginx.ingress.kubernetes.io/auth-method: 'GET'
+          nginx.ingress.kubernetes.io/auth-url: 'http://${AUTHELIA_DNS_NAME}/api/verify'
+          nginx.ingress.kubernetes.io/auth-signin: 'https://auth.${DOMAIN_0}?rm=$request_method'
+          nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
+        hosts:
+          - host: spoolman-test.${DOMAIN_BASE}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          traefik:
+            enabled: false
+    persistence:
+      data:
+        enabled: true
+        type: pvc
+        mountPath: /home/app/.local/share/spoolman
+    cnpg:
+      main:
+        enabled: true
+        database: spoolman-test
+        user: spoolman-test
+        password: ${SPOOLMAN_DB_PASSWORD}
+        pgVersion: 16
+        mode: standalone
+        cluster:
+          singleNode: true
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                SPOOLMAN_DB_TYPE: postgres
+                SPOOLMAN_DB_HOST: spoolman-test-app-template-cnpg-main-rw.spoolman-test.${DNS_SUFFIX}
+                SPOOLMAN_DB_PORT: 5432
+                SPOOLMAN_DB_NAME: spoolman-test
+                SPOOLMAN_DB_USERNAME: spoolman-test
+                SPOOLMAN_DB_PASSWORD: ${SPOOLMAN_DB_PASSWORD}
