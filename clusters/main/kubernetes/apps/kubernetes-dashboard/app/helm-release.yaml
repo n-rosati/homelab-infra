@@ -34,10 +34,9 @@ spec:
       kubernetes-dashboard-auth:
         podSpec:
           hostUsers: true
-      # kubernetes-dashboard-scraper:
-      #   enabled: true
-      #   podSpec:
-      #     hostUsers: true
+      kubernetes-dashboard-scraper:
+        podSpec:
+          hostUsers: true
       # kubernetes-dashboard-web:
       #   enabled: true
       #   podSpec:
