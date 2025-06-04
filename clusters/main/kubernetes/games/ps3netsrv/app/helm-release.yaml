@@ -40,3 +40,6 @@ spec:
         ingressClassName: internal
         hosts:
           - host: ps3netsrv.${DOMAIN_BASE}
+        integrations:
+          traefik:
+            enabled: false
