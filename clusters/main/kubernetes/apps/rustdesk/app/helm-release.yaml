@@ -38,16 +38,6 @@ spec:
     service:
       main:
         type: LoadBalancer
-      client1:
-        type: LoadBalancer
-      client2:
-        type: LoadBalancer
-      id:
-        type: LoadBalancer
-      id2:
-        type: LoadBalancer
-      nat:
-        type: LoadBalancer
     # ingress:
     #   main:
     #     enabled: true
