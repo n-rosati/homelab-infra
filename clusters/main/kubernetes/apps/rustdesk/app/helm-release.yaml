@@ -1,0 +1,85 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: rustdesk
+  namespace: rustdesk
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: rustdesk
+      version: 1.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    global:
+      stopAll: false
+    podOptions:
+      hostUsers: true
+    credentials:
+      home-s3:
+        name: home-s3
+        type: s3
+        url: ${S3_URL}
+        bucket: rustdesk
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        accessKey: ${S3_ACCESS_KEY}
+        secretKey: ${S3_SECRET_KEY}
+    service:
+      main:
+        type: LoadBalancer
+      client1:
+        type: LoadBalancer
+      client2:
+        type: LoadBalancer
+      id:
+        type: LoadBalancer
+      id2:
+        type: LoadBalancer
+      nat:
+        type: LoadBalancer
+    # ingress:
+    #   main:
+    #     enabled: true
+    #     ingressClassName: external
+    #     annotations:
+    #       nginx.ingress.kubernetes.io/auth-method: 'GET'
+    #       nginx.ingress.kubernetes.io/auth-url: 'http://${AUTHELIA_DNS_NAME}/api/verify'
+    #       nginx.ingress.kubernetes.io/auth-signin: 'https://auth.${DOMAIN_0}?rm=$request_method'
+    #       nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
+    #     hosts:
+    #       - host: rustdesk.${DOMAIN_BASE}
+    #     integrations:
+    #       certManager:
+    #         enabled: true
+    #         certificateIssuer: le-staging
+    #       homepage:
+    #         enabled: true
+    #         group: Apps
+    #         href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
+    #         widget:
+    #           enabled: false
+    #       traefik:
+    #         enabled: false
+    persistence:
+      data:
+        volsync:
+          - credentials: home-s3
+            name: home-s3
+            type: restic
+            dest:
+              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+            src:
+              enabled: true
+              trigger:
+                schedule: 20 2 * * *
