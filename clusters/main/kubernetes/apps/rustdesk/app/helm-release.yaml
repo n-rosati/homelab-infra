@@ -73,3 +73,10 @@ spec:
               enabled: true
               trigger:
                 schedule: 20 2 * * *
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                RELAY: "rustdesk.nicholasrosati.xyz:21117"
