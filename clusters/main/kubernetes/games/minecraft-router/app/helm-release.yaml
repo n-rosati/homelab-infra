@@ -24,7 +24,8 @@ spec:
   values:
     global:
       stopAll: false
-    timezone: ${TIMEZONE}
+    podOptions:
+      hostUsers: true
     ingress:
       main:
         enabled: true
