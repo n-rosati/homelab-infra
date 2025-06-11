@@ -37,6 +37,6 @@ spec:
           fieldRef:
             fieldPath: status.hostIP
     args:
-      - --nodes=$(NODE)
+      - --node=$(NODE)
       - --tag=$(SYSTEM_UPGRADE_PLAN_LATEST_VERSION)
       # - --powercycle
