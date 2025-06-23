@@ -22,4 +22,3 @@ resources:
   - mosquitto/ks.yaml
   - govee2mqtt/ks.yaml
   - convertx/ks.yaml
-  - portnote/ks.yaml
