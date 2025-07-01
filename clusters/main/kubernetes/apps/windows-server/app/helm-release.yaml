@@ -45,7 +45,7 @@ spec:
           rdp-udp:
             enabled: true
             port: 3389
-            protocol: udo
+            protocol: udp
     persistence:
       storage:
         enabled: true
