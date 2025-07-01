@@ -52,20 +52,13 @@ spec:
         enabled: true
         type: pvc
         mountPath: /storage
-      tun:
-        enabled: true
-        type: hostPath
-        hostPath: /dev/net/tun
-        mountPath: /dev/net/tun
-        hostPathType: ""
-        readOnly: false
-      kvm:
-        enabled: true
-        type: hostPath
-        hostPath: /dev/kvm
-        mountPath: /dev/kvm
-        hostPathType: ""
-        readOnly: false
+      # kvm:
+      #   enabled: true
+      #   type: hostPath
+      #   hostPath: /dev/kvm
+      #   mountPath: /dev/kvm
+      #   hostPathType: ""
+      #   readOnly: false
     workload:
       main:
         podSpec:
@@ -74,6 +67,9 @@ spec:
             main:
               env:
                 VERSION: 2022
+    resources:
+      limits:
+        kernel.org/tun: 1
     securityContext:
       container:
         PUID: 0
