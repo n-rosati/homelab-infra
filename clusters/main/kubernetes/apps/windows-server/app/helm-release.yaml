@@ -5,6 +5,7 @@ metadata:
   namespace: windows-server
 spec:
   interval: 15m
+  timeout: 20m
   chart:
     spec:
       chart: app-template
@@ -68,6 +69,7 @@ spec:
     workload:
       main:
         podSpec:
+          hostNetwork: true
           containers:
             main:
               env:
