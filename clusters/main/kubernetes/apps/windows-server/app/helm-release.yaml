@@ -29,7 +29,7 @@ spec:
     image:
       repository: ghcr.io/dockurr/windows
       pullPolicy: IfNotPresent
-      tag: v4.35@sha256:fe953a6a2f4686a9f0a540d9f9ad42b57ddad83af2050e91a0a8b1a6828bc8f5
+      tag: latest@sha256:fe953a6a2f4686a9f0a540d9f9ad42b57ddad83af2050e91a0a8b1a6828bc8f5
     service:
       main:
         enabled: true
