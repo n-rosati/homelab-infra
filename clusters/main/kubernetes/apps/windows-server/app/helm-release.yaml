@@ -69,7 +69,7 @@ spec:
                 VERSION: 2022
     resources:
       limits:
-        kernel.org/tun: 1
+        truecharts.org/tun: 1
     securityContext:
       container:
         PUID: 0
