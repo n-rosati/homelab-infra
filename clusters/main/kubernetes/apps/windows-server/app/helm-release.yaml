@@ -1,0 +1,87 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: windows-server
+  namespace: windows-server
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 14.5.3
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: windows-server
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    release_name: windows-server
+    global:
+      stopAll: false
+    image:
+      repository: ghcr.io/dockurr/windows
+      pullPolicy: IfNotPresent
+      tag: 4.35@sha256:fe953a6a2f4686a9f0a540d9f9ad42b57ddad83af2050e91a0a8b1a6828bc8f5
+    service:
+      main:
+        enabled: true
+        ports:
+          main:
+            enabled: true
+            port: 8006
+            protocol: http
+          rdp-tcp:
+            enabled: true
+            port: 3389
+            protocol: tcp
+          rdp-udp:
+            enabled: true
+            port: 3389
+            protocol: udo
+    persistence:
+      storage:
+        enabled: true
+        type: pvc
+        mountPath: /storage
+      tun:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/net/tun
+        mountPath: /dev/net/tun
+        hostPathType: ""
+        readOnly: false
+      kvm:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/kvm
+        mountPath: /dev/kvm
+        hostPathType: ""
+        readOnly: false
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                VERSION: 2022
+    securityContext:
+      container:
+        PUID: 0
+        UMASK: '0022'
+        advanced: false
+        capabilities:
+          add:
+            - NET_ADMIN
+        readOnlyRootFilesystem: false
+        runAsGroup: 0
+        runAsNonRoot: false
+        runAsUser: 0
+        privileged: true
