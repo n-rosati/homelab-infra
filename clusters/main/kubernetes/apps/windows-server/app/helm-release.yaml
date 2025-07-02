@@ -56,6 +56,10 @@ spec:
         enabled: true
         type: pvc
         mountPath: /storage
+      run:
+        enabled: true
+        type: pvc
+        mountPath: /run
       kvm:
         enabled: true
         type: hostPath
