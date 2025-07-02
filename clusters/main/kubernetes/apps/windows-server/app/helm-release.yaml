@@ -63,6 +63,13 @@ spec:
         mountPath: /dev/kvm
         hostPathType: ""
         readOnly: false
+      tun:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/net/tun
+        mountPath: /dev/net/tun
+        hostPathType: ""
+        readOnly: false
     workload:
       main:
         podSpec:
@@ -71,9 +78,6 @@ spec:
             main:
               env:
                 VERSION: 2022
-    resources:
-      limits:
-        kernel.org/tun: 1
     securityContext:
       container:
         PUID: 0
