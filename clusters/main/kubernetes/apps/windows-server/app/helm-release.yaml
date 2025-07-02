@@ -47,18 +47,22 @@ spec:
             enabled: true
             port: 3389
             protocol: udp
+          vnc:
+            enabled: true
+            port: 5900
+            protocol: tcp
     persistence:
       storage:
         enabled: true
         type: pvc
         mountPath: /storage
-      # kvm:
-      #   enabled: true
-      #   type: hostPath
-      #   hostPath: /dev/kvm
-      #   mountPath: /dev/kvm
-      #   hostPathType: ""
-      #   readOnly: false
+      kvm:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/kvm
+        mountPath: /dev/kvm
+        hostPathType: ""
+        readOnly: false
     workload:
       main:
         podSpec:
@@ -69,7 +73,7 @@ spec:
                 VERSION: 2022
     resources:
       limits:
-        truecharts.org/tun: 1
+        kernel.org/tun: 1
     securityContext:
       container:
         PUID: 0
