@@ -56,4 +56,4 @@ spec:
             widget:
               enabled: true
               type: scrutiny
-              url: https://{{ .Values.service.main.externalIP }}:31054
+              url: http://{{ .Values.service.main.externalIP }}:31054
