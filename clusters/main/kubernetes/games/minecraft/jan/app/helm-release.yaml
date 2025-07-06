@@ -51,6 +51,7 @@ spec:
             description: " "
             group: Minecraft
             icon: minecraft.png
+            href: " "
             widget:
               enabled: true
               type: minecraft
