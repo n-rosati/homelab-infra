@@ -82,7 +82,7 @@ spec:
             widget:
               enabled: true
               type: wgeasy
-              url: wg-easy.wg-easy.${DNS_SUFFIX}:51821
+              url: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
               custom:
                 version: "2"
                 username: ${WG_USERNAME}
