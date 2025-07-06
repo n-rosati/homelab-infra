@@ -45,8 +45,6 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-          traefik:
-            enabled: false
     cnpg:
       main:
         mode: standalone # FIXME CHANGE TO RECOVERY WHEN RESTORING
@@ -62,8 +60,6 @@ spec:
           revision: ""
         cluster:
           singleNode: true
-        monitoring:
-          enablePodMonitor: true
     authelia:
       theme: auto
       log:
