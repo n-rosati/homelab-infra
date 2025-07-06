@@ -40,9 +40,6 @@ spec:
         ingressClassName: external
         hosts:
           - host: nextcloud.${DOMAIN_BASE}
-            paths:
-              - path: /
-                pathType: Prefix
         integrations:
           certManager:
             certificateIssuer: le-prod
@@ -54,8 +51,6 @@ spec:
               enabled: true
               custom:
                 key: ${HOMEPAGE_NEXTCLOUD_KEY}
-          traefik:
-            enabled: false
     persistence:
       html:
         volsync:
