@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: filebrowser
-      version: 11.10.0
+      version: 12.0.3
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -31,21 +31,21 @@ spec:
       main:
         enabled: true
         ingressClassName: external
-        annotations:
-          nginx.ingress.kubernetes.io/auth-method: 'GET'
-          nginx.ingress.kubernetes.io/auth-url: 'http://${AUTHELIA_DNS_NAME}/api/verify'
-          nginx.ingress.kubernetes.io/auth-signin: 'https://auth.${DOMAIN_0}?rm=$request_method'
-          nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
         hosts:
           - host: filebrowser.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
             certificateIssuer: le-prod
+          nginx:
+            enabled: true
+            auth:
+              type: authelia
+              internalHost: ${AUTHELIA_DNS_NAME}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
           homepage:
-            enabled: false
-          traefik:
-            enabled: false
+            enabled: true
+            group: Apps
     persistence:
       appdata:
         enabled: true
