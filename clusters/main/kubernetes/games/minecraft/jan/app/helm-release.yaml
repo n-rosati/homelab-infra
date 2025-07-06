@@ -40,6 +40,9 @@ spec:
         type: LoadBalancer
     ingress:
       enabled: true
+      ingressClassName: internal
+      hosts:
+        - host: jan.${DOMAIN_BASE}
       main:
         integrations:
           homepage:
