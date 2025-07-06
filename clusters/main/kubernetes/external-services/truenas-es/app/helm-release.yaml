@@ -50,9 +50,9 @@ spec:
           homepage:
             enabled: true
             name: TrueNAS
+            description: ""
             group: Infrastructure
             icon: truenas.png
-            siteMonitor: https://{{ .Values.service.main.externalIP }}
             widget:
               enabled: true
               type: truenas
