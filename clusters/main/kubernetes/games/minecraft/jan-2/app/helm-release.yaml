@@ -40,6 +40,24 @@ spec:
       rcon:
         enabled: true
         type: LoadBalancer
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: internal
+        hosts:
+          - host: jan-2.${DOMAIN_BASE}
+        integrations:
+          homepage:
+            enabled: true
+            name: JaN-2
+            description: " "
+            group: Minecraft
+            icon: minecraft.png
+            href: " "
+            widget:
+              enabled: true
+              type: minecraft
+              url: udp://jan-2-minecraft-java.mc-jan-2.${DNS_SUFFIX}:25565
     persistence:
       data:
         volsync:
