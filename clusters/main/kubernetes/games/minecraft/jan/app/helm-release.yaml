@@ -39,17 +39,18 @@ spec:
       rcon:
         type: LoadBalancer
     ingress:
-      integrations:
-        homepage:
-          enabled: true
-          name: JaN
-          description: " "
-          group: Minecraft
-          icon: minecraft.png
-          widget:
+      main:
+        integrations:
+          homepage:
             enabled: true
-            type: minecraft
-            url: udp://{{ .Values.service.main.loadBalancerIP }}:25565
+            name: JaN
+            description: " "
+            group: Minecraft
+            icon: minecraft.png
+            widget:
+              enabled: true
+              type: minecraft
+              url: udp://{{ .Values.service.main.loadBalancerIP }}:25565
     persistence:
       data:
         volsync:
