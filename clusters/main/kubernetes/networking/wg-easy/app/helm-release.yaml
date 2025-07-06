@@ -84,6 +84,8 @@ spec:
               type: wgeasy
               url: http://wg-easy.wg-easy.${DNS_SUFFIX}:51821
               custom:
+                version: 2
+                username: ${WG_USERNAME}
                 password: ${WG_PASSWORD}
           traefik:
             enabled: false
