@@ -46,3 +46,13 @@ spec:
               type: authelia
               internalHost: ${AUTHELIA_DNS_NAME}
               externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+          homepage:
+            enabled: true
+            name: Moonraker (Klipper)
+            description: " "
+            group: Infrastructure
+            icon: mainsail.png
+            widget:
+              enabled: true
+              type: moonraker
+              url: http://{{ .Values.service.main.externalIP }}
