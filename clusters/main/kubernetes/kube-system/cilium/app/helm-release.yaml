@@ -79,3 +79,6 @@ spec:
       rollOutPods: true
       replicas: 1
     rollOutCiliumPods: true
+    # for wireguard
+    socketLB:
+      hostNamespaceOnly: true
