@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: homepage
-      version: 10.3.0
+      version: 11.0.0
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -35,19 +35,18 @@ spec:
       main:
         enabled: true
         ingressClassName: external
-        annotations:
-          nginx.ingress.kubernetes.io/auth-method: 'GET'
-          nginx.ingress.kubernetes.io/auth-url: 'http://${AUTHELIA_DNS_NAME}/api/verify'
-          nginx.ingress.kubernetes.io/auth-signin: 'https://auth.${DOMAIN_0}?rm=$request_method'
-          nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
         hosts:
           - host: homepage.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-          traefik:
-            enabled: false
+          nginx:
+            enabled: true
+            auth:
+              type: authelia
+              internalHost: ${AUTHELIA_DNS_NAME}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
     persistence:
       config:
         volsync:
@@ -86,16 +85,15 @@ spec:
         ingress:
           enabled: true
           ingressClassName: external
-          annotations:
-            nginx.ingress.kubernetes.io/auth-method: 'GET'
-            nginx.ingress.kubernetes.io/auth-url: 'http://${AUTHELIA_DNS_NAME}/api/verify'
-            nginx.ingress.kubernetes.io/auth-signin: 'https://auth.${DOMAIN_0}?rm=$request_method'
-            nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
           hosts:
             - host: edit-homepage.nicholasrosati.xyz
           integrations:
             certManager:
               enabled: true
               certificateIssuer: le-prod
-            traefik:
-              enabled: false
+            nginx:
+              enabled: true
+              auth:
+                type: authelia
+                internalHost: ${AUTHELIA_DNS_NAME}
+                externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
