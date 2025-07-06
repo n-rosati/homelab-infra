@@ -38,6 +38,20 @@ spec:
         type: LoadBalancer
       rcon:
         type: LoadBalancer
+    ingress:
+      integrations:
+        homepage:
+          enabled: true
+          name: JaN
+          description: " "
+          group: Minecraft
+          icon: minecraft.png
+          widget:
+            enabled: true
+            type: minecraft
+            url: https://{{ .Values.service.main.loadBalancerIP }}
+            custom:
+              key: ${HOMEPAGE_TRUENAS_KEY}
     persistence:
       data:
         volsync:
@@ -67,7 +81,7 @@ spec:
                 FABRIC_LOADER_VERSION: 0.14.9
                 FORCE_REDOWNLOAD: "false"
                 MAX_PLAYERS: 2
-                MEMORY: 3G
+                MEMORY: 4G
                 MOTD: <3
                 PVP: true
                 RCON_PASSWORD: ${MC_RCON_PASSWORD}
