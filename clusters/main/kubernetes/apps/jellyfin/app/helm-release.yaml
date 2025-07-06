@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: jellyfin
-      version: 20.6.30
+      version: 21.0.3
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -69,8 +69,6 @@ spec:
               url: http://jellyfin.jellyfin.${DNS_SUFFIX}:8096
               custom:
                 key: ${HOMEPAGE_JELLYFIN_KEY}
-          traefik:
-            enabled: false
     persistence:
       config:
         volsync:
