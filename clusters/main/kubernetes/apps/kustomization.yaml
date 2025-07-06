@@ -24,4 +24,4 @@ resources:
   - convertx/ks.yaml
   - windows-server/ks.yaml
   - macos/ks.yaml
-  - archiveteam-warrior/ks.yaml
+  # - archiveteam-warrior/ks.yaml
