@@ -47,3 +47,13 @@ spec:
               type: authelia
               internalHost: ${AUTHELIA_DNS_NAME}
               externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+          homepage:
+            enabled: true
+            name: Scrutiny
+            description: " "
+            group: Infrastructure
+            icon: scrutiny.png
+            widget:
+              enabled: true
+              type: scrutiny
+              url: https://{{ .Values.service.main.externalIP }}
