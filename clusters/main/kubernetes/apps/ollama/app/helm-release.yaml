@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: ollama
-      version: 7.19.12
+      version: 8.0.3
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -37,9 +37,6 @@ spec:
         ingressClassName: external
         hosts:
           - host: ollama.${DOMAIN_BASE}
-            paths:
-              - path: /
-                pathType: Prefix
         integrations:
           certManager:
             certificateIssuer: le-prod
@@ -49,8 +46,6 @@ spec:
             group: Apps
             widget:
               enabled: false
-          traefik:
-            enabled: false
     ollama:
       rag:
         # cpu | cuda | mps
