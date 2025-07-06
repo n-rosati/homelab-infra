@@ -44,6 +44,15 @@ spec:
       main:
         type: LoadBalancer
         loadBalancerIP: ${FACTORIO_IP}
+      rcon-api:
+        enabled: true
+        type: LoadBalancer
+        ports:
+          rcon-api:
+            enabled: true
+            port: "24180"
+            protocol: http
+            targetPort: "24180"
     ingress:
       main:
         enabled: true
@@ -85,9 +94,6 @@ spec:
                   enabled: false
                 startup:
                   enabled: false
-        service:
-          main:
-            type: LoadBalancer
     addons:
       codeserver:
         enabled: true
