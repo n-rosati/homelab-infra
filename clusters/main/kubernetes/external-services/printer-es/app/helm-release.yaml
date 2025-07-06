@@ -48,7 +48,7 @@ spec:
               externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
           homepage:
             enabled: true
-            name: Moonraker (Klipper)
+            name: Printer
             description: " "
             group: Infrastructure
             icon: mainsail.png
