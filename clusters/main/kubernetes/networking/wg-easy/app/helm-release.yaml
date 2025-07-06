@@ -82,7 +82,7 @@ spec:
             widget:
               enabled: true
               type: wgeasy
-              url: http://wg-easy.wg-easy.${DNS_SUFFIX}:51821
+              url: http://wg-easy.wg-easy.${DNS_SUFFIX}:51820
               custom:
                 version: "2"
                 username: ${WG_USERNAME}
