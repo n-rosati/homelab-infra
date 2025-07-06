@@ -39,6 +39,7 @@ spec:
       rcon:
         type: LoadBalancer
     ingress:
+      enabled: true
       main:
         integrations:
           homepage:
