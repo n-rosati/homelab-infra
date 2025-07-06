@@ -45,6 +45,9 @@ spec:
         hosts:
           - host: jan.${DOMAIN_BASE}
         integrations:
+          certManager:
+            enabled: false
+            certificateIssuer: le-staging
           homepage:
             enabled: true
             name: JaN
@@ -107,21 +110,21 @@ spec:
                 PLAYERS_ONLINE_CHECK_INTERVAL: '5m'
                 PRUNE_BACKUPS_DAYS: '2'
                 TAR_COMPRESS_METHOD: 'zstd'
-    addons:
-      codeserver:
-        enabled: true
-        ingress:
-          enabled: true
-          ingressClassName: external
-          hosts:
-            - host: jan-config.${DOMAIN_BASE}
-          integrations:
-            certManager:
-              enabled: true
-              certificateIssuer: le-prod
-            nginx:
-              enabled: true
-              auth:
-                type: authelia
-                internalHost: ${AUTHELIA_DNS_NAME}
-                externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+    # addons:
+    #   codeserver:
+    #     enabled: true
+    #     ingress:
+    #       enabled: true
+    #       ingressClassName: external
+    #       hosts:
+    #         - host: jan-config.${DOMAIN_BASE}
+    #       integrations:
+    #         certManager:
+    #           enabled: true
+    #           certificateIssuer: le-prod
+    #         nginx:
+    #           enabled: true
+    #           auth:
+    #             type: authelia
+    #             internalHost: ${AUTHELIA_DNS_NAME}
+    #             externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
