@@ -51,9 +51,11 @@ spec:
             enabled: true
             name: TrueNAS
             group: Infrastructure
+            icon: truenas.png
             widget:
               enabled: true
               type: truenas
               url: https://{{ .Values.service.main.externalIP }}
               custom:
                 key: ${HOMEPAGE_TRUENAS_KEY}
+                siteMonitor: https://{{ .Values.service.main.externalIP }}
