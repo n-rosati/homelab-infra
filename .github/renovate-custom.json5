@@ -18,24 +18,6 @@
         "**/ps3netsrv/**"
     ],
     "packageRules": [
-        // {
-        //     "description": [
-        //         "Block automerge for PS3netsrv"
-        //     ],
-        //     "matchUpdateTypes": [
-        //         "major",
-        //         "minor",
-        //         "patch"
-        //     ],
-        //     "automerge": false,
-        //     "dependencyDashboardApproval": true,
-        //     "matchPackageNames": [
-        //         "ps3netsrv"
-        //     ],
-        //     "labels": [
-        //         "type/patch"
-        //     ]
-        // },
         {
             "description": [
                 "Block automerge for Kubelet and Talos version Major"
