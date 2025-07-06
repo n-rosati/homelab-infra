@@ -58,6 +58,11 @@ spec:
     #         certificateIssuer: le-prod
     #       traefik:
     #         enabled: false
+    persistence:
+      media:
+        enabled: true
+        type: pvc
+        mountPath: /home/warrior
     workload:
       main:
         podSpec:
