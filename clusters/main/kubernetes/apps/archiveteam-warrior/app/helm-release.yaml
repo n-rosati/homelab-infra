@@ -26,6 +26,8 @@ spec:
     release_name: archiveteam-warrior
     global:
       stopAll: false
+    podOptions:
+      hostUsers: true
     image:
       repository: atdr.meo.ws/archiveteam/warrior-dockerfile
       pullPolicy: IfNotPresent
