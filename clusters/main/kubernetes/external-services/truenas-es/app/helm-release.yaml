@@ -54,6 +54,6 @@ spec:
             widget:
               enabled: true
               type: truenas
-              url: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
+              url: https://{{ .Values.service.main.externalIP }}
               custom:
                 key: ${HOMEPAGE_TRUENAS_KEY}
