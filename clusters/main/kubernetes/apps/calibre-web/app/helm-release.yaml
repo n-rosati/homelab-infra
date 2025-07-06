@@ -37,25 +37,28 @@ spec:
       main:
         enabled: true
         ingressClassName: external
-        annotations:
-          nginx.ingress.kubernetes.io/auth-method: 'GET'
-          nginx.ingress.kubernetes.io/auth-url: 'http://${AUTHELIA_DNS_NAME}/api/verify'
-          nginx.ingress.kubernetes.io/auth-signin: 'https://auth.${DOMAIN_0}?rm=$request_method'
-          nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
         hosts:
           - host: calibre-web.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
             certificateIssuer: le-prod
+          nginx:
+            enabled: true
+            auth:
+              type: authelia
+              internalHost: ${AUTHELIA_DNS_NAME}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
           homepage:
             enabled: true
             group: Media
             href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
             widget:
-              enabled: false
-          traefik:
-            enabled: false
+              type: calibreweb
+              url: http://calibre-web.calibre-web.${DNS_SUFFIX}:8083
+              custom:
+                username: ${CALIBREWEB_USERNAME}
+                password: ${CALIBREWEB_PASSWORD}
     persistence:
       config:
         volsync:
