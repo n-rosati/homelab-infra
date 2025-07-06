@@ -45,13 +45,13 @@ spec:
         enabled: true
         ingressClassName: internal
         hosts:
-          - host: jan2-UNUSED.${DOMAIN_BASE}
+          - host: jan2-unused.${DOMAIN_BASE}
         integrations:
           homepage:
             enabled: true
             name: JaN-2
             description: " "
-            group: Minecraft
+            group: Games
             icon: minecraft.png
             href: " "
             widget:

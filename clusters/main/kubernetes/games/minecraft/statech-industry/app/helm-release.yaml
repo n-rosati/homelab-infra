@@ -45,13 +45,13 @@ spec:
         enabled: true
         ingressClassName: internal
         hosts:
-          - host: statech-industry-UNUSED.${DOMAIN_BASE}
+          - host: statech-industry-unused.${DOMAIN_BASE}
         integrations:
           homepage:
             enabled: true
             name: Statech Industry
             description: " "
-            group: Minecraft
+            group: Games
             icon: minecraft.png
             href: " "
             widget:
