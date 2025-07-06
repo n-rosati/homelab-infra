@@ -43,7 +43,7 @@ spec:
         enabled: true
         ingressClassName: internal
         hosts:
-          - host: jan.${DOMAIN_BASE}
+          - host: jan-UNUSED.${DOMAIN_BASE}
         integrations:
           homepage:
             enabled: true
