@@ -47,3 +47,13 @@ spec:
               type: authelia
               internalHost: ${AUTHELIA_DNS_NAME}
               externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+          homepage:
+            enabled: true
+            name: TrueNAS
+            group: Infrastructure
+            widget:
+              enabled: true
+              type: truenas
+              url: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
+              custom:
+                key: ${HOMEPAGE_TRUENAS_KEY}
