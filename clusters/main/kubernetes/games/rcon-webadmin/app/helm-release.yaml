@@ -40,15 +40,15 @@ spec:
         hosts:
           - host: rcon.${DOMAIN_BASE}
         integrations:
-        certManager:
-          enabled: true
-          certificateIssuer: le-prod
-        nginx:
-          enabled: true
-          auth:
-            type: authelia
-            internalHost: ${AUTHELIA_DNS_NAME}
-            externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          nginx:
+            enabled: true
+            auth:
+              type: authelia
+              internalHost: ${AUTHELIA_DNS_NAME}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
           homepage:
             enabled: true
             group: Minecraft
