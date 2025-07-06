@@ -50,7 +50,7 @@ spec:
           homepage:
             enabled: true
             name: Automatic Ripping Machine
-            description: ""
+            description: " "
             group: Media
             icon: https://raw.githubusercontent.com/automatic-ripping-machine/automatic-ripping-machine/refs/heads/main/arm/ui/static/img/android-chrome-512x512.png
             widget:

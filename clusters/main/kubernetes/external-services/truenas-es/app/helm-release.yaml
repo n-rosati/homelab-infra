@@ -50,7 +50,7 @@ spec:
           homepage:
             enabled: true
             name: TrueNAS
-            description: ""
+            description: " "
             group: Infrastructure
             icon: truenas.png
             widget:
