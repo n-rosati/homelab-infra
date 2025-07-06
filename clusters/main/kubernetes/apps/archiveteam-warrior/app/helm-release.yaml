@@ -40,6 +40,7 @@ spec:
           main:
             enabled: true
             port: 8001
+            targetPort: 8001
             protocol: http
     # ingress:
     #   main:
@@ -59,10 +60,15 @@ spec:
     #       traefik:
     #         enabled: false
     persistence:
-      media:
+      main:
         enabled: true
-        type: pvc
         mountPath: /home/warrior
+    securityContext:
+      container:
+        readOnlyRootFilesystem: false
+        runAsNonRoot: false
+        runAsUser: 0
+        runAsGroup: 0
     workload:
       main:
         podSpec:
@@ -70,3 +76,5 @@ spec:
             main:
               env:
                 WARRIOR_ID: Hydra
+                DOWNLOADER: kubernetes
+                SELECTED_PROJECT: auto
