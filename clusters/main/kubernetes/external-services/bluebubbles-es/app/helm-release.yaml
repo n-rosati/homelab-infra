@@ -40,5 +40,3 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-          traefik:
-            enabled: false
