@@ -46,6 +46,8 @@ spec:
           homepage:
             enabled: true
             group: Apps
+            widget:
+              enabled: false
     persistence:
       appdata:
         enabled: true
