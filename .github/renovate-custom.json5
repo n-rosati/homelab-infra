@@ -28,7 +28,7 @@
             "automerge": false,
             "dependencyDashboardApproval": true,
             "matchPackageNames": [
-                "docker.io/shawly/ps3netsrv"
+                "ps3netsrv"
             ],
             "labels": [
                 "type/patch"
