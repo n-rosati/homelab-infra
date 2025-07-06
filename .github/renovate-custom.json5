@@ -5,6 +5,11 @@
         "automerge": false,
         "dependencyDashboardApproval": false
     },
+    "minor": {
+        "enabled": true,
+        "automerge": false,
+        "dependencyDashboardApproval": false
+    },
     "pinDigest": {
         "enabled": true,
         "automerge": true,
