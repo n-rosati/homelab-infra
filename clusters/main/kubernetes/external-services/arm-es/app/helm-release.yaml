@@ -47,3 +47,11 @@ spec:
               type: authelia
               internalHost: ${AUTHELIA_DNS_NAME}
               externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+          homepage:
+            enabled: true
+            name: Automatic Ripping Machine
+            description: ""
+            group: Media
+            icon: https://raw.githubusercontent.com/automatic-ripping-machine/automatic-ripping-machine/refs/heads/main/arm/ui/static/img/android-chrome-512x512.png
+            widget:
+              enabled: false
