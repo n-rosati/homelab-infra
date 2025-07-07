@@ -11,7 +11,7 @@ resources:
   - part-db/ks.yaml
   - calibre/ks.yaml
   - filebrowser/ks.yaml
-  - calibre-web/ks.yaml
+  # - calibre-web/ks.yaml
   - vaultwarden/ks.yaml
   - spoolman/ks.yaml
   - ollama/ks.yaml
