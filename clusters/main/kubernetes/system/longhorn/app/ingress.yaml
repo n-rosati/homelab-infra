@@ -6,10 +6,19 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: le-prod
     cert-manager.io/private-key-rotation-policy: Always
+    # add auth
     nginx.ingress.kubernetes.io/auth-method: 'GET'
     nginx.ingress.kubernetes.io/auth-url: 'http://${AUTHELIA_DNS_NAME}/api/verify'
     nginx.ingress.kubernetes.io/auth-signin: 'https://auth.${DOMAIN_0}?rm=$request_method'
     nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
+    # homepage integration
+    gethomepage.dev/description: Cloud-Native distributed storage built on and for Kubernetes.
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Infrastructure
+    gethomepage.dev/href: https://longhorn.nicholasrosati.xyz/
+    gethomepage.dev/icon: longhorn.svg
+    gethomepage.dev/name: Longhorn
+    gethomepage.dev/pod-selector: app.kubernetes.io/instance=longhorn
 spec:
   ingressClassName: external
   rules:
