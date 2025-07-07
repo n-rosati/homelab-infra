@@ -52,7 +52,7 @@ spec:
             name: Home Assistant
             group: Infrastructure
             widget:
-              enabled: false
+              enabled: true
               custom:
                 key: ${HOMEPAGE_HOMEASSISTANT_KEY}
     persistence:
