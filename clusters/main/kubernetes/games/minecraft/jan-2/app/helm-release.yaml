@@ -74,6 +74,10 @@ spec:
         type: nfs
         path: /mnt/DSU/Backups/Minecraft/jan-2
         server: ${TRUENAS_IP}
+    resources:
+      limits:
+        cpu: 4000m
+        memory: 6Gi
     workload:
       main:
         podSpec:
