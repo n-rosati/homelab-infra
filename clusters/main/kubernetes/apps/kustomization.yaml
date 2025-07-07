@@ -22,6 +22,5 @@ resources:
   - mosquitto/ks.yaml
   - govee2mqtt/ks.yaml
   - convertx/ks.yaml
-  - windows-server/ks.yaml
-  - macos/ks.yaml
-  # - archiveteam-warrior/ks.yaml
+  # - windows-server/ks.yaml
+  # - macos/ks.yaml
