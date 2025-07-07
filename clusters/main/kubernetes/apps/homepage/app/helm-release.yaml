@@ -59,6 +59,13 @@ spec:
               enabled: true
               trigger:
                 schedule: 0 1 * * *
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                HOMEPAGE_ALLOWED_HOSTS: homepage.${DOMAIN_BASE}
     addons:
       codeserver:
         enabled: true
