@@ -83,7 +83,7 @@ spec:
               url: http://${PARTDB_DNS}:3000/api/parts
               custom:
                 method: GET
-                headers: "Authorization: Bearer ${HOMEPAGE_PARTDB_KEY}"
+                headers.Authorization: Bearer ${HOMEPAGE_PARTDB_KEY}
                 mappings.0.field: hydra:totalItems
                 mappings.0.label: Total Parts
                 mappings.0.format: number
