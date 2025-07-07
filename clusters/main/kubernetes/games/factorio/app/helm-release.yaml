@@ -53,6 +53,11 @@ spec:
             port: "24180"
             protocol: http
             targetPort: "24180"
+          rcon-api-grpc:
+            enabled: true
+            port: "24181"
+            protocol: http
+            targetPort: "24181"
     ingress:
       main:
         enabled: true
