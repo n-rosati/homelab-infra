@@ -67,7 +67,10 @@ spec:
             certificateIssuer: le-prod
         homepage:
           enabled: true
+          name: Factorio
+          description: " "
           group: Games
+          icon: https://factorio.com/static/img/factorio-wheel.png
           href: " "
           widget:
             enabled: true
