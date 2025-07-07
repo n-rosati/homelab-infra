@@ -74,7 +74,7 @@ spec:
           homepage:
             enabled: true
             name: PartDB
-            description: Part-DB is an Open source inventory management system for your electronic components
+            description: Part-DB is an open source inventory management system for your electronic components.
             group: Apps
             icon: https://raw.githubusercontent.com/Part-DB/Part-DB-server/refs/heads/master/public/icon/safari-pinned-tab.svg
             widget:
@@ -82,10 +82,11 @@ spec:
               type: customapi
               url: http://${PARTDB_DNS}:3000/api/parts
               custom:
+                method: GET
                 headers: "Authorization: Bearer ${HOMEPAGE_PARTDB_KEY}"
                 mappings.0.field: hydra:totalItems
                 mappings.0.label: Total Parts
-                mappins.0.format: number
+                mappings.0.format: number
     persistence:
       media:
         enabled: true
