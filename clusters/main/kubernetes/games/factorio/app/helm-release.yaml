@@ -47,6 +47,7 @@ spec:
       rcon-api:
         enabled: true
         type: LoadBalancer
+        targetSelector: rcon-api
         ports:
           rcon-api:
             enabled: true
