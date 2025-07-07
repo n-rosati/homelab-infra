@@ -74,7 +74,7 @@ spec:
             enabled: true
             name: Spoolman
             description: Keep track of your inventory of 3D-printer filament spools.
-            group: Infrastructure
+            group: Apps
             icon: spoolman.svg
             widget:
               enabled: true

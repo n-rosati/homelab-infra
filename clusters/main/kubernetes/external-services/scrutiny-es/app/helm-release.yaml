@@ -51,7 +51,7 @@ spec:
             enabled: true
             name: Scrutiny
             description: " "
-            group: Infrastructure
+            group: Apps
             icon: scrutiny.png
             widget:
               enabled: true

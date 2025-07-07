@@ -77,7 +77,7 @@ spec:
           homepage:
             enabled: true
             name: Wireguard
-            group: Infrastructure
+            group: Apps
             href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
             widget:
               enabled: true
