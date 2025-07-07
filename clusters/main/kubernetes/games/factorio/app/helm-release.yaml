@@ -65,22 +65,22 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-        homepage:
-          enabled: true
-          name: Factorio
-          description: " "
-          group: Games
-          icon: https://factorio.com/static/img/factorio-wheel.png
-          href: " "
-          widget:
+          homepage:
             enabled: true
-            type: customapi
-            url: http://factorio-rcon-api.factorio.${DNS_SUFFIX}:24180/api/v2/factorio/console/command/version
-            custom:
-              mappings:
-                - field: version
-                  label: Game Version
-                  format: text
+            name: Factorio
+            description: " "
+            group: Games
+            icon: https://factorio.com/static/img/factorio-wheel.png
+            href: " "
+            widget:
+              enabled: true
+              type: customapi
+              url: http://factorio-rcon-api.factorio.${DNS_SUFFIX}:24180/api/v2/factorio/console/command/version
+              custom:
+                mappings:
+                  - field: version
+                    label: Game Version
+                    format: text
     persistence:
       config:
         volsync:
