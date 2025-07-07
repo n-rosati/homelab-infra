@@ -58,19 +58,27 @@ spec:
       main:
         enabled: true
         ingressClassName: external
-        annotations:
-          nginx.ingress.kubernetes.io/auth-method: 'GET'
-          nginx.ingress.kubernetes.io/auth-url: 'http://${AUTHELIA_DNS_NAME}/api/verify'
-          nginx.ingress.kubernetes.io/auth-signin: 'https://auth.${DOMAIN_0}?rm=$request_method'
-          nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
         hosts:
           - host: spoolman.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-          traefik:
-            enabled: false
+          nginx:
+            enabled: true
+            auth:
+              type: authelia
+              internalHost: ${AUTHELIA_DNS_NAME}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+          homepage:
+            enabled: true
+            name: Spoolman
+            description: Keep track of your inventory of 3D-printer filament spools.
+            group: Infrastructure
+            icon: spoolman.svg
+            widget:
+              enabled: true
+              type: spoolman
     persistence:
       data:
         enabled: true
