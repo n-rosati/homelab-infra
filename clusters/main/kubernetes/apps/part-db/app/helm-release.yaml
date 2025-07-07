@@ -59,19 +59,33 @@ spec:
       main:
         enabled: true
         ingressClassName: external
-        annotations:
-          nginx.ingress.kubernetes.io/auth-method: 'GET'
-          nginx.ingress.kubernetes.io/auth-url: 'http://${AUTHELIA_DNS_NAME}/api/verify'
-          nginx.ingress.kubernetes.io/auth-signin: 'https://auth.${DOMAIN_0}?rm=$request_method'
-          nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
         hosts:
           - host: partdb.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-          traefik:
-            enabled: false
+          nginx:
+            enabled: true
+            auth:
+              type: authelia
+              internalHost: ${AUTHELIA_DNS_NAME}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+          homepage:
+            enabled: true
+            name: PartDB
+            description: Part-DB is an Open source inventory management system for your electronic components
+            group: Apps
+            icon: https://raw.githubusercontent.com/Part-DB/Part-DB-server/refs/heads/master/public/icon/safari-pinned-tab.svg
+            widget:
+              enabled: true
+              type: customapi
+              url: http://${PARTDB_DNS}:3000/api/parts
+              custom:
+                headers: "Authorization: Bearer ${HOMEPAGE_PARTDB_KEY}"
+                mappings.0.field: hydra:totalItems
+                mappings.0.label: Total Parts
+                mappins.0.format: number
     persistence:
       media:
         enabled: true
