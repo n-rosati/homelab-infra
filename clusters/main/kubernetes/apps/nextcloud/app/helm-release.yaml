@@ -42,6 +42,7 @@ spec:
         ingressClassName: external
         hosts:
           - host: nextcloud.${DOMAIN_BASE}
+            # load bearing path definition (will break things)
             paths:
               - path: /
                 pathType: Prefix
