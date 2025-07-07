@@ -91,7 +91,7 @@ spec:
                 FABRIC_LOADER_VERSION: 0.14.21
                 FORCE_REDOWNLOAD: "false"
                 MAX_PLAYERS: 2
-                MEMORY: 3G
+                MEMORY: 4G
                 MOTD: <3
                 PVP: true
                 RCON_PASSWORD: ${MC_RCON_PASSWORD}
