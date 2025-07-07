@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 14.5.3
+      version: 15.1.2
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -43,19 +43,26 @@ spec:
       main:
         enabled: true
         ingressClassName: external
-        annotations:
-          nginx.ingress.kubernetes.io/auth-method: 'GET'
-          nginx.ingress.kubernetes.io/auth-url: 'http://${AUTHELIA_DNS_NAME}/api/verify'
-          nginx.ingress.kubernetes.io/auth-signin: 'https://auth.${DOMAIN_0}?rm=$request_method'
-          nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
         hosts:
           - host: convertx.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-          traefik:
-            enabled: false
+          nginx:
+            enabled: true
+            auth:
+              type: authelia
+              internalHost: ${AUTHELIA_DNS_NAME}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+          homepage:
+            enabled: true
+            name: ConvertX
+            description: Self-hosted online file converter.
+            group: Apps
+            icon: https://raw.githubusercontent.com/C4illin/ConvertX/refs/heads/main/public/android-chrome-512x512.png
+            widget:
+              enabled: false
     persistence:
       media:
         enabled: true
