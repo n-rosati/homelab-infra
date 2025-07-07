@@ -47,12 +47,12 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-          hompage:
+          homepage:
             enabled: true
             name: Home Assistant
             group: Infrastructure
             widget:
-              enabled: true
+              enabled: false
               custom:
                 key: ${HOMEPAGE_HOMEASSISTANT_KEY}
     persistence:
