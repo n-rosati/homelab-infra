@@ -58,7 +58,7 @@ spec:
     ingress:
       main:
         enabled: true
-        # ingressClassName: external
+        ingressClassName: external
         hosts:
           - host: factorio.${DOMAIN_BASE}
         integrations:
@@ -119,7 +119,7 @@ spec:
         enabled: true
         ingress:
           enabled: true
-          # ingressClassName: external
+          ingressClassName: external
           hosts:
             - host: factorio-config.${DOMAIN_BASE}
           integrations:
