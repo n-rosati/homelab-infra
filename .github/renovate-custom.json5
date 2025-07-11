@@ -14,9 +14,7 @@
             "automerge"
         ]
     },
-    "ignorePaths": [
-        "**/ps3netsrv/**"
-    ],
+    "ignorePaths": [],
     "packageRules": [
         {
             "description": [
