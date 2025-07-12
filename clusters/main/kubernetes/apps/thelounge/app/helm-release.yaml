@@ -30,6 +30,10 @@ spec:
       repository: lscr.io/linuxserver/thelounge
       pullPolicy: IfNotPresent
       tag: latest
+    busyboxImage:
+      repository: docker.io/busybox
+      pullPolicy: IfNotPresent
+      tag: latest
     credentials:
       home-s3:
         name: home-s3
@@ -87,17 +91,26 @@ spec:
         #       enabled: true
         #       trigger:
         #         schedule: 25 1 * * *
-    workload:
-      main:
-        podSpec:
-          containers:
-            main:
-              command: [ "sh", "-c", "sleep infinity" ] # TEMP
-              env:
-                PUID: "568"
-                PGID: "568"
-                SUP_GROUP_IDS: "568"
-                FIX_RW_PERMS: "false"
+        workload:
+          main:
+            podSpec:
+              containers:
+                main:
+                  env:
+                    PUID: "568"
+                    PGID: "568"
+                    SUP_GROUP_IDS: "568"
+                    FIX_RW_PERMS: "false"
+              initContainers:
+                perms:
+                  enabled: true
+                  type: init
+                  imageSelector: busyboxImage
+                  command: [ "sh", "-c", "sleep 5 && chown -R 568:568 /config && chmod -R ug+rwX /config" ]
+                  securityContext:
+                    runAsUser: 0
+                    runAsGroup: 0
+                    allowPrivilegeEscalation: true
     addons:
       codeserver:
         enabled: true
