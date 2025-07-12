@@ -51,7 +51,7 @@ spec:
       identd:
         enabled: true
         ports:
-          main:
+          identd:
             enabled: true
             port: 9001
             protocol: tcp
