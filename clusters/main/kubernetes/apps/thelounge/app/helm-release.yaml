@@ -77,16 +77,16 @@ spec:
         enabled: true
         type: pvc
         mountPath: /config
-        volsync:
-          - credentials: home-s3
-            name: home-s3
-            type: restic
-            dest:
-              enabled: true
-            src:
-              enabled: true
-              trigger:
-                schedule: 25 1 * * *
+        # volsync:
+        #   - credentials: home-s3
+        #     name: home-s3
+        #     type: restic
+        #     dest:
+        #       enabled: true
+        #     src:
+        #       enabled: true
+        #       trigger:
+        #         schedule: 25 1 * * *
     workload:
       main:
         podSpec:
