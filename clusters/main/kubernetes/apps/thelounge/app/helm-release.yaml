@@ -27,9 +27,9 @@ spec:
     global:
       stopAll: false
     image:
-      repository: thelounge/thelounge
+      repository: lscr.io/linuxserver/thelounge
       pullPolicy: IfNotPresent
-      tag: 4.4.3@sha256:c2aa0916203b298ffaf3a36c4eb60ef73c1006448d430e218d37840472e84e50
+      tag: latest
     credentials:
       home-s3:
         name: home-s3
@@ -48,14 +48,6 @@ spec:
             port: 9000
             protocol: http
             targetPort: 9000
-      identd:
-        enabled: true
-        ports:
-          identd:
-            enabled: true
-            port: 9001
-            protocol: tcp
-            targetPort: 9001
     ingress:
       main:
         enabled: true
@@ -84,7 +76,7 @@ spec:
       media:
         enabled: true
         type: pvc
-        mountPath: /var/opt/thelounge
+        mountPath: /config
         volsync:
           - credentials: home-s3
             name: home-s3
@@ -95,3 +87,32 @@ spec:
               enabled: true
               trigger:
                 schedule: 25 1 * * *
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                PUID: "568"
+                PGID: "568"
+    addons:
+      codeserver:
+        enabled: true
+        workingDir: "/config"
+        service:
+          type: LoadBalancer
+        ingress:
+          enabled: true
+          ingressClassName: external
+          hosts:
+            - host: edit-lounge.${DOMAIN_BASE}
+          integrations:
+            certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          nginx:
+            enabled: true
+            auth:
+              type: authelia
+              internalHost: ${AUTHELIA_DNS_NAME}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
