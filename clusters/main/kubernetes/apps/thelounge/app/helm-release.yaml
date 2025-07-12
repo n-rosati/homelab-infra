@@ -92,6 +92,7 @@ spec:
         podSpec:
           containers:
             main:
+              command:
               env:
                 PUID: "568"
                 PGID: "568"
