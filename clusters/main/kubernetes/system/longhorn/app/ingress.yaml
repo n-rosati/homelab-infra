@@ -15,7 +15,7 @@ metadata:
     gethomepage.dev/description: Cloud-Native distributed storage built on and for Kubernetes.
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Infrastructure
-    gethomepage.dev/href: https://longhorn.nicholasrosati.xyz/
+    gethomepage.dev/href: https://longhorn.${DOMAIN_BASE}/
     gethomepage.dev/icon: longhorn.svg
     gethomepage.dev/name: Longhorn
     gethomepage.dev/pod-selector: app.kubernetes.io/instance=longhorn

@@ -92,7 +92,7 @@ spec:
           enabled: true
           ingressClassName: external
           hosts:
-            - host: edit-homeassistant.nicholasrosati.xyz
+            - host: edit-homeassistant.${DOMAIN_BASE}
           integrations:
             certManager:
             enabled: true

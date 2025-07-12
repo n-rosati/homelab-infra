@@ -76,7 +76,7 @@ spec:
           enabled: true
           ingressClassName: external
           hosts:
-            - host: edit-homepage.nicholasrosati.xyz
+            - host: edit-homepage.${DOMAIN_BASE}
           integrations:
             certManager:
               enabled: true

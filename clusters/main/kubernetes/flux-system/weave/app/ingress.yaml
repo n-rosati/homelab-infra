@@ -15,7 +15,7 @@ metadata:
     gethomepage.dev/description: Weave GitOps provides insights into your application deployments, and makes continuous delivery with GitOps easier to adopt and scale across your teams.
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Infrastructure
-    gethomepage.dev/href: https://gitops.nicholasrosati.xyz/
+    gethomepage.dev/href: https://gitops.${DOMAIN_BASE}/
     gethomepage.dev/icon: https://raw.githubusercontent.com/weaveworks/weave-gitops/refs/heads/main/ui/images/logoLight.svg
     gethomepage.dev/name: Weave GitOps
     gethomepage.dev/pod-selector: app.kubernetes.io/instance=weave
