@@ -27,9 +27,9 @@ spec:
     global:
       stopAll: false
     image:
-      repository: lscr.io/linuxserver/thelounge
+      repository: quay.io/linuxserver.io/thelounge
       pullPolicy: IfNotPresent
-      tag: latest
+      tag: 4.4.3@sha256:ad1d54921b68932c74c28fdb7ab0c2ba4b82e47df383ac529e84e5f59ad36924
     busyboxImage:
       repository: docker.io/busybox
       pullPolicy: IfNotPresent
