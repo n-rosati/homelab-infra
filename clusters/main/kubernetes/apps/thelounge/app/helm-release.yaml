@@ -92,10 +92,11 @@ spec:
         podSpec:
           containers:
             main:
-              command:
+              command: [ "sh", "-c", "sleep 84000s" ] # TEMP
               env:
                 PUID: "568"
                 PGID: "568"
+                SUP_GROUP_IDS: "568"
     addons:
       codeserver:
         enabled: true
