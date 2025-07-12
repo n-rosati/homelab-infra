@@ -92,11 +92,12 @@ spec:
         podSpec:
           containers:
             main:
+              command: [ "sh", "-c", "sleep infinity" ] # TEMP
               env:
                 PUID: "568"
                 PGID: "568"
                 SUP_GROUP_IDS: "568"
-                FIX_RW_PERMS: "568"
+                FIX_RW_PERMS: "false"
     addons:
       codeserver:
         enabled: true
