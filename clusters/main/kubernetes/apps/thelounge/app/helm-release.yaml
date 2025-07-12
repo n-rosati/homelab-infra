@@ -92,7 +92,6 @@ spec:
         podSpec:
           containers:
             main:
-              command: [ "sh", "-c", "sleep 84000s" ] # TEMP
               env:
                 PUID: "568"
                 PGID: "568"
