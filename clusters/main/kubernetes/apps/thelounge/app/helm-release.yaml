@@ -96,6 +96,7 @@ spec:
                 PUID: "568"
                 PGID: "568"
                 SUP_GROUP_IDS: "568"
+                FIX_RW_PERMS: "568"
     addons:
       codeserver:
         enabled: true
