@@ -29,7 +29,7 @@ spec:
     image:
       repository: quay.io/linuxserver.io/thelounge
       pullPolicy: IfNotPresent
-      tag: 4.4.3@sha256:ad1d54921b68932c74c28fdb7ab0c2ba4b82e47df383ac529e84e5f59ad36924
+      tag: 4.4.3@sha256:c480a2a887c34e985fbd5fb37d0a28ee97073e7eec374fcfbfc9071a8b817ebd
     busyboxImage:
       repository: docker.io/busybox
       pullPolicy: IfNotPresent
