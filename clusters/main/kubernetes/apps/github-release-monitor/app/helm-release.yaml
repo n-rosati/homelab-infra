@@ -1,0 +1,110 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: github-release-monitor
+  namespace: github-release-monitor
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 15.2.2
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    global:
+      stopAll: false
+    image:
+      repository: ghcr.io/iamspido/github-release-monitor
+      pullPolicy: IfNotPresent
+      tag: 1.1.1@sha256:debf3849ec647dab07e54fad82c1186f9b31d39200a9109322cda4bc7c9a7180
+    credentials:
+      home-s3:
+        name: home-s3
+        type: s3
+        url: ${S3_URL}
+        bucket: github-release-monitor
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        accessKey: ${S3_ACCESS_KEY}
+        secretKey: ${S3_SECRET_KEY}
+    # securityContext:
+    #   container:
+    #     readOnlyRootFilesystem: false
+    #     runAsNonRoot: false
+    #     runAsUser: 0
+    #     runAsGroup: 0
+    service:
+      main:
+        enabled: true
+        type: LoadBalancer
+        ports:
+          main:
+            enabled: true
+            port: 3000
+            protocol: http
+            targetPort: 3000
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: external
+        hosts:
+          - host: release-mon.${DOMAIN_BASE}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-staging
+          nginx:
+            enabled: true
+            auth:
+              type: authelia
+              internalHost: ${AUTHELIA_DNS_NAME}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+          homepage:
+            enabled: true
+            name: GitHub Release Monitor
+            description: A powerful, self-hostable application to automatically monitor GitHub repository releases and receive instant email notifications.
+            group: Apps
+            widget:
+              enabled: false
+    persistence:
+      data:
+        enabled: true
+        type: pvc
+        mountPath: /app/data
+        volsync:
+          - credentials: home-s3
+            name: data
+            type: restic
+            dest:
+              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+            src:
+              enabled: true
+              trigger:
+                schedule: 50 4 * * *
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                AUTH_SECRET: ${GRM_AUTH_SECRET}
+                AUTH_USERNAME: ${GRM_AUTH_USERNAME}
+                AUTH_PASSWORD: ${GRM_AUTH_PASSWORD}
+                GITHUB_ACCESS_TOKEN: ${GRM_GITHUB_ACCESS_TOKEN}
+                MAIL_HOST: ${GRM_MAIL_HOST}
+                MAIL_PORT: ${GRM_MAIL_PORT}
+                MAIL_USERNAME: ${GRM_MAIL_USERNAME}
+                MAIL_PASSWORD: ${GRM_MAIL_PASSWORD}
+                MAIL_FROM_ADDRES: ${GRM_MAIL_FROM_ADDRES}
+                MAIL_FROM_NAME: ${GRM_MAIL_FROM_NAME}
+                MAIL_TO_ADDRESS: ${GRM_MAIL_TO_ADDRESS}

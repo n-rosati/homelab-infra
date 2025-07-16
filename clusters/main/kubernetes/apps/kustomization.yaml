@@ -25,3 +25,4 @@ resources:
   # - windows-server/ks.yaml
   # - macos/ks.yaml
   - thelounge/ks.yaml
+  - github-release-monitor/ks.yaml
