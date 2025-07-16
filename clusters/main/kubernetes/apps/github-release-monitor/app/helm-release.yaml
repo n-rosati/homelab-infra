@@ -62,7 +62,7 @@ spec:
         integrations:
           certManager:
             enabled: true
-            certificateIssuer: le-staging
+            certificateIssuer: le-prod
           nginx:
             enabled: true
             auth:
@@ -86,7 +86,7 @@ spec:
             name: data
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: true
             src:
               enabled: true
               trigger:
