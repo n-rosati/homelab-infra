@@ -67,6 +67,7 @@ spec:
             enabled: true
             name: GitHub Release Monitor
             description: A powerful, self-hostable application to automatically monitor GitHub repository releases and receive instant email notifications.
+            icon: https://raw.githubusercontent.com/iamspido/github-release-monitor/refs/heads/main/src/app/icon.svg
             group: Apps
             widget:
               enabled: false
