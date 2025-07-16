@@ -99,6 +99,6 @@ spec:
                 MAIL_PORT: ${GRM_MAIL_PORT}
                 MAIL_USERNAME: ${GRM_MAIL_USERNAME}
                 MAIL_PASSWORD: ${GRM_MAIL_PASSWORD}
-                MAIL_FROM_ADDRESS: ${GRM_MAIL_FROM_ADDRES}
+                MAIL_FROM_ADDRESS: ${GRM_MAIL_FROM_ADDRESS}
                 MAIL_FROM_NAME: ${GRM_MAIL_FROM_NAME}
                 MAIL_TO_ADDRESS: ${GRM_MAIL_TO_ADDRESS}
