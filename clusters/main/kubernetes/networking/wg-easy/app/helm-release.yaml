@@ -90,8 +90,6 @@ spec:
                 version: "2"
                 username: ${WG_USERNAME}
                 password: ${WG_PASSWORD}
-          traefik:
-            enabled: false
     persistence:
       config:
         volsync:
