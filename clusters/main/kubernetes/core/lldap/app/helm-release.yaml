@@ -37,6 +37,9 @@ spec:
       ldap:
         type: LoadBalancer
         loadBalancerIP: ${LDAP_IP}
+        integrations:
+          metallb:
+            enabled: true
     ingress:
       main:
         enabled: true
