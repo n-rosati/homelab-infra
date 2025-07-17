@@ -31,6 +31,9 @@ spec:
       main:
         type: LoadBalancer
         loadBalancerIP: ${DASHBOARD_IP}
+        integrations:
+          metallb:
+            enabled: true
     ingress:
       main:
         enabled: true

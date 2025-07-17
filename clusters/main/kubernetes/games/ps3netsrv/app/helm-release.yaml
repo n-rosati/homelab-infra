@@ -28,6 +28,9 @@ spec:
       main:
         type: LoadBalancer
         loadBalancerIP: ${PS3NETSRV_IP}
+        integrations:
+          metallb:
+            enabled: true
     persistence:
       games:
         type: nfs

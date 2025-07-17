@@ -38,9 +38,15 @@ spec:
       main:
         type: LoadBalancer
         loadBalancerIP: ${TDARR_IP}
+        integrations:
+          metallb:
+            enabled: true
       comm:
         type: LoadBalancer
         loadBalancerIP: ${TDARR_IP}
+        integrations:
+          metallb:
+            enabled: true
     ingress:
       main:
         enabled: true

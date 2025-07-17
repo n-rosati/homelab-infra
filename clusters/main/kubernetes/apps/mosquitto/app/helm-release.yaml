@@ -28,3 +28,6 @@ spec:
       main:
         type: LoadBalancer
         loadBalancerIP: ${MOSQUITTO_IP}
+        integrations:
+          metallb:
+            enabled: true

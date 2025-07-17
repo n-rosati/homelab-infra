@@ -28,9 +28,15 @@ spec:
       main:
         type: LoadBalancer
         loadBalancerIP: ${OLLAMA_IP}
+        integrations:
+          metallb:
+            enabled: true
       api:
         type: LoadBalancer
         loadBalancerIP: ${OLLAMA_IP}
+        integrations:
+          metallb:
+            enabled: true
     ingress:
       main:
         enabled: true

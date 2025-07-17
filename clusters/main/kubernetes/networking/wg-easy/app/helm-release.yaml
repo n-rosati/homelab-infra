@@ -41,7 +41,7 @@ spec:
     securityContext:
       container:
         PUID: 0
-        UMASK: '0022'
+        UMASK: "0022"
         advanced: false
         capabilities:
           add:
@@ -57,6 +57,9 @@ spec:
       vpn:
         type: LoadBalancer
         loadBalancerIP: ${WG_EASY_IP}
+        integrations:
+          metallb:
+            enabled: true
         externalTrafficPolicy: Local
     ingress:
       main:

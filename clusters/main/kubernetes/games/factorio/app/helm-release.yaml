@@ -44,6 +44,9 @@ spec:
       main:
         type: LoadBalancer
         loadBalancerIP: ${FACTORIO_IP}
+        integrations:
+          metallb:
+            enabled: true
       rcon-api:
         enabled: true
         # type: LoadBalancer

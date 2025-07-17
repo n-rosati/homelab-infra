@@ -35,6 +35,9 @@ spec:
       dns:
         externalTrafficPolicy: Local
         loadBalancerIP: ${BLOCKY_IP}
+        integrations:
+          metallb:
+            enabled: true
         type: LoadBalancer
     blocking:
       whitelist:
