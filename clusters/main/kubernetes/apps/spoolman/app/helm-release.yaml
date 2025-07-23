@@ -123,8 +123,8 @@ spec:
             main:
               env:
                 SPOOLMAN_DB_TYPE: postgres
-                SPOOLMAN_DB_HOST: "{{ .Values.cnpg.main.creds.host }}"
-                SPOOLMAN_DB_PORT: "{{ .Values.cnpg.main.creds.port }}"
-                SPOOLMAN_DB_NAME: "{{ .Values.cnpg.main.database }}"
-                SPOOLMAN_DB_USERNAME: "{{ .Values.cnpg.main.user }}"
+                SPOOLMAN_DB_HOST: spoolman-app-template-cnpg-main-rw.spoolman.${DNS_SUFFIX}
+                SPOOLMAN_DB_PORT: 5432
+                SPOOLMAN_DB_NAME: spoolman
+                SPOOLMAN_DB_USERNAME: spoolman
                 SPOOLMAN_DB_PASSWORD: ${SPOOLMAN_DB_PASSWORD}
