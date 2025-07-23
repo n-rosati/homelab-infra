@@ -77,7 +77,7 @@ spec:
             widget:
               enabled: false
     persistence:
-      media:
+      config:
         enabled: true
         type: pvc
         mountPath: /config
