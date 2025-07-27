@@ -49,7 +49,7 @@ spec:
     mcrouter:
       default: jan-minecraft-java.mc-jan.svc.cluster.local:25565
       mappings:
-        - ${JAN_URL}=jan-minecraft-java.mc-jan.svc.cluster.local:25565
-        - ${JAN_2_URL}=jan-2-minecraft-java.mc-jan-2.svc.cluster.local:25567
-        - ${STATECH_INDUSTRY_URL}=statech-industry-minecraft-java.mc-statech-industry.svc.cluster.local:25570
-        - ${FTB_SKIES_2_DNS_NAME}=ftb-skies-2-minecraft-java.mc-ftb-skies-2.svc.cluster.local:25565
+        - jan.${DOMAIN_BASE}=${JAN_DNS_NAME}:25565
+        - jan-2.${DOMAIN_BASE}=${JAN_2_DNS_NAME}:25565
+        - statech-industry.${DOMAIN_BASE}=${STATECH_INDUSTRY_DNS_NAME}:25565
+        - ftb-skies-2.${DOMAIN_BASE}=${FTB_SKIES_2_DNS_NAME}:25565
