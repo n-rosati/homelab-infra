@@ -34,6 +34,7 @@ spec:
           - host: jan.${DOMAIN_BASE}
           - host: jan2.${DOMAIN_BASE}
           - host: statech-industry.${DOMAIN_BASE}
+          - host: ftb-skies-2.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
@@ -51,3 +52,4 @@ spec:
         - ${JAN_URL}=jan-minecraft-java.mc-jan.svc.cluster.local:25565
         - ${JAN_2_URL}=jan-2-minecraft-java.mc-jan-2.svc.cluster.local:25567
         - ${STATECH_INDUSTRY_URL}=statech-industry-minecraft-java.mc-statech-industry.svc.cluster.local:25570
+        - ${FTB_SKIES_2_DNS_NAME}=ftb-skies-2-minecraft-java.ftb-skies-2.svc.cluster.local:25565
