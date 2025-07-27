@@ -98,7 +98,7 @@ spec:
                 USE_MODPACK_START_SCRIPT: true
                 SEED: "-6792938523469477000"
                 FORCE_REDOWNLOAD: false
-                USE_MEOWICE_FLAGS: true
+                USE_AIKAR_FLAGS: true
             mcbackup:
               enabled: true
               env:
