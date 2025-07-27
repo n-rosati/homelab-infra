@@ -47,7 +47,7 @@ spec:
           metallb:
             enabled: true
     mcrouter:
-      default: jan-minecraft-java.mc-jan.svc.cluster.local:25565
+      default: ${JAN_DNS_NAME}:25565
       mappings:
         - jan.${DOMAIN_BASE}=${JAN_DNS_NAME}:25565
         - jan-2.${DOMAIN_BASE}=${JAN_2_DNS_NAME}:25565
