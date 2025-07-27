@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: ftb-skies-2
-  namespace: ftb-skies-2
+  namespace: mc-ftb-skies-2
 spec:
   interval: 15m
   timeout: 10m
@@ -58,7 +58,7 @@ spec:
             widget:
               enabled: true
               type: minecraft
-              url: udp://ftb-skies-2-minecraft-java.ftb-skies-2.${DNS_SUFFIX}:25565
+              url: udp://ftb-skies-2-minecraft-java.mc-ftb-skies-2.${DNS_SUFFIX}:25565
     persistence:
       data:
         volsync:
