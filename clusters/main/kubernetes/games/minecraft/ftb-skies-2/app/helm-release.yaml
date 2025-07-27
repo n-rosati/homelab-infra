@@ -5,6 +5,7 @@ metadata:
   namespace: ftb-skies-2
 spec:
   interval: 15m
+  timeout: 10m
   chart:
     spec:
       chart: minecraft-java
