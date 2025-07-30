@@ -48,6 +48,11 @@ rules:
   - apiGroups: [ "gateway.networking.k8s.io" ]
     resources:
       - gateways
+      - gatewayclasses
+      - httproutes
+      - grpcroutes
+      - referencegrants
+      - backendtlspolicies
     verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
 
   - apiGroups: [ "rbac.authorization.k8s.io" ]
