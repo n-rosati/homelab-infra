@@ -47,14 +47,14 @@ spec:
             certificateIssuer: le-prod
     cnpg:
       main:
-        mode: standalone
+        mode: recovery
         password: ${CNPG_PASSWORD}
         backups:
-          enabled: false
+          enabled: true
           revision: "1"
           credentials: home-s3
         recovery:
-          enabled: false
+          enabled: true
           method: object_store
           credentials: home-s3
           revision: "1"
