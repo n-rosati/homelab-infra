@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: headlamp-readonly
+  name: headlamp-admin
 rules:
   - apiGroups: [ "" ]
     resources:
@@ -15,7 +15,7 @@ rules:
       - configmaps
       - secrets
       - events
-    verbs: [ "get", "list", "watch" ]
+    verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
 
   - apiGroups: [ "apps" ]
     resources:
@@ -23,13 +23,13 @@ rules:
       - daemonsets
       - statefulsets
       - replicasets
-    verbs: [ "get", "list", "watch" ]
+    verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
 
   - apiGroups: [ "batch" ]
     resources:
       - jobs
       - cronjobs
-    verbs: [ "get", "list", "watch" ]
+    verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
 
   - apiGroups: [ "metrics.k8s.io" ]
     resources:
@@ -42,7 +42,7 @@ rules:
       - ingressclasses
       - ingresses
       - networkpolicies
-    verbs: [ "get", "list", "watch" ]
+    verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
 
   - apiGroups: [ "rbac.authorization.k8s.io" ]
     resources:
@@ -50,27 +50,27 @@ rules:
       - rolebindings
       - clusterroles
       - clusterrolebindings
-    verbs: [ "get", "list", "watch" ]
+    verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
 
   - apiGroups: [ "storage.k8s.io" ]
     resources:
       - storageclasses
-    verbs: [ "get", "list", "watch" ]
+    verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
 
   - apiGroups: [ "policy" ]
     resources:
       - poddisruptionbudgets
-    verbs: [ "get", "list", "watch" ]
+    verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: headlamp-readonly-binding
+  name: headlamp-admin-binding
 subjects:
   - kind: ServiceAccount
     name: headlamp-admin
     namespace: headlamp
 roleRef:
   kind: ClusterRole
-  name: headlamp-readonly
+  name: headlamp-admin
   apiGroup: rbac.authorization.k8s.io
