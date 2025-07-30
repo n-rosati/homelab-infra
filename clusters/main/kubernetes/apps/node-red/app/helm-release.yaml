@@ -27,3 +27,6 @@ spec:
     services:
       main:
         type: LoadBalancer
+        integrations:
+          metallb:
+            enabled: true
