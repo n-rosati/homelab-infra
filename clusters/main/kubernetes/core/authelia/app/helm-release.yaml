@@ -47,17 +47,17 @@ spec:
             certificateIssuer: le-prod
     cnpg:
       main:
-        mode: standalone # FIXME CHANGE TO RECOVERY WHEN RESTORING
+        mode: standalone
         password: ${CNPG_PASSWORD}
         backups:
-          enabled: true
+          enabled: false
           revision: "1"
           credentials: home-s3
         recovery:
           enabled: false
           method: object_store
           credentials: home-s3
-          revision: ""
+          revision: "1"
         cluster:
           singleNode: true
     authelia:
