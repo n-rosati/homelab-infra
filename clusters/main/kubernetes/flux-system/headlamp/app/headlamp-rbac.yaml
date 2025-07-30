@@ -1,0 +1,21 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: headlamp-metrics-reader
+rules:
+  - apiGroups: [ "metrics.k8s.io" ]
+    resources: [ "nodes", "pods" ]
+    verbs: [ "get", "list", "watch" ]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: headlamp-metrics-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: headlamp-metrics-reader
+subjects:
+  - kind: ServiceAccount
+    name: headlamp-admin
+    namespace: headlamp
