@@ -40,9 +40,6 @@ spec:
         integrations:
           metallb:
             enabled: true
-        integrations:
-          metallb:
-            enabled: true
     ingress:
       main:
         enabled: true
