@@ -50,6 +50,7 @@ spec:
         - host: headlamp.${DOMAIN_BASE}
           paths:
             - path: /
+              type: ImplementationSpecific
       tls:
         - secretName: flux-system-headlamp
           hosts:
