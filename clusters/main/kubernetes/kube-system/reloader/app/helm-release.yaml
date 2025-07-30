@@ -22,3 +22,5 @@ spec:
       retries: 3
   values:
     fullnameOverride: reloader
+    reloader:
+      autoReloadAll: true
