@@ -75,6 +75,12 @@ spec:
         type: nfs
         path: /mnt/DSU/Backups/Minecraft/ftb-skies-2
         server: ${TRUENAS_IP}
+      mods:
+        enabled: true
+        type: pvc
+        mountPath: /mods
+        targetSelectAll: true
+        size: 5Gi
     resources:
       limits:
         cpu: 4000m
@@ -107,12 +113,12 @@ spec:
               enabled: true
               env:
                 BACKUP_INTERVAL: "4h"
-                INITIAL_DELAY: '2m'
-                LINK_LATEST: 'false'
-                PAUSE_IF_NO_PLAYERS: 'false'
-                PLAYERS_ONLINE_CHECK_INTERVAL: '5m'
-                PRUNE_BACKUPS_DAYS: '7'
-                TAR_COMPRESS_METHOD: 'zstd'
+                INITIAL_DELAY: "2m"
+                LINK_LATEST: "false"
+                PAUSE_IF_NO_PLAYERS: "false"
+                PLAYERS_ONLINE_CHECK_INTERVAL: "5m"
+                PRUNE_BACKUPS_DAYS: "7"
+                TAR_COMPRESS_METHOD: "zstd"
     addons:
       codeserver:
         enabled: false
