@@ -79,5 +79,9 @@ spec:
         mountPath: /output
         path: ${NFS_APPS_PATH}/JDownloader2
         server: ${TRUENAS_IP}
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 4Gi
     jdownloader:
       KEEP_APP_RUNNING: true
