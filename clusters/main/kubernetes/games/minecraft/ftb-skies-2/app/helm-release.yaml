@@ -109,6 +109,7 @@ spec:
                 SEED: "-6792938523469477000"
                 FORCE_REDOWNLOAD: false
                 USE_AIKAR_FLAGS: true
+                ALLOW_FLIGHT: true
             mcbackup:
               enabled: true
               env:
