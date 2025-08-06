@@ -99,6 +99,7 @@ spec:
                 USE_SIMD_FLAGS: true
                 USE_FLARE_FLAGS: false
                 VERSION: 1.18.2
+                ALLOW_FLIGHT: true
             mcbackup:
               env:
                 BACKUP_INTERVAL: "1h"
