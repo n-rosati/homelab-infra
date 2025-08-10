@@ -20,7 +20,7 @@ metadata:
     gethomepage.dev/name: Weave GitOps
     gethomepage.dev/pod-selector: app.kubernetes.io/instance=weave
 spec:
-  ingressClassName: external
+  ingressClassName: "external"
   rules:
     - host: gitops.${DOMAIN_BASE}
       http:
