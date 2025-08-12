@@ -29,7 +29,7 @@ spec:
     image:
       repository: quay.io/linuxserver.io/thelounge
       pullPolicy: IfNotPresent
-      tag: 4.4.3@sha256:34f4cd68b1c89cdbef439e3d205781b33ab7c4d89660928beff091fefa180ceb
+      tag: 4.4.3@sha256:bc17e0b94f50785bb795fc52a4700de92b8e03cebb4ae47fc299dfc1ae060d7c
     credentials:
       home-s3:
         name: home-s3
