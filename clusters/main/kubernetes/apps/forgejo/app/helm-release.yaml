@@ -1,0 +1,113 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: forgejo
+  namespace: forgejo
+spec:
+  interval: 15m
+  timeout: 20m
+  chart:
+    spec:
+      chart: app-template
+      version: 15.3.6
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: forgejo
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    release_name: forgejo
+    global:
+      stopAll: false
+    image:
+      repository: codeberg.org/forgejo/forgejo
+      pullPolicy: IfNotPresent
+      tag: 12.0.1-rootless@sha256:d3cf45e6fa7cda0c329a02ce4d5c57cd5fae67f6d39bb5057b77c081938594df
+    credentials:
+      home-s3:
+        name: home-s3
+        type: s3
+        url: ${S3_URL}
+        bucket: part-db
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        accessKey: ${S3_ACCESS_KEY}
+        secretKey: ${S3_SECRET_KEY}
+    service:
+      main:
+        enabled: true
+        ports:
+          main:
+            enabled: true
+            port: 3000
+            protocol: http
+            targetPort: 80
+          ssh:
+            enabled: true
+            port: 222
+            protocol: tcp
+            targetPort: 22
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: internal
+        hosts:
+          - host: forgejo.${DOMAIN_BASE}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-staging
+          nginx:
+            enabled: true
+            auth:
+              type: authelia
+              internalHost: ${AUTHELIA_DNS_NAME}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+          homepage:
+            enabled: true
+            name: Forgejo
+            description: Forgejo is a self-hosted lightweight software forge.
+            group: Apps
+            icon: https://codeberg.org/forgejo/forgejo/raw/branch/forgejo/public/assets/img/forgejo.svg
+            widget:
+              enabled: false
+    persistence:
+      data:
+        enabled: true
+        type: pvc
+        mountPath: /data
+        volsync:
+          - name: data
+            type: restic
+            credentials: home-s3
+            dest:
+              enabled: true
+            src:
+              enabled: true
+              trigger:
+                schedule: 20 2 * * *
+    # cnpg:
+    #   main:
+    #     enabled: true
+    #     database: forgejo
+    #     user: forgejo
+    #     password: ${PARTDB_DB_PASSWORD}
+    #     pgVersion: 16
+    #     mode: recovery
+    #     cluster:
+    #       singleNode: true
+    #     backups:
+    #       enabled: true
+    #       revision: "3"
+    #       credentials: home-s3
+    #     recovery:
+    #       enabled: true
+    #       credentials: home-s3
+    #       revision: "2"
