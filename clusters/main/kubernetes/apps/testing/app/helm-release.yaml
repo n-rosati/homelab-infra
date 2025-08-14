@@ -24,7 +24,7 @@ spec:
     remediation:
       retries: 3
   values:
-    release_name: forgejo
+    release_name: testing
     global:
       stopAll: false
     image:
