@@ -1,0 +1,55 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: testing
+  namespace: testing
+spec:
+  interval: 15m
+  timeout: 20m
+  chart:
+    spec:
+      chart: app-template
+      version: 15.4.1
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: testing
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    release_name: forgejo
+    global:
+      stopAll: false
+    image:
+      repository: busybox
+      pullPolicy: IfNotPresent
+      tag: stable@sha256:2e0c461b52369a17f3f6c6cae2ea4c58462d6ce600f183800fc12893d99eafe1
+    persistence:
+      test:
+        enabled: true
+        type: pvc
+        mountPath: /var/lib/test
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              probes:
+                liveness:
+                  enabled: false
+                readiness:
+                  enabled: false
+                startup:
+                  enabled: false
+    addons:
+      codeserver:
+        enabled: true
+        service:
+          type: LoadBalancer
