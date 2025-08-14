@@ -117,7 +117,7 @@ spec:
         mountPath: "/root/public.key"
         subPath: "public.key"
         items:
-          - key: public-key
+          - key: public.key
             path: "public.key"
     secret:
       ssh-pub-key:
