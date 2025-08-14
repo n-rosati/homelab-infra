@@ -63,7 +63,7 @@ spec:
         integrations:
           certManager:
             enabled: true
-            certificateIssuer: le-staging
+            certificateIssuer: le-prod
           nginx:
             enabled: true
             auth:
@@ -169,7 +169,7 @@ spec:
           integrations:
             certManager:
             enabled: true
-            certificateIssuer: le-staging
+            certificateIssuer: le-prod
           nginx:
             enabled: true
             auth:
