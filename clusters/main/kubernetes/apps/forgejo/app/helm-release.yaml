@@ -107,6 +107,19 @@ spec:
               enabled: true
               trigger:
                 schedule: 25 2 * * *
+      ssh-key:
+        enabled: true
+        type: secret
+        readOnly: true
+        defaultMode: "0600"
+        objectName: forgejo-ssh-secret
+        mountPath: path
+        subPath: path
+        items:
+          - key: ssh-privatekey
+            path: "/var/lib/gitea/custom/private.key"
+          - key: ssh-publickey
+            path: "/var/lib/gitea/custom/public.key"
     workload:
       main:
         podSpec:
@@ -130,6 +143,16 @@ spec:
                 FORGEJO__database__NAME: "{{ .Values.cnpg.main.database }}"
                 FORGEJO__database__USER: "{{ .Values.cnpg.main.user }}"
                 FORGEJO__database__PASSWD: ${FORGEJO_DB_PASSWORD}
+                FORGEJO__mailer__ENABLED: "true"
+                FORGEJO__mailer__ADDR: "${SMTP_SERVER}"
+                FORGEJO__mailer__PORT: "${SMTP_PORT}"
+                FORGEJO__mailer__USER: "${SMTP_FROM}"
+                FORGEJO__mailer__PASSWD: "${SMTP_PASSWORD}"
+                FORGEJO__mailer__FROM: "Forgejo <${SMTP_FROM}>"
+                FORGEJO__repository.signing__FORMAT: "ssh"
+                FORGEJO__repository.signing__SIGNING_KEY: "/var/lib/gitea/custom/public.key"
+                FORGEJO__security__SECRET_KEY: "${FORGEJO_SECRET_KEY}"
+                FORGEJO__security__PASSWORD_CHECK_PWN: "true"
     cnpg:
       main:
         enabled: true
