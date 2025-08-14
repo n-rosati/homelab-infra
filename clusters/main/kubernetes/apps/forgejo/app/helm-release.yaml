@@ -117,13 +117,13 @@ spec:
         mountPath: "/root/public.key"
         subPath: "public.key"
         items:
-          - key: "public.key"
+          - key: public-key
             path: "public.key"
     secret:
       ssh-pub-key:
         enabled: true
         data:
-          key: ${FORGEJO_SSH_PUB_KEY_B64}
+          public.key: ${FORGEJO_SSH_PUB_KEY_B64}
     workload:
       main:
         podSpec:
