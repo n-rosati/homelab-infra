@@ -48,7 +48,7 @@ spec:
             enabled: true
             port: 3000
             protocol: http
-            targetPort: 80
+            targetPort: 3000
           ssh:
             enabled: true
             port: 222
