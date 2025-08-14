@@ -117,8 +117,8 @@ spec:
         mountPath: "/root/public.key"
         subPath: "public.key"
         items:
-          - key: forgejo-app-template-ssh-pub-key
-            path: forgejo-app-template-ssh-pub-key
+          - key: public.key
+            path: public.key
     secret:
       ssh-pub-key:
         enabled: true
