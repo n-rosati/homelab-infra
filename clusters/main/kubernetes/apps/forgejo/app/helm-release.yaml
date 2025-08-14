@@ -111,7 +111,7 @@ spec:
         enabled: true
         type: secret
         readOnly: true
-        defaultMode: "0600"
+        defaultMode: "0777"
         objectName: ssh
         # expandObjectName: false
         mountPath: "/root/public.key"
