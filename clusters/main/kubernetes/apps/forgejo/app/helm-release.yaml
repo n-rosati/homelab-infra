@@ -149,7 +149,7 @@ spec:
     addons:
       codeserver:
         enabled: true
-        workingDir: "/etc/forgejo"
+        workingDir: "/var/lib/gitea/custom/conf"
         service:
           type: LoadBalancer
         ingress:
