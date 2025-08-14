@@ -115,7 +115,6 @@ spec:
         objectName: ssh
         # expandObjectName: false
         mountPath: "/var/lib/gitea/public.key"
-        subPath: "public.key"
     secret:
       ssh:
         enabled: true
