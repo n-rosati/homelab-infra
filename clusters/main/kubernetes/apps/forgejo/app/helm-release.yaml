@@ -112,13 +112,19 @@ spec:
         type: secret
         readOnly: true
         defaultMode: "0600"
-        objectName: forgejo-ssh-secret
-        mountPath: "/var/lib/gitea/custom/"
+        objectName: ssh
+        mountPath: "/var/lib/gitea/custom/public.key"
+        subPath: "public.key"
         items:
-          - key: ssh-privatekey
-            path: "/var/lib/gitea/custom/private.key"
-          - key: ssh-publickey
+          # - key: ssh-privatekey
+          #   path: "/var/lib/gitea/custom/private.key"
+          - key: pubkey
             path: "/var/lib/gitea/custom/public.key"
+    secret:
+      ssh:
+        enabled: true
+        data:
+          pubkey: "${FORGEJO_SSH_PUB_KEY}"
     workload:
       main:
         podSpec:
