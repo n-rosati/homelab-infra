@@ -112,6 +112,18 @@ spec:
         podSpec:
           containers:
             main:
+              probes:
+                liveness:
+                  enabled: true
+                  path: "/"
+                  port: 3000
+                  type: http
+                readiness:
+                  enabled: true
+                  port: 3000
+                  type: http
+                startup:
+                  enabled: false
               env:
                 FORGEJO__database__DB_TYPE: postgres
                 FORGEJO__database__HOST: "{{ .Values.cnpg.main.creds.host }}"
