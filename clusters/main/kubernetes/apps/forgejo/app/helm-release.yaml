@@ -114,7 +114,8 @@ spec:
         defaultMode: "0600"
         objectName: ssh
         # expandObjectName: false
-        mountPath: "/var/lib/gitea/custom/public.key"
+        mountPath: "/root/public.key"
+        subPath: "public.key"
     secret:
       ssh:
         enabled: true
@@ -150,7 +151,7 @@ spec:
                 FORGEJO__mailer__PASSWD: "${SMTP_PASSWORD}"
                 FORGEJO__mailer__FROM: "Forgejo <${SMTP_FROM}>"
                 FORGEJO__repository.signing__FORMAT: "ssh"
-                FORGEJO__repository.signing__SIGNING_KEY: "/var/lib/gitea/custom/public.key"
+                FORGEJO__repository.signing__SIGNING_KEY: "/root/public.key"
                 FORGEJO__security__SECRET_KEY: "${FORGEJO_SECRET_KEY}"
                 FORGEJO__security__PASSWORD_CHECK_PWN: "true"
                 FORGEJO__repository.signing__DEFAULT_TRUST_MODEL: "committer"
