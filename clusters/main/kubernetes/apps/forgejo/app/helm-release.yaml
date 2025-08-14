@@ -113,18 +113,13 @@ spec:
         readOnly: true
         defaultMode: "0600"
         objectName: ssh
+        # expandObjectName: false
         mountPath: "/var/lib/gitea/custom/public.key"
-        subPath: "public.key"
-        items:
-          # - key: ssh-privatekey
-          #   path: "/var/lib/gitea/custom/private.key"
-          - key: pubkey
-            path: "/var/lib/gitea/custom/public.key"
     secret:
       ssh:
         enabled: true
         data:
-          pubkey: "${FORGEJO_SSH_PUB_KEY_B64}"
+          key: "${FORGEJO_SSH_PUB_KEY_B64}"
     workload:
       main:
         podSpec:
