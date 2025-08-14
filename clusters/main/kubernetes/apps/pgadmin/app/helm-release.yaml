@@ -39,15 +39,16 @@ spec:
         ingressClassName: external
         hosts:
           - host: pgadmin.${DOMAIN_BASE}
-        certManager:
-          enabled: true
-          certificateIssuer: le-prod
-        nginx:
-          enabled: true
-          auth:
-            type: authelia
-            internalHost: ${AUTHELIA_DNS_NAME}
-            externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          nginx:
+            enabled: true
+            auth:
+              type: authelia
+              internalHost: ${AUTHELIA_DNS_NAME}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
           homepage:
             enabled: true
             name: PGAdmin
