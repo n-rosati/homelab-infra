@@ -114,7 +114,8 @@ spec:
         defaultMode: "0777"
         objectName: ssh
         # expandObjectName: false
-        mountPath: "/var/lib/gitea/public.key"
+        mountPath: "/root/public.key"
+        subPath: "public.key"
     secret:
       ssh:
         enabled: true
