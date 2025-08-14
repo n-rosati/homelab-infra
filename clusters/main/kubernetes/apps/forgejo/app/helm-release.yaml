@@ -124,7 +124,7 @@ spec:
       ssh:
         enabled: true
         data:
-          pubkey: "${FORGEJO_SSH_PUB_KEY}"
+          pubkey: "${FORGEJO_SSH_PUB_KEY_B64}"
     workload:
       main:
         podSpec:
