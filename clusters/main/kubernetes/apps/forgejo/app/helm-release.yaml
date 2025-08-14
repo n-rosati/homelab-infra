@@ -148,7 +148,7 @@ spec:
           integrations:
             certManager:
             enabled: true
-            certificateIssuer: le-stagin
+            certificateIssuer: le-staging
           nginx:
             enabled: true
             auth:
