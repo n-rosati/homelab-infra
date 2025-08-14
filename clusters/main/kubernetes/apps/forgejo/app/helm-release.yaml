@@ -53,7 +53,7 @@ spec:
             enabled: true
             port: 222
             protocol: tcp
-            targetPort: 22
+            targetPort: 2222
     ingress:
       main:
         enabled: true
@@ -79,12 +79,12 @@ spec:
             widget:
               enabled: false
     persistence:
-      data:
+      forgejo:
         enabled: true
         type: pvc
-        mountPath: /data
+        mountPath: /etc/gitea
         volsync:
-          - name: data
+          - name: forgejo
             type: restic
             credentials: home-s3
             dest:
@@ -93,21 +93,65 @@ spec:
               enabled: true
               trigger:
                 schedule: 20 2 * * *
-    # cnpg:
-    #   main:
-    #     enabled: true
-    #     database: forgejo
-    #     user: forgejo
-    #     password: ${PARTDB_DB_PASSWORD}
-    #     pgVersion: 16
-    #     mode: recovery
-    #     cluster:
-    #       singleNode: true
-    #     backups:
-    #       enabled: true
-    #       revision: "3"
-    #       credentials: home-s3
-    #     recovery:
-    #       enabled: true
-    #       credentials: home-s3
-    #       revision: "2"
+      conf:
+        enabled: true
+        type: pvc
+        mountPath: /var/lib/gitea
+        volsync:
+          - name: conf
+            type: restic
+            credentials: home-s3
+            dest:
+              enabled: true
+            src:
+              enabled: true
+              trigger:
+                schedule: 25 2 * * *
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                FORGEJO__database__DB_TYPE: postgres
+                FORGEJO__database__HOST: "{{ .Values.cnpg.main.creds.host }}"
+                FORGEJO__database__NAME: "{{ .Values.cnpg.main.database }}"
+                FORGEJO__database__USER: "{{ .Values.cnpg.main.user }}"
+                FORGEJO__database__PASSWD: ${FORGEJO_DB_PASSWORD}
+    cnpg:
+      main:
+        enabled: true
+        database: forgejo
+        user: forgejo
+        password: ${FORGEJO_DB_PASSWORD}
+        pgVersion: 16
+        mode: recovery
+        cluster:
+          singleNode: true
+        backups:
+          enabled: true
+          credentials: home-s3
+        recovery:
+          enabled: true
+          credentials: home-s3
+    addons:
+      codeserver:
+        enabled: true
+        workingDir: "/etc/forgejo"
+        service:
+          type: LoadBalancer
+        ingress:
+          enabled: true
+          ingressClassName: external
+          hosts:
+            - host: edit-forgejo.${DOMAIN_BASE}
+          integrations:
+            certManager:
+            enabled: true
+            certificateIssuer: le-stagin
+          nginx:
+            enabled: true
+            auth:
+              type: authelia
+              internalHost: ${AUTHELIA_DNS_NAME}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
