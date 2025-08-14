@@ -131,8 +131,8 @@ spec:
                 FORGEJO__database__USER: "{{ .Values.cnpg.main.user }}"
                 FORGEJO__database__PASSWD: ${FORGEJO_DB_PASSWORD}
                 FORGEJO__mailer__ENABLED: "true"
-                FORGEJO__mailer__ADDR: "${SMTP_SERVER}"
-                FORGEJO__mailer__PORT: "${SMTP_PORT}"
+                FORGEJO__mailer__SMTP_ADDR: "${SMTP_SERVER}"
+                FORGEJO__mailer__SMTP_PORT: "${SMTP_PORT}"
                 FORGEJO__mailer__USER: "${SMTP_FROM}"
                 FORGEJO__mailer__PASSWD: "${SMTP_PASSWORD}"
                 FORGEJO__mailer__FROM: "Forgejo <${SMTP_FROM}>"
