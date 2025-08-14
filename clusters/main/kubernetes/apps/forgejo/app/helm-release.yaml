@@ -112,12 +112,15 @@ spec:
         type: secret
         readOnly: true
         defaultMode: "0777"
-        objectName: ssh
+        objectName: ssh-pub-key
         # expandObjectName: false
         mountPath: "/root/public.key"
         subPath: "public.key"
+        items:
+          - key: ssh-pub-key
+            path: "/root/public.key"
     secret:
-      ssh:
+      ssh-pub-key:
         enabled: true
         data:
           key: ${FORGEJO_SSH_PUB_KEY_B64}
@@ -175,7 +178,6 @@ spec:
     addons:
       codeserver:
         enabled: true
-        workingDir: "/var/lib/gitea/custom/conf"
         service:
           type: LoadBalancer
         ingress:
