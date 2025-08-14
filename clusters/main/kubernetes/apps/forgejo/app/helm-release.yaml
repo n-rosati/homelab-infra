@@ -59,7 +59,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: forgejo.${DOMAIN_BASE}
+          - host: code.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
@@ -165,7 +165,7 @@ spec:
           enabled: true
           ingressClassName: external
           hosts:
-            - host: edit-forgejo.${DOMAIN_BASE}
+            - host: edit-code.${DOMAIN_BASE}
           integrations:
             certManager:
             enabled: true
