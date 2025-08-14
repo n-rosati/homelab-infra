@@ -31,6 +31,14 @@ spec:
       repository: busybox
       pullPolicy: IfNotPresent
       tag: stable@sha256:2e0c461b52369a17f3f6c6cae2ea4c58462d6ce600f183800fc12893d99eafe1
+    service:
+      main:
+        enabled: true
+        ports:
+          main:
+            enabled: true
+            port: 3000
+            protocol: http
     persistence:
       test:
         enabled: true
