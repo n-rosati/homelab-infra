@@ -57,7 +57,7 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: internal
+        ingressClassName: external
         hosts:
           - host: forgejo.${DOMAIN_BASE}
         integrations:
@@ -163,7 +163,7 @@ spec:
           type: LoadBalancer
         ingress:
           enabled: true
-          ingressClassName: internal
+          ingressClassName: external
           hosts:
             - host: edit-forgejo.${DOMAIN_BASE}
           integrations:
