@@ -114,7 +114,7 @@ spec:
         defaultMode: "0777"
         objectName: ssh-pub-key
         expandObjectName: true
-        mountPath: "/root/public.key"
+        mountPath: "/var/lib/gitea/public.key"
         subPath: "public.key"
         items:
           - key: public.key
