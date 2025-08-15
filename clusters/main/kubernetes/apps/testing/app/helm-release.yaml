@@ -49,15 +49,16 @@ spec:
         type: secret
         objectName: testing-app-template-my-secret
         mountPath: /var/lib/my-file.txt
-        subPath: my-file.txt
-        items:
-          - key: key1
-            path: my-file.txt
+        # subPath: my-file.txt
+        # items:
+        #   - key: key1
+        #     path: my-file.txt
     secret:
       my-secret:
         enabled: true
         data:
           key1: "this is my secret value"
+          key2: "other key value"
     workload:
       main:
         podSpec:
