@@ -44,6 +44,17 @@ spec:
         enabled: true
         type: pvc
         mountPath: /var/lib/test
+      # my-secret-persistence:
+      #   enabled: true
+      #   mountPath: /var/lib/my-folder
+      #   type: secret
+      #   expandObjectName: false
+      #   objectName: my-secret
+    secret:
+      my-secret:
+        enabled: true
+        data:
+          key: "this is my secret value"
     workload:
       main:
         podSpec:
