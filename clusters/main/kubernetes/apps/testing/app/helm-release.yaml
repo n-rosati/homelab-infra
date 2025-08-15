@@ -49,6 +49,10 @@ spec:
         podSpec:
           containers:
             main:
+              command:
+                - "sh"
+                - "-c"
+                - "while true; do sleep 6000; done"
               probes:
                 liveness:
                   enabled: false
