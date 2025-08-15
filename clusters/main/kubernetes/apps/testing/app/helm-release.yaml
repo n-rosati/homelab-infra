@@ -50,11 +50,21 @@ spec:
         type: secret
         expandObjectName: false
         objectName: testing-app-template-my-secret
+      my-other-secret-persistence:
+        enabled: true
+        mountPath: /var/lib/my-folder
+        type: secret
+        expandObjectName: false
+        objectName: testing-app-template-my-other-secret
     secret:
       my-secret:
         enabled: true
         data:
-          key: "this is my secret value"
+          key1: "this is my secret value"
+      my-other-secret:
+        enabled: true
+        data:
+          key2: "this is my other more different secret value"
     workload:
       main:
         podSpec:
