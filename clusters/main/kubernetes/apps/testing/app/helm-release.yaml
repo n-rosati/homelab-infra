@@ -46,7 +46,7 @@ spec:
         mountPath: /var/lib/test
       my-secret-persistence:
         enabled: true
-        mountPath: /root/my-folder
+        mountPath: /var/lib/my-folder
         type: secret
         expandObjectName: false
         objectName: testing-app-template-my-secret
