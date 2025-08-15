@@ -107,13 +107,13 @@ spec:
               enabled: true
               trigger:
                 schedule: 25 2 * * *
-      # ssh-key:
-      #   enabled: true
-      #   type: secret
-      #   readOnly: true
-      #   objectName: forgejo-app-template-ssh-key-secret
-      #   expandObjectName: false
-      #   mountPath: "/var/lib/ssh-key"
+      ssh-key:
+        enabled: true
+        type: secret
+        readOnly: true
+        objectName: forgejo-app-template-ssh-key-secret
+        expandObjectName: false
+        mountPath: "/var/lib/ssh-key"
     secret:
       ssh-key-secret:
         enabled: true
