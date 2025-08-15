@@ -148,11 +148,11 @@ spec:
                 FORGEJO__mailer__USER: "${SMTP_FROM}"
                 FORGEJO__mailer__PASSWD: "${SMTP_PASSWORD}"
                 FORGEJO__mailer__FROM: "Forgejo <${SMTP_FROM}>"
-                FORGEJO__repository.signing__FORMAT: "ssh"
-                FORGEJO__repository.signing__SIGNING_KEY: "/var/lib/ssh-key/public.key"
+                # FORGEJO__repository.signing__FORMAT: "ssh"
+                # FORGEJO__repository.signing__SIGNING_KEY: "/var/lib/ssh-key/public.key"
                 FORGEJO__security__SECRET_KEY: "${FORGEJO_SECRET_KEY}"
                 FORGEJO__security__PASSWORD_CHECK_PWN: "true"
-                FORGEJO__repository.signing__DEFAULT_TRUST_MODEL: "committer"
+                # FORGEJO__repository.signing__DEFAULT_TRUST_MODEL: "committer"
                 FORGEJO__service__DISABLE_REGISTRATION: "true"
     cnpg:
       main:
