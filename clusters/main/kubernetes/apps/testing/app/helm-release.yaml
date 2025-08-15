@@ -48,7 +48,8 @@ spec:
         enabled: true
         type: secret
         objectName: testing-app-template-my-secret
-        mountPath: /var/lib/my-file.txt
+        expandObjectName: false
+        mountPath: /var/lib/my-folder
         # subPath: my-file.txt
         # items:
         #   - key: key1
@@ -58,7 +59,7 @@ spec:
         enabled: true
         data:
           key1: "this is my secret value"
-          key2: "other key value"
+          # key2: "other key value"
     workload:
       main:
         podSpec:
