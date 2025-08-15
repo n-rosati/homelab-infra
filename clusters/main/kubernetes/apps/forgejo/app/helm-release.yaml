@@ -107,6 +107,18 @@ spec:
               enabled: true
               trigger:
                 schedule: 25 2 * * *
+      ssh-key:
+        enabled: true
+        type: secret
+        readOnly: true
+        objectName: forgejo-app-template-ssh-key-secret
+        mountPath: "/var/lib/ssh-key"
+    secret:
+      ssh-key-secret:
+        enabled: true
+        data:
+          private.key: ${FORGEJO_SSH_PRIVATE_KEY}
+          public.key: ${FORGEJO_SSH_PUBLIC_KEY}
     workload:
       main:
         podSpec:
@@ -136,6 +148,8 @@ spec:
                 FORGEJO__mailer__USER: "${SMTP_FROM}"
                 FORGEJO__mailer__PASSWD: "${SMTP_PASSWORD}"
                 FORGEJO__mailer__FROM: "Forgejo <${SMTP_FROM}>"
+                FORGEJO__repository.signing__FORMAT: "ssh"
+                FORGEJO__repository.signing__SIGNING_KEY: "/var/lib/ssh-key/public.key"
                 FORGEJO__security__SECRET_KEY: "${FORGEJO_SECRET_KEY}"
                 FORGEJO__security__PASSWORD_CHECK_PWN: "true"
                 FORGEJO__repository.signing__DEFAULT_TRUST_MODEL: "committer"
