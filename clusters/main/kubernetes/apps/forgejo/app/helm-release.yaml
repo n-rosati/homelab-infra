@@ -114,12 +114,12 @@ spec:
       #   objectName: forgejo-app-template-ssh-key-secret
       #   expandObjectName: false
       #   mountPath: "/var/lib/ssh-key"
-      secret:
-        ssh-key-secret:
-          enabled: true
-          data:
-            private.key: ${FORGEJO_SSH_PRIVATE_KEY}
-            public.key: ${FORGEJO_SSH_PUBLIC_KEY}
+    secret:
+      ssh-key-secret:
+        enabled: true
+        data:
+          private.key: ${FORGEJO_SSH_PRIVATE_KEY}
+          public.key: ${FORGEJO_SSH_PUBLIC_KEY}
     workload:
       main:
         podSpec:
