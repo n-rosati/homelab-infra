@@ -58,8 +58,8 @@ spec:
       my-secret:
         enabled: true
         data:
-          key1: "this is my secret value"
-          # key2: "other key value"
+          key: "this is my secret value"
+          key2: "other key value"
     workload:
       main:
         podSpec:
