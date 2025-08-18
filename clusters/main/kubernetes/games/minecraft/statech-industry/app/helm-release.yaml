@@ -37,6 +37,8 @@ spec:
       main:
         enabled: true
         type: LoadBalancer
+        annotations:
+          mc-router.itzg.me/externalServerName: "statech-industry.${DOMAIN_BASE}"
       rcon:
         enabled: true
         type: LoadBalancer

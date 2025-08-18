@@ -36,6 +36,9 @@ spec:
     service:
       main:
         type: LoadBalancer
+        annotations:
+          mc-router.itzg.me/defaultServer: "true"
+          mc-router.itzg.me/externalServerName: "jan.${DOMAIN_BASE}"
       rcon:
         type: LoadBalancer
     ingress:

@@ -38,6 +38,8 @@ spec:
       main:
         enabled: true
         type: LoadBalancer
+        annotations:
+          mc-router.itzg.me/externalServerName: "ftb-skies-2.${DOMAIN_BASE}"
       rcon:
         enabled: true
         type: LoadBalancer

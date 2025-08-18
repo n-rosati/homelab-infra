@@ -46,10 +46,3 @@ spec:
         integrations:
           metallb:
             enabled: true
-    mcrouter:
-      default: ${JAN_DNS_NAME}:25565
-      mappings:
-        - jan.${DOMAIN_BASE}=${JAN_DNS_NAME}:25565
-        - jan-2.${DOMAIN_BASE}=${JAN_2_DNS_NAME}:25565
-        - statech-industry.${DOMAIN_BASE}=${STATECH_INDUSTRY_DNS_NAME}:25565
-        - ftb-skies-2.${DOMAIN_BASE}=${FTB_SKIES_2_DNS_NAME}:25565
