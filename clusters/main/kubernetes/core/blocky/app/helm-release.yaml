@@ -51,13 +51,14 @@ spec:
         - name: customList
           lists:
             - https://raw.githubusercontent.com/n-rosati/homelab-infra/refs/heads/main/clusters/main/kubernetes/core/blocky/app/denylist.txt
-            - https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt
+            # see https://github.com/hagezi/dns-blocklists
+            - https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/multi.txt
       clientGroupsBlock:
         - name: default
           groups:
-            - default
-            - default-ads
-            - default-tracking
+            # - default
+            # - default-ads
+            # - default-tracking
             # - default-malicious
             # - default-suspicious
             - customList
