@@ -85,7 +85,7 @@ spec:
         size: 5Gi
     resources:
       limits:
-        cpu: 6000m
+        cpu: 4000m
         memory: 8Gi
     workload:
       main:
@@ -105,7 +105,8 @@ spec:
                 MAX_PLAYERS: 1
                 MOTD: FTB Skies 2!
                 PVP: true
-                MEMORY: 4G
+                MEMORY: ""
+                JVM_XX_OPTS: "-XX:MaxRAMPercentage=50"
                 RCON_PASSWORD: ${MC_RCON_PASSWORD}
                 USE_MODPACK_START_SCRIPT: true
                 SEED: "-6792938523469477000"
