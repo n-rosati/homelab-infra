@@ -85,8 +85,8 @@ spec:
         size: 5Gi
     resources:
       limits:
-        cpu: 4000m
-        memory: 6Gi
+        cpu: 6000m
+        memory: 8Gi
     workload:
       main:
         podSpec:
