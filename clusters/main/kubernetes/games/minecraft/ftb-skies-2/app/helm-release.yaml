@@ -122,7 +122,7 @@ spec:
                 LINK_LATEST: "false"
                 PAUSE_IF_NO_PLAYERS: "false"
                 PLAYERS_ONLINE_CHECK_INTERVAL: "5m"
-                PRUNE_BACKUPS_DAYS: "7"
+                PRUNE_BACKUPS_DAYS: "4"
                 TAR_COMPRESS_METHOD: "zstd"
     addons:
       codeserver:
