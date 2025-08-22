@@ -94,15 +94,16 @@ spec:
             main:
               imageSelector: j21Image
               env:
-                OPS: Hydranoid620
-                WHITELIST: Hydranoid620
+                OPS: Hydranoid620,b227
+                WHITELIST: Hydranoid620,b227
+                DIFFICULTY: easy
                 ENABLE_COMMAND_BLOCK: true
                 VERSION: 1.21.1
                 TYPE: FTBA
                 FTB_MODPACK_ID: 129
                 FTB_MODPACK_VERSION_ID: 100127
                 FTB_FORCE_REINSTALL: false
-                MAX_PLAYERS: 1
+                MAX_PLAYERS: 2
                 MOTD: FTB Skies 2!
                 PVP: true
                 MEMORY: ""
