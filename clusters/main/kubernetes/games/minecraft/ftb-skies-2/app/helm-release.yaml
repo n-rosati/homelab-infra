@@ -85,7 +85,7 @@ spec:
         size: 5Gi
     resources:
       limits:
-        cpu: 4000m
+        cpu: 6000m
         memory: 8Gi
     workload:
       main:
