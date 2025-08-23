@@ -86,7 +86,10 @@ spec:
     resources:
       limits:
         cpu: null
-        memory: 12Gi
+        memory: null
+      requests:
+        cpu: null
+        memory: null
     workload:
       main:
         podSpec:
