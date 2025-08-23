@@ -84,8 +84,12 @@ spec:
         targetSelectAll: true
         size: 5Gi
     resources:
-      limits: {}
-      requests: {}
+      limits: 
+        cpu: null
+        memory: null
+      requests:
+        cpu: null
+        memory: null
     workload:
       main:
         podSpec:
