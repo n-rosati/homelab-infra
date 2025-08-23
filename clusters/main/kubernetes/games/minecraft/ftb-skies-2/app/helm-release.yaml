@@ -83,7 +83,9 @@ spec:
         mountPath: /mods
         targetSelectAll: true
         size: 5Gi
-    resources: {}
+    resources:
+      limits: {}
+      requests: {}
     workload:
       main:
         podSpec:
