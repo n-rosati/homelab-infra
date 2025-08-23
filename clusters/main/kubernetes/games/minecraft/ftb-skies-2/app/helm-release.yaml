@@ -22,20 +22,6 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 3
-  postRenderers:
-    - kustomize:
-        patchesStratecigMerge:
-          - |
-            apiVersion: apps/v1
-            kind: Deployment
-            metadata: 
-              name: ftb-skies-2
-            spec: 
-              template:
-                spec:
-                  containers:
-                    - name: ftb-skies-2
-                      resources: {}
   values:
     global:
       stopAll: false
@@ -97,13 +83,13 @@ spec:
         mountPath: /mods
         targetSelectAll: true
         size: 5Gi
-#    resources:
-#      limits: 
-#        cpu: null
-#        memory: null
-#      requests:
-#        cpu: null
-#        memory: null
+    resources:
+      limits: 
+        cpu: null
+        memory: 16Gi
+      requests:
+        cpu: null
+        memory: 2Gi
     workload:
       main:
         podSpec:
