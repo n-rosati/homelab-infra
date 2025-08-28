@@ -94,12 +94,12 @@ spec:
                 USE_MODPACK_START_SCRIPT: true
                 SEED: "-6792938523469477000"
                 FORCE_REDOWNLOAD: false
-                VIEW_DISTANCE: 6
+                VIEW_DISTANCE: 10
                 USE_AIKAR_FLAGS: false
                 USE_FLARE_FLAGS: false
                 USE_MEOWICE_FLAGS: true
                 USE_MEOWICE_GRAALVM_FLAGS: true
-                USE_SIMD_FLAGS: false
+                USE_SIMD_FLAGS: true
                 ALLOW_FLIGHT: true
             mcbackup:
               enabled: true
