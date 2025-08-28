@@ -65,9 +65,10 @@ spec:
         size: 5Gi
     resources:
       limits:
-        cpu: 4000m
-        memory: 4Gi
+        cpu: null
+        memory: null
       requests:
+        cpu: 100m
         memory: 1Gi
     workload:
       main:
