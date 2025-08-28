@@ -84,17 +84,18 @@ spec:
         targetSelectAll: true
         size: 5Gi
     resources:
-      limits: 
-        cpu: 4000m
-        memory: 10Gi
       requests:
-        memory: 4Gi
+        cpu: 100m
+        memory: 2Gi
+      limits:
+        cpu: null
+        memory: null
     workload:
       main:
         podSpec:
           containers:
             main:
-              imageSelector: j21Image
+              imageSelector: j21graalvmImage
               env:
                 OPS: Hydranoid620,b227,BlueMoon_Live
                 WHITELIST: Hydranoid620,b227,BlueMoon_Live
@@ -108,21 +109,18 @@ spec:
                 MAX_PLAYERS: 3
                 MOTD: FTB Skies 2!
                 PVP: true
-                MEMORY: ""
-                JVM_XX_OPTS: -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200
-                  -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:MaxRAMPercentage=50
-                  -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M
-                  -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4
-                  -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90
-                  -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem
-                  -XX:MaxTenuringThreshold=1  -XX:+AlwaysPreTouch
+                MEMORY: "6G"
+                # JVM_XX_OPTS: -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:MaxRAMPercentage=50 -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1  -XX:+AlwaysPreTouch
                 MAX_TICK_TIME: 60000
                 RCON_PASSWORD: ${MC_RCON_PASSWORD}
                 USE_MODPACK_START_SCRIPT: true
                 SEED: "-6792938523469477000"
                 FORCE_REDOWNLOAD: false
+                VIEW_DISTANCE: 10
                 USE_AIKAR_FLAGS: false
                 USE_FLARE_FLAGS: false
+                USE_MEOWICE_FLAGS: true
+                USE_MEOWICE_GRAALVM_FLAGS: true
                 USE_SIMD_FLAGS: false
                 ALLOW_FLIGHT: true
             mcbackup:
