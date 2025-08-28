@@ -99,7 +99,7 @@ spec:
                 USE_FLARE_FLAGS: false
                 USE_MEOWICE_FLAGS: true
                 USE_MEOWICE_GRAALVM_FLAGS: true
-                USE_SIMD_FLAGS: true
+                USE_SIMD_FLAGS: false
                 ALLOW_FLIGHT: true
             mcbackup:
               enabled: true
