@@ -95,7 +95,7 @@ spec:
         podSpec:
           containers:
             main:
-              imageSelector: j21alpineImage
+              imageSelector: j21Image
               env:
                 OPS: Hydranoid620,b227,BlueMoon_Live
                 WHITELIST: Hydranoid620,b227,BlueMoon_Live
