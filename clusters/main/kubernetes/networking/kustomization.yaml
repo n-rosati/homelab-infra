@@ -4,3 +4,4 @@ resources:
   - nginx-external/ks.yaml
   - nginx-internal/ks.yaml
   - wg-easy/ks.yaml
+  - nginx-proxy-manager/ks.yaml
