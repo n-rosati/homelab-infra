@@ -30,3 +30,7 @@ spec:
     service:
       main:
         type: LoadBalancer
+      web:
+        type: LoadBalancer
+      websecure:
+        type: LoadBalancer
