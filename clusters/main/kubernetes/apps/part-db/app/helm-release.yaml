@@ -30,7 +30,7 @@ spec:
     image:
       repository: docker.io/jbtronics/part-db1
       pullPolicy: IfNotPresent
-      tag: v1.17.4@sha256:6254df20984c16c0ae539d748b997dea92530f7cbd64016da5e1f607d5b1619c
+      tag: v2.0.0@sha256:665f601d8bdbe55db9f48e5dcb76e7a7dbeba75126d4b7d4c1a3a1a96d082c2b
     credentials:
       home-s3:
         name: home-s3
