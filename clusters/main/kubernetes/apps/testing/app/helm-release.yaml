@@ -61,7 +61,8 @@ spec:
         targetSelector:
           main:
             main:
-              mountPath: /patches
+              mountPath: /patches/rs-config-patch.json
+              subPath: rs-config-patch.json
               readOnly: true
     secret:
       my-secret:
