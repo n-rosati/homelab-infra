@@ -83,8 +83,7 @@ spec:
                 {
                   "$set": {
                     "path": "$.controller.energyCapacity",
-                    "value": 99999,
-                    "value-type": int
+                    "value": 99999
                   }
                 }
               ]
