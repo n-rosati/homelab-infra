@@ -25,4 +25,4 @@ resources:
   - thelounge/ks.yaml
   - github-release-monitor/ks.yaml
   - forgejo/ks.yaml
-  # - part-db-test/ks.yaml
+  - part-db-test/ks.yaml
