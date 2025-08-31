@@ -19,3 +19,4 @@ resources:
   - metallb.yaml
   - cilium.yaml
   - headlamp.yaml
+  - part-db.yaml
