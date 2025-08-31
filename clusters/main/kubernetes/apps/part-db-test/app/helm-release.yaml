@@ -31,15 +31,6 @@ spec:
       repository: docker.io/jbtronics/part-db1
       pullPolicy: IfNotPresent
       tag: v2.0.1
-    credentials:
-      home-s3:
-        name: home-s3
-        type: s3
-        url: ${S3_URL}
-        bucket: part-db-test
-        encrKey: ${BACKUP_ENCRYPTION_KEY}
-        accessKey: ${S3_ACCESS_KEY}
-        secretKey: ${S3_SECRET_KEY}
     securityContext:
       container:
         readOnlyRootFilesystem: false
