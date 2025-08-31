@@ -29,8 +29,7 @@ spec:
       stopAll: false
     image:
       repository: docker.io/jbtronics/part-db1
-      # pullPolicy: IfNotPresent
-      pullPolicy: Always
+      pullPolicy: IfNotPresent
       tag: v2.0.1
     credentials:
       home-s3:
