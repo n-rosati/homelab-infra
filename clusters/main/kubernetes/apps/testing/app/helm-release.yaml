@@ -54,6 +54,16 @@ spec:
         # items:
         #   - key: key1
         #     path: my-file.txt
+      configmap-persist:
+        enabled: true
+        type: configmap
+        objectName: rs-config
+        targetSelector:
+          main:
+            main:
+              mountPath: /var/lib/test.json
+              subPath: test.json
+              readOnly: true
     secret:
       my-secret:
         enabled: true
@@ -76,6 +86,23 @@ spec:
                   enabled: false
                 startup:
                   enabled: false
+    configmap:
+      rs-config:
+        enabled: true
+        data:
+          key: |
+            {
+              "file": "/data/config/refinedstorage-common.toml",
+              "ops": [
+                {
+                  "$set": {
+                    "path": "$.controller.energyCapacity",
+                    "value": 1000000,
+                    "value-type": int
+                  }
+                }
+              ]
+            }
     addons:
       codeserver:
         enabled: true
