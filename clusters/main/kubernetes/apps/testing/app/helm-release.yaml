@@ -61,7 +61,7 @@ spec:
         targetSelector:
           main:
             main:
-              mountPath: /var/lib/patches
+              mountPath: /patches
               readOnly: true
     secret:
       my-secret:
