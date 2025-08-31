@@ -130,7 +130,7 @@ spec:
                 DB_AUTOMIGRATE: true
                 DEFAULT_LANG: en
                 DEFAULT_TIMEZONE: Etc/UTC
-                DEFAULT_URI: https://partdb.${DOMAIN_BASE}
+                DEFAULT_URI: https://partdb-test.${DOMAIN_BASE}
                 EMAIL_SENDER_EMAIL: ${SMTP_FROM}
                 EMAIL_SENDER_NAME: PartDB Service
                 FIXER_API_KEY: ${PARTDB_FIXER_API_KEY}
