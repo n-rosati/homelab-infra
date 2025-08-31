@@ -57,7 +57,7 @@ spec:
       configmap-persist:
         enabled: true
         type: configmap
-        objectName: rs-config
+        objectName: rs-config-patch
         targetSelector:
           main:
             main:
