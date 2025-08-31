@@ -61,8 +61,7 @@ spec:
         targetSelector:
           main:
             main:
-              mountPath: /var/lib/test.json
-              subPath: test.json
+              mountPath: /var/lib/patches
               readOnly: true
     secret:
       my-secret:
