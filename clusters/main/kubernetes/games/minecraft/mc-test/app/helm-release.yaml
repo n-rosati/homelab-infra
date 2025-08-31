@@ -63,6 +63,32 @@ spec:
         mountPath: /mods
         targetSelectAll: true
         size: 5Gi
+      rs-config-patch:
+        enabled: true
+        type: configmap
+        objectName: rs-config-patch
+        targetSelector:
+          main:
+            main:
+              mountPath: /patches
+              readOnly: true
+    configmap:
+      rs-config-patch:
+        enabled: true
+        data:
+          rs-config-patch.json: |
+            {
+              "file": "/data/config/refinedstorage-common.toml",
+              "ops": [
+                {
+                  "$set": {
+                    "path": "$.controller.energyCapacity",
+                    "value": 99999,
+                    "value-type": int
+                  }
+                }
+              ]
+            }
     resources:
       limits:
         cpu: null
@@ -103,6 +129,7 @@ spec:
                 USE_MEOWICE_GRAALVM_FLAGS: true
                 USE_SIMD_FLAGS: false
                 ALLOW_FLIGHT: true
+                PATCH_DEFINITIONS: "/patches"
             mcbackup:
               enabled: true
               env:
