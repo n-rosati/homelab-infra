@@ -50,10 +50,10 @@ spec:
         objectName: testing-app-template-my-secret
         expandObjectName: false
         mountPath: /var/lib/my-folder
-        # subPath: my-file.txt
-        # items:
-        #   - key: key1
-        #     path: my-file.txt
+        subPath: my-file.txt
+        items:
+          - key: key1
+            path: my-file.txt
       configmap-persist:
         enabled: true
         type: configmap
