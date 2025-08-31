@@ -86,10 +86,10 @@ spec:
                 startup:
                   enabled: false
     configmap:
-      rs-config:
+      rs-config-patch:
         enabled: true
         data:
-          key: |
+          rs-config-patch.json: |
             {
               "file": "/data/config/refinedstorage-common.toml",
               "ops": [
