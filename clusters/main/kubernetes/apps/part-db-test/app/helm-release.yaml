@@ -83,30 +83,10 @@ spec:
         enabled: true
         type: pvc
         mountPath: /var/www/html/public/media
-        volsync:
-          - name: uploads
-            type: restic
-            credentials: home-s3
-            dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
-            src:
-              enabled: true
-              trigger:
-                schedule: 40 2 * * *
       uploads:
         enabled: true
         type: pvc
         mountPath: /var/www/html/uploads
-        volsync:
-          - name: uploads
-            type: restic
-            credentials: home-s3
-            dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
-            src:
-              enabled: true
-              trigger:
-                schedule: 45 2 * * *
     cnpg:
       main:
         enabled: true
@@ -118,13 +98,9 @@ spec:
         cluster:
           singleNode: true
         backups:
-          enabled: true
-          revision: "3"
-          credentials: home-s3
+          enabled: false
         recovery:
           enabled: false
-          credentials: home-s3
-          revision: "2"
     workload:
       main:
         podSpec:
