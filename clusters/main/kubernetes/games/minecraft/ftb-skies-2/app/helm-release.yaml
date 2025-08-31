@@ -83,13 +83,32 @@ spec:
         mountPath: /mods
         targetSelectAll: true
         size: 5Gi
-    resources:
-      requests:
-        cpu: 100m
-        memory: 2Gi
-      limits:
-        cpu: null
-        memory: null
+      rs-config-patch:
+        enabled: true
+        type: configmap
+        objectName: rs-config-patch
+        targetSelector:
+          main:
+            main:
+              mountPath: /patches/rs-config-patch.json
+              subPath: rs-config-patch.json
+              readOnly: true
+    configmap:
+      rs-config-patch:
+        enabled: true
+        data:
+          rs-config-patch.json: |
+            {
+              "file": "/data/config/refinedstorage-common.toml",
+              "ops": [
+                {
+                  "$set": {
+                    "path": "$.controller.energyCapacity",
+                    "value": 1000000
+                  }
+                }
+              ]
+            }
     workload:
       main:
         podSpec:
@@ -97,6 +116,7 @@ spec:
             main:
               imageSelector: j21Image
               env:
+                PATCH_DEFINITIONS: "/patches"
                 OPS: Hydranoid620,b227,BlueMoon_Live
                 WHITELIST: Hydranoid620,b227,BlueMoon_Live
                 DIFFICULTY: easy
@@ -132,6 +152,13 @@ spec:
                 PLAYERS_ONLINE_CHECK_INTERVAL: "5m"
                 PRUNE_BACKUPS_DAYS: "4"
                 TAR_COMPRESS_METHOD: "zstd"
+    resources:
+      requests:
+        cpu: 100m
+        memory: 2Gi
+      limits:
+        cpu: null
+        memory: null
     addons:
       codeserver:
         enabled: false
