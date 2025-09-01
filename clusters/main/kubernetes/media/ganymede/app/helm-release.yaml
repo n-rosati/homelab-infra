@@ -74,8 +74,8 @@ spec:
               externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
           homepage:
             enabled: true
-            name: PartDB
-            description: Part-DB is an open source inventory management system for your electronic components.
+            name: Ganymede
+            description: Twitch VOD and Live Stream archiving platform. Includes a rendered and real-time chat for each archive.
             group: Apps
             icon: https://raw.githubusercontent.com/Zibbp/ganymede/refs/heads/main/frontend/public/android-chrome-512x512.png
             widget:
