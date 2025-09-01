@@ -49,13 +49,12 @@ spec:
     service:
       main:
         enabled: true
-        type: LoadBalancer
         ports:
           main:
             enabled: true
             port: 3000
             protocol: http
-            targetPort: 80
+            targetPort: 3000
     ingress:
       main:
         enabled: true
