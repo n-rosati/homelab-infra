@@ -155,7 +155,7 @@ spec:
               env:
                 API_URL: ganymede-api.${DOMAIN_BASE}
                 CDN_URL: ganymede-cdn.${DOMAIN_BASE}
-                COOKIE_DOMAIN: ganymede.${DOMAIN_BASE}
+                COOKIE_DOMAIN: ${DOMAIN_BASE}
                 DB_HOST: "{{ .Values.cnpg.main.creds.host }}"
                 DB_PORT: "5432"
                 DB_USER: "{{ .Values.cnpg.main.user }}"
