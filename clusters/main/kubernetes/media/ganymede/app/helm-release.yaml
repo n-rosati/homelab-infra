@@ -155,7 +155,7 @@ spec:
                 CDN_URL: ganymede-cdn.${DOMAIN_BASE}
                 COOKIE_DOMAIN: ganymede.${DOMAIN_BASE}
                 DB_HOST: "{{ .Values.cnpg.main.creds.host }}"
-                DB_POSRT: "5432"
+                DB_PORT: "5432"
                 DB_USER: "{{ .Values.cnpg.main.user }}"
                 DB_PASS: "{{ .Values.cnpg.main.password }}"
                 DB_NAME: "{{ .Values.cnpg.main.database }}"
