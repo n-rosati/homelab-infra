@@ -161,8 +161,6 @@ spec:
                 DB_NAME: "{{ .Values.cnpg.main.database }}"
                 DEFAULT_LOCALE: en
                 FRONTEND_HOST: ganymede.${DOMAIN_BASE}
-                PGID: 568
-                PUID: 568
                 TWITCH_CLIENT_ID: ${GANYMEDE_TWITCH_CLIENT_ID}
                 TWITCH_CLIENT_SECRET: ${GANYMEDE_TWITCH_SECRET}
     addons:
