@@ -130,18 +130,22 @@ spec:
                 MOTD: FTB Skies 2!
                 PVP: true
                 MEMORY: "8G"
+                JVM_OPTS: -Xms8G -Xmx8G
                 MAX_TICK_TIME: 60000
                 RCON_PASSWORD: ${MC_RCON_PASSWORD}
                 USE_MODPACK_START_SCRIPT: true
                 SEED: "-6792938523469477000"
                 FORCE_REDOWNLOAD: false
                 VIEW_DISTANCE: 10
+                SIMULATION_DISTANCE: 10
                 USE_AIKAR_FLAGS: false
                 USE_FLARE_FLAGS: false
-                USE_MEOWICE_FLAGS: true
+                USE_MEOWICE_FLAGS: false
                 USE_MEOWICE_GRAALVM_FLAGS: false
                 USE_SIMD_FLAGS: false
                 ALLOW_FLIGHT: true
+                STOP_SERVER_ANNOUNCE_DELAY: 15
+                STOP_DURATION: 40
             mcbackup:
               enabled: true
               env:
