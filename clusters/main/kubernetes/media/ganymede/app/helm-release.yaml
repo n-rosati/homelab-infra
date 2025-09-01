@@ -61,6 +61,8 @@ spec:
         ingressClassName: external
         hosts:
           - host: ganymede.${DOMAIN_BASE}
+          - host: ganymede-api.${DOMAIN_BASE}
+          - host: ganymede-cdn.${DOMAIN_BASE}
         integrations:
           certManager:
             enabled: true
@@ -151,8 +153,8 @@ spec:
                   type: http
                   path: /
               env:
-                # API_URL: ganymede-api.${DOMAIN_BASE}
-                # CDN_URL: ganymede-cdn.${DOMAIN_BASE}
+                API_URL: ganymede-api.${DOMAIN_BASE}
+                CDN_URL: ganymede-cdn.${DOMAIN_BASE}
                 COOKIE_DOMAIN: ganymede.${DOMAIN_BASE}
                 DB_HOST: "{{ .Values.cnpg.main.creds.host }}"
                 DB_PORT: "5432"
