@@ -49,9 +49,9 @@ spec:
     service:
       main:
         enabled: true
+        type: LoadBalancer
         ports:
           main:
-            type: LoadBalancer
             enabled: true
             port: 3000
             protocol: http
