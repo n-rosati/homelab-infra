@@ -156,6 +156,7 @@ spec:
                 ALLOW_ATTACHMENT_DOWNLOADS: "1"
                 ALLOW_EMAIL_PW_RESET: "true"
                 APP_ENV: docker
+                APP_SECRET: ${PARTDB_SECRET}
                 ATTACHMENT_DOWNLOAD_BY_DEFAULT: "1"
                 BANNER: 'Welcome to Part-DB.  <blockquote class=''pb-0''> <p style=''font-size: 12px''> And God said <br> $\\nabla \\cdot \\vec{D} = \\rho$, $\\nabla \\cdot \\vec{B} = 0$, $\\nabla \\times \\vec{E} = -\\frac{\\partial \\vec{B}}{\\partial t}$, $\\nabla \\times \\vec{H} = \\vec{j} + \\frac{\\partial \\vec{D}}{\\partial t}$,  <br> and then there was light. </p> </blockquote>'
                 BASE_CURRENCY: CAD
@@ -163,7 +164,7 @@ spec:
                 DB_AUTOMIGRATE: true
                 DEFAULT_LANG: en
                 DEFAULT_TIMEZONE: Etc/UTC
-                DEFAULT_URI: https://partdb.${DOMAIN_BASE}
+                DEFAULT_URI: https://partdb.${DOMAIN_BASE}/
                 EMAIL_SENDER_EMAIL: ${SMTP_FROM}
                 EMAIL_SENDER_NAME: PartDB Service
                 FIXER_API_KEY: ${PARTDB_FIXER_API_KEY}
@@ -186,4 +187,6 @@ spec:
                 PROVIDER_OCTOPART_CLIENT_ID: ${PARTDB_OCTOPART_CLIENT_ID}
                 PROVIDER_OCTOPART_CURRENCY: CAD
                 PROVIDER_OCTOPART_SECRET: ${PARTDB_OCTOPART_SECRET}
+                TRUSTED_PROXIES: 172.16.0.0/16,172.17.0.0/16
+                TRUSTED_HOSTS: partdb.${DOMAIN_BASE}
                 USE_GRAVATAR: "0"
