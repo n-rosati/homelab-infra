@@ -88,6 +88,10 @@ spec:
                 mappings.0.label: Total Parts
                 mappings.0.format: number
     persistence:
+      tmp:
+        enabled: true
+        type: emptyDir
+        mountPath: /run/php
       media:
         enabled: true
         type: pvc
