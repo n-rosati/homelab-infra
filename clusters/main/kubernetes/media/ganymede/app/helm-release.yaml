@@ -153,16 +153,16 @@ spec:
                   type: http
                   path: /
               env:
-                API_URL: api.ganymede.${DOMAIN_BASE}
-                CDN_URL: cdn.ganymede.${DOMAIN_BASE}
-                COOKIE_DOMAIN: ${DOMAIN_BASE}
+                API_URL: https://api.ganymede.${DOMAIN_BASE}/
+                CDN_URL: https://cdn.ganymede.${DOMAIN_BASE}/
+                COOKIE_DOMAIN: ganymede.${DOMAIN_BASE}
                 DB_HOST: "{{ .Values.cnpg.main.creds.host }}"
                 DB_PORT: "5432"
                 DB_USER: "{{ .Values.cnpg.main.user }}"
                 DB_PASS: "{{ .Values.cnpg.main.password }}"
                 DB_NAME: "{{ .Values.cnpg.main.database }}"
                 DEFAULT_LOCALE: en
-                FRONTEND_HOST: ganymede.${DOMAIN_BASE}
+                FRONTEND_HOST: https://ganymede.${DOMAIN_BASE}/
                 TWITCH_CLIENT_ID: ${GANYMEDE_TWITCH_CLIENT_ID}
                 TWITCH_CLIENT_SECRET: ${GANYMEDE_TWITCH_SECRET}
     addons:
