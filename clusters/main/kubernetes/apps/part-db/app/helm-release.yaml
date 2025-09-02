@@ -91,9 +91,7 @@ spec:
       php:
         enabled: true
         type: emptyDir
-        medium: Memory
-        size: 1Gi
-        mountPath: /run/php
+        mountPath: /php
       media:
         enabled: true
         type: pvc
