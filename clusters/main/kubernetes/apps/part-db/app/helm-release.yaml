@@ -143,6 +143,8 @@ spec:
         podSpec:
           containers:
             main:
+              command: [ "/bin/sh", "-c" ]
+              args: [ "mkdir /run/php && ./partdb-entrypoint.sh" ]
               probes:
                 liveness:
                   enabled: false
