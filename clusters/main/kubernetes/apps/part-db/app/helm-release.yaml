@@ -139,6 +139,7 @@ spec:
         podSpec:
           containers:
             main:
+              # this is temporary until the part-db docker image is fixed
               command: [ "/bin/sh", "-c" ]
               args: [ "mkdir -p /run/php && /usr/sbin/php-fpm8.4 && apache2-foreground" ]
               probes:
