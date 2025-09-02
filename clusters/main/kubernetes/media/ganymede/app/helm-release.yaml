@@ -5,7 +5,6 @@ metadata:
   namespace: ganymede
 spec:
   interval: 15m
-  timeout: 20m
   chart:
     spec:
       chart: app-template
@@ -14,154 +13,68 @@ spec:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
-  releaseName: ganymede
-  install:
-    createNamespace: true
-    remediation:
-      retries: 3
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      retries: 3
   values:
-    release_name: ganymede
-    global:
-      stopAll: false
     image:
+      # Default, not used since we override per workload
       repository: ghcr.io/zibbp/ganymede
-      pullPolicy: IfNotPresent
       tag: "4.6.0"
-    credentials:
-      home-s3:
-        name: home-s3
-        type: s3
-        url: ${S3_URL}
-        bucket: ganymede
-        encrKey: ${BACKUP_ENCRYPTION_KEY}
-        accessKey: ${S3_ACCESS_KEY}
-        secretKey: ${S3_SECRET_KEY}
-    securityContext:
-      container:
-        readOnlyRootFilesystem: false
-        runAsNonRoot: false
-        runAsUser: 0
-        runAsGroup: 0
+
     service:
-      main:
+      api:
         enabled: true
         ports:
-          main:
+          http:
             enabled: true
             port: 4000
-            protocol: http
             targetPort: 4000
-          api:
+      frontend:
+        enabled: true
+        ports:
+          http:
             enabled: true
             port: 3000
-            protocol: http
             targetPort: 3000
+
     ingress:
-      main:
+      api:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: ganymede.${DOMAIN_BASE}
           - host: api.ganymede.${DOMAIN_BASE}
-          - host: cdn.ganymede.${DOMAIN_BASE}
+            paths:
+              - path: /
+                pathType: Prefix
         integrations:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-          nginx:
+      frontend:
+        enabled: true
+        ingressClassName: external
+        hosts:
+          - host: ganymede.${DOMAIN_BASE}
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
             enabled: true
-            # auth:
-            #   type: authelia
-            #   internalHost: ${AUTHELIA_DNS_NAME}
-            #   externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
-          homepage:
-            enabled: true
-            name: Ganymede
-            description: Twitch VOD and Live Stream archiving platform. Includes a rendered and real-time chat for each archive.
-            group: Apps
-            icon: https://raw.githubusercontent.com/Zibbp/ganymede/refs/heads/main/frontend/public/android-chrome-512x512.png
-            widget:
-              enabled: false
-    #           type: customapi
-    #           url: http://${PARTDB_DNS}:3000/api/parts
-    #           custom:
-    #             method: GET
-    #             headers.Authorization: Bearer ${HOMEPAGE_PARTDB_KEY}
-    #             mappings.0.field: hydra:totalItems
-    #             mappings.0.label: Total Parts
-    #             mappings.0.format: number
-    persistence:
-      videos:
-        type: nfs
-        enabled: true
-        server: ${TRUENAS_IP}
-        path: ${NFS_MEDIA_PATH}/Twitch
-        mountPath: /data/videos
-      config:
-        enabled: true
-        type: pvc
-        mountPath: /data/config
-        volsync:
-          - name: uploads
-            type: restic
-            credentials: home-s3
-            dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
-            src:
-              enabled: true
-              trigger:
-                schedule: 15 0 * * *
-      temp:
-        enabled: true
-        type: emptyDir
-        mountPath: /data/temp
-      logs:
-        enabled: true
-        type: emptyDir
-        mountPath: /data/logs
-    cnpg:
-      main:
-        enabled: true
-        database: ganymede
-        user: ganymede
-        password: ${GANYMEDE_DB_PASSWORD}
-        pgVersion: 16
-        mode: standalone
-        cluster:
-          singleNode: true
-        backups:
-          enabled: true
-          credentials: home-s3
-        recovery:
-          enabled: true
-          credentials: home-s3
+            certificateIssuer: le-prod
+
     workload:
-      main:
+      api:
+        enabled: true
+        type: Deployment
         podSpec:
           containers:
             main:
-              probes:
-                liveness:
-                  enabled: true
-                  type: http
-                  path: /health
-                readiness:
-                  enabled: true
-                  type: http
-                  path: /health
-                startup:
-                  enabled: true
-                  type: http
-                  path: /health
+              image:
+                repository: ghcr.io/zibbp/ganymede
+                tag: "4.6.0"
               env:
-                API_URL: https://api.ganymede.${DOMAIN_BASE}/v1
-                CDN_URL: https://cdn.ganymede.${DOMAIN_BASE}
-                COOKIE_DOMAIN: .ganymede.${DOMAIN_BASE}
                 FRONTEND_HOST: https://ganymede.${DOMAIN_BASE}
+                COOKIE_DOMAIN: ganymede.${DOMAIN_BASE}
+                CDN_URL: https://cdn.ganymede.${DOMAIN_BASE}
                 DB_HOST: "{{ .Values.cnpg.main.creds.host }}"
                 DB_PORT: "5432"
                 DB_USER: "{{ .Values.cnpg.main.user }}"
@@ -170,23 +83,21 @@ spec:
                 DEFAULT_LOCALE: en
                 TWITCH_CLIENT_ID: ${GANYMEDE_TWITCH_CLIENT_ID}
                 TWITCH_CLIENT_SECRET: ${GANYMEDE_TWITCH_SECRET}
-    addons:
-      codeserver:
+              ports:
+                - name: http
+                  containerPort: 4000
+      frontend:
         enabled: true
-        service:
-          type: LoadBalancer
-        ingress:
-          enabled: true
-          ingressClassName: external
-          hosts:
-            - host: edit-ganymede.${DOMAIN_BASE}
-          integrations:
-            certManager:
-            enabled: true
-            certificateIssuer: le-prod
-          nginx:
-            enabled: true
-            auth:
-              type: authelia
-              internalHost: ${AUTHELIA_DNS_NAME}
-              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+        type: Deployment
+        podSpec:
+          containers:
+            main:
+              image:
+                repository: ghcr.io/zibbp/ganymede-frontend
+                tag: "4.6.0"
+              env:
+                API_URL: https://api.ganymede.${DOMAIN_BASE}
+                CDN_URL: https://cdn.ganymede.${DOMAIN_BASE}
+              ports:
+                - name: http
+                  containerPort: 3000
