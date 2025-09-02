@@ -6,8 +6,7 @@ metadata:
 spec:
   interval: 10m
   path: clusters/main/kubernetes/apps/calibre/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: cluster
-
