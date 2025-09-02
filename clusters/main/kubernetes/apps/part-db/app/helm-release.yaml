@@ -91,7 +91,7 @@ spec:
       php:
         enabled: true
         type: emptyDir
-        mountPath: /php
+        mountPath: /run/php
       media:
         enabled: true
         type: pvc
