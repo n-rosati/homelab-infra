@@ -55,6 +55,11 @@ spec:
             port: 4000
             protocol: http
             targetPort: 4000
+          api:
+            enabled: true
+            port: 3000
+            protocol: http
+            targetPort: 3000
     ingress:
       main:
         enabled: true
