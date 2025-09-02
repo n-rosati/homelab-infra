@@ -90,12 +90,8 @@ spec:
     persistence:
       php:
         enabled: true
-        type: emptyDir
+        type: pvc
         mountPath: /run/php
-        targetSelector:
-          main:
-            main:
-              mountPath: /run/php
       media:
         enabled: true
         type: pvc
