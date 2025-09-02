@@ -9,7 +9,6 @@ resources:
   - qbittorrent/ks.yaml
   - jdownloader2/ks.yaml
   - part-db/ks.yaml
-  - calibre/ks.yaml
   - filebrowser/ks.yaml
   - calibre-web/ks.yaml
   - vaultwarden/ks.yaml
