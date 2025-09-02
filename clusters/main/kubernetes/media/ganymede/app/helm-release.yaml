@@ -62,7 +62,12 @@ spec:
         hosts:
           - host: ganymede.${DOMAIN_BASE}
           - host: api.ganymede.${DOMAIN_BASE}
+            paths:
+              - path: /api(/|$)(.*)
+                pathType: ImplementationSpecific
           - host: cdn.ganymede.${DOMAIN_BASE}
+        annotations:
+          nginx.ingress.kubernetes.io/rewrite-target: /$2
         integrations:
           certManager:
             enabled: true
