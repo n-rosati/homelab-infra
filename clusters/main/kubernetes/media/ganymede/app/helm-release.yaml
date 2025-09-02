@@ -66,7 +66,7 @@ spec:
         integrations:
           certManager:
             enabled: true
-            certificateIssuer: le-staging
+            certificateIssuer: le-prod
           nginx:
             enabled: true
             auth:
@@ -141,20 +141,19 @@ spec:
             main:
               probes:
                 liveness:
-                  enabled: false
+                  enabled: true
                   type: http
                   path: /health
                 readiness:
-                  enabled: false
+                  enabled: true
                   type: http
                   path: /health
                 startup:
-                  enabled: false
+                  enabled: true
                   type: http
                   path: /health
               env:
                 API_URL: https://api.ganymede.${DOMAIN_BASE}/
-                # CDN_URL: https://cdn.ganymede.${DOMAIN_BASE}/
                 COOKIE_DOMAIN: ganymede.${DOMAIN_BASE}
                 DB_HOST: "{{ .Values.cnpg.main.creds.host }}"
                 DB_PORT: "5432"
@@ -178,7 +177,7 @@ spec:
           integrations:
             certManager:
             enabled: true
-            certificateIssuer: le-staging
+            certificateIssuer: le-prod
           nginx:
             enabled: true
             auth:
