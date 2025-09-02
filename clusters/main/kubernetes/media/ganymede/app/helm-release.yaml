@@ -82,14 +82,14 @@ spec:
       api:
         enabled: true
         ports:
-          http:
+          api:
             enabled: true
             port: 4000
             targetPort: 4000
-      frontend:
+      main:
         enabled: true
         ports:
-          http:
+          main:
             enabled: true
             port: 3000
             targetPort: 3000
@@ -106,7 +106,7 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-      frontend:
+      main:
         enabled: true
         ingressClassName: external
         hosts:
@@ -143,12 +143,25 @@ spec:
               ports:
                 - name: http
                   containerPort: 4000
-      frontend:
+      main:
         enabled: true
         type: Deployment
         podSpec:
           containers:
             main:
+              probes:
+                liveness:
+                  enabled: true
+                  type: http
+                  path: /health
+                readiness:
+                  enabled: true
+                  type: http
+                  path: /health
+                startup:
+                  enabled: true
+                  type: http
+                  path: /health
               image:
                 repository: ghcr.io/zibbp/ganymede-frontend
                 tag: "4.6.0"
