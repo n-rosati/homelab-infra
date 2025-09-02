@@ -140,7 +140,7 @@ spec:
           containers:
             main:
               command: [ "/bin/sh", "-c" ]
-              args: [ "mkdir -p /run/php && ./partdb-entrypoint.sh" ]
+              args: [ "mkdir -p /run/php && sleep 3600" ]
               probes:
                 liveness:
                   enabled: false
