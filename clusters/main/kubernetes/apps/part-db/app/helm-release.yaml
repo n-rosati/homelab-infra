@@ -140,7 +140,7 @@ spec:
           containers:
             main:
               command: [ "/bin/sh", "-c" ]
-              args: [ "mkdir -p /run/php && sleep 3600" ]
+              args: [ "mkdir -p /run/php && apache2-foreground" ]
               probes:
                 liveness:
                   enabled: false
