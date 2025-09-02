@@ -52,9 +52,9 @@ spec:
         ports:
           main:
             enabled: true
-            port: 3000
+            port: 4000
             protocol: http
-            targetPort: 3000
+            targetPort: 4000
     ingress:
       main:
         enabled: true
@@ -143,18 +143,18 @@ spec:
                 liveness:
                   enabled: false
                   type: http
-                  path: /
+                  path: /health
                 readiness:
                   enabled: false
                   type: http
-                  path: /
+                  path: /health
                 startup:
                   enabled: false
                   type: http
-                  path: /
+                  path: /health
               env:
                 API_URL: https://api.ganymede.${DOMAIN_BASE}/
-                CDN_URL: https://cdn.ganymede.${DOMAIN_BASE}/
+                # CDN_URL: https://cdn.ganymede.${DOMAIN_BASE}/
                 COOKIE_DOMAIN: ganymede.${DOMAIN_BASE}
                 DB_HOST: "{{ .Values.cnpg.main.creds.host }}"
                 DB_PORT: "5432"
