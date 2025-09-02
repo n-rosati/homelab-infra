@@ -126,6 +126,7 @@ spec:
           containers:
             main:
               enabled: true
+              primary: true
               image:
                 repository: ghcr.io/zibbp/ganymede
                 tag: "4.6.0"
