@@ -92,6 +92,10 @@ spec:
         enabled: true
         type: emptyDir
         mountPath: /run/php
+        targetSelector:
+          main:
+            main:
+              mountPath: /run/php
       media:
         enabled: true
         type: pvc
