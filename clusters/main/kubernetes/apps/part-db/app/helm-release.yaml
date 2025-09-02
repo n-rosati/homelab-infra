@@ -88,10 +88,6 @@ spec:
                 mappings.0.label: Total Parts
                 mappings.0.format: number
     persistence:
-      php:
-        enabled: true
-        type: pvc
-        mountPath: /run/php
       media:
         enabled: true
         type: pvc
@@ -143,6 +139,8 @@ spec:
         podSpec:
           containers:
             main:
+              command: [ "/bin/sh", "-c" ]
+              args: [ "mkdir -p /run/php && ./partdb-entrypoint.sh" ]
               probes:
                 liveness:
                   enabled: false
