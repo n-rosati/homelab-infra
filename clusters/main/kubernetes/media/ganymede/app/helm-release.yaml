@@ -127,6 +127,19 @@ spec:
             main:
               enabled: true
               primary: true
+              probes:
+                liveness:
+                  enabled: false
+                  type: http
+                  path: /health
+                readiness:
+                  enabled: false
+                  type: http
+                  path: /health
+                startup:
+                  enabled: false
+                  type: http
+                  path: /health
               image:
                 repository: ghcr.io/zibbp/ganymede
                 tag: "4.6.0"
