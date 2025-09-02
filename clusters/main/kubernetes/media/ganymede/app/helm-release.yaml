@@ -62,12 +62,7 @@ spec:
         hosts:
           - host: ganymede.${DOMAIN_BASE}
           - host: api.ganymede.${DOMAIN_BASE}
-            paths:
-              - path: /api(/|$)(.*)
-                pathType: ImplementationSpecific
           - host: cdn.ganymede.${DOMAIN_BASE}
-        annotations:
-          nginx.ingress.kubernetes.io/rewrite-target: /$2
         integrations:
           certManager:
             enabled: true
@@ -158,7 +153,7 @@ spec:
                   type: http
                   path: /health
               env:
-                API_URL: https://api.ganymede.${DOMAIN_BASE}
+                API_URL: https://api.ganymede.${DOMAIN_BASE}/v1
                 CDN_URL: https://cdn.ganymede.${DOMAIN_BASE}
                 COOKIE_DOMAIN: .ganymede.${DOMAIN_BASE}
                 FRONTEND_HOST: https://ganymede.${DOMAIN_BASE}
