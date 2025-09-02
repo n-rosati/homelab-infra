@@ -18,7 +18,66 @@ spec:
       # Default, not used since we override per workload
       repository: ghcr.io/zibbp/ganymede
       tag: "4.6.0"
-
+    credentials:
+      home-s3:
+        name: home-s3
+        type: s3
+        url: ${S3_URL}
+        bucket: ganymede
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        accessKey: ${S3_ACCESS_KEY}
+        secretKey: ${S3_SECRET_KEY}
+    securityContext:
+      container:
+        readOnlyRootFilesystem: false
+        runAsNonRoot: false
+        runAsUser: 0
+        runAsGroup: 0
+    persistence:
+      videos:
+        type: nfs
+        enabled: true
+        server: ${TRUENAS_IP}
+        path: ${NFS_MEDIA_PATH}/Twitch
+        mountPath: /data/videos
+      config:
+        enabled: true
+        type: pvc
+        mountPath: /data/config
+        volsync:
+          - name: uploads
+            type: restic
+            credentials: home-s3
+            dest:
+              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+            src:
+              enabled: true
+              trigger:
+                schedule: 15 0 * * *
+      temp:
+        enabled: true
+        type: emptyDir
+        mountPath: /data/temp
+      logs:
+        enabled: true
+        type: emptyDir
+        mountPath: /data/logs
+    cnpg:
+      main:
+        enabled: true
+        database: ganymede
+        user: ganymede
+        password: ${GANYMEDE_DB_PASSWORD}
+        pgVersion: 16
+        mode: standalone
+        cluster:
+          singleNode: true
+        backups:
+          enabled: true
+          credentials: home-s3
+        recovery:
+          enabled: true
+          credentials: home-s3
     service:
       api:
         enabled: true
@@ -34,7 +93,6 @@ spec:
             enabled: true
             port: 3000
             targetPort: 3000
-
     ingress:
       api:
         enabled: true
@@ -60,7 +118,6 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: le-prod
-
     workload:
       api:
         enabled: true
