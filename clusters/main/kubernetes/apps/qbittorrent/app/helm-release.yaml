@@ -78,7 +78,3 @@ spec:
         path: ${NFS_APPS_PATH}/qBittorrent
         mountPath: /mnt/Torrents
         server: ${TRUENAS_IP}
-    qbitportforward:
-      enabled: true
-      QBT_USERNAME: ${QBITTORRENT_USER}
-      QBT_PASSWORD: ${QBITTORRENT_PASSWORD}
