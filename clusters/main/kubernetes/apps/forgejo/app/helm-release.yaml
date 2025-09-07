@@ -158,7 +158,7 @@ spec:
         user: forgejo
         password: ${FORGEJO_DB_PASSWORD}
         pgVersion: 16
-        mode: standalone # CHANGE TO RECOVERY
+        mode: standalone # CHANGE TO RECOVERY WHEN REINSTALLING
         cluster:
           singleNode: true
         backups:

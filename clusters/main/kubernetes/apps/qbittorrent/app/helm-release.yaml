@@ -67,11 +67,11 @@ spec:
             name: home-s3
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
-                schedule: 10 1 * * *
+                schedule: 20 5 * * *
       data:
         enabled: true
         type: nfs
@@ -79,6 +79,6 @@ spec:
         mountPath: /mnt/Torrents
         server: ${TRUENAS_IP}
     qbitportforward:
-      enabled: false
+      enabled: true
       QBT_USERNAME: ${QBITTORRENT_USER}
       QBT_PASSWORD: ${QBITTORRENT_PASSWORD}

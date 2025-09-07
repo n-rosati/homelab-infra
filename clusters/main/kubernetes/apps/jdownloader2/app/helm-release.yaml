@@ -59,8 +59,6 @@ spec:
               custom:
                 username: ${JDOWNLOADER_USERNAME}
                 password: ${JDOWNLOADER_PASSWORD}
-          traefik:
-            enabled: false
     persistence:
       config:
         volsync:
@@ -68,11 +66,11 @@ spec:
             name: config
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
-                schedule: 5 1 * * *
+                schedule: 40 4 * * *
       output:
         type: nfs
         enabled: true

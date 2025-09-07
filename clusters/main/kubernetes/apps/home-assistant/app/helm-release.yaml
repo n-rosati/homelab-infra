@@ -62,15 +62,15 @@ spec:
             name: home-s3
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
-                schedule: 45 0 * * *
+                schedule: 20 4 * * *
     cnpg:
       main:
         password: ${CNPG_PASSWORD}
-        mode: standalone # CHANGE ME TO RECOVERY MODE 
+        mode: standalone # CHANGE TO RECOVERY WHEN REINSTALLING
         backups:
           enabled: true
           credentials: home-s3

@@ -62,11 +62,11 @@ spec:
             name: home-s3
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
-                schedule: 0 1 * * *
+                schedule: 10 7 * * *
       library:
         type: nfs
         enabled: true

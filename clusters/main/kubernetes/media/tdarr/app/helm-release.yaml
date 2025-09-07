@@ -80,22 +80,22 @@ spec:
             name: home-s3
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
-                schedule: 25 1 * * *
+                schedule: 40 7 * * *
       server:
         volsync:
           - name: server
             type: restic
             credentials: home-s3
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
-                schedule: 35 0 * * *
+                schedule: 40 7 * * *
       media:
         type: nfs
         enabled: true

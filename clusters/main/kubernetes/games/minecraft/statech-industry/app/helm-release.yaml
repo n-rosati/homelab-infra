@@ -67,11 +67,11 @@ spec:
             name: home-s3
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
-                schedule: 30 4 * * *
+                schedule: 50 6 * * *
       backups:
         type: nfs
         path: /mnt/DSU/Backups/Minecraft/statech-industry

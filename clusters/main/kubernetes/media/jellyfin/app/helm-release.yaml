@@ -76,11 +76,11 @@ spec:
             name: config
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
-                schedule: 5 3 * * *
+                schedule: 30 7 * * *
       media:
         enabled: true
         type: nfs

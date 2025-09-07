@@ -42,7 +42,6 @@ spec:
         ingressClassName: external
         hosts:
           - host: nextcloud.${DOMAIN_BASE}
-            # load bearing path definition (will break things)
             paths:
               - path: /
                 pathType: Prefix
@@ -64,22 +63,22 @@ spec:
             name: app-html
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLIN
             src:
               enabled: true
               trigger:
-                schedule: 0 2 * * *
+                schedule: 50 4 * * *
       config:
         volsync:
           - credentials: home-s3
             name: app-config
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
-                schedule: 15 2 * * *
+                schedule: 50 4 * * *
       data:
         type: nfs
         server: ${TRUENAS_IP}
@@ -100,7 +99,7 @@ spec:
       main:
         pgVersion: 15
         password: ${CNPG_PASSWORD}
-        mode: standalone
+        mode: standalone # CHANGE TO RECOVERY WHEN REINSTALLING
         backups:
           enabled: true
           credentials: home-s3

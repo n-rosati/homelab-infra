@@ -97,11 +97,11 @@ spec:
             name: home-s3
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
-                schedule: 40 1 * * *
+                schedule: 50 7 * * *
     workload:
       main:
         podSpec:

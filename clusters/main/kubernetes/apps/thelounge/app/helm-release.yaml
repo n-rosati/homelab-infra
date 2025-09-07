@@ -86,7 +86,7 @@ spec:
             src:
               enabled: true
               trigger:
-                schedule: 35 1 * * *
+                schedule: 40 5 * * *
       uploads:
         enabled: true
         type: pvc
@@ -100,7 +100,7 @@ spec:
             src:
               enabled: true
               trigger:
-                schedule: 30 1 * * *
+                schedule: 40 5 * * *
     securityContext:
       container:
         readOnlyRootFilesystem: false

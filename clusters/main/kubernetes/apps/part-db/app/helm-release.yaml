@@ -97,11 +97,11 @@ spec:
             type: restic
             credentials: home-s3
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
-                schedule: 40 2 * * *
+                schedule: 0 5 * * *
       uploads:
         enabled: true
         type: pvc
@@ -111,11 +111,11 @@ spec:
             type: restic
             credentials: home-s3
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
-                schedule: 45 2 * * *
+                schedule: 0 5 * * *
     cnpg:
       main:
         enabled: true

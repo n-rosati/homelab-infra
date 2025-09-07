@@ -92,11 +92,11 @@ spec:
             name: data
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
-                schedule: 10 3 * * *
+                schedule: 30 5 * * *
     cnpg:
       main:
         enabled: true

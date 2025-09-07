@@ -83,14 +83,13 @@ spec:
             name: data
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
-                schedule: 15 3 * * *
+                schedule: 50 5 * * *
     cnpg:
       main:
-        # bump backup and recovery revisions if app is being remade
         mode: recovery
         backups:
           enabled: true

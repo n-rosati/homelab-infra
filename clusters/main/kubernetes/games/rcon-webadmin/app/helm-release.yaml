@@ -89,7 +89,7 @@ spec:
             src:
               enabled: true
               trigger:
-                schedule: 45 4 * * *
+                schedule: 0 7 * * *
     rcon:
       rwa_websocket_url_ssl: "wss://rcon-ws.${DOMAIN_BASE}:443"
     workload:
