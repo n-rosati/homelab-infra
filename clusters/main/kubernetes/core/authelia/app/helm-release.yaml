@@ -24,8 +24,6 @@ spec:
   values:
     global:
       stopAll: false
-    podOptions:
-      hostUsers: true
     credentials:
       home-s3:
         name: home-s3
