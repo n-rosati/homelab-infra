@@ -83,24 +83,4 @@ spec:
               env:
                 PGADMIN_DEFAULT_EMAIL: ${EMAIL}
                 PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
-    addons:
-      codeserver:
-        enabled: true
-        workingDir: "/pgadmin4"
-        service:
-          type: ClusterIP
-        ingress:
-          enabled: true
-          ingressClassName: external
-          hosts:
-            - host: edit-pgadmin.${DOMAIN_BASE}
-          integrations:
-            certManager:
-              enabled: true
-              certificateIssuer: le-prod
-            nginx:
-              enabled: true
-              auth:
-                type: authelia
-                internalHost: ${AUTHELIA_DNS_NAME}
-                externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+                PGADMIN_CONFIG_SHARED_STORAGE: "[{ 'name': 'Shared 1', 'path': '/shared_folder', 'restricted_access': False }]"
