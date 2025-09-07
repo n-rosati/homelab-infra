@@ -56,7 +56,7 @@ spec:
             dest:
               enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
-              enabled: true
+              enabled: false
               trigger:
                 schedule: 30 4 * * *
     workload:
