@@ -25,7 +25,7 @@ spec:
   values:
     release_name: thelounge
     global:
-      stopAll: true
+      stopAll: false
     image:
       repository: quay.io/linuxserver.io/thelounge
       pullPolicy: IfNotPresent
