@@ -65,6 +65,11 @@ spec:
             main:
               resources:
                 limits:
-                  cpu: "2"
-                  memory: 8Gi
                   nvidia.com/gpu: 1
+    resources:
+      requests:
+        cpu: 100m
+        memory: 1Gi
+      limits:
+        cpu: null
+        memory: null
