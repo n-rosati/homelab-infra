@@ -83,4 +83,4 @@ spec:
               env:
                 PGADMIN_DEFAULT_EMAIL: ${EMAIL}
                 PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
-                PGADMIN_CONFIG_SHARED_STORAGE: "[{ 'name': 'Shared 1', 'path': '/shared_folder', 'restricted_access': False }]"
+                PGADMIN_CONFIG_SHARED_STORAGE: "[{ 'name': 'Shared 1', 'path': '/storage', 'restricted_access': False }]"
