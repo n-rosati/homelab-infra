@@ -25,6 +25,8 @@ spec:
       strategy: rollback
       retries: 3
   values:
+    podOptions:
+      hostUsers: true
     metrics:
       main:
         enabled: false
