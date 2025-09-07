@@ -63,18 +63,18 @@ spec:
         type: nfs
         server: "${TRUENAS_IP}"
         path: ${NFS_APPS_PATH}/pgAdmin
-        mountPath: /var/lib/pgadmin/storage/nicholas_rosati.xyz
+        mountPath: /storage
       config:
         volsync:
           - credentials: home-s3
             name: home-s3
             type: restic
             dest:
-              enabled: false #CHANGE TO TRUE WHEN REINSTALLING APP
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
-                schedule: 45 1 * * *
+                schedule: 10 5 * * *
     workload:
       main:
         podSpec:
@@ -83,3 +83,23 @@ spec:
               env:
                 PGADMIN_DEFAULT_EMAIL: ${EMAIL}
                 PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+    addons:
+      codeserver:
+        enabled: true
+        service:
+          type: ClusterIP
+        ingress:
+          enabled: true
+          ingressClassName: external
+          hosts:
+            - host: edit-pgadmin.${DOMAIN_BASE}
+          integrations:
+            certManager:
+              enabled: true
+              certificateIssuer: le-prod
+            nginx:
+              enabled: true
+              auth:
+                type: authelia
+                internalHost: ${AUTHELIA_DNS_NAME}
+                externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
