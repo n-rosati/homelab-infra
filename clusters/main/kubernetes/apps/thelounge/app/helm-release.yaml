@@ -86,7 +86,21 @@ spec:
             src:
               enabled: true
               trigger:
-                schedule: 25 1 * * *
+                schedule: 35 1 * * *
+      uploads:
+        enabled: true
+        type: pvc
+        mountPath: /uploads
+        volsync:
+          - credentials: home-s3
+            name: home-s3
+            type: restic
+            dest:
+              enabled: true
+            src:
+              enabled: true
+              trigger:
+                schedule: 30 1 * * *
     securityContext:
       container:
         readOnlyRootFilesystem: false
