@@ -86,6 +86,7 @@ spec:
     addons:
       codeserver:
         enabled: true
+        workingDir: "/pgadmin4"
         service:
           type: ClusterIP
         ingress:
