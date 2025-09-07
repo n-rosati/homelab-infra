@@ -19,4 +19,4 @@ resources:
   - metallb.yaml
   - cilium.yaml
   - headlamp.yaml
-  - ingress-nginx
+  - ingress-nginx.yaml
