@@ -54,7 +54,7 @@ spec:
             credentials: home-s3
             type: restic
             dest:
-              enabled: true # CHANGE TO TRUE WHEN REINSTALLING
+              enabled: false # CHANGE TO TRUE WHEN REINSTALLING
             src:
               enabled: true
               trigger:
