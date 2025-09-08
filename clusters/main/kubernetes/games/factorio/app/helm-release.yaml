@@ -60,7 +60,7 @@ spec:
     ingress:
       main:
         enabled: true
-        # ingressClassName: external
+        ingressClassName: external
         hosts:
           - host: factorio.${DOMAIN_BASE}
         integrations:
