@@ -31,10 +31,10 @@ spec:
       storageOverProvisioningPercentage: 100000
       concurrentAutomaticEngineUpgradePerNodeLimit: 2
     csi:
-      attacherReplicaCount: 3
-      provisionerReplicaCount: 3
-      resizerReplicaCount: 3
-      snapshotterReplicaCount: 3
+      attacherReplicaCount: 2
+      provisionerReplicaCount: 2
+      resizerReplicaCount: 2
+      snapshotterReplicaCount: 2
     persistence:
       # Set to false to pick another CSI as default
       defaultClass: true
