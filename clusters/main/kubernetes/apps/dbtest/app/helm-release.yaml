@@ -1,0 +1,25 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: dbtest
+spec:
+  instances: 1
+  storage:
+    size: 5Gi
+  bootstrap:
+    initdb:
+      database: dbtest
+      owner: dbtestuser
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dbtest-external
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    cnpg.io/cluster: sideproject-db
+    role: primary
