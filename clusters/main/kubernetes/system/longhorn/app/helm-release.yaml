@@ -31,8 +31,8 @@ spec:
       storageOverProvisioningPercentage: 100000
       concurrentAutomaticEngineUpgradePerNodeLimit: 2
     csi:
-      attacherReplicaCount: 1
-      provisionerReplicaCount: 1
+      attacherReplicaCount: 2
+      provisionerReplicaCount: 2
       resizerReplicaCount: 1
       snapshotterReplicaCount: 1
     persistence:
