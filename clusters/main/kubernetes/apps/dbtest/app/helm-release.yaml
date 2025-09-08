@@ -2,6 +2,7 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: dbtest
+  namespace: dbtest
 spec:
   instances: 1
   storage:
@@ -15,6 +16,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: dbtest-external
+  namespace: dbtest
 spec:
   type: LoadBalancer
   ports:
