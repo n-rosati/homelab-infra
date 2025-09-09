@@ -66,7 +66,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: vpn.${DOMAIN_BASE}
+          - host: vpn.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true
@@ -111,6 +111,6 @@ spec:
                 INIT_ENABLED: true
                 INIT_USERNAME: admin
                 INIT_PASSWORD: ${WG_PASSWORD}
-                INIT_HOST: wireguard.${DOMAIN_BASE}
+                INIT_HOST: wireguard.${DOMAIN_0}
                 INIT_PORT: 51820
                 INIT_DNS: ${BLOCKY_IP}

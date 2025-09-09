@@ -62,7 +62,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: spoolman.${DOMAIN_BASE}
+          - host: spoolman.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true

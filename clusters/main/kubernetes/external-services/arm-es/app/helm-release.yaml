@@ -36,7 +36,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: arm.${DOMAIN_BASE}
+          - host: arm.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true

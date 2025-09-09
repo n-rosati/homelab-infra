@@ -36,7 +36,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: homepage.${DOMAIN_BASE}
+          - host: homepage.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true
@@ -65,7 +65,7 @@ spec:
           containers:
             main:
               env:
-                HOMEPAGE_ALLOWED_HOSTS: homepage.${DOMAIN_BASE}
+                HOMEPAGE_ALLOWED_HOSTS: homepage.${DOMAIN_0}
     addons:
       codeserver:
         enabled: true
@@ -76,7 +76,7 @@ spec:
           enabled: true
           ingressClassName: external
           hosts:
-            - host: edit-homepage.${DOMAIN_BASE}
+            - host: edit-homepage.${DOMAIN_0}
           integrations:
             certManager:
               enabled: true

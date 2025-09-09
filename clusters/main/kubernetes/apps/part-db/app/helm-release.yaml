@@ -60,7 +60,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: partdb.${DOMAIN_BASE}
+          - host: partdb.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true
@@ -172,7 +172,7 @@ spec:
                 DB_AUTOMIGRATE: true
                 DEFAULT_LANG: en
                 DEFAULT_TIMEZONE: Etc/UTC
-                DEFAULT_URI: https://partdb.${DOMAIN_BASE}/
+                DEFAULT_URI: https://partdb.${DOMAIN_0}/
                 EMAIL_SENDER_EMAIL: ${SMTP_FROM}
                 EMAIL_SENDER_NAME: PartDB Service
                 FIXER_API_KEY: ${PARTDB_FIXER_API_KEY}
@@ -196,5 +196,5 @@ spec:
                 PROVIDER_OCTOPART_CURRENCY: CAD
                 PROVIDER_OCTOPART_SECRET: ${PARTDB_OCTOPART_SECRET}
                 TRUSTED_PROXIES: 172.16.0.0/16,172.17.0.0/16
-                TRUSTED_HOSTS: partdb.${DOMAIN_BASE},part-db-app-template.part-db.svc.cluster.local
+                TRUSTED_HOSTS: partdb.${DOMAIN_0},part-db-app-template.part-db.svc.cluster.local
                 USE_GRAVATAR: "0"

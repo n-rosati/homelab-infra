@@ -39,7 +39,7 @@ spec:
         enabled: true
         type: LoadBalancer
         annotations:
-          mc-router.itzg.me/externalServerName: "ftb-skies-2.${DOMAIN_BASE}"
+          mc-router.itzg.me/externalServerName: "ftb-skies-2.${DOMAIN_0}"
       rcon:
         enabled: true
         type: LoadBalancer
@@ -48,7 +48,7 @@ spec:
         enabled: true
         ingressClassName: internal
         hosts:
-          - host: ftb-skies-2-unused.${DOMAIN_BASE}
+          - host: ftb-skies-2-unused.${DOMAIN_0}
         integrations:
           homepage:
             enabled: true
@@ -170,7 +170,7 @@ spec:
           enabled: true
           ingressClassName: external
           hosts:
-            - host: ftb-skies-2-config.${DOMAIN_BASE}
+            - host: ftb-skies-2-config.${DOMAIN_0}
           integrations:
             certManager:
               enabled: true

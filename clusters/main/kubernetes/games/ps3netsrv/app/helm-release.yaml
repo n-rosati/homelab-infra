@@ -42,4 +42,4 @@ spec:
         enabled: true
         ingressClassName: internal
         hosts:
-          - host: ps3netsrv.${DOMAIN_BASE}
+          - host: ps3netsrv.${DOMAIN_0}

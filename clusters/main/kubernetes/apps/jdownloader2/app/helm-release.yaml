@@ -38,7 +38,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: jdownloader.${DOMAIN_BASE}
+          - host: jdownloader.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true

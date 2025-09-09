@@ -36,7 +36,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: scrutiny.${DOMAIN_BASE}
+          - host: scrutiny.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true

@@ -36,7 +36,7 @@ spec:
         enabled: true
         ingressClassName: internal
         hosts:
-          - host: s3.${DOMAIN_BASE}
+          - host: s3.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true

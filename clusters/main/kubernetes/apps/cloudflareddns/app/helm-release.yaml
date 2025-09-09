@@ -23,9 +23,9 @@ spec:
       retries: 3
   values:
     cloudflareddns:
-      api_token: ${CF_API_TOKEN}
+      api_token: ${DOMAIN_0_CLOUDFLARE_TOKEN}
       host_zone_record:
-        - domain: home.${DOMAIN_BASE}
+        - domain: home.${DOMAIN_0}
           record: A
-          zone: ${CF_ZONE_ID}
-      user: ${EMAIL}
+          zone: ${DOMAIN_0_CLOUDFLARE_ZONE_ID}
+      user: ${PERSONAL_EMAIL}

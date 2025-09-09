@@ -38,7 +38,7 @@ spec:
         type: LoadBalancer
         annotations:
           mc-router.itzg.me/defaultServer: "true"
-          mc-router.itzg.me/externalServerName: "jan.${DOMAIN_BASE}"
+          mc-router.itzg.me/externalServerName: "jan.${DOMAIN_0}"
       rcon:
         type: LoadBalancer
     ingress:
@@ -46,7 +46,7 @@ spec:
         enabled: true
         ingressClassName: internal
         hosts:
-          - host: jan-unused.${DOMAIN_BASE}
+          - host: jan-unused.${DOMAIN_0}
         integrations:
           homepage:
             enabled: true
@@ -119,7 +119,7 @@ spec:
           enabled: true
           ingressClassName: external
           hosts:
-            - host: jan-config.${DOMAIN_BASE}
+            - host: jan-config.${DOMAIN_0}
           integrations:
             certManager:
               enabled: true

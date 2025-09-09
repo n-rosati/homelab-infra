@@ -20,24 +20,24 @@ spec:
         enabled: true
         name: selfsigned
       ACME:
-      - name: le-prod
-        server: 'https://acme-v02.api.letsencrypt.org/directory'
-        email: '${EMAIL}'
-        type: cloudflare
-        cfapitoken: '${CF_API_TOKEN}'
-      - name: le-staging
-        server: 'https://acme-staging-v02.api.letsencrypt.org/directory'
-        email: '${EMAIL}'
-        type: cloudflare
-        cfapitoken: '${CF_API_TOKEN}'
+        - name: le-prod
+          server: 'https://acme-v02.api.letsencrypt.org/directory'
+          email: '${PERSONAL_EMAIL}'
+          type: cloudflare
+          cfapitoken: '${DOMAIN_0_CLOUDFLARE_TOKEN}'
+        - name: le-staging
+          server: 'https://acme-staging-v02.api.letsencrypt.org/directory'
+          email: '${PERSONAL_EMAIL}'
+          type: cloudflare
+          cfapitoken: '${DOMAIN_0_CLOUDFLARE_TOKEN}'
     clusterCertificates:
       # Namespaces in which the certificates must be available
       # Accepts comma-separated regex expressions
       replicationNamespaces: '.*'
       certificates:
-      - name: cluster-wildcard
-        enabled: true
-        certificateIssuer: le-prod
-        hosts:
-        - ${DOMAIN_BASE}
-        - '*.${DOMAIN_BASE}'
+        - name: cluster-wildcard
+          enabled: true
+          certificateIssuer: le-prod
+          hosts:
+            - ${DOMAIN_0}
+            - '*.${DOMAIN_0}'

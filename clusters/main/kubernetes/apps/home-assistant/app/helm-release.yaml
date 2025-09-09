@@ -42,7 +42,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: homeassistant.${DOMAIN_BASE}
+          - host: homeassistant.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true
@@ -92,7 +92,7 @@ spec:
           enabled: true
           ingressClassName: external
           hosts:
-            - host: edit-homeassistant.${DOMAIN_BASE}
+            - host: edit-homeassistant.${DOMAIN_0}
           integrations:
             certManager:
             enabled: true

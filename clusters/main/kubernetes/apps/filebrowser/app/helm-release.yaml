@@ -32,7 +32,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: filebrowser.${DOMAIN_BASE}
+          - host: filebrowser.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true

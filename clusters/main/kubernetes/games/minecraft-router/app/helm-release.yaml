@@ -29,10 +29,10 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: jan.${DOMAIN_BASE}
-          - host: jan2.${DOMAIN_BASE}
-          - host: statech-industry.${DOMAIN_BASE}
-          - host: ftb-skies-2.${DOMAIN_BASE}
+          - host: jan.${DOMAIN_0}
+          - host: jan2.${DOMAIN_0}
+          - host: statech-industry.${DOMAIN_0}
+          - host: ftb-skies-2.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true

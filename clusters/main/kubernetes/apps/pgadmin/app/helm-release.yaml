@@ -38,7 +38,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: pgadmin.${DOMAIN_BASE}
+          - host: pgadmin.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true
@@ -81,6 +81,6 @@ spec:
           containers:
             main:
               env:
-                PGADMIN_DEFAULT_EMAIL: ${EMAIL}
+                PGADMIN_DEFAULT_EMAIL: ${PERSONAL_EMAIL}
                 PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
                 PGADMIN_CONFIG_SHARED_STORAGE: "[{ 'name': 'Storage', 'path': '/storage', 'restricted_access': False }]"

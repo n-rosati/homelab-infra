@@ -38,7 +38,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: calibre.${DOMAIN_BASE}
+          - host: calibre.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true

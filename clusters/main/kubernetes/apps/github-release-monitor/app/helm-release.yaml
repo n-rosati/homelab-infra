@@ -52,7 +52,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: release-mon.${DOMAIN_BASE}
+          - host: release-mon.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true

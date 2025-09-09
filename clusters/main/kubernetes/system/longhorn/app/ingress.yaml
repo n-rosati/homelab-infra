@@ -15,14 +15,14 @@ metadata:
     gethomepage.dev/description: Cloud-Native distributed storage built on and for Kubernetes.
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Infrastructure
-    gethomepage.dev/href: https://longhorn.${DOMAIN_BASE}/
+    gethomepage.dev/href: https://longhorn.${DOMAIN_0}/
     gethomepage.dev/icon: longhorn.svg
     gethomepage.dev/name: Longhorn
     gethomepage.dev/pod-selector: app.kubernetes.io/instance=longhorn
 spec:
   ingressClassName: "external"
   rules:
-    - host: longhorn.${DOMAIN_BASE}
+    - host: longhorn.${DOMAIN_0}
       http:
         paths:
           - pathType: Prefix
@@ -34,5 +34,5 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - longhorn.${DOMAIN_BASE}
+        - longhorn.${DOMAIN_0}
       secretName: longhorn-system-longhorn

@@ -42,7 +42,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: ollama.${DOMAIN_BASE}
+          - host: ollama.${DOMAIN_0}
         integrations:
           certManager:
             certificateIssuer: le-prod

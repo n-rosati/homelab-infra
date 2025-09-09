@@ -38,7 +38,7 @@ spec:
         enabled: true
         type: LoadBalancer
         annotations:
-          mc-router.itzg.me/externalServerName: "statech-industry.${DOMAIN_BASE}"
+          mc-router.itzg.me/externalServerName: "statech-industry.${DOMAIN_0}"
       rcon:
         enabled: true
         type: LoadBalancer
@@ -47,7 +47,7 @@ spec:
         enabled: true
         ingressClassName: internal
         hosts:
-          - host: statech-industry-unused.${DOMAIN_BASE}
+          - host: statech-industry-unused.${DOMAIN_0}
         integrations:
           homepage:
             enabled: true
@@ -119,7 +119,7 @@ spec:
           enabled: true
           ingressClassName: external
           hosts:
-            - host: statech-industry-config.${DOMAIN_BASE}
+            - host: statech-industry-config.${DOMAIN_0}
           integrations:
             certManager:
               enabled: true

@@ -41,17 +41,17 @@ spec:
         gethomepage.dev/description: Headlamp is a user-friendly Kubernetes UI focused on extensibility.
         gethomepage.dev/enabled: "true"
         gethomepage.dev/group: Infrastructure
-        gethomepage.dev/href: https://headlamp.${DOMAIN_BASE}/
+        gethomepage.dev/href: https://headlamp.${DOMAIN_0}/
         gethomepage.dev/icon: https://raw.githubusercontent.com/kubernetes-sigs/headlamp/refs/heads/main/frontend/public/android-chrome-512x512.png
         gethomepage.dev/name: Headlamp
         gethomepage.dev/pod-selector: app.kubernetes.io/instance=headlamp
       ingressClassName: "external"
       hosts:
-        - host: headlamp.${DOMAIN_BASE}
+        - host: headlamp.${DOMAIN_0}
           paths:
             - path: /
               type: ImplementationSpecific
       tls:
         - secretName: flux-system-headlamp
           hosts:
-            - headlamp.${DOMAIN_BASE}
+            - headlamp.${DOMAIN_0}

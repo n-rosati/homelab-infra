@@ -38,7 +38,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: qbittorrent.${DOMAIN_BASE}
+          - host: qbittorrent.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true

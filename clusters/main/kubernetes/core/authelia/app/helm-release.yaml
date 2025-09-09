@@ -38,7 +38,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: auth.${DOMAIN_BASE}
+          - host: auth.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true
@@ -67,16 +67,16 @@ spec:
         issuer: Authelia
       session:
         cookies:
-          - domain: ${DOMAIN_BASE}
-            authelia_url: https://auth.${DOMAIN_BASE}
-            default_redirection_url: https://homepage.${DOMAIN_BASE}
+          - domain: ${DOMAIN_0}
+            authelia_url: https://auth.${DOMAIN_0}
+            default_redirection_url: https://homepage.${DOMAIN_0}
             inactivity: 2w
       authentication_backend:
         ldap:
           address: ldap://${LLDAP_DNS_NAME}:3890
           implementation: lldap
           tls:
-            server_name: lldap.${DOMAIN_BASE}
+            server_name: lldap.${DOMAIN_0}
           base_dn: ${LDAP_BASE_DN}
           additional_users_dn: ou=people
           users_filter: (&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))
@@ -96,17 +96,17 @@ spec:
           username: ${SMTP_FROM}
           password: ${SMTP_PASSWORD}
           sender: 'Authelia <${SMTP_FROM}>'
-          identifier: auth.${DOMAIN_BASE}
+          identifier: auth.${DOMAIN_0}
           subject: '{title}'
           timeout: 15s
       access_control:
         default_policy: deny
         rules:
-          - domain: '*.${DOMAIN_BASE}'
+          - domain: '*.${DOMAIN_0}'
             networks:
               - 192.168.2.0/24
             policy: bypass
-          - domain: '*.${DOMAIN_BASE}'
+          - domain: '*.${DOMAIN_0}'
             policy: one_factor
             subject:
               - group:users

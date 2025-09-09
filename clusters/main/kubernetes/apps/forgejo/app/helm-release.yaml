@@ -59,7 +59,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: code.${DOMAIN_BASE}
+          - host: code.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true
@@ -178,7 +178,7 @@ spec:
           enabled: true
           ingressClassName: external
           hosts:
-            - host: edit-code.${DOMAIN_BASE}
+            - host: edit-code.${DOMAIN_0}
           integrations:
             certManager:
             enabled: true

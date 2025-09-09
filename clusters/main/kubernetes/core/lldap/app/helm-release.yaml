@@ -45,7 +45,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: lldap.${DOMAIN_BASE}
+          - host: lldap.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true
@@ -98,11 +98,11 @@ spec:
           containers:
             main:
               env:
-                LLDAP_HTTP_URL: https://lldap.${DOMAIN_BASE}
+                LLDAP_HTTP_URL: https://lldap.${DOMAIN_0}
                 LLDAP_LDAP_BASE_DN: ${LDAP_BASE_DN}
                 # Admin user
                 LLDAP_LDAP_USER_DN: ${LDAP_USER_DN}
-                LLDAP_LDAP_USER_EMAIL: ${EMAIL}
+                LLDAP_LDAP_USER_EMAIL: ${PERSONAL_EMAIL}
                 LLDAP_LDAP_USER_PASS: ${LDAP_USER_PASS}
                 # Email
                 LLDAP_SMTP_OPTIONS__ENABLE_PASSWORD_RESET: true

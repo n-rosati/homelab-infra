@@ -62,7 +62,7 @@ spec:
         enabled: true
         ingressClassName: external
         hosts:
-          - host: factorio.${DOMAIN_BASE}
+          - host: factorio.${DOMAIN_0}
         integrations:
           certManager:
             enabled: true
@@ -123,7 +123,7 @@ spec:
           enabled: true
           ingressClassName: external
           hosts:
-            - host: factorio-config.${DOMAIN_BASE}
+            - host: factorio-config.${DOMAIN_0}
           integrations:
             certManager:
               enabled: true
