@@ -32,7 +32,7 @@ spec:
       pullPolicy: IfNotPresent
       tag: v2.1.1
     busyboxImage:
-      reposity: busybox
+      repository: busybox
       tag: latest
       pullPolicy: IfNotPresent
     credentials:
