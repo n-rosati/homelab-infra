@@ -31,6 +31,10 @@ spec:
       repository: docker.io/jbtronics/part-db1
       pullPolicy: IfNotPresent
       tag: v2.1.1
+    busyboxImage:
+      reposity: busybox
+      tag: latest
+      pullPolicy: IfNotPresent
     credentials:
       home-s3:
         name: home-s3
@@ -143,6 +147,20 @@ spec:
     workload:
       main:
         podSpec:
+          initContainers:
+            create-folder:
+              enabled: true
+              type: init
+              imageSelector: busyboxImage
+              command:
+                - "/bin/sh"
+                - "-c"
+              args:
+                - "mkdir -p /run/php"
+              resources:
+                requests:
+                  cpu: 5m
+                  memory: 16Mi
           containers:
             main:
               # this is temporary until the part-db docker image is fixed
