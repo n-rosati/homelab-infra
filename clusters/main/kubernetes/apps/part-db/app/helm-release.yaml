@@ -31,10 +31,6 @@ spec:
       repository: docker.io/jbtronics/part-db1
       pullPolicy: IfNotPresent
       tag: v2.1.1
-    busyboxImage:
-      repository: busybox
-      tag: latest
-      pullPolicy: IfNotPresent
     credentials:
       home-s3:
         name: home-s3
