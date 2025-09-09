@@ -149,9 +149,8 @@ spec:
         podSpec:
           containers:
             main:
-              # this is temporary until the part-db docker image is fixed
               command: [ "/bin/sh", "-c" ]
-              args: [ "mkdir -p /run/php && /usr/sbin/php-fpm8.4 && exec apache2-foreground" ]
+              args: [ "mkdir -p /run/php && /usr/sbin/php-fpm8.4 && exec apache2-foreground" ] # image likely wont be fixed so this will make the folder then pass off to apache2
               probes:
                 liveness:
                   enabled: false
