@@ -138,7 +138,7 @@ spec:
                 FORGEJO__database__HOST: "{{ .Values.cnpg.main.creds.host }}"
                 FORGEJO__database__NAME: "{{ .Values.cnpg.main.database }}"
                 FORGEJO__database__USER: "{{ .Values.cnpg.main.user }}"
-                FORGEJO__database__PASSWD: ${FORGEJO_DB_PASSWORD}
+                FORGEJO__database__PASSWD: "{{ .Values.cnpg.main.password }}"
                 FORGEJO__mailer__ENABLED: "true"
                 FORGEJO__mailer__SMTP_ADDR: "${SMTP_SERVER}"
                 FORGEJO__mailer__SMTP_PORT: "${SMTP_PORT}"
