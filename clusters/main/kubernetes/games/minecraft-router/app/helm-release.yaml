@@ -4,7 +4,7 @@ metadata:
   name: minecraft-router
   namespace: minecraft-router
 spec:
-  interval: 15m
+  interval: 2m
   chart:
     spec:
       chart: minecraft-router

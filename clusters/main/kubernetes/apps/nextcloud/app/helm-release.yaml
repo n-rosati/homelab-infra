@@ -4,7 +4,8 @@ metadata:
   name: nextcloud
   namespace: nextcloud
 spec:
-  interval: 15m
+  interval: 2m
+  timeout: 10m
   chart:
     spec:
       chart: nextcloud
@@ -13,7 +14,6 @@ spec:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
-  timeout: 10m
   install:
     createNamespace: true
     remediation:

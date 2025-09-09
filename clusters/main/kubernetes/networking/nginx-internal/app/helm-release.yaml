@@ -4,7 +4,7 @@ metadata:
   name: nginx-internal
   namespace: nginx-internal
 spec:
-  interval: 15m
+  interval: 2m
   chart:
     spec:
       chart: ingress-nginx
@@ -13,8 +13,6 @@ spec:
         kind: HelmRepository
         name: ingress-nginx
         namespace: flux-system
-      interval: 15m
-  timeout: 20m
   maxHistory: 3
   install:
     createNamespace: true

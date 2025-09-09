@@ -4,7 +4,7 @@ metadata:
   name: convertx
   namespace: convertx
 spec:
-  interval: 15m
+  interval: 2m
   chart:
     spec:
       chart: app-template

@@ -4,7 +4,7 @@ metadata:
   name: ftb-skies-2
   namespace: mc-ftb-skies-2
 spec:
-  interval: 15m
+  interval: 2m
   timeout: 10m
   chart:
     spec:

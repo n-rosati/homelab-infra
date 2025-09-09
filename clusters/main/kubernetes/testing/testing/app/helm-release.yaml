@@ -4,8 +4,7 @@ metadata:
   name: testing
   namespace: testing
 spec:
-  interval: 15m
-  timeout: 20m
+  interval: 2m
   chart:
     spec:
       chart: app-template

@@ -4,7 +4,7 @@ metadata:
   name: generic-device-plugin
   namespace: generic-device-plugin
 spec:
-  interval: 15m
+  interval: 2m
   chart:
     spec:
       chart: generic-device-plugin

@@ -4,7 +4,7 @@ metadata:
   name: cluster
   namespace: flux-system
 spec:
-  interval: 30m
+  interval: 15m
   url: ssh://git@github.com/n-rosati/homelab-infra.git
   ref:
     branch: main

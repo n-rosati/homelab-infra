@@ -4,7 +4,7 @@ metadata:
   name: part-db
   namespace: part-db
 spec:
-  interval: 15m
+  interval: 2m
   timeout: 20m
   chart:
     spec:

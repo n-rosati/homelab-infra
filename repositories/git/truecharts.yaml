@@ -4,7 +4,7 @@ metadata:
   name: truecharts
   namespace: flux-system
 spec:
-  interval: 30m
+  interval: 15m
   url: https://github.com/trueforge-org/truecharts
   ref:
     branch: master

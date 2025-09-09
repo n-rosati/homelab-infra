@@ -4,7 +4,7 @@ metadata:
   name: ollama
   namespace: ollama
 spec:
-  interval: 15m
+  interval: 2m
   chart:
     spec:
       chart: ollama

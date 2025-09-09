@@ -4,7 +4,7 @@ metadata:
   name: rcon-webadmin
   namespace: rcon-webadmin
 spec:
-  interval: 15m
+  interval: 2m
   chart:
     spec:
       chart: rcon-webadmin

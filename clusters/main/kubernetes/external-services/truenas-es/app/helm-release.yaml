@@ -4,7 +4,7 @@ metadata:
   name: truenas-es
   namespace: truenas-es
 spec:
-  interval: 15m
+  interval: 2m
   chart:
     spec:
       chart: external-service

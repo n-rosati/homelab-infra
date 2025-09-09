@@ -4,7 +4,7 @@ metadata:
   name: kubernetes-reflector
   namespace: snapshot-controller
 spec:
-  interval: 15m
+  interval: 2m
   chart:
     spec:
       chart: kubernetes-reflector
@@ -13,7 +13,6 @@ spec:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
-      interval: 15m
   timeout: 20m
   maxHistory: 3
   driftDetection:

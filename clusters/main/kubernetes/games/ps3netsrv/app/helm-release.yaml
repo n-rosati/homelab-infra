@@ -4,7 +4,7 @@ metadata:
   name: ps3netsrv
   namespace: ps3netsrv
 spec:
-  interval: 15m
+  interval: 2m
   chart:
     spec:
       chart: ps3netsrv

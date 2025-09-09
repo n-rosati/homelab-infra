@@ -4,7 +4,7 @@ metadata:
   name: metrics-server
   namespace: kube-system
 spec:
-  interval: 15m
+  interval: 2m
   chart:
     spec:
       chart: metrics-server
@@ -13,7 +13,6 @@ spec:
         kind: HelmRepository
         name: kubernetes-sigs-metrics-server
         namespace: flux-system
-      interval: 15m
   timeout: 20m
   maxHistory: 3
   driftDetection:

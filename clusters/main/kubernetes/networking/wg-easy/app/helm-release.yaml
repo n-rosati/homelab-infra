@@ -4,7 +4,7 @@ metadata:
   name: wg-easy
   namespace: wg-easy
 spec:
-  interval: 15m
+  interval: 2m
   chart:
     spec:
       chart: wg-easy
@@ -13,7 +13,6 @@ spec:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
-      interval: 15m
   timeout: 5m
   maxHistory: 3
   install:

@@ -4,7 +4,7 @@ metadata:
   name: weave
   namespace: weave
 spec:
-  interval: 15m
+  interval: 2m
   chart:
     spec:
       chart: weave-gitops
@@ -13,7 +13,6 @@ spec:
         kind: HelmRepository
         name: weave-gitops
         namespace: flux-system
-      interval: 15m
   timeout: 20m
   maxHistory: 3
   install:

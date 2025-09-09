@@ -4,7 +4,7 @@ metadata:
   name: headlamp
   namespace: headlamp
 spec:
-  interval: 15m
+  interval: 2m
   chart:
     spec:
       chart: headlamp
@@ -13,7 +13,6 @@ spec:
         kind: HelmRepository
         name: headlamp
         namespace: flux-system
-      interval: 15m
   timeout: 20m
   maxHistory: 3
   install:

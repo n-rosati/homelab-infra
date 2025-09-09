@@ -4,7 +4,7 @@ metadata:
   name: s3
   namespace: s3
 spec:
-  interval: 15m
+  interval: 2m
   chart:
     spec:
       chart: external-service

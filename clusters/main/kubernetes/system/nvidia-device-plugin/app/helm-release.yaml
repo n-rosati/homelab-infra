@@ -4,7 +4,7 @@ metadata:
   name: nvidia-device-plugin
   namespace: nvidia-device-plugin
 spec:
-  interval: 5m
+  interval: 2m
   chart:
     spec:
       chart: nvidia-device-plugin
@@ -13,7 +13,6 @@ spec:
         kind: HelmRepository
         name: home-ops-mirror
         namespace: flux-system
-      interval: 5m
   install:
     createNamespace: true
     crds: CreateReplace

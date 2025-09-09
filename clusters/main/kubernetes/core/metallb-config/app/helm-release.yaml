@@ -4,7 +4,7 @@ metadata:
   name: metallb-config
   namespace: metallb-config
 spec:
-  interval: 15m
+  interval: 2m
   chart:
     spec:
       chart: metallb-config
@@ -13,7 +13,6 @@ spec:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
-      interval: 15m
   timeout: 20m
   maxHistory: 3
   driftDetection:
