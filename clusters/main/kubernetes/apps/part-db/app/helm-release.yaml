@@ -151,18 +151,18 @@ spec:
             - name: run-php
               emptyDir: {}
           initContainers:
-            create-folder:
+            create-php-folder:
               enabled: true
               type: init
               imageSelector: busyboxImage
               volumeMounts:
                 - name: run-php
-                  mountPathg: /run/php
+                  mountPath: /run/php
               command:
                 - "/bin/sh"
                 - "-c"
               args:
-                - "mkdir -p /run/php && sleep 30"
+                - "mkdir -p /run/php "
               resources:
                 requests:
                   cpu: 5m
@@ -174,7 +174,7 @@ spec:
               # args: [ "mkdir -p /run/php && /usr/sbin/php-fpm8.4 && apache2-foreground" ]
               volumeMounts:
                 - name: run-php
-                  mountPathg: /run/php
+                  mountPath: /run/php
               probes:
                 liveness:
                   enabled: false
