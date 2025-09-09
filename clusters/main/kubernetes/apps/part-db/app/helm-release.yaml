@@ -157,7 +157,7 @@ spec:
               imageSelector: busyboxImage
               volumeMounts:
                 - name: run-php
-                  mountPath: /run/php
+                  mountPath: /run
               command:
                 - "/bin/sh"
                 - "-c"
@@ -174,7 +174,7 @@ spec:
               # args: [ "mkdir -p /run/php && /usr/sbin/php-fpm8.4 && apache2-foreground" ]
               volumeMounts:
                 - name: run-php
-                  mountPath: /run/php
+                  mountPath: /run
               probes:
                 liveness:
                   enabled: false
