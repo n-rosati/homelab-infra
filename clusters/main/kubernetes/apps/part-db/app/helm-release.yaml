@@ -120,7 +120,7 @@ spec:
         enabled: true
         type: emptyDir
         mountPath: /run/php
-        sunPath: php
+        subPath: php
         targetSelectAll: true
         size: 100Mi
         medium: Memory
