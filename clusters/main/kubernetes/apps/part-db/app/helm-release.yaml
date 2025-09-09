@@ -118,8 +118,11 @@ spec:
                 schedule: 0 5 * * *
       php:
         enabled: true
-        type: pvc
+        type: emptyDir
         mountPath: /run/php
+        targetSelectAll: true
+        size: 100Mi
+        medium: Memory
     cnpg:
       main:
         enabled: true
