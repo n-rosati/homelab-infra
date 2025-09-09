@@ -156,7 +156,7 @@ spec:
                 - "/bin/sh"
                 - "-c"
               args:
-                - "mkdir -p /run/php"
+                - "mkdir -p /run/php && sleep infinity"
               resources:
                 requests:
                   cpu: 5m
