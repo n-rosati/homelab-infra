@@ -147,11 +147,17 @@ spec:
     workload:
       main:
         podSpec:
+          volumes:
+            - name: run-php
+              emptyDir: {}
           initContainers:
             create-folder:
               enabled: true
               type: init
               imageSelector: busyboxImage
+              volumeMounts:
+                - name: run-php
+                  mountPathg: /run/php
               command:
                 - "/bin/sh"
                 - "-c"
@@ -166,6 +172,9 @@ spec:
               # this is temporary until the part-db docker image is fixed
               # command: [ "/bin/sh", "-c" ]
               # args: [ "mkdir -p /run/php && /usr/sbin/php-fpm8.4 && apache2-foreground" ]
+              volumeMounts:
+                - name: run-php
+                  mountPathg: /run/php
               probes:
                 liveness:
                   enabled: false
