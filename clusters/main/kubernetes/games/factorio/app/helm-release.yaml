@@ -77,7 +77,7 @@ spec:
             widget:
               enabled: true
               type: customapi
-              url: http://factorio-rcon-api.factorio.${DNS_SUFFIX}:24180/api/v2/factorio/console/command/version
+              url: http://factorio-rcon-api.factorio.svc.cluster.local:24180/api/v2/factorio/console/command/version
               custom:
                 mappings.0.field: version
                 mappings.0.label: Game Version
@@ -106,7 +106,7 @@ spec:
               enabled: true
               imageSelector: rcon-api-image
               env:
-                FACTORIO_RCON_HOST: factorio-rcon.factorio.${DNS_SUFFIX}
+                FACTORIO_RCON_HOST: factorio-rcon.factorio.svc.cluster.local
                 FACTORIO_RCON_PORT: "27015"
                 FACTORIO_RCON_PASSWORD: ${FACTORIO_RCON_PASSWORD}
               probes:
@@ -132,5 +132,5 @@ spec:
               enabled: true
               auth:
                 type: authelia
-                internalHost: ${AUTHELIA_DNS_NAME}
-                externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+                internalHost: ${AUTHELIA_INTERNAL_DNS}
+                externalHost: ${AUTHELIA_EXTERNAL_DNS}

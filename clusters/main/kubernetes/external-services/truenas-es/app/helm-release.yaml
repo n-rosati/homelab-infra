@@ -45,8 +45,8 @@ spec:
             enabled: true
             auth:
               type: authelia
-              internalHost: ${AUTHELIA_DNS_NAME}
-              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+              internalHost: ${AUTHELIA_INTERNAL_DNS}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS}
           homepage:
             enabled: true
             name: TrueNAS

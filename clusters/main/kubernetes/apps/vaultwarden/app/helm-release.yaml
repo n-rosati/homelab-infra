@@ -63,13 +63,13 @@ spec:
       smtp:
         enabled: true
         host: ${SMTP_SERVER}
-        from: ${SMTP_FROM}
+        from: ${SERVICE_EMAIL}
         fromName: Vaultwarden
         security: force_tls
         port: ${SMTP_PORT}
         authMechanism: Login
-        user: ${SMTP_FROM}
-        password: ${SMTP_PASSWORD}
+        user: ${SERVICE_EMAIL}
+        password: ${SERVICE_EMAIL_PASSWORD}
       push:
         enabled: true
         installationId: ${VAULTWARDEN_INST_ID}

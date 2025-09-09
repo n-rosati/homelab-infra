@@ -142,9 +142,9 @@ spec:
                 FORGEJO__mailer__ENABLED: "true"
                 FORGEJO__mailer__SMTP_ADDR: "${SMTP_SERVER}"
                 FORGEJO__mailer__SMTP_PORT: "${SMTP_PORT}"
-                FORGEJO__mailer__USER: "${SMTP_FROM}"
-                FORGEJO__mailer__PASSWD: "${SMTP_PASSWORD}"
-                FORGEJO__mailer__FROM: "Forgejo <${SMTP_FROM}>"
+                FORGEJO__mailer__USER: "${SERVICE_EMAIL}"
+                FORGEJO__mailer__PASSWD: "${SERVICE_EMAIL_PASSWORD}"
+                FORGEJO__mailer__FROM: "Forgejo <${SERVICE_EMAIL}>"
                 FORGEJO__repository.signing__FORMAT: "ssh"
                 FORGEJO__repository.signing__SIGNING_KEY: "/var/lib/ssh-key/public.key"
                 FORGEJO__security__SECRET_KEY: "${FORGEJO_SECRET_KEY}"
@@ -187,5 +187,5 @@ spec:
             enabled: true
             auth:
               type: authelia
-              internalHost: ${AUTHELIA_DNS_NAME}
-              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+              internalHost: ${AUTHELIA_INTERNAL_DNS}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS}

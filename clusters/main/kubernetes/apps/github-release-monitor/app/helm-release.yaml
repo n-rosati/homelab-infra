@@ -61,8 +61,8 @@ spec:
             enabled: true
             auth:
               type: authelia
-              internalHost: ${AUTHELIA_DNS_NAME}
-              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+              internalHost: ${AUTHELIA_INTERNAL_DNS}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS}
           homepage:
             enabled: true
             name: GitHub Release Monitor
@@ -96,10 +96,10 @@ spec:
                 AUTH_USERNAME: ${GRM_AUTH_USERNAME}
                 AUTH_PASSWORD: ${GRM_AUTH_PASSWORD}
                 GITHUB_ACCESS_TOKEN: ${GRM_GITHUB_ACCESS_TOKEN}
-                MAIL_HOST: ${GRM_MAIL_HOST}
-                MAIL_PORT: ${GRM_MAIL_PORT}
-                MAIL_USERNAME: ${GRM_MAIL_USERNAME}
-                MAIL_PASSWORD: ${GRM_MAIL_PASSWORD}
-                MAIL_FROM_ADDRESS: ${GRM_MAIL_FROM_ADDRESS}
-                MAIL_FROM_NAME: ${GRM_MAIL_FROM_NAME}
-                MAIL_TO_ADDRESS: ${GRM_MAIL_TO_ADDRESS}
+                MAIL_HOST: ${SMTP_SERVER}
+                MAIL_PORT: ${SMTP_PORT}
+                MAIL_USERNAME: ${SERVICE_EMAIL}
+                MAIL_PASSWORD: ${SERVICE_EMAIL_PASSWORD}
+                MAIL_FROM_ADDRESS: ${SERVICE_EMAIL}
+                MAIL_FROM_NAME: "GitHub Release Monitor"
+                MAIL_TO_ADDRESS: ${PERSONAL_EMAIL}

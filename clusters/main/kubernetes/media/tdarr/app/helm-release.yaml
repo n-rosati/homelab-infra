@@ -61,8 +61,8 @@ spec:
             enabled: true
             auth:
               type: authelia
-              internalHost: ${AUTHELIA_DNS_NAME}
-              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+              internalHost: ${AUTHELIA_INTERNAL_DNS}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS}
           homepage:
             enabled: true
             name: Tdarr
@@ -72,7 +72,7 @@ spec:
             widget:
               enabled: true
               type: tdarr
-              url: http://tdarr.tdarr.${DNS_SUFFIX}:8265
+              url: http://tdarr.tdarr.svc.cluster.local:8265
     persistence:
       configs:
         volsync:

@@ -59,7 +59,7 @@ spec:
             widget:
               enabled: true
               type: minecraft
-              url: udp://jan-minecraft-java.mc-jan.${DNS_SUFFIX}:25565
+              url: udp://jan-minecraft-java.mc-jan.svc.cluster.local:25565
     persistence:
       data:
         volsync:
@@ -129,5 +129,5 @@ spec:
               enabled: true
               auth:
                 type: authelia
-                internalHost: ${AUTHELIA_DNS_NAME}
-                externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+                internalHost: ${AUTHELIA_INTERNAL_DNS}
+                externalHost: ${AUTHELIA_EXTERNAL_DNS}

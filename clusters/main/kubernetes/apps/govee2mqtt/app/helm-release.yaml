@@ -58,7 +58,7 @@ spec:
                 startup:
                   enabled: false
               env:
-                GOVEE_MQTT_HOST: mosquitto.mosquitto.${DNS_SUFFIX}
+                GOVEE_MQTT_HOST: mosquitto.mosquitto.svc.cluster.local
                 GOVEE_EMAIL: ${GOVEE_EMAIL}
                 GOVEE_PASSWORD: ${GOVEE_PASSWORD}
                 GOVEE_API_KEY: ${GOVEE_API_KEY}

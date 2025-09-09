@@ -74,8 +74,8 @@ spec:
             enabled: true
             auth:
               type: authelia
-              internalHost: ${AUTHELIA_DNS_NAME}
-              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+              internalHost: ${AUTHELIA_INTERNAL_DNS}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS}
           homepage:
             enabled: true
             name: Wireguard
@@ -84,7 +84,7 @@ spec:
             widget:
               enabled: true
               type: wgeasy
-              url: http://wg-easy.wg-easy.${DNS_SUFFIX}:51821
+              url: http://wg-easy.wg-easy.svc.cluster.local:51821
               custom:
                 version: "2"
                 username: ${WG_USERNAME}

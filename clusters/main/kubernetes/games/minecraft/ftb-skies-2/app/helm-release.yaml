@@ -60,7 +60,7 @@ spec:
             widget:
               enabled: true
               type: minecraft
-              url: udp://ftb-skies-2-minecraft-java.mc-ftb-skies-2.${DNS_SUFFIX}:25565
+              url: udp://ftb-skies-2-minecraft-java.mc-ftb-skies-2.svc.cluster.local:25565
     persistence:
       data:
         volsync:
@@ -179,5 +179,5 @@ spec:
               enabled: true
               auth:
                 type: authelia
-                internalHost: ${AUTHELIA_DNS_NAME}
-                externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+                internalHost: ${AUTHELIA_INTERNAL_DNS}
+                externalHost: ${AUTHELIA_EXTERNAL_DNS}

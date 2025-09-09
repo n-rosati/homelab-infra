@@ -66,7 +66,7 @@ spec:
             widget:
               enabled: true
               type: jellyfin
-              url: http://jellyfin.jellyfin.${DNS_SUFFIX}:8096
+              url: http://jellyfin.jellyfin.svc.cluster.local:8096
               custom:
                 key: ${HOMEPAGE_JELLYFIN_KEY}
     persistence:
@@ -120,7 +120,7 @@ spec:
               enabled: true
               imageSelector: jellyfinUpdatePosterImage
               env:
-                JELLYFIN_URL: http://jellyfin.jellyfin.${DNS_SUFFIX}:8096
+                JELLYFIN_URL: http://jellyfin.jellyfin.svc.cluster.local:8096
                 JELLYFIN_API_KEY: ${JELLYFIN_UPDATE_POSTER_API_KEY}
                 TMDB_API_KEY: ${TMDB_API_KEY}
                 INCLUDE_EPISODES: false

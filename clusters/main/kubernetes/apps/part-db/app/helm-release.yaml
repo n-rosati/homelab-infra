@@ -69,8 +69,8 @@ spec:
             enabled: true
             auth:
               type: authelia
-              internalHost: ${AUTHELIA_DNS_NAME}
-              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+              internalHost: ${AUTHELIA_INTERNAL_DNS}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS}
           homepage:
             enabled: true
             name: PartDB
@@ -168,12 +168,12 @@ spec:
                 ATTACHMENT_DOWNLOAD_BY_DEFAULT: "1"
                 BANNER: 'Welcome to Part-DB.  <blockquote class=''pb-0''> <p style=''font-size: 12px''> And God said <br> $\\nabla \\cdot \\vec{D} = \\rho$, $\\nabla \\cdot \\vec{B} = 0$, $\\nabla \\times \\vec{E} = -\\frac{\\partial \\vec{B}}{\\partial t}$, $\\nabla \\times \\vec{H} = \\vec{j} + \\frac{\\partial \\vec{D}}{\\partial t}$,  <br> and then there was light. </p> </blockquote>'
                 BASE_CURRENCY: CAD
-                DATABASE_URL: postgresql://partdb:${PARTDB_DB_PASSWORD}@part-db-app-template-cnpg-main-rw.part-db.${DNS_SUFFIX}:5432/part-db?serverVersion=16.4&charset=utf8
+                DATABASE_URL: postgresql://partdb:${PARTDB_DB_PASSWORD}@part-db-app-template-cnpg-main-rw.part-db.svc.cluster.local:5432/part-db?serverVersion=16.4&charset=utf8
                 DB_AUTOMIGRATE: true
                 DEFAULT_LANG: en
                 DEFAULT_TIMEZONE: Etc/UTC
                 DEFAULT_URI: https://partdb.${DOMAIN_0}/
-                EMAIL_SENDER_EMAIL: ${SMTP_FROM}
+                EMAIL_SENDER_EMAIL: ${SERVICE_EMAIL}
                 EMAIL_SENDER_NAME: PartDB Service
                 FIXER_API_KEY: ${PARTDB_FIXER_API_KEY}
                 HISTORY_SAVE_CHANGED_DATA: "true"

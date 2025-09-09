@@ -73,7 +73,7 @@ spec:
             inactivity: 2w
       authentication_backend:
         ldap:
-          address: ldap://${LLDAP_DNS_NAME}:3890
+          address: ldap://lldap-ldap.lldap.svc.cluster.local:3890
           implementation: lldap
           tls:
             server_name: lldap.${DOMAIN_0}
@@ -93,9 +93,9 @@ spec:
         # disable_startup_check: true
         smtp:
           address: submissions://${SMTP_SERVER}:${SMTP_PORT}
-          username: ${SMTP_FROM}
-          password: ${SMTP_PASSWORD}
-          sender: 'Authelia <${SMTP_FROM}>'
+          username: ${SERVICE_EMAIL}
+          password: ${SERVICE_EMAIL_PASSWORD}
+          sender: 'Authelia <${SERVICE_EMAIL}>'
           identifier: auth.${DOMAIN_0}
           subject: '{title}'
           timeout: 15s

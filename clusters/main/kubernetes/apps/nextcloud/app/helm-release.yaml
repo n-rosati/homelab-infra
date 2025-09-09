@@ -116,8 +116,8 @@ spec:
         username: ${COLLABORA_USERNAME}
         password: ${COLLABORA_PASSWORD}
       credentials:
-        initialAdminUser: ${INITIAL_ADMIN_USER}
-        initialAdminPassword: ${INITIAL_ADMIN_PASSWORD}
+        initialAdminUser: ${NEXTCLOUD_ADMIN_USER}
+        initialAdminPassword: ${NEXTCLOUD_ADMIN_PASSWORD}
       general:
         default_phone_region: CA
         accessIP: ${NGINX_EXTERNAL_IP}

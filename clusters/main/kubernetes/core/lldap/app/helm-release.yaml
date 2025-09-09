@@ -36,7 +36,7 @@ spec:
     service:
       ldap:
         type: LoadBalancer
-        loadBalancerIP: ${LDAP_IP}
+        loadBalancerIP: ${LLDAP_IP}
         integrations:
           metallb:
             enabled: true
@@ -54,8 +54,8 @@ spec:
             enabled: true
             auth:
               type: authelia
-              internalHost: ${AUTHELIA_DNS_NAME}
-              externalHost: ${AUTHELIA_EXTERNAL_DNS_NAME}
+              internalHost: ${AUTHELIA_INTERNAL_DNS}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS}
           homepage:
             enabled: true
             name: LLDAP
@@ -109,7 +109,7 @@ spec:
                 LLDAP_SMTP_OPTIONS__SERVER: ${SMTP_SERVER}
                 LLDAP_SMTP_OPTIONS__PORT: ${SMTP_PORT}
                 LLDAP_SMTP_OPTIONS__SMTP_ENCRYPTION: TLS
-                LLDAP_SMTP_OPTIONS__USER: ${SMTP_FROM}
-                LLDAP_SMTP_OPTIONS__PASSWORD: ${SMTP_PASSWORD}
-                LLDAP_SMTP_OPTIONS__FROM: "LLDAP <${SMTP_FROM}>"
-                LLDAP_SMTP_OPTIONS__REPLY_TO: ${SMTP_FROM}
+                LLDAP_SMTP_OPTIONS__USER: ${SERVICE_EMAIL}
+                LLDAP_SMTP_OPTIONS__PASSWORD: ${SERVICE_EMAIL_PASSWORD}
+                LLDAP_SMTP_OPTIONS__FROM: "LLDAP <${SERVICE_EMAIL}>"
+                LLDAP_SMTP_OPTIONS__REPLY_TO: ${SERVICE_EMAIL}
