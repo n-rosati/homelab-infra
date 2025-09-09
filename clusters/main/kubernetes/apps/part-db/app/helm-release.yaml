@@ -162,7 +162,7 @@ spec:
                 - "/bin/sh"
                 - "-c"
               args:
-                - "mkdir -p /run/php && sleep 180"
+                - "mkdir -p /run/php && sleep 30"
               resources:
                 requests:
                   cpu: 5m
