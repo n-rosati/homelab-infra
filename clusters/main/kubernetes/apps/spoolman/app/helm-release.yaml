@@ -127,4 +127,4 @@ spec:
                 SPOOLMAN_DB_PORT: "5432"
                 SPOOLMAN_DB_NAME: "{{ .Values.cnpg.main.database }}"
                 SPOOLMAN_DB_USERNAME: "{{ .Values.cnpg.main.user }}"
-                SPOOLMAN_DB_PASSWORD: ${SPOOLMAN_DB_PASSWORD}
+                SPOOLMAN_DB_PASSWORD: "{{ .Values.cnpg.main.password }}"
