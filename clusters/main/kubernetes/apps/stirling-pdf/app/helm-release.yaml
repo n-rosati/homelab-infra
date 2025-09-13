@@ -50,43 +50,6 @@ spec:
             icon: stirling-pdf.svg
             widget:
               enabled: false
-    persistence:
-      config:
-        enabled: true
-        volsync:
-          - credentials: home-s3
-            name: home-s3
-            type: restic
-            dest:
-              enabled: true
-            src:
-              enabled: true
-              trigger:
-                schedule: 0 8 * * *
-      tessdata:
-        enabled: true
-        volsync:
-          - credentials: home-s3
-            name: home-s3
-            type: restic
-            dest:
-              enabled: true
-            src:
-              enabled: true
-              trigger:
-                schedule: 0 8 * * *
-      custom-files:
-        enabled: true
-        volsync:
-          - credentials: home-s3
-            name: home-s3
-            type: restic
-            dest:
-              enabled: true
-            src:
-              enabled: true
-              trigger:
-                schedule: 0 8 * * *
     workload:
       main:
         podSpec:
