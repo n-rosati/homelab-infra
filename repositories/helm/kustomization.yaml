@@ -20,3 +20,4 @@ resources:
   - cilium.yaml
   - headlamp.yaml
   - ingress-nginx.yaml
+  - cert-manager.yaml
