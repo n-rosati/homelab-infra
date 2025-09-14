@@ -126,3 +126,6 @@ spec:
               resources:
                 limits:
                   nvidia.com/gpu: 1
+    resources:
+      limits:
+        cpu: 3000m
