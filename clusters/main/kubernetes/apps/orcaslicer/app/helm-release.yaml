@@ -61,6 +61,11 @@ spec:
           runtimeClassName: "nvidia"
           containers:
             main:
+              args:
+                - --gpus all
+                - --runtime nvidia
+              env:
+                DRINODE: /dev/dri/renderD128
               resources:
                 limits:
                   nvidia.com/gpu: 1
