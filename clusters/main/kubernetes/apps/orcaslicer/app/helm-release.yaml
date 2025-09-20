@@ -54,6 +54,16 @@ spec:
             group: Apps
             widget:
               enabled: false
+    workload:
+      main:
+        strategy: Recreate
+        podSpec:
+          runtimeClassName: "nvidia"
+          containers:
+            main:
+              resources:
+                limits:
+                  nvidia.com/gpu: 1
     persistence:
       config:
         volsync:
