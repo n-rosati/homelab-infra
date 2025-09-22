@@ -108,7 +108,7 @@ spec:
         enabled: true
         readOnly: false
         server: ${TRUENAS_IP}
-        path: ${NFS_DSU_PATH}/Other Media
+        path: ${NFS_DSU_PATH}/Media/Other
         mountPath: /othermedia
       # Temp mount for a temp remote worker node
       # transcode-cache:
