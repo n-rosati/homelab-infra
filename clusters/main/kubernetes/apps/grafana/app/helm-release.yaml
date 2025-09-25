@@ -49,3 +49,6 @@ spec:
             icon: grafana.svg
             widget:
               enabled: false
+    configmap:
+      dashboard-nginx:
+        enabled: true
