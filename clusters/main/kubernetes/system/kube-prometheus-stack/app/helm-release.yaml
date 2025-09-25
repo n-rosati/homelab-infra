@@ -25,14 +25,15 @@ spec:
   values:
     crds:
       enabled: true
+      upgradeJob:
+        enabled: true
+        forceConflicts: true
     prometheusOperator:
-      enabled: true
-      serviceMonitor:
-        selfMonitor: false
-    ## Everything down here, explicitly disables everything BUT the operator itself
+      enabled: false
+    ## Everything down here, explicitly disables everything except CRDs and grafana dashboards
     global:
       rbac:
-        create: true
+        create: false
     defaultRules:
       create: false
     windowsMonitoring:
@@ -45,10 +46,11 @@ spec:
       enabled: false
     grafana:
       enabled: false
-      forceDeployDashboards: false
-      defaultDashboardsEnabled: false
+      forceDeployDashboards: true
+      defaultDashboardsEnabled: true
+      forceDeployDatasources: true
     kubernetesServiceMonitors:
-      enabled: false
+      enabled: true
     kubeApiServer:
       enabled: false
     kubelet:
