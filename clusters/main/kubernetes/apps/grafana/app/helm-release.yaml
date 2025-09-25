@@ -23,3 +23,23 @@ spec:
     remediation:
       retries: 3
   values:
+    global:
+      stopAll: false
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: external
+        hosts:
+          - host: grafana.${DOMAIN_0}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          homepage:
+            enabled: true
+            name: Grafana
+            description: Grafana is an open source, feature rich metrics dashboard and graph editor for Graphite, Elasticsearch, OpenTSDB, Prometheus and InfluxDB.
+            group: Infrastructure
+            icon: grafana.svg
+            widget:
+              enabled: false
