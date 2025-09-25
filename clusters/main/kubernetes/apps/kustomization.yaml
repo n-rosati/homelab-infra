@@ -22,3 +22,4 @@ resources:
   - forgejo/ks.yaml
   - stirling-pdf/ks.yaml
   - orcaslicer/ks.yaml
+  - grafana/ks.yaml
