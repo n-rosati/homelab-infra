@@ -26,7 +26,7 @@ spec:
   values:
     release_name: part-db
     global:
-      stopAll: false
+      stopAll: true
     image:
       repository: docker.io/jbtronics/part-db1
       pullPolicy: IfNotPresent
