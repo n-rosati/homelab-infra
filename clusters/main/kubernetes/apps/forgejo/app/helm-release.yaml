@@ -152,6 +152,9 @@ spec:
                 FORGEJO__security__PASSWORD_CHECK_PWN: "true"
                 FORGEJO__repository.signing__DEFAULT_TRUST_MODEL: "committer"
                 FORGEJO__service__DISABLE_REGISTRATION: "true"
+                FORGEJO__openid__ENABLE_OPENID_SIGNIN: false
+                FORGEJO__oauth2__ENABLE_AUTO_REGISTRATION: true
+                FORGEJO__oauth2__USERNAME: userid
     cnpg:
       main:
         enabled: true
