@@ -110,6 +110,7 @@ spec:
         objectName: forgejo-app-template-ssh-key-secret
         expandObjectName: false
         mountPath: "/var/lib/ssh-key"
+    # see kube-prometheus-stack for how this should be (re)done
     secret:
       ssh-key-secret:
         enabled: true
