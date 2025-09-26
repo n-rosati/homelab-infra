@@ -49,6 +49,10 @@ spec:
             icon: grafana.svg
             widget:
               enabled: false
+    cnpg:
+      main:
+        cluster:
+          singleNode: true
     configmap:
       dashboard-nginx:
         enabled: true
