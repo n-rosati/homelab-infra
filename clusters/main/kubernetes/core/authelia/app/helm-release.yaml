@@ -140,7 +140,7 @@ spec:
       identity_providers:
         oidc:
           jwks:
-            - key: ${AUTHELIA_JWKS_KEY}
+            - key: "{{ .Values.JWKS_KEY }}"
               algorithm: 'RS256'
           clients:
             - client_id: 'FX6p2Df4zRau7xbD0XetDWNfUnFHUQSO5emfw6GOdoXchjw-_UzfbBB6Hj9tK2MX-qIxr261'
