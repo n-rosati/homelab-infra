@@ -71,6 +71,8 @@ spec:
         podSpec:
           containers:
             main:
+              command: [ "/bin/sh", "-c", "--" ]
+              args: [ "sleep 120" ]
               env:
                 AUTHELIA_SESSION_SECRET: ${AUTHELIA_SESSION_SECRET}
                 AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET: ${AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET}
