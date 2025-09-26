@@ -49,6 +49,14 @@ spec:
             icon: grafana.svg
             widget:
               enabled: false
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER}
+                GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
     cnpg:
       main:
         cluster:
