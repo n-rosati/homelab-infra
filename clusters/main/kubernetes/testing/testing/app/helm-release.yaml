@@ -67,6 +67,7 @@ spec:
         enabled: true
         type: secret
         objectName: testsecret2
+        expandObjectName: false
         mountPath: /secrets2
     secret:
       my-secret:
