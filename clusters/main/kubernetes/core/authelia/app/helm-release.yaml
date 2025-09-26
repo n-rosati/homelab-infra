@@ -136,7 +136,7 @@ spec:
       identity_providers:
         oidc:
           jwks:
-            - key: >
+            - key: >-
                 {{ secret "/app/secrets/JWKS_KEY" | mindent 10 "|" | msquote }}
               algorithm: 'RS256'
           clients:
