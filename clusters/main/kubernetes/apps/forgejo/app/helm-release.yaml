@@ -151,7 +151,6 @@ spec:
                 FORGEJO__security__SECRET_KEY: "${FORGEJO_SECRET_KEY}"
                 FORGEJO__security__PASSWORD_CHECK_PWN: "true"
                 FORGEJO__repository.signing__DEFAULT_TRUST_MODEL: "committer"
-                FORGEJO__service__DISABLE_REGISTRATION: "false"
                 FORGEJO__service__ENABLE_INTERNAL_SIGNIN: "false"
                 FORGEJO__openid__ENABLE_OPENID_SIGNIN: false
                 FORGEJO__oauth2__ENABLE_AUTO_REGISTRATION: true
