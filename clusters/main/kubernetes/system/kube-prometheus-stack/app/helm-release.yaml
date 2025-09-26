@@ -93,7 +93,7 @@ spec:
           gethomepage.dev/name: Prometheus
           gethomepage.dev/pod-selector: app.kubernetes.io/instance=prometheus
         hosts:
-          - prometheus.${BASE_DOMAIN}
+          - prometheus.${DOMAIN_0}
         tls:
           - hosts:
               - prometheus.${DOMAIN_0}
