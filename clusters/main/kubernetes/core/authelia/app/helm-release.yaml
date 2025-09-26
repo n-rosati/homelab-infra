@@ -58,6 +58,16 @@ spec:
           revision: "1"
         cluster:
           singleNode: true
+    workload:
+      main:
+        replicas: 1
+        podSpec:
+          containers:
+            main:
+              env:
+                AUTHELIA_SESSION_SECRET: ${AUTHELIA_SESSION_SECRET}
+                AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET: ${AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET}
+                AUTHELIA_STORAGE_ENCRYPTION_KEY: ${AUTHELIA_STORAGE_ENCRYPTION_KEY}
     authelia:
       theme: auto
       log:
@@ -112,13 +122,27 @@ spec:
         zxcvbn:
           enabled: true
           min_score: 3
-    workload:
-      main:
-        replicas: 1
-        podSpec:
-          containers:
-            main:
-              env:
-                AUTHELIA_SESSION_SECRET: ${AUTHELIA_SESSION_SECRET}
-                AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET: ${AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET}
-                AUTHELIA_STORAGE_ENCRYPTION_KEY: ${AUTHELIA_STORAGE_ENCRYPTION_KEY}
+      identity_providers:
+        oidc:
+          clients:
+            - client_id: 'FX6p2Df4zRau7xbD0XetDWNfUnFHUQSO5emfw6GOdoXchjw-_UzfbBB6Hj9tK2MX-qIxr261'
+              client_name: 'Forgejo'
+              client_secret: '$pbkdf2-sha512$310000$Xhfz/BS4rEl3HMmrK6HKtA$2u/qfSMojtmXeBL/yCfRGHywE.CY5zi.o5lYpi151DYBcHsKoZDvYfRUJSNzqpAci9fP7YKA0SqreId5PisGbg'
+              public: false
+              authorization_policy: 'one_factor'
+              require_pkce: true
+              pkce_challenge_method: 'S256'
+              redirect_uris:
+                - 'https://forgejo.${DOMAIN_0}/user/oauth2/authelia/callback'
+              scopes:
+                - 'openid'
+                - 'email'
+                - 'profile'
+                - 'groups'
+              response_types:
+                - 'code'
+              grant_types:
+                - 'authorization_code'
+              access_token_signed_response_alg: 'none'
+              userinfo_signed_response_alg: 'none'
+              token_endpoint_auth_method: 'client_secret_basic'
