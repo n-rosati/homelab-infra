@@ -71,8 +71,6 @@ spec:
         podSpec:
           containers:
             main:
-              # command: [ "/bin/sh", "-c", "--" ]
-              # args: [ "sleep 120" ]
               env:
                 AUTHELIA_SESSION_SECRET: ${AUTHELIA_SESSION_SECRET}
                 AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET: ${AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET}
@@ -137,6 +135,14 @@ spec:
           min_score: 3
       identity_providers:
         oidc:
+          claims_policies:
+            forgejo:
+              custom_claims:
+                sshpubkey: {}
+          scopes:
+            forgejo:
+              claims:
+                - sshpubkey
           jwks:
             - key: {{ secret \"/app/secrets/JWKS_KEY\" | mindent 10 \"|\" | msquote }}
               algorithm: 'RS256'
@@ -144,6 +150,7 @@ spec:
             - client_id: 'FX6p2Df4zRau7xbD0XetDWNfUnFHUQSO5emfw6GOdoXchjw-_UzfbBB6Hj9tK2MX-qIxr261'
               client_name: 'Forgejo'
               client_secret: '$pbkdf2-sha512$310000$Xhfz/BS4rEl3HMmrK6HKtA$2u/qfSMojtmXeBL/yCfRGHywE.CY5zi.o5lYpi151DYBcHsKoZDvYfRUJSNzqpAci9fP7YKA0SqreId5PisGbg'
+              claims_policy: 'forgejo'
               public: false
               authorization_policy: 'one_factor'
               require_pkce: true
@@ -155,6 +162,7 @@ spec:
                 - 'email'
                 - 'profile'
                 - 'groups'
+                - 'forgejo'
               response_types:
                 - 'code'
               grant_types:
