@@ -180,7 +180,7 @@ spec:
           credentials: home-s3
     addons:
       codeserver:
-        enabled: true
+        enabled: false
         service:
           type: LoadBalancer
         ingress:
