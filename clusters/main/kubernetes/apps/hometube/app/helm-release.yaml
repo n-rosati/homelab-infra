@@ -23,6 +23,10 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 3
+  valuesFrom:
+    - kind: Secret
+      name: hometube-secret
+      valuesKey: COOKIE
   values:
     release_name: hometube
     global:
@@ -119,3 +123,26 @@ spec:
                 UI_LANGUAGE: en
                 SUBTITLES_CHOICES: en
                 YTDL_CONCURRENT_FRAGMENTS: 4
+                TMP_DOWNLOAD_FOLDER: /data/tmp
+                VIDEOS_FOLDER: /data/videos
+                YOUTUBE_COOKIES_FILE_PATH: /config/youtube_cookies.txt
+    addons:
+      codeserver:
+        enabled: false
+        service:
+          type: LoadBalancer
+        ingress:
+          enabled: true
+          ingressClassName: external
+          hosts:
+            - host: edit-hometube.${DOMAIN_0}
+          integrations:
+            certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          nginx:
+            enabled: true
+            auth:
+              type: authelia
+              internalHost: ${AUTHELIA_INTERNAL_DNS}
+              externalHost: ${AUTHELIA_EXTERNAL_DNS}
