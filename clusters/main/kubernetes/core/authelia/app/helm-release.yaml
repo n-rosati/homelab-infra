@@ -81,8 +81,6 @@ spec:
                 AUTHELIA_STORAGE_ENCRYPTION_KEY: ${AUTHELIA_STORAGE_ENCRYPTION_KEY}
                 AUTHELIA_JWT_SECRET_FILE: '/app/secrets/JWT_SECRET'
                 AUTHELIA_IDENTITY_PROVIDERS_OIDC_HMAC_SECRET_FILE: '/app/secrets/OIDC_HMAC_SECRET'
-                # X_AUTHELIA_CONFIG_FILTERS: template
-                # X_AUTHELIA_CONFIG: /configuration.yaml
     authelia:
       theme: auto
       log:
@@ -140,7 +138,7 @@ spec:
       identity_providers:
         oidc:
           clients:
-            - client_id: '9tFIDwq9uGqSDHpW5jWIJC53_mHY.dtvNFGs10FiSebwT7vHHM1SZCIFaNxTUS_XdY1yaYdN'
+            - client_id: 'fFevFHpxxEy0vcp4xCDWITAOllSwFfLYpLACIbrgxdEZdDB3eo4O4z68eXXvj2WBcBtNFv52'
               client_name: 'Forgejo'
               client_secret: ${AUTHELIA_FORGEJO_CLIENT_SECRET_DIGEST}
               public: false
