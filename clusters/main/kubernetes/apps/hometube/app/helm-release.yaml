@@ -1,0 +1,121 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: hometube
+  namespace: hometube
+spec:
+  interval: 2m
+  timeout: 20m
+  chart:
+    spec:
+      chart: app-template
+      version: 15.8.5
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: hometube
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    release_name: hometube
+    global:
+      stopAll: false
+    image:
+      repository: ghcr.io/EgalitarianMonkey/hometube
+      pullPolicy: IfNotPresent
+      tag: 0.3.2
+    credentials:
+      home-s3:
+        name: home-s3
+        type: s3
+        url: ${S3_URL}
+        bucket: hometube
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        accessKey: ${S3_ACCESS_KEY}
+        secretKey: ${S3_SECRET_KEY}
+    service:
+      main:
+        enabled: true
+        ports:
+          main:
+            enabled: true
+            port: 8501
+            protocol: http
+            targetPort: 8501
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: external
+        hosts:
+          - host: hometube.${DOMAIN_0}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: le-prod
+          nginx:
+            enabled: true
+          homepage:
+            enabled: true
+            name: HomeTube
+            description: HomeTube is a friendly video downloader managing single video URL into organized content structure for automatic home media server experience.
+            group: Media
+            # icon: https://codeberg.org/forgejo/forgejo/raw/branch/forgejo/public/assets/img/forgejo.svg
+            widget:
+              enabled: false
+    persistence:
+      media:
+        enabled: true
+        type: nfs
+        server: ${TRUENAS_IP}
+        path: ${NFS_MEDIA_PATH}/HomeTube
+        mountPath: /data/videos
+      temp:
+        enabled: true
+        type: emptyDir
+        mountPath: /data/tmp
+      config:
+        enabled: true
+        type: pvc
+        mountPath: /config
+        volsync:
+          - name: config
+            type: restic
+            credentials: home-s3
+            dest:
+              enabled: true
+            src:
+              enabled: true
+              trigger:
+                schedule: 10 8 * * *
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              probes:
+                liveness:
+                  enabled: true
+                  path: "/_stcore/health"
+                  port: 8501
+                  type: http
+                readiness:
+                  enabled: true
+                  path: "/_stcore/health"
+                  port: 8501
+                  type: http
+                startup:
+                  enabled: true
+                  path: "/_stcore/health"
+                  port: 8501
+                  type: http
+              env:
+                UI_LANGUAGE: en
+                SUBTITLES_CHOICES: en
+                YTDL_CONCURRENT_FRAGMENTS: 4
