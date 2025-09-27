@@ -23,10 +23,6 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 3
-  valuesFrom:
-    - kind: Secret
-      name: hometube-secret
-      valuesKey: COOKIE
   values:
     release_name: hometube
     global:
