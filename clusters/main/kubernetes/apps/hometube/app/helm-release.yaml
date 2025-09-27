@@ -131,7 +131,7 @@ spec:
                 YOUTUBE_COOKIES_FILE_PATH: /config/youtube_cookies.txt
     addons:
       codeserver:
-        enabled: false
+        enabled: true
         service:
           type: LoadBalancer
         ingress:
