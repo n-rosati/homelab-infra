@@ -78,7 +78,7 @@ spec:
         mountPath: /data/videos
       temp:
         enabled: true
-        type: emptyDir
+        type: pvc
         mountPath: /data/tmp
       config:
         enabled: true
