@@ -28,7 +28,7 @@ spec:
     global:
       stopAll: false
     image:
-      repository: ghcr.io/EgalitarianMonkey/hometube
+      repository: ghcr.io/egalitarianmonkey/hometube
       pullPolicy: IfNotPresent
       tag: 0.3.2
     credentials:
