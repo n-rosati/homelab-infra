@@ -94,6 +94,13 @@ spec:
               enabled: true
               trigger:
                 schedule: 10 8 * * *
+    resources:
+      requests:
+        cpu: 100m
+        memory: 1Gi
+      limits:
+        # cpu: null
+        memory: null
     workload:
       main:
         podSpec:
