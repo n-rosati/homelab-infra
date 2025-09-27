@@ -151,8 +151,13 @@ spec:
                 FORGEJO__repository.signing__SIGNING_KEY: "/var/lib/ssh-key/public.key"
                 FORGEJO__security__SECRET_KEY: "${FORGEJO_SECRET_KEY}"
                 FORGEJO__repository.signing__DEFAULT_TRUST_MODEL: "committer"
-                FORGEJO__service__ENABLE_INTERNAL_SIGNIN: "false"
                 FORGEJO__openid__ENABLE_OPENID_SIGNIN: false
+                FORGEJO__openid__ENABLE_OPENID_SIGNUP: true
+                FORGEJO__openid__WHITELISTED_URIS: auth.${DOMAIN_0}
+                FORGEJO__service__ENABLE_INTERNAL_SIGNIN: "false"
+                FORGEJO__service__DISABLE_REGISTRATION: "false"
+                FORGEJO__service__ALLOW_ONLY_EXTERNAL_REGISTRATION: "true"
+                FORGEJO__service__SHOW_REGISTRATION_BUTTON: "false"
                 FORGEJO__oauth2__USERNAME: userid
                 FORGEJO__oauth2__ENABLE_AUTO_REGISTRATION: true
     cnpg:
