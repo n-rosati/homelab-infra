@@ -124,6 +124,9 @@ spec:
       access_control:
         default_policy: deny
         rules:
+          - domain: 'spoolman.${DOMAIN_0}'
+            policy: bypass
+            networks: '192.168.2.0/24'
           - domain: '*.${DOMAIN_0}'
             policy: one_factor
             subject:
