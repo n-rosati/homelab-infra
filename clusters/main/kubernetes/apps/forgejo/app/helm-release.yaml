@@ -153,8 +153,8 @@ spec:
                 FORGEJO__repository.signing__DEFAULT_TRUST_MODEL: "committer"
                 FORGEJO__service__ENABLE_INTERNAL_SIGNIN: "false"
                 FORGEJO__openid__ENABLE_OPENID_SIGNIN: false
-                FORGEJO__oauth2__ENABLE_AUTO_REGISTRATION: true
                 FORGEJO__oauth2__USERNAME: userid
+                FORGEJO__oauth2__ENABLE_AUTO_REGISTRATION: true
     cnpg:
       main:
         enabled: true
