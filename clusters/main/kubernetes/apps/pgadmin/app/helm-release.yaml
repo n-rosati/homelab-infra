@@ -83,14 +83,6 @@ spec:
         subPath: config.py
         expandObjectName: false
         mountPath: /pgadmin4/config.py
-      passwd-gen:
-        enabled: true
-        type: secret
-        readOnly: true
-        objectName: pgadmin-config
-        subPath: passwd-gen.sh
-        expandObjectName: false
-        mountPath: /passwd-gen.sh
     workload:
       main:
         podSpec:
