@@ -66,7 +66,7 @@ spec:
             name: HomeTube
             description: HomeTube is a friendly video downloader managing single video URL into organized content structure for automatic home media server experience.
             group: Media
-            # icon: https://codeberg.org/forgejo/forgejo/raw/branch/forgejo/public/assets/img/forgejo.svg
+            icon: hometube-app-template.hometube.svc.cluster.local:8501/favicon.png
             widget:
               enabled: false
     persistence:
@@ -78,7 +78,7 @@ spec:
         mountPath: /data/videos
       temp:
         enabled: true
-        type: pvc
+        type: emptyDir
         mountPath: /data/tmp
       cache:
         enabled: true
@@ -103,7 +103,6 @@ spec:
         cpu: 100m
         memory: 1Gi
       limits:
-        # cpu: null
         memory: null
     workload:
       main:
@@ -129,7 +128,7 @@ spec:
               env:
                 UI_LANGUAGE: en
                 SUBTITLES_CHOICES: en
-                YTDL_CONCURRENT_FRAGMENTS: 4
+                YTDL_CONCURRENT_FRAGMENTS: 2
                 TMP_DOWNLOAD_FOLDER: /data/tmp
                 VIDEOS_FOLDER: /data/videos
                 YOUTUBE_COOKIES_FILE_PATH: /config/youtube_cookies.txt
