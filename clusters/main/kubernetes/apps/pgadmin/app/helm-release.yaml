@@ -86,7 +86,7 @@ spec:
                 PGADMIN_CONFIG_SHARED_STORAGE: "[{ 'name': 'Storage', 'path': '/storage', 'restricted_access': False }]"
     addons:
       codeserver:
-        enabled: false
+        enabled: true
         service:
           type: LoadBalancer
         ingress:
