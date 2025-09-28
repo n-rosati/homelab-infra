@@ -75,6 +75,14 @@ spec:
               enabled: true
               trigger:
                 schedule: 10 5 * * *
+      config-py:
+        enabled: true
+        type: secret
+        readOnly: true
+        objectName: pgadmin-config
+        expandObjectName: false
+        mountPath: /pgadmin4/config.py
+        subPath: config.py
     workload:
       main:
         podSpec:
