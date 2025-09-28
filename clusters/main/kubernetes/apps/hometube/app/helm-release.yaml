@@ -103,7 +103,7 @@ spec:
         cpu: 100m
         memory: 1Gi
       limits:
-        memory: null
+        memory: 10Gi
     workload:
       main:
         podSpec:
