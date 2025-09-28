@@ -169,7 +169,7 @@ spec:
               require_pkce: true
               pkce_challenge_method: 'S256'
               redirect_uris:
-                - 'https://pgadmin.${DOMAIN_0}.xyz/oauth2/authorize'
+                - 'https://pgadmin.${DOMAIN_0}/oauth2/authorize'
               scopes:
                 - 'openid'
                 - 'profile'

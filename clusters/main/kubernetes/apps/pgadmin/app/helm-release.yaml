@@ -80,15 +80,23 @@ spec:
         type: secret
         readOnly: true
         objectName: pgadmin-config
+        subPath: config.py
         expandObjectName: false
         mountPath: /pgadmin4/config.py
-        subPath: config.py
+      passwd_gen.sh:
+        enabled: true
+        type: secret
+        readOnly: true
+        objectName: pgadmin-config
+        subPath: passwd_gen.sh
+        expandObjectName: false
+        mountPath: /passwd_gen.sh
     workload:
       main:
         podSpec:
           containers:
             main:
               env:
-                PGADMIN_DEFAULT_EMAIL: ${PERSONAL_EMAIL}
+                PGADMIN_DEFAULT_EMAIL: ${SERVICE_EMAIL}
                 PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
                 PGADMIN_CONFIG_SHARED_STORAGE: "[{ 'name': 'Storage', 'path': '/storage', 'restricted_access': False }]"
