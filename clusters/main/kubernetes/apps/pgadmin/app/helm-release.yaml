@@ -84,10 +84,3 @@ spec:
                 PGADMIN_DEFAULT_EMAIL: ${PERSONAL_EMAIL}
                 PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
                 PGADMIN_CONFIG_SHARED_STORAGE: "[{ 'name': 'Storage', 'path': '/storage', 'restricted_access': False }]"
-    addons:
-      codeserver:
-        enabled: true
-        service:
-          type: LoadBalancer
-        ingress:
-          enabled: false
