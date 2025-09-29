@@ -172,11 +172,11 @@ spec:
           singleNode: true
         backups:
           enabled: true
-          revision: "1"
+          revision: "2"
           credentials: home-s3
         recovery:
           enabled: true
-          revision: "1"
+          revision: "2"
           credentials: home-s3
     addons:
       codeserver:
