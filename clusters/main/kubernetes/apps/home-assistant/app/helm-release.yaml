@@ -74,12 +74,12 @@ spec:
         backups:
           enabled: true
           credentials: home-s3
-          revision: "1"
+          revision: "2"
           retentionPolicy: "14d"
         recovery:
           enabled: true
           credentials: home-s3
-          revision: ""
+          revision: "2"
         cluster:
           singleNode: true
     addons:

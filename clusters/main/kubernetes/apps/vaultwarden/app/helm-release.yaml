@@ -91,12 +91,11 @@ spec:
         mode: recovery
         backups:
           enabled: true
-          revision: "3"
+          revision: "4"
           credentials: home-s3
         recovery:
           enabled: true
           credentials: home-s3
-          method: object_store
-          revision: "2"
+          revision: "4"
         cluster:
           singleNode: true

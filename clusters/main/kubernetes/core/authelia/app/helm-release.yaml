@@ -53,8 +53,8 @@ spec:
         password: ${CNPG_PASSWORD}
         backups:
           enabled: true
-          revision: "1"
           credentials: home-s3
+          revision: "2"
         recovery:
           enabled: true
           method: object_store

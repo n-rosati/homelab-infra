@@ -134,12 +134,12 @@ spec:
           singleNode: true
         backups:
           enabled: true
-          revision: "3"
           credentials: home-s3
+          revision: "4"
         recovery:
           enabled: true
+          revision: "4"
           credentials: home-s3
-          revision: "2"
     workload:
       main:
         podSpec:

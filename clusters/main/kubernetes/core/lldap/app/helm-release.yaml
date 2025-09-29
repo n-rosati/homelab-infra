@@ -82,9 +82,8 @@ spec:
         password: ${CNPG_PASSWORD}
         backups:
           enabled: true
-          revision: "3"
           credentials: home-s3
-          retentionPolicy: "14d"
+          revision: "4"
         recovery:
           enabled: true
           method: object_store

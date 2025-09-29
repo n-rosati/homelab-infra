@@ -86,9 +86,11 @@ spec:
         backups:
           enabled: true
           credentials: home-s3
+          revision: "1"
         recovery:
           enabled: true
           credentials: home-s3
+          revision: "1"
     workload:
       main:
         podSpec:

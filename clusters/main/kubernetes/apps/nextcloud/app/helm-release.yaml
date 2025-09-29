@@ -101,13 +101,13 @@ spec:
         backups:
           enabled: true
           credentials: home-s3
-          revision: "6"
+          revision: "7"
           retentionPolicy: "14d"
         recovery:
-          enabled: false
+          enabled: true
           credentials: home-s3
           method: object_store
-          revision: "2"
+          revision: "7"
         cluster:
           singleNode: true
     nextcloud:
