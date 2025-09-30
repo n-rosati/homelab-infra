@@ -7,4 +7,3 @@ resources:
   - s3/ks.yaml
   - scrutiny-es/ks.yaml
   - truenas-es/ks.yaml
-  - urbackup/ks.yaml
