@@ -28,7 +28,7 @@ spec:
       pullPolicy: IfNotPresent
     rcon-api-image:
       repository: ghcr.io/nekomeowww/factorio-rcon-api
-      tag: 2.0.7@sha256:c0731bbb4691418bc224ecafff7299900b099cf901e8f567037b03e4263a1fe0
+      tag: 2.1.4@sha256:5ceb891de25c1b0f5161a5bbbecb910a8084ec39425dcac87e9743ba142633dc
     global:
       stopAll: false
     credentials:
