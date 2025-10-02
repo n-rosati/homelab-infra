@@ -170,7 +170,7 @@ spec:
         mode: standalone # CHANGE TO RECOVERY WHEN REINSTALLING
         cluster:
           singleNode: true
-          postgresql:
+          postgresql: |
             parameters:
               wal_keep_size: 5Gi
         backups:
