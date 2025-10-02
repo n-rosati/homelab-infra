@@ -172,7 +172,7 @@ spec:
           singleNode: true
           postgresql: |
             parameters:
-              wal_keep_size: 5Gi
+              wal_keep_size: 5GB
         backups:
           enabled: true
           revision: "2"
