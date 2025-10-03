@@ -68,6 +68,10 @@ spec:
         enabled: true
         type: pvc
         mountPath: /app/data
+      fontconfig:
+        enabled: true
+        type: emptyDir
+        mountPath: /var/cache/fontconfig
     workload:
       main:
         podSpec:
