@@ -72,6 +72,10 @@ spec:
         enabled: true
         type: emptyDir
         mountPath: /var/cache/fontconfig
+      cache:
+        enabled: true
+        type: emptyDir
+        mountPath: /.cache
     workload:
       main:
         podSpec:
