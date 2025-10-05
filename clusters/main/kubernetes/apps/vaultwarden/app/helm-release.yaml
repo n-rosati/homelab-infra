@@ -57,8 +57,7 @@ spec:
             widget:
               enabled: false
     vaultwarden:
-      signupDomains:
-        - ${EMAIL_DOMAIN}
+      allowSignups: false
       verifySignup: true
       smtp:
         enabled: true
