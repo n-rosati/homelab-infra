@@ -65,7 +65,7 @@
         },
         {
             "matchPackageNames": [
-                "flux-manifests"
+                "ghcr.io/fluxcd/flux-manifests"
             ],
             "automerge": true,
             "automergeSchedule": [
