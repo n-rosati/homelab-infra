@@ -63,10 +63,13 @@ spec:
             main:
               envFrom:
                 - secretRef:
-                    name: renovate-key
-                    expandObjectName: false
               env:
                 MEND_RNV_ACCEPT_TOS: y
                 MEND_RNV_LICENSE_KEY: ${RENOVATE_LICENSE_KEY}
                 MEND_RNV_GITHUB_APP_ID: ${RENOVATE_APP_ID}
+                MEND_RNV_GITHUB_APP_KEY:
+                  - secretRef:
+                      name: renovate-key
+                      key: RENOVATE_APP_KEY
+                      expandObjectName: false
                 MEND_RNV_WEBHOOK_SECRET: ${RENOVATE_WEBHOOK_SECRET}
