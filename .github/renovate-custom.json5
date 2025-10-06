@@ -20,6 +20,13 @@
         ]
     },
     "ignore": [],
+    "hostRules": [
+        {
+            "hostType": "gitea",
+            "host": "codeberg.org",
+            "matchHost": "codeberg.org"
+        }
+    ],
     "packageRules": [
         {
             "description": [
