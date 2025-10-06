@@ -1,0 +1,18 @@
+{
+    "packageRules": [
+        {
+            "matchPackageNames": [
+                "ghcr.io/fluxcd/flux-manifests",
+                "volsync",
+                "spegel",
+                "snapshot-controller",
+                "kubernetes-reflector",
+                "clusterissuer"
+            ],
+            "automerge": true,
+            "automergeSchedule": [
+                "at any time"
+            ]
+        }
+    ]
+}
