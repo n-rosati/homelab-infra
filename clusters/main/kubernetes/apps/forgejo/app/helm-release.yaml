@@ -28,7 +28,7 @@ spec:
     global:
       stopAll: false
     image:
-      repository: oci://codeberg.org/forgejo/forgejo
+      repository: codeberg.org/forgejo/forgejo
       pullPolicy: IfNotPresent
       tag: 12.0.4-rootless
     credentials:
