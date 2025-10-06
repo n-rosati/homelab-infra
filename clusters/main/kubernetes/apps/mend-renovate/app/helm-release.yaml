@@ -64,6 +64,7 @@ spec:
               envFrom:
                 - secretRef:
                     name: renovate-key
+                    expandObjectName: false
               env:
                 MEND_RNV_ACCEPT_TOS: y
                 MEND_RNV_LICENSE_KEY: ${RENOVATE_LICENSE_KEY}
