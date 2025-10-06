@@ -4,7 +4,7 @@
     "automergeSchedule": [
         "* 0-7 * * 1-5"
     ],
-    "platformAutomerge": false,
+    "platformAutomerge": true,
     "major": {
         "enabled": true,
         "automerge": false,
