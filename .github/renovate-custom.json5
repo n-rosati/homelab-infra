@@ -62,6 +62,15 @@
             "schedule": [
                 "at any time"
             ]
+        },
+        {
+            "matchPackageNames": [
+                "flux-manifests"
+            ],
+            "automerge": true,
+            "automergeSchedule": [
+                "at any time"
+            ]
         }
     ]
 }
