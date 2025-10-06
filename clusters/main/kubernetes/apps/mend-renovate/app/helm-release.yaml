@@ -56,20 +56,22 @@ spec:
             description: "Mend Renovate products help developers automate dependency updates by detecting newer package versions and providing updates directly to the application code"
             widget:
               enabled: false
+    key:
+      enabled: true
+      type: secret
+      readOnly: true
+      objectName: renovate-key
+      subPath: RENOVATE_APP_KEY
+      expandObjectName: false
+      mountPath: /usr/src/app/renovate.private-key.pem
     workload:
       main:
         podSpec:
           containers:
             main:
-              envFrom:
-                - secretRef:
               env:
                 MEND_RNV_ACCEPT_TOS: y
                 MEND_RNV_LICENSE_KEY: ${RENOVATE_LICENSE_KEY}
                 MEND_RNV_GITHUB_APP_ID: ${RENOVATE_APP_ID}
-                MEND_RNV_GITHUB_APP_KEY:
-                  - secretRef:
-                      name: renovate-key
-                      key: RENOVATE_APP_KEY
-                      expandObjectName: false
+                # MEND_RNV_GITHUB_PEM_FILE_PATH: '/key.pem'
                 MEND_RNV_WEBHOOK_SECRET: ${RENOVATE_WEBHOOK_SECRET}
