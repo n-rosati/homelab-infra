@@ -23,7 +23,6 @@
     "hostRules": [
         {
             "hostType": "gitea",
-            "host": "codeberg.org",
             "matchHost": "codeberg.org"
         }
     ],
