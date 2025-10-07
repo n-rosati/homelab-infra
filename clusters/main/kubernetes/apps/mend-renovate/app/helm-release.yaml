@@ -61,9 +61,9 @@ spec:
       type: secret
       readOnly: true
       objectName: renovate-key
-      subPath: RENOVATE_APP_KEY
       expandObjectName: false
-      mountPath: /usr/src/app/renovate.private-key.pem
+      subPath: RENOVATE_APP_KEY
+      mountPath: /renovate.private-key.pem
     workload:
       main:
         podSpec:
@@ -74,4 +74,5 @@ spec:
                 MEND_RNV_LICENSE_KEY: ${RENOVATE_LICENSE_KEY}
                 MEND_RNV_GITHUB_APP_ID: ${RENOVATE_APP_ID}
                 MEND_RNV_GITHUB_APP_KEY: null
+                MEND_RNV_GITHUB_PEM_FILE_PATH: '/renovate.private-key.pem'
                 MEND_RNV_WEBHOOK_SECRET: ${RENOVATE_WEBHOOK_SECRET}
