@@ -24,6 +24,7 @@ spec:
   values:
     global:
       stopAll: false
+    TZ: America/Toronto
     ingress:
       main:
         enabled: true
