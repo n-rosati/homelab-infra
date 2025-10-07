@@ -24,13 +24,6 @@ spec:
   values:
     global:
       stopAll: false
-    # service:
-    #   main:
-    #     type: LoadBalancer
-    #     loadBalancerIP: ${DASHBOARD_IP}
-    #     integrations:
-    #       metallb:
-    #         enabled: true
     ingress:
       main:
         enabled: true
@@ -40,19 +33,15 @@ spec:
         integrations:
           certManager:
             enabled: true
-            certificateIssuer: le-staging
+            certificateIssuer: le-prod
           nginx:
             enabled: true
-            auth:
-              type: authelia
-              internalHost: ${AUTHELIA_INTERNAL_DNS}
-              externalHost: ${AUTHELIA_EXTERNAL_DNS}
           homepage:
             enabled: true
             group: Infrastructure
             href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
-            icon: kubernetes.png
-            name: Mend Renovate
+            icon: renovate.svg
+            name: Renovate
             description: "Mend Renovate products help developers automate dependency updates by detecting newer package versions and providing updates directly to the application code"
             widget:
               enabled: false
