@@ -1,0 +1,12 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "pinDigest": {
+        "enabled": true,
+        "automerge": true,
+        "dependencyDashboardApproval": false,
+        "labels": [
+            "type/pin",
+            "automerge"
+        ]
+    }
+}

@@ -4,7 +4,7 @@
     "automergeSchedule": [
         "* 0-7 * * 1-5"
     ],
-    "platformAutomerge": true,
+    "platformAutomerge": false,
     "major": {
         "enabled": true,
         "automerge": false,
@@ -60,6 +60,15 @@
                 "reloader"
             ],
             "schedule": [
+                "at any time"
+            ]
+        },
+        {
+            "matchPackageNames": [
+                "ghcr.io/fluxcd/flux-manifests"
+            ],
+            "automerge": true,
+            "automergeSchedule": [
                 "at any time"
             ]
         }

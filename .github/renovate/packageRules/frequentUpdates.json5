@@ -1,0 +1,20 @@
+{
+    "packageRules": [
+        {
+            "description": [
+                "Custom schedule for frequently updated packages"
+            ],
+            "matchDataSources": [
+                "docker",
+                "helm"
+            ],
+            "matchPackagePatterns": [
+                "postgresql",
+                "reloader"
+            ],
+            "schedule": [
+                "at any time"
+            ]
+        }
+    ]
+}
