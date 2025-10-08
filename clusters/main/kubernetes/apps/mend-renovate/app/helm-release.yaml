@@ -40,7 +40,7 @@ spec:
           homepage:
             enabled: true
             group: Infrastructure
-            href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
+            href: " "
             icon: renovate.svg
             name: Renovate
             description: "Mend Renovate products help developers automate dependency updates by detecting newer package versions and providing updates directly to the application code"
