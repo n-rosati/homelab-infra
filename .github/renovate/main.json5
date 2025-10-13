@@ -11,6 +11,6 @@
     "timezone": "America/Toronto",
     "platformAutomerge": false,
     "automergeSchedule": [
-        "* 0-7 * * 1-5"
+        "* 0-9 * * 1-5"
     ]
 }
