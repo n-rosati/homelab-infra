@@ -25,3 +25,4 @@ resources:
   - grafana/ks.yaml
   - hometube/ks.yaml
   - mend-renovate/ks.yaml
+  - gpu-hot/ks.yaml
