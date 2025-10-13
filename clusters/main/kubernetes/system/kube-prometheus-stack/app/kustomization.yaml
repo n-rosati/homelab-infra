@@ -4,3 +4,4 @@ resources:
   - helm-release.yaml
   - namespace.yaml
   - etc.secret.yaml
+  - alertmanagerconfig.yaml
