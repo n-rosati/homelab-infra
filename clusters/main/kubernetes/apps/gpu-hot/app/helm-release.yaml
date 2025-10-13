@@ -57,7 +57,13 @@ spec:
               internalHost: ${AUTHELIA_INTERNAL_DNS}
               externalHost: ${AUTHELIA_EXTERNAL_DNS}
           homepage:
-            enabled: false
+            enabled: true
+            name: GPU-hot
+            description: Real-time NVIDIA GPU dashboard
+            group: Infrastructure
+            icon: https://raw.githubusercontent.com/psalias2006/gpu-hot/refs/heads/main/static/favicon.svg
+            widget:
+              enabled: false
     workload:
       main:
         strategy: Recreate
