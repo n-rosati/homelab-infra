@@ -1,0 +1,17 @@
+{
+    "packageRules": [
+        {
+            "matchPackageNames": [
+                "minecraft-router",
+                "minecraft-java",
+                "factorio",
+                "wg-easy",
+                "app-template"
+            ],
+            "automergeSchedule": [
+                "* 0-9 * * *",
+                "* 23 * * *"
+            ]
+        }
+    ]
+}
