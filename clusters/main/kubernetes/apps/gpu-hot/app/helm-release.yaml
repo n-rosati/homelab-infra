@@ -30,7 +30,7 @@ spec:
     image:
       repository: ghcr.io/psalias2006/gpu-hot
       pullPolicy: IfNotPresent
-      tag: 1.3.3
+      tag: 1.4.0
     service:
       main:
         enabled: true
