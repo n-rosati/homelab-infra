@@ -9,7 +9,7 @@ name: Automerge and Approve
 on:
   workflow_dispatch:
   schedule:
-  - cron: "0 10 * * *" # 10am UTC
+  - cron: "37 10 * * *" # 10am UTC; 37th minute to avoid high load time of github actions
 
 jobs:
   automerge:
