@@ -9,8 +9,9 @@
         "github>n-rosati/homelab-infra//.github/renovate/hostRules.json5"
     ],
     "timezone": "America/Toronto"
-//    "platformAutomerge": false,
-//    "automergeSchedule": [
-//        "* 0-9 * * 1-5"
-//    ]
+    "platformAutomerge": false,
+    "automergeSchedule": [
+        "* 0-9 * * *",
+        "* 23 * * *"
+    ]
 }
