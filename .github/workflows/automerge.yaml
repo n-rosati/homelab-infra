@@ -1,29 +1,58 @@
-name: Automerge and Approve
+name: Auto Rebase and Merge
 
-#on:
-  #workflow_run:
-  #  # If you want to filter based on a specific finisher workflow, add here
-  #  workflows: ["Placeholder"]  # Name of the main CI workflow
-  #  types:
-  #    - completed
 on:
-  workflow_dispatch:
   schedule:
-  - cron: "37 10 * * *" # 10am UTC; 37th minute to avoid high load time of github actions
+    # 6:37 AM EST = 10:37 UTC
+    - cron: "37 10 * * *"
+  workflow_dispatch:
 
 jobs:
-  automerge:
+  rebase-and-merge:
     runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
+
     steps:
-      - id: automerge
-        name: automerge
-        uses: "pascalgn/automerge-action@7961b8b5eec56cc088c140b56d864285eabd3f67" # v0.16.4       
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y gh jq git
+
+      - name: Authenticate gh
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          UPDATE_RETRIES: 24
-          UPDATE_RETRY_SLEEP: 60000
-          MERGE_METHOD: "rebase"
-          #MERGE_LABELS: "automerge"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh auth setup-git
+
+      - name: Rebase and merge PRs with 'automerge' label
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          prs=$(gh pr list --repo "$REPO" --label "automerge" --state open --json number --jq '.[].number')
+
+          if [ -z "$prs" ]; then
+            echo "No open PRs with label 'automerge'."
+            exit 0
+          fi
+
+          for pr in $prs; do
+            echo "Processing PR #$pr"
+            
+            branch=$(gh pr view "$pr" --repo "$REPO" --json headRefName --jq '.headRefName')
+
+            echo "→ Rebasing branch $branch"
+            git fetch origin
+            git checkout "$branch"
+            if git rebase origin/main; then
+              echo "✅ Successfully rebased $branch"
+              git push --force-with-lease origin "$branch"
+              
+              echo "→ Attempting merge..."
+              gh pr merge "$pr" --repo "$REPO" --auto --merge || echo "⏳ Merge not ready yet (checks or approvals pending)"
+            else
+              echo "❌ Rebase failed for PR #$pr, aborting rebase"
+              git rebase --abort || true
+            fi
+          done
