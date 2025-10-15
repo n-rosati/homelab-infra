@@ -43,16 +43,13 @@ spec:
     service:
       main:
         enabled: true
+        type: LoadBalancer
         ports:
           main:
             enabled: true
             port: 3000
             protocol: http
             targetPort: 3000
-      ssh:
-        enabled: true
-        type: LoadBalancer
-        ports:
           ssh:
             enabled: true
             port: 2222
