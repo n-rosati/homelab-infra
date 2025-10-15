@@ -1,4 +1,4 @@
-name: Auto Rebase and Merge
+name: Auto Update and Merge
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  rebase-and-merge:
+  update-and-merge:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -18,14 +18,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y gh jq git
+        run: sudo apt-get update && sudo apt-get install -y gh jq
 
       - name: Authenticate gh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh auth setup-git
 
-      - name: Rebase and merge PRs with 'automerge' label
+      - name: Update and merge PRs with 'automerge' label
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
@@ -39,20 +39,19 @@ jobs:
 
           for pr in $prs; do
             echo "Processing PR #$pr"
-            
-            branch=$(gh pr view "$pr" --repo "$REPO" --json headRefName --jq '.headRefName')
 
-            echo "→ Rebasing branch $branch"
-            git fetch origin
-            git checkout "$branch"
-            if git rebase origin/main; then
-              echo "✅ Successfully rebased $branch"
-              git push --force-with-lease origin "$branch"
-              
-              echo "→ Attempting merge..."
-              gh pr merge "$pr" --repo "$REPO" --auto --merge || echo "⏳ Merge not ready yet (checks or approvals pending)"
+            echo "→ Updating branch with base"
+            if gh pr update "$pr" --repo "$REPO" --update-branch; then
+              echo "✅ Branch updated successfully"
             else
-              echo "❌ Rebase failed for PR #$pr, aborting rebase"
-              git rebase --abort || true
+              echo "⚠️ Could not update branch (possible merge conflict)"
+              continue
+            fi
+
+            echo "→ Attempting auto-merge"
+            if gh pr merge "$pr" --repo "$REPO" --auto --merge; then
+              echo "✅ Merge triggered for PR #$pr"
+            else
+              echo "⏳ Merge not ready yet (checks, approvals, or conflicts)"
             fi
           done
