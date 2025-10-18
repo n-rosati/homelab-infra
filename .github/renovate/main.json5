@@ -7,8 +7,5 @@
         "github>n-rosati/homelab-infra//.github/renovate/hostRules.json5"
     ],
     "timezone": "America/Toronto",
-    "platformAutomerge": false,
-    "schedule": [
-        "at any time"
-    ]
+    "platformAutomerge": false
 }
