@@ -1,7 +1,14 @@
 {
     "packageRules": [
         {
-            "matchPackageNames": [
+            "description": [
+                "Custom schedule for apps where restarting would be disruptive"
+            ],
+            "matchDataSources": [
+                "docker",
+                "helm"
+            ],
+            "matchPackagePatterns": [
                 "minecraft-router",
                 "minecraft-java",
                 "factorio",
