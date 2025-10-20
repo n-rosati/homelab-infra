@@ -56,7 +56,7 @@ spec:
         subPath: RENOVATE_APP_KEY
         mountPath: /usr/src/app/renovate.private-key.pem
     redis:
-      enabled: false
+      enabled: true
     workload:
       main:
         podSpec:
