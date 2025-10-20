@@ -26,3 +26,4 @@ resources:
   - hometube/ks.yaml
   - mend-renovate/ks.yaml
   - gpu-hot/ks.yaml
+  - redis/ks.yaml
