@@ -28,4 +28,4 @@ kubectl krew install pv-mounter
 kubectl krew install cnpg
 kubectl krew install df-pv
 
-export KUBECONFIG=/workspaces/homelab-infra/clusters/main/talos/generated/kubeconfig
+echo "set -gx KUBECONFIG /workspaces/homelab-infra/clusters/main/talos/generated/kubeconfig" >> $HOME/.config/fish/config.fish
