@@ -69,7 +69,7 @@ spec:
                 RENOVATE_GIT_IGNORED_AUTHORS: '236480601+redecorate-bot[bot]@users.noreply.github.com'
                 LOG_LEVEL: debug
                 MEND_RNV_API_ENABLE_PROMETHEUS_METRICS: true
-                # RENOVATE_REDIS_URL: "{{ .Values.redis.url }}"
+                RENOVATE_REDIS_URL: "redis://redis.mend-renovate.svc.cluster.local:6379"
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
