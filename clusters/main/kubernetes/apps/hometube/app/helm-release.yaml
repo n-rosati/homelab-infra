@@ -30,7 +30,7 @@ spec:
     image:
       repository: ghcr.io/egalitarianmonkey/hometube
       pullPolicy: IfNotPresent
-      tag: 0.14.0
+      tag: 1.0.0
     credentials:
       home-s3:
         name: home-s3
