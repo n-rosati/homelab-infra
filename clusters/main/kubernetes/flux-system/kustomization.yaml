@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - flux
   - weave/ks.yaml
-  - headlamp/ks.yaml
+  # - headlamp/ks.yaml
