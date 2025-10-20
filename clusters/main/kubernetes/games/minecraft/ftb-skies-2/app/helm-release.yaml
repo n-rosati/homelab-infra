@@ -124,7 +124,7 @@ spec:
                 VERSION: 1.21.1
                 TYPE: FTBA
                 FTB_MODPACK_ID: 129
-                FTB_MODPACK_VERSION_ID: 100134
+                FTB_MODPACK_VERSION_ID: 100136
                 FTB_FORCE_REINSTALL: false
                 MAX_PLAYERS: 3
                 MOTD: FTB Skies 2!
