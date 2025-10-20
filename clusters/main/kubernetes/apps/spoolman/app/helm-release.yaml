@@ -83,6 +83,8 @@ spec:
         mode: standalone # CHANGE TO recovery WHEN REINSTALLING
         cluster:
           singleNode: true
+          postgresql:
+            wal_keep_size: 5GB
         backups:
           enabled: true
           credentials: home-s3

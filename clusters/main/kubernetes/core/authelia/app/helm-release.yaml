@@ -62,6 +62,8 @@ spec:
           revision: "1"
         cluster:
           singleNode: true
+          postgresql:
+            wal_keep_size: 5GB
     persistence:
       authelia-secrets:
         enabled: true
