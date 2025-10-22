@@ -159,10 +159,10 @@ spec:
     resources:
       requests:
         cpu: 100m
-        memory: 2Gi
+        memory: 8Gi
       limits:
         cpu: null
-        memory: null
+        memory: 10Gi
     addons:
       codeserver:
         enabled: false
