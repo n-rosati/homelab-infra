@@ -26,14 +26,14 @@ spec:
     keepHistory: false
   values:
     controller:
-      replicaCount: 2
+      replicaCount: 1
       service:
         externalTrafficPolicy: Local
         annotations:
           metallb.io/ip-allocated-from-pool: main
           metallb.io/loadBalancerIPs: ${NGINX_INTERNAL_IP}
       ingressClassByName: true
-      watchIngressWithoutClass: false
+      watchIngressWithoutClass: true
       ingressClassResource:
         name: internal
         default: true
@@ -41,7 +41,7 @@ spec:
       config:
         allow-snippet-annotations: true
         annotations-risk-level: Critical
-        client-body-buffer-size: 512M
+        client-body-buffer-size: 128M
         client-body-timeout: 120
         client-header-timeout: 120
         enable-brotli: "true"
@@ -57,8 +57,9 @@ spec:
         proxy-busy-buffers-size: 32k
         ssl-protocols: TLSv1.3 TLSv1.2
         use-forwarded-headers: "true"
+        proxy-real-ip-cidr: "${PODNET},${SVCNET}"
       metrics:
-        enabled: false
+        enabled: true
       extraArgs:
         default-ssl-certificate: "clusterissuer/certificate-issuer-cluster-wildcard"
         publish-status-address: ${NGINX_INTERNAL_IP}
