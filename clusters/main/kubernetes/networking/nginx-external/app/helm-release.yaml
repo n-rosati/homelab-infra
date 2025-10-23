@@ -45,9 +45,9 @@ spec:
         client-body-timeout: 120
         client-header-timeout: 120
         enable-brotli: "true"
-        enable-modsecurity: true
+        enable-modsecurity: false
         enable-ocsp: "true"
-        enable-owasp-modsecurity-crs: true
+        enable-owasp-modsecurity-crs: false
         enable-real-ip: "true"
         force-ssl-redirect: "true"
         hide-headers: Server,X-Powered-By
