@@ -24,6 +24,15 @@ spec:
   values:
     global:
       stopAll: false
+    credentials:
+      home-s3:
+        name: home-s3
+        type: s3
+        url: ${S3_URL}
+        bucket: remmina
+        encrKey: ${BACKUP_ENCRYPTION_KEY}
+        accessKey: ${S3_ACCESS_KEY}
+        secretKey: ${S3_SECRET_KEY}
     persistence:
       config:
         volsync:
