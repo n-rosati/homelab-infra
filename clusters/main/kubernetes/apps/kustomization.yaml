@@ -25,5 +25,5 @@ resources:
   - grafana/ks.yaml
   - hometube/ks.yaml
   - mend-renovate/ks.yaml
-  - gpu-hot/ks.yaml  - remmina
+  - gpu-hot/ks.yaml
   - remmina/ks.yaml
