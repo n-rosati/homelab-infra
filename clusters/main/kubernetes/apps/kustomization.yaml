@@ -27,3 +27,4 @@ resources:
   - mend-renovate/ks.yaml
   - gpu-hot/ks.yaml
   - remmina/ks.yaml
+  - novnc/ks.yaml
