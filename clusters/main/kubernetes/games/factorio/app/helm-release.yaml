@@ -61,6 +61,8 @@ spec:
       main:
         enabled: true
         ingressClassName: external
+        targetSelector:
+          main: main
         hosts:
           - host: factorio.${DOMAIN_0}
         integrations:
