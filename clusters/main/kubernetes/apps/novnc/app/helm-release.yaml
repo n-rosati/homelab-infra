@@ -43,3 +43,11 @@ spec:
             group: Apps
             widget:
               enabled: false
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                REMOTE_HOST: "192.168.2.6"
+                REMOTE_PORT: "5900"
