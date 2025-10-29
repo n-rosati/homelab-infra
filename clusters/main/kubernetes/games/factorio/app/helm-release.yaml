@@ -59,7 +59,7 @@ spec:
             targetSelector: rcon-api
     ingress:
       main:
-        enabled: true
+        enabled: false
         ingressClassName: external
         hosts:
           - host: factorio.${DOMAIN_0}
