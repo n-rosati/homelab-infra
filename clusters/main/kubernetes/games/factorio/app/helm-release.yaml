@@ -118,7 +118,7 @@ spec:
                   enabled: false
     addons:
       codeserver:
-        enabled: false
+        enabled: true
         ingress:
           enabled: true
           ingressClassName: external
