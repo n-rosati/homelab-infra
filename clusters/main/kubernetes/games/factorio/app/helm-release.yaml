@@ -59,14 +59,11 @@ spec:
             targetSelector: rcon-api
     ingress:
       main:
-        enabled: false
-        # ingressClassName: external
-        # hosts:
-        #   - host: factorio.${DOMAIN_0}
+        enabled: true
+        ingressClassName: external
+        hosts:
+          - host: factorio-unused.${DOMAIN_0}
         integrations:
-          #   certManager:
-          #     enabled: true
-          #     certificateIssuer: le-prod
           homepage:
             enabled: true
             name: Factorio
