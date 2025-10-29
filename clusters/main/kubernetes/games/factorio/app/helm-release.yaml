@@ -60,13 +60,13 @@ spec:
     ingress:
       main:
         enabled: false
-        ingressClassName: external
-        hosts:
-          - host: factorio.${DOMAIN_0}
+        # ingressClassName: external
+        # hosts:
+        #   - host: factorio.${DOMAIN_0}
         integrations:
-          certManager:
-            enabled: true
-            certificateIssuer: le-prod
+          #   certManager:
+          #     enabled: true
+          #     certificateIssuer: le-prod
           homepage:
             enabled: true
             name: Factorio
