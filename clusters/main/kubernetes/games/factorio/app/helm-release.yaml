@@ -57,27 +57,6 @@ spec:
             protocol: http
             targetPort: "24180"
             targetSelector: rcon-api
-    ingress:
-      main:
-        enabled: true
-        ingressClassName: external
-        hosts:
-          - host: factorio-unused.${DOMAIN_0}
-        integrations:
-          homepage:
-            enabled: true
-            name: Factorio
-            description: " "
-            group: Games
-            icon: https://factorio.com/static/img/factorio-wheel.png
-            href: " "
-            widget:
-              enabled: true
-              type: customapi
-              url: http://factorio-rcon-api.factorio.svc.cluster.local:24180/api/v2/factorio/console/command/version
-              custom:
-                mappings.0.field: version
-                mappings.0.label: Game Version
     persistence:
       config:
         volsync:
@@ -131,3 +110,17 @@ spec:
                 type: authelia
                 internalHost: ${AUTHELIA_INTERNAL_DNS}
                 externalHost: ${AUTHELIA_EXTERNAL_DNS}
+            homepage:
+              enabled: true
+              name: Factorio
+              description: " "
+              group: Games
+              icon: https://factorio.com/static/img/factorio-wheel.png
+              href: " "
+              widget:
+                enabled: true
+                type: customapi
+                url: http://factorio-rcon-api.factorio.svc.cluster.local:24180/api/v2/factorio/console/command/version
+                custom:
+                  mappings.0.field: version
+                  mappings.0.label: Game Version
