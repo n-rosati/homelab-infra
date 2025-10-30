@@ -47,24 +47,6 @@ spec:
       rcon:
         enabled: true
         type: LoadBalancer
-    ingress:
-      main:
-        enabled: true
-        ingressClassName: internal
-        hosts:
-          - host: monifactory-unused.${DOMAIN_0}
-        integrations:
-          homepage:
-            enabled: true
-            name: Monifactory
-            description: " "
-            group: Games
-            icon: minecraft.png
-            href: " "
-            widget:
-              enabled: true
-              type: minecraft
-              url: udp://monifactory-minecraft-java.mc-monifactory.svc.cluster.local:25565
     persistence:
       data:
         volsync:
@@ -161,3 +143,14 @@ spec:
                 type: authelia
                 internalHost: ${AUTHELIA_INTERNAL_DNS}
                 externalHost: ${AUTHELIA_EXTERNAL_DNS}
+            homepage:
+              enabled: true
+              name: Monifactory
+              description: " "
+              group: Games
+              icon: minecraft.png
+              href: " "
+              widget:
+                enabled: true
+                type: minecraft
+                url: udp://monifactory-minecraft-java.mc-monifactory.svc.cluster.local:25565
