@@ -51,7 +51,7 @@ spec:
               externalHost: ${AUTHELIA_EXTERNAL_DNS}
           homepage:
             enabled: true
-            group: Games
+            group: Apps
             href: https://{{ ( index .Values.ingress.main.hosts 0 ).host }}
             widget:
               enabled: false
