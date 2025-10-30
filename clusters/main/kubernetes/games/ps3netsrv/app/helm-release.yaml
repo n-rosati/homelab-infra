@@ -34,7 +34,7 @@ spec:
     persistence:
       games:
         type: nfs
-        path: ${NFS_APPS_PATH}/ps3netsrv
+        path: ${NFS_DSU_PATH}/Software/ps3netsrv
         mountPath: /games
         server: ${TRUENAS_IP}
     ingress:
