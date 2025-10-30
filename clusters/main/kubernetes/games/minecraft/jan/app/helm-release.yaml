@@ -42,24 +42,6 @@ spec:
           mc-router.itzg.me/externalServerName: "jan.${DOMAIN_0}"
       rcon:
         type: LoadBalancer
-    ingress:
-      main:
-        enabled: true
-        ingressClassName: internal
-        hosts:
-          - host: jan-unused.${DOMAIN_0}
-        integrations:
-          homepage:
-            enabled: true
-            name: JaN
-            description: " "
-            group: Games
-            icon: minecraft.png
-            href: " "
-            widget:
-              enabled: true
-              type: minecraft
-              url: udp://jan-minecraft-java.mc-jan.svc.cluster.local:25565
     persistence:
       data:
         volsync:

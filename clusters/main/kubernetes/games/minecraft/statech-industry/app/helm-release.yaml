@@ -43,24 +43,6 @@ spec:
       rcon:
         enabled: true
         type: LoadBalancer
-    ingress:
-      main:
-        enabled: true
-        ingressClassName: internal
-        hosts:
-          - host: statech-industry-unused.${DOMAIN_0}
-        integrations:
-          homepage:
-            enabled: true
-            name: Statech Industry
-            description: " "
-            group: Games
-            icon: minecraft.png
-            href: " "
-            widget:
-              enabled: true
-              type: minecraft
-              url: udp://statech-industry-minecraft-java.mc-statech-industry.svc.cluster.local:25565
     persistence:
       data:
         volsync:
@@ -113,21 +95,3 @@ spec:
                 PLAYERS_ONLINE_CHECK_INTERVAL: '5m'
                 PRUNE_BACKUPS_DAYS: '2'
                 TAR_COMPRESS_METHOD: 'zstd'
-    addons:
-      codeserver:
-        enabled: false
-        ingress:
-          enabled: true
-          ingressClassName: external
-          hosts:
-            - host: statech-industry-config.${DOMAIN_0}
-          integrations:
-            certManager:
-              enabled: true
-              certificateIssuer: le-prod
-            nginx:
-              enabled: true
-              auth:
-                type: authelia
-                internalHost: ${AUTHELIA_INTERNAL_DNS}
-                externalHost: ${AUTHELIA_EXTERNAL_DNS}
