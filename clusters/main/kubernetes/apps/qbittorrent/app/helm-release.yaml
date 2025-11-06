@@ -47,7 +47,7 @@ spec:
             protocol: tcp
           i2pudp:
             enabled: true
-            port: "{{ .Values.service.torrent.ports.i2p.port }}"
+            port: 7656
             protocol: udp
     ingress:
       main:
