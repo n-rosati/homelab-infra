@@ -33,6 +33,23 @@ spec:
         encrKey: ${BACKUP_ENCRYPTION_KEY}
         accessKey: ${S3_ACCESS_KEY}
         secretKey: ${S3_SECRET_KEY}
+    service:
+      main:
+        type: LoadBalancer
+        loadBalancerIP: ${QBITTORRENT_IP}
+        integrations:
+          metallb:
+            enabled: true
+      torrent:
+        ports:
+          i2p:
+            enabled: true
+            port: 7656
+            protocol: tcp
+          i2pudp:
+            enabled: true
+            port: "{{ .Values.service.torrent.ports.i2p.port }}"
+            protocol: udp
     ingress:
       main:
         enabled: true
