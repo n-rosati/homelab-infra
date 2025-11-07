@@ -12,7 +12,7 @@ resources:
   - filebrowser/ks.yaml
   - vaultwarden/ks.yaml
   - spoolman/ks.yaml
-  - home-assistant/ks.yaml
+  # - home-assistant/ks.yaml
   - mosquitto/ks.yaml
   - govee2mqtt/ks.yaml
   - convertx/ks.yaml
