@@ -5,6 +5,7 @@ metadata:
   namespace: lldap
 spec:
   interval: 2m
+  timeout: 20m
   chart:
     spec:
       chart: lldap

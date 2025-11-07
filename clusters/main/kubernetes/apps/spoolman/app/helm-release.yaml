@@ -5,6 +5,7 @@ metadata:
   namespace: spoolman
 spec:
   interval: 2m
+  timeout: 20m
   chart:
     spec:
       chart: spoolman
