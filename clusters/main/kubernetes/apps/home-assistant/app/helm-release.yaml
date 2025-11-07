@@ -47,7 +47,7 @@ spec:
         integrations:
           certManager:
             enabled: true
-            certificateIssuer: le-prod
+            certificateIssuer: le-staging
           homepage:
             enabled: true
             name: Home Assistant
