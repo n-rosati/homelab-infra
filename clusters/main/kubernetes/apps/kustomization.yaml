@@ -21,8 +21,6 @@ resources:
   - forgejo/ks.yaml
   - stirling-pdf/ks.yaml
   - orcaslicer/ks.yaml
-  - hometube/ks.yaml
   - mend-renovate/ks.yaml
   - gpu-hot/ks.yaml
   - remmina/ks.yaml
-  - novnc/ks.yaml
