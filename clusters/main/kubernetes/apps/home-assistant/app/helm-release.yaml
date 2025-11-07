@@ -70,7 +70,7 @@ spec:
     cnpg:
       main:
         password: ${CNPG_PASSWORD}
-        mode: recovery # CHANGE TO RECOVERY WHEN REINSTALLING
+        mode: recovery
         backups:
           enabled: true
           credentials: home-s3
