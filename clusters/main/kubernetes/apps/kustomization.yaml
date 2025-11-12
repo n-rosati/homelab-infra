@@ -15,7 +15,6 @@ resources:
   - home-assistant/ks.yaml
   - mosquitto/ks.yaml
   - govee2mqtt/ks.yaml
-  - convertx/ks.yaml
   - thelounge/ks.yaml
   - github-release-monitor/ks.yaml
   - forgejo/ks.yaml
