@@ -45,9 +45,9 @@ spec:
         client-body-timeout: 120
         client-header-timeout: 120
         enable-brotli: "true"
-        enable-modsecurity: false
+        enable-modsecurity: true
         enable-ocsp: "true"
-        enable-owasp-modsecurity-crs: false
+        enable-owasp-modsecurity-crs: true
         enable-real-ip: "true"
         force-ssl-redirect: "true"
         hide-headers: Server,X-Powered-By
@@ -69,10 +69,9 @@ spec:
       terminationGracePeriodSeconds: 120
       publishService:
         enabled: false
-      resources:
-        requests:
-          cpu: 100m
-        limits:
-          memory: 500Mi
     defaultBackend:
       enabled: false
+    resources:
+      limits:
+        cpu: 2000m
+        memory: 4Gi
