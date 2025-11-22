@@ -108,6 +108,8 @@ spec:
               resources:
                 limits:
                   nvidia.com/gpu: 1
+      broadcastproxy:
+        enabled: true
       jellyfin-up:
         enabled: true
         type: Deployment
